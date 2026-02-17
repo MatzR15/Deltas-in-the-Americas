@@ -99,16 +99,19 @@
         display: block;
       }
 
-      .card-overlay {
-        position: absolute;
-        inset: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        padding: 20px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-        color: white;
-      }
+        /* Fix for the link wrapper to maintain alignment */
+        .card-overlay a {
+          display: flex;
+          justify-content: center;
+          text-decoration: none;
+          width: 100%; /* Ensures the link area is predictable */
+          align-self: center;
+        }
+        
+        /* Ensure buttons inside links don't inherit weird styles */
+        .card-overlay a button {
+          margin-bottom: 10px; /* Maintains your original spacing */
+        }
 
       .card button {
         align-self: center;
