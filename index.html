@@ -99,19 +99,16 @@
         display: block;
       }
 
-        /* Fix for the link wrapper to maintain alignment */
-        .card-overlay a {
-          display: flex;
-          justify-content: center;
-          text-decoration: none;
-          width: 100%; /* Ensures the link area is predictable */
-          align-self: center;
-        }
-        
-        /* Ensure buttons inside links don't inherit weird styles */
-        .card-overlay a button {
-          margin-bottom: 10px; /* Maintains your original spacing */
-        }
+      .card-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 20px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+        color: white;
+      }
 
       .card button {
         align-self: center;
@@ -177,12 +174,11 @@
         </p>
       </section>
 
+      <section class="cards">
         <article class="card">
           <img src="Mississippi_delta.webp" alt="Mississippi_delta" />
           <div class="card-overlay">
-            <a href="Subpage_Mississippi.html" style="text-decoration: none; align-self: center;">
-              <button>Mississippi delta</button>
-            </a>
+            <button>Mississippi delta</button>
             <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
           </div>
         </article>
