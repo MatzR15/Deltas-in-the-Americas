@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Delta Comparison</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: white;
+  color: #111;
+}
+
+/* HERO */
+.hero {
+  position: sticky;
+  top: 0;
+  height: 60vh;
+  background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+              url("https://images.unsplash.com/photo-1501785888041-af3ef285b470")
+              center / cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s ease;
+  z-index: 10;
+}
+
+.hero.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  color: white;
+  font-size: 4rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* NAV */
+.top-nav {
+  position: absolute;
+  top: 20px;
+  right: 40px;
+}
+
+.top-nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* CONTENT */
+main {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+section {
+  margin-bottom: 100px;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  border-bottom: 2px solid #111;
+  display: inline-block;
+}
+
+p {
+  line-height: 1.8;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* SELECT MENU */
+select {
+  padding: 10px;
+  margin: 10px 10px 30px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+/* COMPARISON TABLE */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 40px;
+  display: none;
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid #ddd;
+  padding: 15px;
+  text-align: left;
+}
+
+.comparison-table th {
+  background-color: #f4f4f4;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+@media screen and (max-width: 600px) {
+  .hero h1 { font-size: 2.5rem; }
+  .top-nav { right: 20px; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero" id="hero">
+<nav class="top-nav">
+<a href="../index.html">← Back to Overview</a>
+<a href="#">Contact</a>
+</nav>
+<h1>Delta Explorer</h1>
+</header>
+
+<main>
+
+<section>
+<h2>About Deltas</h2>
+<p>
+Deltas are landforms created by sediment deposits where rivers enter slower-moving water bodies.
+They are rich ecosystems and often densely populated regions.
+</p>
+</section>
+
+<section id="compare">
+<h2>Compare Deltas</h2>
+<p> Select the delta's you want to compare in the box below!</p>
+<br>
+<label>Select Delta 1:</label>
+<select id="delta1">
+<option value="">-- Select Delta --</option>
+<option value="parana">Paraná Delta</option>
+<option value="mississippi">Mississippi Delta</option>
+</select>
+
+<label>Select Delta 2:</label>
+<select id="delta2">
+<option value="">-- Select Delta --</option>
+<option value="parana">Paraná Delta</option>
+<option value="mississippi">Mississippi Delta</option>
+</select>
+
+<table id="table" class="comparison-table">
+<thead>
+<tr>
+<th>Statistic</th>
+<th id="name1"></th>
+<th id="name2"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Area (km²)</td>
+<td id="area1"></td>
+<td id="area2"></td>
+</tr>
+<tr>
+<td>Population</td>
+<td id="pop1"></td>
+<td id="pop2"></td>
+</tr>
+<tr>
+<td>Biodiversity Index</td>
+<td id="bio1"></td>
+<td id="bio2"></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</main>
+
+<script>
+// HERO SCROLL EFFECT (same as yours)
+const hero = document.getElementById("hero");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 150) {
+    hero.classList.add("hidden");
+  } else {
+    hero.classList.remove("hidden");
+  }
+});
+
+// Hidden statistics data
+const data = {
+  parana: { name: "Paraná Delta", area: 14000, population: 500000, biodiversity: 85 },
+  mississippi: { name: "Mississippi Delta", area: 32000, population: 2000000, biodiversity: 70 },
+  ganges: { name: "Ganges Delta", area: 105000, population: 170000000, biodiversity: 95 }
+};
+
+document.getElementById("delta1").addEventListener("change", compare);
+document.getElementById("delta2").addEventListener("change", compare);
+
+function compare() {
+  const d1 = document.getElementById("delta1").value;
+  const d2 = document.getElementById("delta2").value;
+
+  if (!d1 || !d2 || d1 === d2) {
+    document.getElementById("table").style.display = "none";
+    return;
+  }
+
+  const a = data[d1];
+  const b = data[d2];
+
+  document.getElementById("name1").textContent = a.name;
+  document.getElementById("name2").textContent = b.name;
+
+  document.getElementById("area1").textContent = a.area;
+  document.getElementById("area2").textContent = b.area;
+
+  document.getElementById("pop1").textContent = a.population.toLocaleString();
+  document.getElementById("pop2").textContent = b.population.toLocaleString();
+
+  document.getElementById("bio1").textContent = a.biodiversity;
+  document.getElementById("bio2").textContent = b.biodiversity;
+
+  document.getElementById("table").style.display = "table";
+}
+</script>
+
+</body>
+</html>
