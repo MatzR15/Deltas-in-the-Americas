@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paraná Delta - Deltas in the Americas</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: white;
+        color: #111;
+      }
+
+      /* HERO */
+      .hero {
+        position: sticky;
+        top: 0;
+        height: 60vh;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                    url("../imgs/Paraná_delta.jpg")
+                    center / cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s ease;
+        z-index: 10;
+      }
+
+      .hero.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      /* NAV */
+      .top-nav {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+      }
+
+      .top-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      /* CONTENT */
+      main {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section {
+        margin-bottom: 100px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #111;
+        display: inline-block;
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      /* COMPARISON TABLE */
+      .comparison-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 40px;
+      }
+
+      .comparison-table th, .comparison-table td {
+        border: 1px solid #ddd;
+        padding: 15px;
+        text-align: left;
+      }
+
+      .comparison-table th {
+        background-color: #f4f4f4;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+      }
+
+      @media screen and (max-width: 600px) {
+        .hero h1 { font-size: 2.5rem; }
+        .top-nav { right: 20px; }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero" id="hero">
+      <nav class="top-nav">
+        <a href="index.html">← Back to Overview</a>
+        <a href="#">Share</a>
+        <a href="#">Contact</a>
+      </nav>
+      <h1>Paraná Delta</h1>
+    </header>
+
+    <main>
+      <section id="nature">
+        <h2>Nature & Biodiversity</h2>
+        <p>
+          The Paraná Delta is a unique labyrinth of islands and channels where the Paraná River empties into the Río de la Plata. Unlike most deltas, it does not flow into the ocean but into another river, creating a massive freshwater ecosystem. 
+        </p>
+        <p>
+          It is a biodiversity hotspot, home to the <strong>Marsh Deer</strong>, capybaras, and over 300 species of birds. The flora is dominated by "Monte Blanco" forests and wetlands that act as a natural water purifier for the surrounding regions, including nearby Buenos Aires.
+        </p>
+      </section>
+
+      <section id="history">
+        <h2>History & Culture</h2>
+        <p>
+          Historically, the delta was inhabited by the <strong>Guaraní people</strong>, who navigated its complex waterways with expert precision. In the late 19th and early 20th centuries, the area became a hub for fruit production and wood extraction, leading to the unique "stilt-house" (palafitos) architecture seen today in towns like Tigre.
+        </p>
+        <p>
+          Today, it represents a delicate balance between a growing weekend tourism industry and the traditional "Isleño" lifestyle, where boats serve as the only form of public transport, from school buses to grocery stores.
+        </p>
+      </section>
+    </main>
+
+    <script>
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 150) {
+          hero.classList.add("hidden");
+        } else {
+          hero.classList.remove("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
