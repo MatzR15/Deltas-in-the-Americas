@@ -1,0 +1,362 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galveston Bay - Deltas in the Americas</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: white;
+        color: #111;
+      }
+
+      /* HERO */
+      .hero {
+        position: sticky;
+        top: 0;
+        height: 60vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("../imgs/Galveston_bay.jpg") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s ease;
+        z-index: 10;
+      }
+
+      .hero.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* NAV */
+      .top-nav {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+      }
+
+      .top-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      /* INFO TILES */
+      .info-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        background: #f7f7f7;
+      }
+
+      .tile {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      /* tekst kleur animatie */
+      .tile h3,
+      .tile p {
+        transition: color 0.3s ease;
+      }
+
+      /* algemene hover beweging */
+      .tile:hover {
+        transform: translateY(-6px);
+      }
+
+      /* ===== PER TEGEL KLEUREN ===== */
+
+      /* Oppervlakte */
+      .tile.area:hover {
+        background: #e3f2fd;
+      }
+      .tile.area:hover h3 {
+        color: #1565c0;
+      }
+
+      /* Bevolking */
+      .tile.population:hover {
+        background: #e8f5e9;
+      }
+      .tile.population:hover h3 {
+        color: #2e7d32;
+      }
+
+      /* Kust */
+      .tile.coast:hover {
+        background: #e0f7fa;
+      }
+      .tile.coast:hover h3 {
+        color: #00838f;
+      }
+
+      /* Economie */
+      .tile.economy:hover {
+        background: #f3e5f5;
+      }
+      .tile.economy:hover h3 {
+        color: #6a1b9a;
+      }
+      /* CONTENT */
+      main {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section {
+        margin-bottom: 100px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        border-bottom: 2px solid #111;
+        display: inline-block;
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      /* ACTIVITIES SECTION */
+      .activities {
+        background: #f7f7f7;
+        padding: 60px 20px;
+      }
+
+      /* titel gecentreerd */
+      .activities-title {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 2rem;
+        text-transform: uppercase;
+      }
+
+      /* grid */
+      .activity-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        max-width: 1000px;
+        margin: auto;
+      }
+
+      /* card */
+      .activity {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      /* hover lift */
+      .activity:hover {
+        transform: translateY(-6px);
+      }
+
+      /* icon styling */
+      .icon {
+        font-size: 2rem;
+        margin-bottom: 15px;
+        transition: transform 0.3s ease;
+      }
+
+      .activity:hover .icon {
+        transform: scale(1.2);
+      }
+
+      /* text animation */
+      .activity h3,
+      .activity p {
+        transition: color 0.3s ease;
+      }
+
+      /* ===== PER ACTIVITEIT KLEUREN ===== */
+
+      /* Kayaking */
+      .activity.kayaking:hover {
+        background: #e3f2fd;
+      }
+      .activity.kayaking:hover h3 {
+        color: #1565c0;
+      }
+
+      /* Bird watching */
+      .activity.birds:hover {
+        background: #e8f5e9;
+      }
+      .activity.birds:hover h3 {
+        color: #2e7d32;
+      }
+
+      /* Fishing */
+      .activity.fishing:hover {
+        background: #e0f7fa;
+      }
+      .activity.fishing:hover h3 {
+        color: #00838f;
+      }
+
+      /* FIX activities title centreren */
+      .activities-title {
+        text-align: center;
+        display: block;
+        width: 100%;
+        border-bottom: none;
+        margin: 0 auto 40px auto;
+      }
+      .activity-grid a.activity {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+      .activities-instruction {
+        text-align: center;
+        font-size: 1rem;
+        color: #555;
+        margin: 10px 0 30px 0; 
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero" id="hero">
+      <nav class="top-nav">
+        <a href="../index.html">← Back to Overview</a>
+        <a href="Compare.html">Compare</a>
+        <a href="#">Contact</a>
+      </nav>
+      <h1>Galveston Bay</h1>
+    </header>
+
+    <!-- INFO TILES -->
+    <section class="info-tiles">
+      <div class="tile area">
+        <h3>1.600 km²</h3>
+        <p>Area</p>
+      </div>
+
+      <div class="tile population">
+        <h3>~7 Million</h3>
+        <p>Regional population</p>
+      </div>
+
+      <div class="tile coast">
+        <h3>600 km</h3>
+        <p>Coastline & channels</p>
+      </div>
+
+      <div class="tile economy">
+        <h3>$178 Billion</h3>
+        <p>Economic value</p>
+      </div>
+    </section>
+
+    <main>
+      <section>
+        <h2>Nature & Ecosystem</h2>
+
+        <p>
+          Galveston Bay is one of the largest estuaries in the United States,
+          located along the Texas Gulf Coast. It receives freshwater from the
+          Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
+        </p>
+
+        <p>
+          The bay supports extensive wetlands, oyster reefs, and seagrass beds
+          that provide habitat for fish, birds, and marine life. It plays a
+          crucial role in coastal protection and water filtration for the
+          region.
+        </p>
+      </section>
+
+      <section>
+        <h2>Economy & Human Impact</h2>
+
+        <p>
+          The bay is central to the Houston metropolitan area's economy,
+          supporting shipping, petrochemical industries, fishing, and tourism.
+          The Port of Houston is one of the busiest ports in the world.
+        </p>
+
+        <p>
+          Balancing economic growth with environmental protection remains a
+          major challenge due to pollution risks, habitat loss, and increasing
+          urbanization.
+        </p>
+      </section>
+    </main>
+
+    <!-- ACTIVITIES -->
+    <section class="activities">
+      <h2 class="activities-title">Activities & Adventures</h2>
+      <p class="activities-instruction">
+        Click on the tiles for more information
+      </p>
+      <div class="activity-grid">
+        <a href="UNDER-CONSTRUCTION.html" class="activity kayaking">
+          <div class="icon">🚣</div>
+          <h3>Kayaking & Boating</h3>
+          <p>Explore marshes, coastal wetlands, and open waters.</p>
+        </a>
+
+        <a href="UNDER-CONSTRUCTION.html" class="activity birds">
+          <div class="icon">🐦</div>
+          <h3>Bird Watching</h3>
+          <p>Spot hundreds of migratory bird species along the coast.</p>
+        </a>
+
+        <a href="UNDER-CONSTRUCTION.html" class="activity fishing">
+          <div class="icon">🎣</div>
+          <h3>Fishing</h3>
+          <p>Popular destination for recreational and commercial fishing.</p>
+        </a>
+      </div>
+    </section>
+    <script>
+      const hero = document.getElementById("hero");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 150) {
+          hero.classList.add("hidden");
+        } else {
+          hero.classList.remove("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>

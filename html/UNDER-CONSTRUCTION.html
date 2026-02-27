@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Under Construction</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(135deg, #536976, #292e49);
+        color: white;
+        text-align: center;
+      }
+
+      /* Container */
+      .container {
+        padding: 40px;
+      }
+
+      /* Titel */
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        animation: pulse 2s infinite;
+      }
+
+      /* Beschrijving */
+      p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        margin-bottom: 40px;
+      }
+
+      /* Back knop */
+      .back-button {
+        padding: 16px 32px;
+        font-size: 1rem;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        background: white;
+        color: #764ba2;
+        font-weight: 600;
+        transition: all 0.25s ease;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+      }
+
+      .back-button:active {
+        transform: translateY(0);
+      }
+
+      /* Animaties */
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🚧 Under Construction</h1>
+      <p>
+        This page is currently under construction.<br />
+        Please go back to the previous page.
+      </p>
+
+      <button class="back-button" onclick="goBack()">← Go back</button>
+
+      <script>
+        function goBack() {
+          const params = new URLSearchParams(window.location.search);
+          const fromPage = params.get("from");
+
+          if (fromPage) {
+            window.location.href = decodeURIComponent(fromPage);
+          } else {
+            window.history.back(); // fallback
+          }
+        }
+      </script>
+    </div>
+  </body>
+</html>
