@@ -99,6 +99,120 @@
         .hero h1 { font-size: 2.5rem; }
         .top-nav { right: 20px; }
       }
+
+      /* NEW: STATS GRID */
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 60px;
+  }
+
+  .stat-card {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    border: 1px solid #eee;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+  }
+
+  .stat-card i {
+    font-size: 2.5rem;
+    color: #2c5e50; /* Arctic Green */
+    margin-bottom: 15px;
+  }
+
+  .stat-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #111;
+  }
+
+  .stat-card p {
+    font-size: 0.95rem;
+    margin-bottom: 0;
+  }
+
+  /* NEW: ALERT BOX */
+  .eco-alert {
+    background: #fff4f4;
+    border-left: 5px solid #d9534f;
+    padding: 20px;
+    margin-top: 20px;
+  }
+
+  /* SLIDESHOW STYLES */
+.slideshow-container {
+  max-width: 100%;
+  position: relative;
+  margin: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.mySlides {
+  display: none; /* Hidden by default */
+}
+
+.mySlides img {
+  vertical-align: middle;
+  height: 450px;
+  object-fit: cover;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  background-color: rgba(0,0,0,0.3);
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.caption {
+  color: #f2f2f2;
+  font-size: 1rem;
+  padding: 12px 24px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+}
+
+/* Fading animation */
+.fade {
+  animation: fadeAnim 1.5s;
+}
+
+@keyframes fadeAnim {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
     </style>
   </head>
 
@@ -113,25 +227,74 @@
     </header>
 
     <main>
-      <section id="nature">
-        <h2>Nature & Biodiversity</h2>
-        <p>
-          The <strong>Yukon-Kuskokwim Delta</strong> is one of the largest river deltas in the world, located where the Yukon and Kuskokwim rivers empty into the Bering Sea in western Alaska. It is a vast, treeless landscape dominated by tundra, wetlands, and thousands of small lakes.
-        </p>
-        <p>
-          This region is a critical breeding ground for millions of migratory birds, including the <strong>Emperor Goose</strong> and various species of swans and sandpipers. The surrounding waters are rich with salmon, seals, and walruses, making it one of the most productive subarctic ecosystems on Earth.
-        </p>
-      </section>
+      <section class="stats-grid">
+    <div class="stat-card">
+      <i class="fa-solid fa-ruler-combined"></i>
+      <h3>129,500 km²</h3>
+      <p>Roughly the size of Louisiana, making it one of the world's largest deltas.</p>
+    </div>
+    <div class="stat-card">
+      <i class="fa-solid fa-crow"></i>
+      <h3>100+ Species</h3>
+      <p>Millions of birds migrate here annually from every continent on Earth.</p>
+    </div>
+    <div class="stat-card">
+      <i class="fa-solid fa-temperature-low"></i>
+      <h3>Subarctic</h3>
+      <p>A landscape of permafrost, tundra, and "drunken forests."</p>
+    </div>
+  </section>
 
-      <section id="history">
-        <h2>History & Culture</h2>
-        <p>
-          For thousands of years, the delta has been the homeland of the <strong>Yup'ik and Cup'ik people</strong>. Their culture is deeply tied to the rhythms of the land and sea, with a lifestyle centered around subsistence fishing, hunting, and gathering.
-        </p>
-        <p>
-          Today, the region remains sparsely populated, with small villages accessible only by plane or boat (and snowmobile in the winter). Despite the challenges of climate change and permafrost melt, the indigenous communities continue to preserve their linguistic heritage and traditional knowledge, maintaining a profound spiritual connection to the delta's shifting waters.
-        </p>
-      </section>
+  <section id="nature">
+    <h2><i class="fa-solid fa-leaf"></i> Nature & Biodiversity</h2>
+    <p>
+      The <strong>Yukon-Kuskokwim Delta</strong> is a vast, treeless landscape dominated by tundra and thousands of small lakes. This region is a critical breeding ground for the <strong>Emperor Goose</strong> and various species of swans.
+    </p>
+    <p>
+      The surrounding waters are rich with all five species of <strong>Pacific Salmon</strong>, which serve as the lifeblood for both the local wildlife and the human inhabitants.
+    </p>
+  </section>
+
+  <section id="history">
+    <h2><i class="fa-solid fa-person-hiking"></i> History & Culture</h2>
+    <p>
+      For thousands of years, the delta has been the homeland of the <strong>Yup'ik and Cup'ik people</strong>. Their culture is deeply tied to subsistence fishing and hunting.
+    </p>
+    <div class="eco-alert">
+      <p><strong><i class="fa-solid fa-triangle-exclamation"></i> Environmental Note:</strong> The delta is currently on the front lines of climate change. Rising sea levels and melting permafrost are causing significant coastal erosion, threatening many ancestral villages.</p>
+    </div>
+  </section>
+
+  <section id="economy">
+    <h2><i class="fa-solid fa-fish"></i> Regional Economy</h2>
+    <p>
+      Commercial fishing is the primary industry in the delta. Because there are <strong>no roads</strong> connecting these villages to the outside world, the economy relies heavily on air freight and summer barge shipments.
+    </p>
+  </section>
+
+  <section id="gallery">
+  <h2><i class="fa-solid fa-camera"></i> Delta Gallery</h2>
+  
+  <div class="slideshow-container">
+    <div class="mySlides fade">
+      <img src="https://placehold.co/900x500/2c5e50/white?text=Aerial+View+of+the+Delta" style="width:100%">
+      <div class="caption">The intricate maze of the Yukon-Kuskokwim waterways.</div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="https://placehold.co/900x500/333/white?text=Migratory+Birds" style="width:100%">
+      <div class="caption">Millions of birds, including the Emperor Goose, breed here.</div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="https://placehold.co/900x500/888/white?text=Tundra+Landscape" style="width:100%">
+      <div class="caption">A vast, treeless subarctic landscape of permafrost and lakes.</div>
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+</section>
     </main>
 
     <script>
@@ -143,6 +306,26 @@
           hero.classList.remove("hidden");
         }
       });
+
+      let slideIndex = 1;
+showSlides(slideIndex);
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slides[slideIndex-1].style.display = "block";  
+}
     </script>
   </body>
 </html>
+
