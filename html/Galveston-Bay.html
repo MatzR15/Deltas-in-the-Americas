@@ -130,8 +130,22 @@
         font-size: 2rem;
         margin-bottom: 30px;
         text-transform: uppercase;
-        border-bottom: 2px solid #111;
         display: inline-block;
+        position: relative;
+      }
+
+      /* korte moderne lijn */
+      h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #1565c0; /* standaard kleur */
+        margin-top: 8px;
+        border-radius: 3px;
+      }
+      .activities-title::after {
+        display: none;
       }
 
       p {
@@ -141,86 +155,74 @@
         color: #333;
       }
 
-      /* ACTIVITIES SECTION */
-      .activities {
-        background: #f7f7f7;
-        padding: 60px 20px;
+      /* ===== ADVENTURE CARDS NIEUW DESIGN ===== */
+
+      .adventure-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
       }
 
-      /* titel gecentreerd */
-      .activities-title {
-        text-align: center;
-        margin-bottom: 40px;
-        font-size: 2rem;
-        text-transform: uppercase;
-      }
-
-      /* grid */
-      .activity-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 20px;
-        max-width: 1000px;
-        margin: auto;
-      }
-
-      /* card */
-      .activity {
-        background: white;
+      .adventure-card {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background: #f9f9f9;
         padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        text-align: center;
-        transition: all 0.3s ease;
-        cursor: pointer;
+        border-radius: 16px;
       }
 
-      /* hover lift */
-      .activity:hover {
-        transform: translateY(-6px);
+      /* om en om */
+      .adventure-card.reverse {
+        flex-direction: row-reverse;
       }
 
-      /* icon styling */
-      .icon {
-        font-size: 2rem;
+      .adventure-image img {
+        width: 400px;
+        border-radius: 14px;
+        object-fit: cover;
+      }
+
+      .adventure-text {
+        flex: 1;
+      }
+
+      .adventure-text h3 {
+        font-size: 1.8rem;
         margin-bottom: 15px;
-        transition: transform 0.3s ease;
+        position: relative;
       }
 
-      .activity:hover .icon {
-        transform: scale(1.2);
+      /* accentlijn links */
+      .adventure-text {
+        border-left: 4px solid #2e7d32;
+        padding-left: 20px;
+      }
+      .adventure-text.kayaking {
+        border-color: #1565c0;
+      }
+      .adventure-text.birds {
+        border-color: #2e7d32;
+      }
+      .adventure-text.fishing {
+        border-color: #00838f;
       }
 
-      /* text animation */
-      .activity h3,
-      .activity p {
-        transition: color 0.3s ease;
+      /* Kayaking = blauw */
+      .adventure-card.kayaking {
+        border-left: 6px solid #1565c0;
       }
 
-      /* ===== PER ACTIVITEIT KLEUREN ===== */
-
-      /* Kayaking */
-      .activity.kayaking:hover {
-        background: #e3f2fd;
-      }
-      .activity.kayaking:hover h3 {
-        color: #1565c0;
+      /* Birds = groen */
+      .adventure-card.birds {
+        border-right: 6px solid #2e7d32;
       }
 
-      /* Bird watching */
-      .activity.birds:hover {
-        background: #e8f5e9;
-      }
-      .activity.birds:hover h3 {
-        color: #2e7d32;
-      }
-
-      /* Fishing */
-      .activity.fishing:hover {
-        background: #e0f7fa;
-      }
-      .activity.fishing:hover h3 {
-        color: #00838f;
+      /* Fishing = turquoise */
+      .adventure-card.fishing {
+        border-left: 6px solid #00838f;
       }
 
       /* FIX activities title centreren */
@@ -231,16 +233,22 @@
         border-bottom: none;
         margin: 0 auto 40px auto;
       }
-      .activity-grid a.activity {
-        display: block;
-        text-decoration: none;
-        color: inherit;
+
+      /* Kleuren streepjes h2's */
+
+      /* Nature = groen */
+      .nature h2::after {
+        background: #2e7d32;
       }
-      .activities-instruction {
-        text-align: center;
-        font-size: 1rem;
-        color: #555;
-        margin: 10px 0 30px 0;
+
+      /* Economy = paars */
+      .economy h2::after {
+        background: #6a1b9a;
+      }
+
+      /* Coastline = blauw */
+      .coastline h2::after {
+        background: #00838f;
       }
     </style>
   </head>
@@ -279,7 +287,22 @@
     </section>
 
     <main>
-      <section>
+      <section class="area">
+        <h2>Area & Geography</h2>
+
+        <p>
+          Galveston Bay is a large estuary located on the Texas Gulf Coast,
+          covering approximately 1,600 square kilometers. It is fed by the
+          Trinity and San Jacinto rivers and opens into the Gulf of Mexico.
+        </p>
+
+        <p>
+          The bay's geography includes extensive wetlands, marshes, oyster
+          reefs, and seagrass beds that provide critical habitat for wildlife
+          and support a diverse ecosystem.
+        </p>
+      </section>
+      <section class="nature">
         <h2>Nature & Ecosystem</h2>
 
         <p>
@@ -296,7 +319,23 @@
         </p>
       </section>
 
-      <section>
+      <section class="coastline">
+        <h2>Coastline & Challenges</h2>
+
+        <p>
+          Galveston Bay's coastline is dynamic, shaped by natural processes and
+          human activities. Coastal erosion, subsidence, and sea level rise
+          threaten communities and ecosystems along the bay.
+        </p>
+
+        <p>
+          Efforts to restore wetlands, manage stormwater, and implement
+          sustainable development practices are critical to preserving the bay's
+          health and resilience.
+        </p>
+      </section>
+
+      <section class="economy">
         <h2>Economy & Human Impact</h2>
 
         <p>
@@ -316,34 +355,55 @@
     <!-- ACTIVITIES -->
     <section class="activities">
       <h2 class="activities-title">Activities & Adventures</h2>
-      <p class="activities-instruction">
-        Click on the tiles for more information
-      </p>
-      <div class="activity-grid">
-        <a href="UNDER-CONSTRUCTION.html" class="activity kayaking">
-          <div class="icon">🚣</div>
-          <h3>Kayaking & Boating</h3>
-          <p>Explore marshes, coastal wetlands, and open waters.</p>
-        </a>
 
-        <a href="UNDER-CONSTRUCTION.html" class="activity birds">
-          <div class="icon">🐦</div>
-          <h3>Bird Watching</h3>
-          <p>Spot hundreds of migratory bird species along the coast.</p>
-        </a>
+      <div class="adventure-container">
+        <!-- TEGEL 1 -->
+        <div class="adventure-card kayaking">
+          <div class="adventure-image">
+            <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
+          </div>
+          <div class="adventure-text kayaking">
+            <h3>Kayaking & Boating</h3>
+            <p>
+              Explore the marshes, wetlands and open waters of Galveston Bay.
+              Kayaking offers a peaceful way to experience the rich coastal
+              ecosystem.
+            </p>
+          </div>
+        </div>
 
-        <a href="UNDER-CONSTRUCTION.html" class="activity fishing">
-          <div class="icon">🎣</div>
-          <h3>Fishing</h3>
-          <p>Popular destination for recreational and commercial fishing.</p>
-        </a>
+        <!-- TEGEL 2 (omgedraaid) -->
+        <div class="adventure-card reverse birds">
+          <div class="adventure-image">
+            <img
+              src="../imgs/birb-watching.jpg"
+              alt="Bird watching Galveston Bay"
+            />
+          </div>
+          <div class="adventure-text birds">
+            <h3>Bird Watching</h3>
+            <p>
+              Spot hundreds of migratory species along the coastline. Galveston
+              Bay is a paradise for bird lovers and wildlife photographers.
+            </p>
+          </div>
+        </div>
+
+        <!-- TEGEL 3 -->
+        <div class="adventure-card fishing">
+          <div class="adventure-image">
+            <img src="../imgs/fish.jpg" alt="Fishing Galveston Bay" />
+          </div>
+          <div class="adventure-text fishing">
+            <h3>Fishing</h3>
+            <p>
+              The bay is a popular destination for recreational and commercial
+              fishing, offering rich waters filled with diverse marine life.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
-
-    <!-- Plaats dit op de delta-pagina waar de Compare knop staat -->
-    <button onclick="goToCompare('Galveston Bay', 'Galveston-bay.html')">
-      Compare
-    </button>
 
     <script>
       const hero = document.getElementById("hero");
