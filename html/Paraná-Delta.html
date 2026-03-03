@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paraná Delta - Deltas in the Americas</title>
-    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png">
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
 
     <style>
       * {
@@ -24,9 +24,9 @@
         position: sticky;
         top: 0;
         height: 60vh;
-        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                    url("../imgs/Parana_delta.jpg")
-                    center / cover no-repeat;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("../imgs/Parana_delta.jpg") center / cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -96,7 +96,8 @@
         margin-top: 40px;
       }
 
-      .comparison-table th, .comparison-table td {
+      .comparison-table th,
+      .comparison-table td {
         border: 1px solid #ddd;
         padding: 15px;
         text-align: left;
@@ -109,8 +110,12 @@
       }
 
       @media screen and (max-width: 600px) {
-        .hero h1 { font-size: 2.5rem; }
-        .top-nav { right: 20px; }
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .top-nav {
+          right: 20px;
+        }
       }
     </style>
   </head>
@@ -129,20 +134,26 @@
       <section id="nature">
         <h2>Nature & Biodiversity</h2>
         <p>
-          The Paraná Delta is a unique labyrinth of islands and channels where the Paraná River empties into the Río de la Plata. Unlike most deltas, it does not flow into the ocean but into another river, creating a massive freshwater ecosystem. 
+          The Paraná Delta is a unique labyrinth of islands and channels where the Paraná River empties into the Río de la Plata.
+          Unlike most deltas, it does not flow into the ocean but into another river, creating a massive freshwater ecosystem.
         </p>
         <p>
-          It is a biodiversity hotspot, home to the <strong>Marsh Deer</strong>, capybaras, and over 300 species of birds. The flora is dominated by "Monte Blanco" forests and wetlands that act as a natural water purifier for the surrounding regions, including nearby Buenos Aires.
+          It is a biodiversity hotspot, home to the <strong>Marsh Deer</strong>, capybaras, and over 300 species of birds. The
+          flora is dominated by "Monte Blanco" forests and wetlands that act as a natural water purifier for the surrounding
+          regions, including nearby Buenos Aires.
         </p>
       </section>
 
       <section id="history">
         <h2>History & Culture</h2>
         <p>
-          Historically, the delta was inhabited by the <strong>Guaraní people</strong>, who navigated its complex waterways with expert precision. In the late 19th and early 20th centuries, the area became a hub for fruit production and wood extraction, leading to the unique "stilt-house" (palafitos) architecture seen today in towns like Tigre.
+          Historically, the delta was inhabited by the <strong>Guaraní people</strong>, who navigated its complex waterways with
+          expert precision. In the late 19th and early 20th centuries, the area became a hub for fruit production and wood
+          extraction, leading to the unique "stilt-house" (palafitos) architecture seen today in towns like Tigre.
         </p>
         <p>
-          Today, it represents a delicate balance between a growing weekend tourism industry and the traditional "Isleño" lifestyle, where boats serve as the only form of public transport, from school buses to grocery stores.
+          Today, it represents a delicate balance between a growing weekend tourism industry and the traditional "Isleño"
+          lifestyle, where boats serve as the only form of public transport, from school buses to grocery stores.
         </p>
       </section>
     </main>
@@ -156,6 +167,17 @@
           hero.classList.remove("hidden");
         }
       });
+    </script>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
     </script>
   </body>
 </html>

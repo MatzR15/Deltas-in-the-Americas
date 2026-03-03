@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galveston Bay - Deltas in the Americas</title>
-    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png">
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
 
     <style>
       * {
@@ -244,7 +244,7 @@
         text-align: center;
         font-size: 1rem;
         color: #555;
-        margin: 10px 0 30px 0; 
+        margin: 10px 0 30px 0;
       }
     </style>
   </head>
@@ -287,16 +287,13 @@
         <h2>Nature & Ecosystem</h2>
 
         <p>
-          Galveston Bay is one of the largest estuaries in the United States,
-          located along the Texas Gulf Coast. It receives freshwater from the
-          Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
+          Galveston Bay is one of the largest estuaries in the United States, located along the Texas Gulf Coast. It receives
+          freshwater from the Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
         </p>
 
         <p>
-          The bay supports extensive wetlands, oyster reefs, and seagrass beds
-          that provide habitat for fish, birds, and marine life. It plays a
-          crucial role in coastal protection and water filtration for the
-          region.
+          The bay supports extensive wetlands, oyster reefs, and seagrass beds that provide habitat for fish, birds, and marine
+          life. It plays a crucial role in coastal protection and water filtration for the region.
         </p>
       </section>
 
@@ -304,15 +301,13 @@
         <h2>Economy & Human Impact</h2>
 
         <p>
-          The bay is central to the Houston metropolitan area's economy,
-          supporting shipping, petrochemical industries, fishing, and tourism.
-          The Port of Houston is one of the busiest ports in the world.
+          The bay is central to the Houston metropolitan area's economy, supporting shipping, petrochemical industries, fishing,
+          and tourism. The Port of Houston is one of the busiest ports in the world.
         </p>
 
         <p>
-          Balancing economic growth with environmental protection remains a
-          major challenge due to pollution risks, habitat loss, and increasing
-          urbanization.
+          Balancing economic growth with environmental protection remains a major challenge due to pollution risks, habitat loss,
+          and increasing urbanization.
         </p>
       </section>
     </main>
@@ -320,9 +315,7 @@
     <!-- ACTIVITIES -->
     <section class="activities">
       <h2 class="activities-title">Activities & Adventures</h2>
-      <p class="activities-instruction">
-        Click on the tiles for more information
-      </p>
+      <p class="activities-instruction">Click on the tiles for more information</p>
       <div class="activity-grid">
         <a href="UNDER-CONSTRUCTION.html" class="activity kayaking">
           <div class="icon">🚣</div>
@@ -353,6 +346,17 @@
           hero.classList.remove("hidden");
         }
       });
+    </script>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
     </script>
   </body>
 </html>
