@@ -86,37 +86,33 @@
         transition: color 0.3s ease;
       }
 
-      /* ===== PER TEGEL KLEUREN ===== */
+      /* ===== VASTE TEGEL KLEUREN ===== */
 
-      /* Oppervlakte */
-      .tile.area:hover {
+      .tile.area {
         background: #e3f2fd;
       }
-      .tile.area:hover h3 {
+      .tile.area h3 {
         color: #1565c0;
       }
 
-      /* Bevolking */
-      .tile.population:hover {
+      .tile.population {
         background: #e8f5e9;
       }
-      .tile.population:hover h3 {
+      .tile.population h3 {
         color: #2e7d32;
       }
 
-      /* Kust */
-      .tile.coast:hover {
+      .tile.coast {
         background: #e0f7fa;
       }
-      .tile.coast:hover h3 {
+      .tile.coast h3 {
         color: #00838f;
       }
 
-      /* Economie */
-      .tile.economy:hover {
+      .tile.economy {
         background: #f3e5f5;
       }
-      .tile.economy:hover h3 {
+      .tile.economy h3 {
         color: #6a1b9a;
       }
       /* CONTENT */
@@ -287,13 +283,16 @@
         <h2>Nature & Ecosystem</h2>
 
         <p>
-          Galveston Bay is one of the largest estuaries in the United States, located along the Texas Gulf Coast. It receives
-          freshwater from the Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
+          Galveston Bay is one of the largest estuaries in the United States,
+          located along the Texas Gulf Coast. It receives freshwater from the
+          Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
         </p>
 
         <p>
-          The bay supports extensive wetlands, oyster reefs, and seagrass beds that provide habitat for fish, birds, and marine
-          life. It plays a crucial role in coastal protection and water filtration for the region.
+          The bay supports extensive wetlands, oyster reefs, and seagrass beds
+          that provide habitat for fish, birds, and marine life. It plays a
+          crucial role in coastal protection and water filtration for the
+          region.
         </p>
       </section>
 
@@ -301,13 +300,15 @@
         <h2>Economy & Human Impact</h2>
 
         <p>
-          The bay is central to the Houston metropolitan area's economy, supporting shipping, petrochemical industries, fishing,
-          and tourism. The Port of Houston is one of the busiest ports in the world.
+          The bay is central to the Houston metropolitan area's economy,
+          supporting shipping, petrochemical industries, fishing, and tourism.
+          The Port of Houston is one of the busiest ports in the world.
         </p>
 
         <p>
-          Balancing economic growth with environmental protection remains a major challenge due to pollution risks, habitat loss,
-          and increasing urbanization.
+          Balancing economic growth with environmental protection remains a
+          major challenge due to pollution risks, habitat loss, and increasing
+          urbanization.
         </p>
       </section>
     </main>
@@ -315,7 +316,9 @@
     <!-- ACTIVITIES -->
     <section class="activities">
       <h2 class="activities-title">Activities & Adventures</h2>
-      <p class="activities-instruction">Click on the tiles for more information</p>
+      <p class="activities-instruction">
+        Click on the tiles for more information
+      </p>
       <div class="activity-grid">
         <a href="UNDER-CONSTRUCTION.html" class="activity kayaking">
           <div class="icon">🚣</div>
@@ -342,16 +345,6 @@
       Compare
     </button>
 
-    <script>
-      function goToCompare(deltaName, deltaFile) {
-        // Sla de naam en URL van de huidige delta op
-        sessionStorage.setItem("lastDeltaName", deltaName);
-        sessionStorage.setItem("lastDeltaURL", deltaFile);
-
-        // Ga naar de compare pagina
-        window.location.href = "Compare.html";
-      }
-    </script>
     <script>
       const hero = document.getElementById("hero");
 
