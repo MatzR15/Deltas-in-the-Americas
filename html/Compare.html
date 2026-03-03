@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Delta Comparison</title>
+<<<<<<< HEAD
+=======
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
 
     <style>
       * {
@@ -25,8 +29,12 @@
         height: 60vh;
         background:
           linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+<<<<<<< HEAD
           url("https://images.unsplash.com/photo-1501785888041-af3ef285b470")
             center / cover no-repeat;
+=======
+          url("https://images.unsplash.com/photo-1501785888041-af3ef285b470") center / cover no-repeat;
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
         display: flex;
         align-items: center;
         justify-content: center;
@@ -133,7 +141,10 @@
     <header class="hero" id="hero">
       <nav class="top-nav">
         <a href="../index.html">← Back to Overview</a>
+<<<<<<< HEAD
         <span id="last-delta-container"></span> <!-- Hier komt de dynamische terug-knop --> 
+=======
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
         <a href="#">Contact</a>
       </nav>
       <h1>Delta Explorer</h1>
@@ -141,11 +152,18 @@
 
     <main>
       <section>
+<<<<<<< HEAD
         <h2>About Deltas</h2>
         <p>
           Deltas are landforms created by sediment deposits where rivers enter
           slower-moving water bodies. They are rich ecosystems and often densely
           populated regions.
+=======
+        <h2>About Delta's</h2>
+        <p>
+          Deltas are landforms created by sediment deposits where rivers enter slower-moving water bodies. They are rich
+          ecosystems and often densely populated regions.
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
         </p>
       </section>
 
@@ -210,6 +228,7 @@
 
       // Hidden statistics data
       const data = {
+<<<<<<< HEAD
         parana: {
           name: "Paraná Delta",
           area: 14000,
@@ -228,6 +247,10 @@
           population: 170000000,
           biodiversity: 95,
         },
+=======
+        parana: { name: "Paraná Delta", area: 14000, population: 500000, biodiversity: 85 },
+        mississippi: { name: "Mississippi Delta", area: 32000, population: 2000000, biodiversity: 70 },
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
       };
 
       document.getElementById("delta1").addEventListener("change", compare);
@@ -251,10 +274,15 @@
         document.getElementById("area1").textContent = a.area;
         document.getElementById("area2").textContent = b.area;
 
+<<<<<<< HEAD
         document.getElementById("pop1").textContent =
           a.population.toLocaleString();
         document.getElementById("pop2").textContent =
           b.population.toLocaleString();
+=======
+        document.getElementById("pop1").textContent = a.population.toLocaleString();
+        document.getElementById("pop2").textContent = b.population.toLocaleString();
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
 
         document.getElementById("bio1").textContent = a.biodiversity;
         document.getElementById("bio2").textContent = b.biodiversity;
@@ -263,6 +291,7 @@
       }
     </script>
 
+<<<<<<< HEAD
     <script>
       // Dynamische terugknop op Compare.html
       const lastDeltaName = sessionStorage.getItem("lastDeltaName");
@@ -276,6 +305,17 @@
         link.style.margin = "0 20px"; // spacing tussen links
         container.appendChild(link);
       }
+=======
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+>>>>>>> e3b0b5325d92a26cfef6ee2dcc21335cf9ae7804
     </script>
   </body>
 </html>
