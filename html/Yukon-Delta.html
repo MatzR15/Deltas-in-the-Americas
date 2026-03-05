@@ -80,8 +80,17 @@
         font-size: 2rem;
         margin-bottom: 30px;
         text-transform: uppercase;
-        border-bottom: 2px solid #111;
         display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #000000; /* standaard kleur */
+        margin-top: 8px;
+        border-radius: 3px;
       }
 
       p {
@@ -232,7 +241,7 @@
       <nav class="top-nav">
         <a href="../index.html">← Back to Overview</a>
         <a href="Compare.html">Compare</a>
-        <a href="#">Contact</a>
+        <a href="Contact.html">Contact</a>
       </nav>
       <h1>Yukon Delta</h1>
     </header>
@@ -242,12 +251,18 @@
         <div class="stat-card">
           <i class="fa-solid fa-ruler-combined"></i>
           <h3>129,500 km²</h3>
-          <p>Roughly the size of Louisiana, making it one of the world's largest deltas.</p>
+          <p>
+            Roughly the size of Louisiana, making it one of the world's largest
+            deltas.
+          </p>
         </div>
         <div class="stat-card">
           <i class="fa-solid fa-crow"></i>
           <h3>100+ Species</h3>
-          <p>Millions of birds migrate here annually from every continent on Earth.</p>
+          <p>
+            Millions of birds migrate here annually from every continent on
+            Earth.
+          </p>
         </div>
         <div class="stat-card">
           <i class="fa-solid fa-temperature-low"></i>
@@ -259,26 +274,34 @@
       <section id="nature">
         <h2><i class="fa-solid fa-leaf"></i> Nature & Biodiversity</h2>
         <p>
-          The <strong>Yukon-Kuskokwim Delta</strong> is a vast, treeless landscape dominated by tundra and thousands of small
-          lakes. This region is a critical breeding ground for the <strong>Emperor Goose</strong> and various species of swans.
+          The <strong>Yukon-Kuskokwim Delta</strong> is a vast, treeless
+          landscape dominated by tundra and thousands of small lakes. This
+          region is a critical breeding ground for the
+          <strong>Emperor Goose</strong> and various species of swans.
         </p>
         <p>
-          The surrounding waters are rich with all five species of <strong>Pacific Salmon</strong>, which serve as the lifeblood
-          for both the local wildlife and the human inhabitants.
+          The surrounding waters are rich with all five species of
+          <strong>Pacific Salmon</strong>, which serve as the lifeblood for both
+          the local wildlife and the human inhabitants.
         </p>
       </section>
 
       <section id="history">
         <h2><i class="fa-solid fa-person-hiking"></i> History & Culture</h2>
         <p>
-          For thousands of years, the delta has been the homeland of the <strong>Yup'ik and Cup'ik people</strong>. Their culture
-          is deeply tied to subsistence fishing and hunting.
+          For thousands of years, the delta has been the homeland of the
+          <strong>Yup'ik and Cup'ik people</strong>. Their culture is deeply
+          tied to subsistence fishing and hunting.
         </p>
         <div class="eco-alert">
           <p>
-            <strong><i class="fa-solid fa-triangle-exclamation"></i> Environmental Note:</strong> The delta is currently on the
-            front lines of climate change. Rising sea levels and melting permafrost are causing significant coastal erosion,
-            threatening many ancestral villages.
+            <strong
+              ><i class="fa-solid fa-triangle-exclamation"></i> Environmental
+              Note:</strong
+            >
+            The delta is currently on the front lines of climate change. Rising
+            sea levels and melting permafrost are causing significant coastal
+            erosion, threatening many ancestral villages.
           </p>
         </div>
       </section>
@@ -286,8 +309,10 @@
       <section id="economy">
         <h2><i class="fa-solid fa-fish"></i> Regional Economy</h2>
         <p>
-          Commercial fishing is the primary industry in the delta. Because there are <strong>no roads</strong> connecting these
-          villages to the outside world, the economy relies heavily on air freight and summer barge shipments.
+          Commercial fishing is the primary industry in the delta. Because there
+          are <strong>no roads</strong> connecting these villages to the outside
+          world, the economy relies heavily on air freight and summer barge
+          shipments.
         </p>
       </section>
 
@@ -297,17 +322,23 @@
         <div class="slideshow-container">
           <div class="mySlides fade">
             <img src="../imgs/Yukon-waterways.jfif" style="width: 100%" />
-            <div class="caption">The intricate maze of the Yukon-Kuskokwim waterways.</div>
+            <div class="caption">
+              The intricate maze of the Yukon-Kuskokwim waterways.
+            </div>
           </div>
 
           <div class="mySlides fade">
             <img src="../imgs/Migratory-birds.jpg" style="width: 100%" />
-            <div class="caption">Millions of birds, including the Emperor Goose, breed here.</div>
+            <div class="caption">
+              Millions of birds, including the Emperor Goose, breed here.
+            </div>
           </div>
 
           <div class="mySlides fade">
             <img src="../imgs/tundra.webp" style="width: 100%" />
-            <div class="caption">A vast, treeless subarctic landscape of permafrost and lakes.</div>
+            <div class="caption">
+              A vast, treeless subarctic landscape of permafrost and lakes.
+            </div>
           </div>
 
           <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
