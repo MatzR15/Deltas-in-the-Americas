@@ -416,60 +416,77 @@ h2 {
   section {
     scroll-margin-top: 120px;
   }
+
+  /* Make the activity links look like the original cards */
+      .adventure-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .adventure-link:hover {
+        transform: translateY(-5px); /* Adds a subtle lift on hover */
+      }
+
+      .adventure-link:hover .adventure-card {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
 </style>
 
     <!-- ACTIVITIES -->
-    <section class="activities">
+<section class="activities">
       <h2 class="activities-title">Activities & Adventures</h2>
 
       <div class="adventure-container">
-        <!-- TEGEL 1 -->
-        <div class="adventure-card kayaking">
-          <div class="adventure-image">
-            <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
+        <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+          <div class="adventure-card kayaking">
+            <div class="adventure-image">
+              <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
+            </div>
+            <div class="adventure-text kayaking">
+              <h3>Kayaking & Boating</h3>
+              <p>
+                Explore the marshes, wetlands and open waters of Galveston Bay.
+                Kayaking offers a peaceful way to experience the rich coastal
+                ecosystem.
+              </p>
+            </div>
           </div>
-          <div class="adventure-text kayaking">
-            <h3>Kayaking & Boating</h3>
-            <p>
-              Explore the marshes, wetlands and open waters of Galveston Bay.
-              Kayaking offers a peaceful way to experience the rich coastal
-              ecosystem.
-            </p>
-          </div>
-        </div>
+        </a>
 
-        <!-- TEGEL 2 (omgedraaid) -->
-        <div class="adventure-card reverse birds">
-          <div class="adventure-image">
-            <img
-              src="../imgs/birb-watching.jpg"
-              alt="Bird watching Galveston Bay"
-            />
+        <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+          <div class="adventure-card reverse birds">
+            <div class="adventure-image">
+              <img src="../imgs/birb-watching.jpg" alt="Bird watching Galveston Bay" />
+            </div>
+            <div class="adventure-text birds">
+              <h3>Bird Watching</h3>
+              <p>
+                Spot hundreds of migratory species along the coastline. Galveston
+                Bay is a paradise for bird lovers and wildlife photographers.
+              </p>
+            </div>
           </div>
-          <div class="adventure-text birds">
-            <h3>Bird Watching</h3>
-            <p>
-              Spot hundreds of migratory species along the coastline. Galveston
-              Bay is a paradise for bird lovers and wildlife photographers.
-            </p>
-          </div>
-        </div>
+        </a>
 
-        <!-- TEGEL 3 -->
-        <div class="adventure-card fishing">
-          <div class="adventure-image">
-            <img src="../imgs/fish.jpg" alt="Fishing Galveston Bay" />
+        <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+          <div class="adventure-card fishing">
+            <div class="adventure-image">
+              <img src="../imgs/fish.jpg" alt="Fishing Galveston Bay" />
+            </div>
+            <div class="adventure-text fishing">
+              <h3>Fishing</h3>
+              <p>
+                The bay is a popular destination for recreational and commercial
+                fishing, offering rich waters filled with diverse marine life.
+              </p>
+            </div>
           </div>
-          <div class="adventure-text fishing">
-            <h3>Fishing</h3>
-            <p>
-              The bay is a popular destination for recreational and commercial
-              fishing, offering rich waters filled with diverse marine life.
-            </p>
-          </div>
-        </div>
+        </a>
       </div>
     </section>
+
     <section id="gallery">
   <h2><i class="fa-solid fa-camera"></i> Bay Gallery</h2>
   
