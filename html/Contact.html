@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: white;
+        color: #111;
+      }
+
+      /* HERO */
+      .hero {
+        position: sticky;
+        top: 0;
+        height: 60vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("../imgs/contact-page.jpg") center / cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s ease;
+        z-index: 10;
+      }
+
+      .hero.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      /* NAV */
+      .top-nav {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+      }
+
+      .top-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      /* CONTENT */
+      main {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section {
+        margin-bottom: 100px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #000000; /* kleur */
+        margin-top: 8px;
+        border-radius: 3px;
+      }
+
+      p {
+        line-height: 1.8;
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+        color: #333;
+      }
+
+      /* CONTACT FORM */
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 30px;
+        max-width: 600px;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .form-group label {
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #111;
+      }
+
+      .form-group input,
+      .form-group textarea,
+      .form-group select {
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-family: Arial, Helvetica, sans-serif;
+        transition: border-color 0.2s ease;
+        background: white;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #111;
+      }
+
+      .form-group textarea {
+        resize: vertical;
+        min-height: 140px;
+      }
+
+      .submit-btn {
+        align-self: flex-start;
+        padding: 14px 36px;
+        background: #111;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+
+      .submit-btn:hover {
+        background: #333;
+      }
+
+      /* SUCCESS MESSAGE */
+      .success-msg {
+        display: none;
+        padding: 16px 20px;
+        background: #f4f4f4;
+        border-left: 4px solid #111;
+        font-size: 1rem;
+        color: #111;
+        margin-top: 20px;
+        max-width: 600px;
+      }
+
+      /* CONTACT INFO */
+      .contact-info {
+        margin-top: 60px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 20px;
+        font-size: 1.05rem;
+        color: #333;
+      }
+
+      .info-icon {
+        font-size: 1.3rem;
+        margin-top: 2px;
+      }
+
+      @media screen and (max-width: 600px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+        .top-nav {
+          right: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero" id="hero">
+      <nav class="top-nav">
+        <a href="../index.html">← Back to Overview</a>
+        <a href="Compare.html">Compare</a>
+      </nav>
+      <h1>Contact</h1>
+    </header>
+
+    <main>
+      <section>
+        <h2>Get in Touch</h2>
+        <p>
+          Have a question about a delta, a suggestion, or want to collaborate?
+          Fill in the form below and we'll get back to you as soon as possible.
+        </p>
+
+        <form
+          class="contact-form"
+          id="contactForm"
+          onsubmit="handleSubmit(event)"
+        >
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Your full name"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <select id="subject">
+              <option value="">-- Select a subject --</option>
+              <option value="question">General Question</option>
+              <option value="data">Delta Data / Statistics</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              placeholder="Write your message here..."
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+
+        <div class="success-msg" id="successMsg">
+          ✓ Your message has been sent. We'll be in touch soon!
+        </div>
+
+        <div class="contact-info">
+          <h2>Contact Info</h2>
+          <div class="info-item">
+            <span class="info-icon">📧</span>
+            <span>info@deltasintheamericas.com</span>
+          </div>
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <span>Delta's in the Americas, Almere, Netherlands</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // HERO SCROLL EFFECT
+      const hero = document.getElementById("hero");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 150) {
+          hero.classList.add("hidden");
+        } else {
+          hero.classList.remove("hidden");
+        }
+      });
+
+      // FORM SUBMIT
+      function handleSubmit(e) {
+        e.preventDefault();
+        document.getElementById("contactForm").style.display = "none";
+        document.getElementById("successMsg").style.display = "block";
+      }
+    </script>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

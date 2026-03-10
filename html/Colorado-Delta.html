@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colorado Delta - Deltas in the Americas</title>
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: white;
+        color: #111;
+      }
+
+      /* HERO - Updated Image Placeholder */
+      .hero {
+        position: sticky;
+        top: 0;
+        height: 60vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          url("https://images.unsplash.com/photo-1505506434812-79017778b66d?q=80&w=2000") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s ease;
+        z-index: 10;
+      }
+
+      .hero.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+
+      .hero h1 {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-align: center;
+      }
+
+      /* NAV */
+      .top-nav {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+      }
+
+      .top-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+      }
+
+      /* INFO TILES */
+      .info-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        background: #f7f7f7;
+      }
+
+      .tile {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      .tile h3, .tile p { transition: color 0.3s ease; }
+      .tile.area { background: #e3f2fd; } .tile.area h3 { color: #1565c0; }
+      .tile.population { background: #e8f5e9; } .tile.population h3 { color: #2e7d32; }
+      .tile.coast { background: #e0f7fa; } .tile.coast h3 { color: #00838f; }
+      .tile.economy { background: #f3e5f5; } .tile.economy h3 { color: #6a1b9a; }
+
+      /* CONTENT */
+      main {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      section {
+        margin-bottom: 100px;
+        scroll-margin-top: 120px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+        display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #a89861;
+        margin-top: 8px;
+        border-radius: 3px;
+      }
+
+      .activities-title::after { margin: 8px auto 0 auto; }
+      .activities-title { text-align: center; display: block; width: 100%; margin: 0 auto 40px auto; }
+
+      p { line-height: 1.8; margin-bottom: 20px; font-size: 1.1rem; color: #333; }
+
+      /* ADVENTURE CARDS */
+      .adventure-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+      }
+
+      .adventure-link { text-decoration: none; color: inherit; display: block; transition: transform 0.3s ease; }
+      .adventure-link:hover { transform: translateY(-5px); }
+
+      .adventure-card {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background: #f9f9f9;
+        padding: 30px;
+        border-radius: 16px;
+      }
+
+      .adventure-card.reverse { flex-direction: row-reverse; }
+      .adventure-image img { width: 400px; border-radius: 14px; object-fit: cover; }
+      .adventure-text { flex: 1; }
+      .adventure-text h3 { font-size: 1.8rem; margin-bottom: 15px; }
+
+      .adventure-card.kayaking { border-left: 6px solid #1565c0; }
+      .adventure-card.birds { border-right: 6px solid #2e7d32; }
+      .adventure-card.fishing { border-left: 6px solid #00838f; }
+
+      /* SLIDER */
+      .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      }
+      .mySlides { display: none; }
+      .mySlides img { vertical-align: middle; height: 450px; object-fit: cover; width: 100%; }
+      .prev, .next { cursor: pointer; position: absolute; top: 50%; width: auto; padding: 16px; margin-top: -22px; color: white; font-weight: bold; font-size: 20px; background-color: rgba(0,0,0,0.3); }
+      .next { right: 0; }
+      .caption { color: #fff; font-size: 1rem; padding: 15px 25px; position: absolute; bottom: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.8)); }
+      .fade { animation: fadeAnim 1.5s; }
+      @keyframes fadeAnim { from {opacity: .4} to {opacity: 1} }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero" id="hero">
+      <nav class="top-nav">
+        <a href="../index.html">← Back to Overview</a>
+        <a href="Compare.html">Compare</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+      <h1>Colorado River Delta</h1>
+    </header>
+
+    <section class="info-tiles">
+      <a href="#area" class="tile area" style="text-decoration: none;">
+        <div>
+          <h3>~7,800 km²</h3>
+          <p>Historic Area</p>
+        </div>
+      </a>
+      <a href="#nature" class="tile population" style="text-decoration: none;">
+        <div>
+          <h3>Migratory</h3>
+          <p>Avian Flyway Hub</p>
+        </div>
+      </a>
+      <a href="#coastline" class="tile coast" style="text-decoration: none;">
+        <div>
+          <h3>Sea of Cortez</h3>
+          <p>Marine Estuary</p>
+        </div>
+      </a>
+      <a href="#economy" class="tile economy" style="text-decoration: none;">
+        <div>
+          <h3>Binational</h3>
+          <p>Water Management</p>
+        </div>
+      </a>
+    </section>
+
+    <main>
+      <section id="area">
+        <h2>Geography & Aridity</h2>
+        <p>
+          The Colorado River Delta is located in the northwestern corner of Mexico, where the Colorado River meets the Gulf of California. Historically one of the largest desert estuaries in the world, it is a landscape defined by dramatic tides and sandy transition zones.
+        </p>
+        <p>
+          Once a lush oasis described by Aldo Leopold as a "milk and honey wilderness," the delta now faces extreme aridity as most of the river's water is diverted for agriculture and urban use before reaching the sea.
+        </p>
+      </section>
+
+      <section id="nature">
+        <h2>Nature & Restoration</h2>
+        <p>
+          Despite the lack of consistent water flow, the delta remains a critical stopover for birds on the Pacific Flyway. Recent binational agreements, such as Minute 319 and 323, have allowed for "pulse flows" to mimic natural spring floods.
+        </p>
+        <p>
+          Restoration sites like Laguna Grande have seen the return of native cottonwood and willow trees, providing habitat for endangered species like the Yuma Ridgeway's Rail and the southwestern willow flycatcher.
+        </p>
+      </section>
+
+      <section id="coastline">
+        <h2>Coastline & Challenges</h2>
+        <p>
+          The Upper Gulf of California is home to the world's most endangered marine mammal, the Vaquita porpoise. The delta's health directly impacts the salinity and nutrient levels of these northern waters.
+        </p>
+        <p>
+          Rising temperatures and prolonged drought in the Rocky Mountains threaten the already scarce water supply, making local community-led conservation efforts vital for the delta's survival.
+        </p>
+      </section>
+
+      <section id="economy">
+        <h2>Economy & Culture</h2>
+        <p>
+          For the Cucapá (People of the River), the delta has been a source of spiritual and physical sustenance for over a millennium. Today, the regional economy relies on artisanal fishing and emerging eco-tourism.
+        </p>
+        <p>
+          The delta also plays a role in the binational economy, as the surrounding Mexicali Valley is a major agricultural hub produced by the very water that was once meant for the delta's wetlands.
+        </p>
+      </section>
+
+      <section class="activities">
+        <h2 class="activities-title">Delta Activities</h2>
+        <div class="adventure-container">
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card kayaking">
+              <div class="adventure-image"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800" alt="Kayaking Delta" /></div>
+              <div class="adventure-text">
+                <h3>Canoeing the Hardy</h3>
+                <p>Explore the Rio Hardy, the only part of the delta that maintains year-round water flow, offering a glimpse of the old riparian beauty.</p>
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card reverse birds">
+              <div class="adventure-image"><img src="https://images.unsplash.com/photo-1444464666168-49d633b867ad?q=80&w=800" alt="Bird Watching" /></div>
+              <div class="adventure-text">
+                <h3>Avian Expeditions</h3>
+                <p>Visit the Ciénega de Santa Clara, the largest remaining wetland in the delta, home to thousands of migratory waterbirds.</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h2 style="display: block; text-align: center; margin-bottom: 40px;">Delta Gallery</h2>
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200" alt="Colorado Delta Aerial">
+            <div class="caption">The intricate patterns of the drying Colorado River channels.</div>
+          </div>
+          <div class="mySlides fade">
+            <img src="https://images.unsplash.com/photo-1502011063653-7603d429584b?q=80&w=1200" alt="Desert Wetlands">
+            <div class="caption">Restored cottonwood groves providing life in the desert.</div>
+          </div>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      // Hero Effect
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 150) hero.classList.add("hidden");
+        else hero.classList.remove("hidden");
+      });
+
+      // Slideshow Logic
+      let slideIndex = 1;
+      showSlides(slideIndex);
+      function plusSlides(n) { showSlides(slideIndex += n); }
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+        slides[slideIndex-1].style.display = "block";  
+      }
+
+      // Footer
+      fetch("Footer.html").then(res => res.text()).then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+    </script>
+  </body>
+</html>

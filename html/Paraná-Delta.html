@@ -78,8 +78,17 @@
         font-size: 2rem;
         margin-bottom: 30px;
         text-transform: uppercase;
-        border-bottom: 2px solid #111;
         display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #000000; /* standaard kleur */
+        margin-top: 8px;
+        border-radius: 3px;
       }
 
       p {
@@ -125,7 +134,7 @@
       <nav class="top-nav">
         <a href="../index.html">← Back to Overview</a>
         <a href="Compare.html">Compare</a>
-        <a href="#">Contact</a>
+        <a href="Contact.html">Contact</a>
       </nav>
       <h1>Paraná Delta</h1>
     </header>

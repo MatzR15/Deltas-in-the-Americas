@@ -78,8 +78,17 @@
         font-size: 2rem;
         margin-bottom: 30px;
         text-transform: uppercase;
-        border-bottom: 2px solid #111;
         display: inline-block;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #000000; /* standaard kleur */
+        margin-top: 8px;
+        border-radius: 3px;
       }
 
       p {
@@ -133,8 +142,9 @@
     <header class="hero" id="hero">
       <nav class="top-nav">
         <a href="../index.html">← Back to Overview</a>
-        <span id="last-delta-container"></span> <!-- Hier komt de dynamische terug-knop --> 
-        <a href="#">Contact</a>
+        <span id="last-delta-container"></span>
+        <!-- Hier komt de dynamische terug-knop -->
+        <a href="Contact.html">Contact</a>
       </nav>
       <h1>Delta Explorer</h1>
     </header>
@@ -255,8 +265,10 @@
           a.population.toLocaleString();
         document.getElementById("pop2").textContent =
           b.population.toLocaleString();
-        document.getElementById("pop1").textContent = a.population.toLocaleString();
-        document.getElementById("pop2").textContent = b.population.toLocaleString();
+        document.getElementById("pop1").textContent =
+          a.population.toLocaleString();
+        document.getElementById("pop2").textContent =
+          b.population.toLocaleString();
 
         document.getElementById("bio1").textContent = a.biodiversity;
         document.getElementById("bio2").textContent = b.biodiversity;
