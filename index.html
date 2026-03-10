@@ -45,6 +45,21 @@
         letter-spacing: 2px;
       }
 
+      .hero-text {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .hero-subtitle {
+        color: white;
+        font-size: 1.1rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+
       /* NAV */
       .top-nav {
         position: absolute;
@@ -127,6 +142,16 @@
         font-size: 0.8rem;
         line-height: 1.4;
       }
+
+      .photo-credit {
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+      }
+
       @media screen and (max-width: 500px) {
         .cards {
           grid-template-columns: repeat(1, 1fr);
@@ -154,18 +179,22 @@
         <a href="#">Language</a>
       </nav>
 
-      <h1>Delta’s in the Americas</h1>
+      <div class="hero-text">
+        <h1>Delta's in the Americas</h1>
+        <p class="hero-subtitle">Learn • Compare • Discover</p>
+        <span class="photo-credit">© NASA / USGS</span>
+      </div>
     </header>
 
     <main>
       <section class="intro">
         <h2>About the Delta's</h2>
         <p>
-          River deltas are dynamic landscapes where rivers meet the sea, creating fertile environments and unique ecosystems. In
-          the Americas, the deltas of the Mississippi River and the Paraná River are especially important, shaping local
+          River delta's are dynamic landscapes where rivers meet the sea, creating fertile environments and unique ecosystems. In
+          the Americas, the delta's of the Mississippi River and the Paraná River are especially important, shaping local
           environments, supporting wildlife, and sustaining communities.
           <br />
-          This website lets you explore these remarkable regions and learn more about major deltas across the Americas, their
+          This website lets you explore these remarkable regions and learn more about major delta's across the Americas, their
           formation, and their importance to both nature and society.
           <br />
           <br />
@@ -180,6 +209,7 @@
             <a href="html/Mississippi-Delta.html" style="text-decoration: none; align-self: center">
               <button>Mississippi delta</button>
             </a>
+            <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
 
@@ -189,6 +219,7 @@
             <a href="html/Paraná-Delta.html" style="text-decoration: none; align-self: center">
               <button>Paraná delta</button>
             </a>
+            <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
 
@@ -198,6 +229,7 @@
             <a href="html/Galveston-Bay.html" style="text-decoration: none; align-self: center">
               <button>Galveston bay</button>
             </a>
+            <span class="photo-credit">© Galveston Bay Foundation</span>
           </div>
         </article>
 
@@ -207,6 +239,7 @@
             <a href="html/Yukon-Delta.html" style="text-decoration: none; align-self: center">
               <button>Yukon delta</button>
             </a>
+            <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
 
@@ -214,13 +247,17 @@
           <img src="imgs/Amazone_delta.jpg" alt="Amazone_delta" />
           <div class="card-overlay">
             <button>Amazone delta</button>
+            <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
 
         <article class="card">
           <img src="imgs/Colorado_delta.jpg" alt="Colorado_delta" />
           <div class="card-overlay">
-            <button>Colorado delta</button>
+            <a href="html/Colorado-Delta.html" style="text-decoration: none; align-self: center">
+              <button>Colorado delta</button>
+            </a>
+            <span class="photo-credit">© Tom Hegen</span>
           </div>
         </article>
 
@@ -228,6 +265,7 @@
           <img src="imgs/San-Juan_delta.jpg" alt="San Juan_delta" />
           <div class="card-overlay">
             <button>San Juan delta</button>
+            <span class="photo-credit">© San Juan Water District</span>
           </div>
         </article>
 
@@ -235,13 +273,15 @@
           <img src="imgs/Magdalena_delta.jpg" alt="Magdalena_delta" />
           <div class="card-overlay">
             <button>Magdalena delta</button>
+            <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
 
         <article class="card">
           <img src="imgs/Rio-Grande_delta.webp" alt="Rio Grande_delta" />
           <div class="card-overlay">
-            <button>Rio Grande delta</button>
+            <button>Rio Grande delta</button>`
+            <span class="photo-credit">© Major King</span>
           </div>
         </article>
       </section>

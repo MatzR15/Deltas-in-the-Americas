@@ -7,14 +7,13 @@
     <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
 
     <style>
-      * 
-      {
+      * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
       }
-html {
+      html {
         scroll-behavior: smooth;
       }
       body {
@@ -148,14 +147,14 @@ html {
 
       /* Keep this to ensure the "Activities" title stays centered and clean */
       .activities-title::after {
-        margin: 8px auto 0 auto;
+        margin: 8px 0 0 0;
       }
 
       .activities-title {
-        text-align: center;
+        text-align: left;
         display: block;
         width: 100%;
-        margin: 0 auto 40px auto;
+        margin: 0 0 40px 0;
       }
 
       p {
@@ -220,15 +219,6 @@ html {
         border-left: 6px solid #00838f;
       }
 
-      /* FIX activities title centreren */
-      .activities-title {
-        text-align: center;
-        display: block;
-        width: 100%;
-        border-bottom: none;
-        margin: 0 auto 40px auto;
-      }
-
       /* Kleuren streepjes h2's */
 
       /* Nature = groen */
@@ -247,68 +237,74 @@ html {
       }
 
       /* SLIDESHOW STYLES */
-.slideshow-container {
-  max-width: 100%;
-  position: relative;
-  margin: auto;
-  border-radius: 16px; /* Matches your adventure cards */
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+      .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+        border-radius: 16px; /* Matches your adventure cards */
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
 
-.mySlides {
-  display: none;
-}
+      .mySlides {
+        display: none;
+      }
 
-.mySlides img {
-  vertical-align: middle;
-  height: 450px;
-  object-fit: cover;
-}
+      .mySlides img {
+        vertical-align: middle;
+        height: 450px;
+        object-fit: cover;
+      }
 
-.prev, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  background-color: rgba(0,0,0,0.3);
-}
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
 
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
 
-.prev:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
-}
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
 
-.caption {
-  color: #fff;
-  font-size: 1rem;
-  padding: 15px 25px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  background: linear-gradient(transparent, rgba(0,0,0,0.8));
-}
+      .caption {
+        color: #fff;
+        font-size: 1rem;
+        padding: 15px 25px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      }
 
-.fade {
-  animation: fadeAnim 1.5s;
-}
+      .fade {
+        animation: fadeAnim 1.5s;
+      }
 
-@keyframes fadeAnim {
-  from {opacity: .4} 
-  to {opacity: 1}
-}
+      @keyframes fadeAnim {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
     </style>
   </head>
 
@@ -324,28 +320,28 @@ html {
 
     <!-- INFO TILES -->
     <section class="info-tiles">
-      <a href="#area" class="tile area" style="text-decoration: none;">
+      <a href="#area" class="tile area" style="text-decoration: none">
         <div>
           <h3>1.600 km²</h3>
           <p>Area</p>
         </div>
       </a>
 
-      <a href="#nature" class="tile population" style="text-decoration: none;">
+      <a href="#nature" class="tile population" style="text-decoration: none">
         <div>
           <h3>~7 Million</h3>
           <p>Regional population</p>
         </div>
       </a>
 
-      <a href="#coastline" class="tile coast" style="text-decoration: none;">
+      <a href="#coastline" class="tile coast" style="text-decoration: none">
         <div>
           <h3>600 km</h3>
           <p>Coastline & channels</p>
         </div>
       </a>
 
-      <a href="#economy" class="tile economy" style="text-decoration: none;">
+      <a href="#economy" class="tile economy" style="text-decoration: none">
         <div>
           <h3>$178 Billion</h3>
           <p>Economic value</p>
@@ -354,163 +350,153 @@ html {
     </section>
 
     <main>
-  <section id="area" class="area">
-    <h2>Area & Geography</h2>
-    <p>
-      Galveston Bay is a large estuary located on the Texas Gulf Coast,
-      covering approximately 1,600 square kilometers. It is fed by the
-      Trinity and San Jacinto rivers and opens into the Gulf of Mexico.
-    </p>
-    <p>
-      The bay's geography includes extensive wetlands, marshes, oyster
-      reefs, and seagrass beds that provide critical habitat for wildlife
-      and support a diverse ecosystem.
-    </p>
-  </section>
+      <section id="area" class="area">
+        <h2>Area & Geography</h2>
+        <p>
+          Galveston Bay is a large estuary located on the Texas Gulf Coast, covering approximately 1,600 square kilometers. It is
+          fed by the Trinity and San Jacinto rivers and opens into the Gulf of Mexico.
+        </p>
+        <p>
+          The bay's geography includes extensive wetlands, marshes, oyster reefs, and seagrass beds that provide critical habitat
+          for wildlife and support a diverse ecosystem.
+        </p>
+      </section>
 
-  <section id="nature" class="nature">
-    <h2>Nature & Ecosystem</h2>
-    <p>
-      Galveston Bay is one of the largest estuaries in the United States,
-      located along the Texas Gulf Coast. It receives freshwater from the
-      Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
-    </p>
-    <p>
-      The bay supports extensive wetlands, oyster reefs, and seagrass beds
-      that provide habitat for fish, birds, and marine life. It plays a
-      crucial role in coastal protection and water filtration for the
-      region.
-    </p>
-  </section>
+      <section id="nature" class="nature">
+        <h2>Nature & Ecosystem</h2>
+        <p>
+          Galveston Bay is one of the largest estuaries in the United States, located along the Texas Gulf Coast. It receives
+          freshwater from the Trinity and San Jacinto rivers before flowing into the Gulf of Mexico.
+        </p>
+        <p>
+          The bay supports extensive wetlands, oyster reefs, and seagrass beds that provide habitat for fish, birds, and marine
+          life. It plays a crucial role in coastal protection and water filtration for the region.
+        </p>
+      </section>
 
-  <section id="coastline" class="coastline">
-    <h2>Coastline & Challenges</h2>
-    <p>
-      Galveston Bay's coastline is dynamic, shaped by natural processes and
-      human activities. Coastal erosion, subsidence, and sea level rise
-      threaten communities and ecosystems along the bay.
-    </p>
-    <p>
-      Efforts to restore wetlands, manage stormwater, and implement
-      sustainable development practices are critical to preserving the bay's
-      health and resilience.
-    </p>
-  </section>
+      <section id="coastline" class="coastline">
+        <h2>Coastline & Challenges</h2>
+        <p>
+          Galveston Bay's coastline is dynamic, shaped by natural processes and human activities. Coastal erosion, subsidence, and
+          sea level rise threaten communities and ecosystems along the bay.
+        </p>
+        <p>
+          Efforts to restore wetlands, manage stormwater, and implement sustainable development practices are critical to
+          preserving the bay's health and resilience.
+        </p>
+      </section>
 
-  <section id="economy" class="economy">
-    <h2>Economy & Human Impact</h2>
-    <p>
-      The bay is central to the Houston metropolitan area's economy,
-      supporting shipping, petrochemical industries, fishing, and tourism.
-      The Port of Houston is one of the busiest ports in the world.
-    </p>
-    <p>
-      Balancing economic growth with environmental protection remains a
-      major challenge due to pollution risks, habitat loss, and increasing
-      urbanization.
-    </p>
-  </section>
+      <section id="economy" class="economy">
+        <h2>Economy & Human Impact</h2>
+        <p>
+          The bay is central to the Houston metropolitan area's economy, supporting shipping, petrochemical industries, fishing,
+          and tourism. The Port of Houston is one of the busiest ports in the world.
+        </p>
+        <p>
+          Balancing economic growth with environmental protection remains a major challenge due to pollution risks, habitat loss,
+          and increasing urbanization.
+        </p>
+      </section>
 
-<style>
-  /* Add this to your style section to prevent the sticky header from covering the titles */
-  section {
-    scroll-margin-top: 120px;
-  }
+      <style>
+        /* Add this to your style section to prevent the sticky header from covering the titles */
+        section {
+          scroll-margin-top: 120px;
+        }
 
-  /* Make the activity links look like the original cards */
-      .adventure-link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        transition: transform 0.3s ease;
-      }
+        /* Make the activity links look like the original cards */
+        .adventure-link {
+          text-decoration: none;
+          color: inherit;
+          display: block;
+          transition: transform 0.3s ease;
+        }
 
-      .adventure-link:hover {
-        transform: translateY(-5px); /* Adds a subtle lift on hover */
-      }
+        .adventure-link:hover {
+          transform: translateY(-5px); /* Adds a subtle lift on hover */
+        }
 
-      .adventure-link:hover .adventure-card {
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-</style>
+        .adventure-link:hover .adventure-card {
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+      </style>
 
-    <!-- ACTIVITIES -->
-<section class="activities">
-      <h2 class="activities-title">Activities & Adventures</h2>
+      <!-- ACTIVITIES -->
+      <section class="activities">
+        <h2 class="activities-title">Activities & Adventures</h2>
 
-      <div class="adventure-container">
-        <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-          <div class="adventure-card kayaking">
-            <div class="adventure-image">
-              <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
+        <div class="adventure-container">
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card kayaking">
+              <div class="adventure-image">
+                <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
+              </div>
+              <div class="adventure-text kayaking">
+                <h3>Kayaking & Boating</h3>
+                <p>
+                  Explore the marshes, wetlands and open waters of Galveston Bay. Kayaking offers a peaceful way to experience the
+                  rich coastal ecosystem.
+                </p>
+              </div>
             </div>
-            <div class="adventure-text kayaking">
-              <h3>Kayaking & Boating</h3>
-              <p>
-                Explore the marshes, wetlands and open waters of Galveston Bay.
-                Kayaking offers a peaceful way to experience the rich coastal
-                ecosystem.
-              </p>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card reverse birds">
+              <div class="adventure-image">
+                <img src="../imgs/birb-watching.jpg" alt="Bird watching Galveston Bay" />
+              </div>
+              <div class="adventure-text birds">
+                <h3>Bird Watching</h3>
+                <p>
+                  Spot hundreds of migratory species along the coastline. Galveston Bay is a paradise for bird lovers and wildlife
+                  photographers.
+                </p>
+              </div>
             </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card fishing">
+              <div class="adventure-image">
+                <img src="../imgs/fish.jpg" alt="Fishing Galveston Bay" />
+              </div>
+              <div class="adventure-text fishing">
+                <h3>Fishing</h3>
+                <p>
+                  The bay is a popular destination for recreational and commercial fishing, offering rich waters filled with
+                  diverse marine life.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h2><i class="fa-solid fa-camera"></i> Bay Gallery</h2>
+
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <img src="../imgs/galveston-bay-aerial.webp" style="width: 100%" />
+            <div class="caption">An aerial view of the vast estuary and shipping channels.</div>
           </div>
-        </a>
 
-        <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-          <div class="adventure-card reverse birds">
-            <div class="adventure-image">
-              <img src="../imgs/birb-watching.jpg" alt="Bird watching Galveston Bay" />
-            </div>
-            <div class="adventure-text birds">
-              <h3>Bird Watching</h3>
-              <p>
-                Spot hundreds of migratory species along the coastline. Galveston
-                Bay is a paradise for bird lovers and wildlife photographers.
-              </p>
-            </div>
+          <div class="mySlides fade">
+            <img src="../imgs/oyster-reef.png" style="width: 100%" />
+            <div class="caption">Critical oyster reefs that filter water and protect the coastline.</div>
           </div>
-        </a>
 
-        <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-          <div class="adventure-card fishing">
-            <div class="adventure-image">
-              <img src="../imgs/fish.jpg" alt="Fishing Galveston Bay" />
-            </div>
-            <div class="adventure-text fishing">
-              <h3>Fishing</h3>
-              <p>
-                The bay is a popular destination for recreational and commercial
-                fishing, offering rich waters filled with diverse marine life.
-              </p>
-            </div>
+          <div class="mySlides fade">
+            <img src="../imgs/port-of-houston.jpg" style="width: 100%" />
+            <div class="caption">The bustling industrial heart of the Texas coast.</div>
           </div>
-        </a>
-      </div>
-    </section>
 
-    <section id="gallery">
-  <h2><i class="fa-solid fa-camera"></i> Bay Gallery</h2>
-  
-  <div class="slideshow-container">
-    <div class="mySlides fade">
-      <img src="../imgs/galveston-bay-aerial.webp" style="width:100%">
-      <div class="caption">An aerial view of the vast estuary and shipping channels.</div>
-    </div>
-
-    <div class="mySlides fade">
-      <img src="../imgs/oyster-reef.png" style="width:100%">
-      <div class="caption">Critical oyster reefs that filter water and protect the coastline.</div>
-    </div>
-
-    <div class="mySlides fade">
-      <img src="../imgs/port-of-houston.jpg" style="width:100%">
-      <div class="caption">The bustling industrial heart of the Texas coast.</div>
-    </div>
-
-    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a>
-  </div>
-</section>
-</main>
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+      </section>
+    </main>
 
     <script>
       const hero = document.getElementById("hero");
@@ -524,22 +510,26 @@ html {
       });
 
       let slideIndex = 1;
-showSlides(slideIndex);
+      showSlides(slideIndex);
 
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
 
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";  
-  }
-  slides[slideIndex-1].style.display = "block";  
-}
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+      }
     </script>
 
     <!-- FOOTER PLACEHOLDER -->
