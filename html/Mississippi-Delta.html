@@ -13,7 +13,9 @@
         box-sizing: border-box;
         font-family: Arial, Helvetica, sans-serif;
       }
-
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         background: white;
         color: #111;
@@ -25,8 +27,8 @@
         top: 0;
         height: 60vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
-          url("../imgs/Mississippi_delta.webp") center / cover no-repeat;
+          linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+          url("../imgs/Mississippi_delta.webp") center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -45,7 +47,6 @@
         font-size: 4rem;
         text-transform: uppercase;
         letter-spacing: 2px;
-        text-align: center;
       }
 
       /* NAV */
@@ -63,6 +64,59 @@
         font-size: 0.9rem;
       }
 
+      /* INFO TILES */
+      .info-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 40px;
+        background: #f7f7f7;
+      }
+
+      .tile {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: background 0.3s ease;
+        cursor: pointer;
+      }
+
+      .tile h3,
+      .tile p {
+        transition: color 0.3s ease;
+      }
+
+      /* ===== TEGEL KLEUREN – Mississippi thema ===== */
+
+      .tile.area {
+        background: #fff3e0;
+      }
+      .tile.area h3 {
+        color: #e65100;
+      }
+
+      .tile.population {
+        background: #fce4ec;
+      }
+      .tile.population h3 {
+        color: #880e4f;
+      }
+
+      .tile.coast {
+        background: #e8eaf6;
+      }
+      .tile.coast h3 {
+        color: #283593;
+      }
+
+      .tile.economy {
+        background: #e0f2f1;
+      }
+      .tile.economy h3 {
+        color: #00695c;
+      }
+
       /* CONTENT */
       main {
         padding: 80px 20px;
@@ -72,6 +126,7 @@
 
       section {
         margin-bottom: 100px;
+        scroll-margin-top: 120px;
       }
 
       h2 {
@@ -86,9 +141,20 @@
         display: block;
         width: 120px;
         height: 4px;
-        background: #000000; /* standaard kleur */
+        background: #000000;
         margin-top: 8px;
         border-radius: 3px;
+      }
+
+      .activities-title::after {
+        margin: 8px 0 0 0;
+      }
+
+      .activities-title {
+        text-align: left;
+        display: block;
+        width: 100%;
+        margin: 0 0 40px 0;
       }
 
       p {
@@ -98,33 +164,166 @@
         color: #333;
       }
 
-      /* COMPARISON TABLE */
-      .comparison-table {
+      /* ===== ADVENTURE CARDS ===== */
+
+      .adventure-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+      }
+
+      .adventure-card {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+        background: #f9f9f9;
+        padding: 30px;
+        border-radius: 16px;
+      }
+
+      .adventure-card.reverse {
+        flex-direction: row-reverse;
+      }
+
+      .adventure-image img {
+        width: 400px;
+        border-radius: 14px;
+        object-fit: cover;
+      }
+
+      .adventure-text {
+        flex: 1;
+      }
+
+      .adventure-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+        position: relative;
+      }
+
+      /* Swamp tours = warm oranje */
+      .adventure-card.swamp {
+        border-left: 6px solid #e65100;
+      }
+
+      /* Jazz & Culture = roze/rood */
+      .adventure-card.jazz {
+        border-right: 6px solid #880e4f;
+      }
+
+      /* Airboat = indigo */
+      .adventure-card.airboat {
+        border-left: 6px solid #283593;
+      }
+
+      /* Sectie onderstreep kleuren */
+
+      /* Area = oranje (tegel 1) */
+      .area h2::after {
+        background: #e65100;
+      }
+
+      /* Nature = roze (tegel 2) */
+      .nature h2::after {
+        background: #880e4f;
+      }
+
+      /* Coastline = indigo (tegel 3) */
+      .coastline h2::after {
+        background: #283593;
+      }
+
+      /* Economy = teal (tegel 4) */
+      .economy h2::after {
+        background: #00695c;
+      }
+
+      /* SLIDESHOW */
+      .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: auto;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .mySlides {
+        display: none;
+      }
+
+      .mySlides img {
+        vertical-align: middle;
+        height: 450px;
+        object-fit: cover;
+      }
+
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background-color: rgba(0, 0, 0, 0.3);
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      .caption {
+        color: #fff;
+        font-size: 1rem;
+        padding: 15px 25px;
+        position: absolute;
+        bottom: 0;
         width: 100%;
-        border-collapse: collapse;
-        margin-top: 40px;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
       }
 
-      .comparison-table th,
-      .comparison-table td {
-        border: 1px solid #ddd;
-        padding: 15px;
-        text-align: left;
+      .fade {
+        animation: fadeAnim 1.5s;
       }
 
-      .comparison-table th {
-        background-color: #f4f4f4;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-      }
-
-      @media screen and (max-width: 600px) {
-        .hero h1 {
-          font-size: 2.5rem;
+      @keyframes fadeAnim {
+        from {
+          opacity: 0.4;
         }
-        .top-nav {
-          right: 20px;
+        to {
+          opacity: 1;
         }
+      }
+
+      /* Adventure link hover effect */
+      .adventure-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s ease;
+      }
+
+      .adventure-link:hover {
+        transform: translateY(-5px);
+      }
+
+      .adventure-link:hover .adventure-card {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
     </style>
   </head>
@@ -139,76 +338,184 @@
       <h1>Mississippi Delta</h1>
     </header>
 
+    <!-- INFO TILES -->
+    <section class="info-tiles">
+      <a href="#area" class="tile area" style="text-decoration: none">
+        <div>
+          <h3>Best visited</h3>
+          <p>March through May</p>
+        </div>
+      </a>
+
+      <a href="#nature" class="tile population" style="text-decoration: none">
+        <div>
+          <h3>400+ species</h3>
+          <p>Wildlife to discover</p>
+        </div>
+      </a>
+
+      <a href="#coastline" class="tile coast" style="text-decoration: none">
+        <div>
+          <h3>3.730 km</h3>
+          <p>Of river to explore</p>
+        </div>
+      </a>
+
+      <a href="#economy" class="tile economy" style="text-decoration: none">
+        <div>
+          <h3>World-class food</h3>
+          <p>Creole & Cajun cuisine</p>
+        </div>
+      </a>
+    </section>
+
     <main>
-      <section id="nature">
-        <h2>Nature & Biodiversity</h2>
+      <section id="area" class="area">
+        <h2>When to Visit</h2>
         <p>
-          De Mississippi Delta is een gigantisch ecosysteem van moerassen, estuaria en eilanden in de Golf van Mexico. Het staat
-          wereldwijd bekend om zijn unieke <strong>"Bird's Foot"</strong> vorm, die is ontstaan door de enorme hoeveelheden
-          sediment die de rivier over duizenden jaren heeft afgezet.
+          Spring, from March through May, is the best time to visit the Mississippi Delta. The weather is warm and
+          pleasant, wildflowers bloom across the wetlands, and migratory birds fill the skies. It is the perfect
+          season to explore the bayous by boat, stroll through New Orleans' historic neighborhoods, and enjoy open-air
+          festivals without the intense summer heat.
         </p>
         <p>
-          Het gebied is cruciaal voor miljoenen trekvogels die de Mississippi Flyway gebruiken. In de brakke wateren vind je een
-          rijke variëteit aan leven, van Amerikaanse alligators en lamantijnen tot enorme populaties pelikanen. De kustmoerassen
-          fungeren bovendien als een natuurlijke barrière tegen orkanen, hoewel dit systeem momenteel bedreigd wordt door
-          landverlies.
-        </p>
-      </section>
-
-      <section id="history">
-        <h2>History & Culture</h2>
-        <p>
-          De geschiedenis van de delta is onlosmakelijk verbonden met de mix van culturen: van de inheemse volkeren tot de Franse,
-          Spaanse en West-Afrikaanse invloeden. Dit heeft geleid tot de wereldberoemde
-          <strong>Cajun en Creoolse</strong> culturen.
-        </p>
-        <p>
-          Economisch gezien is de delta de motor van de regio door de visserij, olie-industrie en de haven van New Orleans. Maar
-          de regio is ook getekend door de strijd tegen het water, met de Grote Overstroming van 1927 als historisch keerpunt in
-          de manier waarop de mens de loop van de rivier probeert te beheersen met dijken en dammen.
+          Autumn is a great second option, with cooler temperatures and fewer crowds. If you love jazz and local
+          culture, plan your trip around the New Orleans Jazz and Heritage Festival in late April and early May, one
+          of the most celebrated music events in the world.
         </p>
       </section>
 
-      <section id="comparison">
-        <h2>Comparative Analysis</h2>
-        <p>Hoewel beide delta's cruciaal zijn voor hun continent, zijn er belangrijke verschillen in hun geografische context.</p>
+      <section id="nature" class="nature">
+        <h2>Wildlife You Will Not Forget</h2>
+        <p>
+          The Mississippi Delta is one of the most spectacular places in North America to experience wildlife up close.
+          Over 400 species call this region home, from American alligators gliding through the cypress swamps to
+          roseate spoonbills wading in the shallow marshes. Whether you are a keen birdwatcher or simply someone who
+          loves nature, the delta will leave you speechless.
+        </p>
+        <p>
+          The delta sits along the Mississippi Flyway, one of the great bird migration routes of the continent. Every
+          spring and autumn, millions of birds pass through, making it a dream destination for wildlife photographers
+          and nature lovers alike. Guided swamp tours are the easiest way to get into the heart of this extraordinary
+          ecosystem, and experienced local guides will help you spot species you never expected to see.
+        </p>
+      </section>
 
-        <table class="comparison-table">
-          <thead>
-            <tr>
-              <th>Kenmerk</th>
-              <th>Mississippi Delta</th>
-              <th>Paraná Delta</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Uitmonding</strong></td>
-              <td>Zoutwater (Golf van Mexico)</td>
-              <td>Zoetwater (Río de la Plata)</td>
-            </tr>
-            <tr>
-              <td><strong>Vorm</strong></td>
-              <td>Klassieke "Vogelpoot" delta</td>
-              <td>Fluviale progressie (rivier-in-rivier)</td>
-            </tr>
-            <tr>
-              <td><strong>Grootste Dreiging</strong></td>
-              <td>Zeespiegelstijging & Sedimenttekort</td>
-              <td>Stedelijke uitbreiding & Vastgoed</td>
-            </tr>
-            <tr>
-              <td><strong>Culturele Hub</strong></td>
-              <td>New Orleans (Jazz/Blues)</td>
-              <td>Tigre (Isleño cultuur)</td>
-            </tr>
-          </tbody>
-        </table>
+      <section id="coastline" class="coastline">
+        <h2>A River Worth Exploring</h2>
+        <p>
+          The Mississippi River stretches 3,730 kilometers from the forests of Minnesota all the way to the Gulf of
+          Mexico, and its final stretch through Louisiana is unlike anything else on Earth. Here the river splits into
+          a web of channels, bayous, and waterways that open up into a vast coastal landscape of marshes, barrier
+          islands, and open water.
+        </p>
+        <p>
+          Renting a boat or joining a river cruise is one of the most memorable ways to take in the delta. You can
+          glide past ancient cypress trees draped in Spanish moss, spot herons fishing along the banks, and watch the
+          sun set over a horizon with no buildings in sight. For those who prefer dry land, the Great River Road is a
+          scenic driving route that follows the Mississippi through charming riverside towns, historic plantations, and
+          sweeping viewpoints over the river.
+        </p>
+      </section>
+
+      <section id="economy" class="economy">
+        <h2>Eat, Drink & Discover</h2>
+        <p>
+          No visit to the Mississippi Delta is complete without sitting down to a proper Creole or Cajun meal. The
+          delta's waters produce some of the finest seafood in the world, and locals have been turning shrimp,
+          crawfish, oysters, and blue crab into extraordinary dishes for generations. From bustling New Orleans
+          restaurants to roadside shacks in the bayou, the food here is an experience in itself.
+        </p>
+        <p>
+          Beyond the plate, the delta is a place of deep cultural richness. New Orleans is famous the world over for
+          its music, its festivals, and its unique blend of French, African, and Caribbean influences. Wander through
+          the French Quarter, catch a live jazz performance on Frenchmen Street, or explore the colorful markets and
+          antique shops that line the old city streets. There is always something happening, and the locals are always
+          happy to show you a good time.
+        </p>
+      </section>
+
+      <!-- ACTIVITIES -->
+      <section class="activities">
+        <h2 class="activities-title">Activities & Adventures</h2>
+
+        <div class="adventure-container">
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card swamp">
+              <div class="adventure-image">
+                <img src="../imgs/swamp-tour.jpg" alt="Swamp tour Mississippi Delta" />
+              </div>
+              <div class="adventure-text">
+                <h3>Swamp Tours</h3>
+                <p>
+                  Glide through ancient cypress swamps and encounter alligators, turtles, and exotic birds up close.
+                  Guided swamp tours offer an unforgettable look into the mysterious heart of the Louisiana bayou.
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card reverse jazz">
+              <div class="adventure-image">
+                <img src="../imgs/jazz-culture.jpg" alt="Jazz and culture Mississippi Delta" />
+              </div>
+              <div class="adventure-text">
+                <h3>Jazz & Cultural Heritage</h3>
+                <p>
+                  The Mississippi Delta is the birthplace of jazz, blues, and Creole culture. Explore vibrant music
+                  festivals, historic plantations, and the rich culinary traditions of New Orleans and surrounding
+                  communities.
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card airboat">
+              <div class="adventure-image">
+                <img src="../imgs/airboat.jpg" alt="Airboat rides Mississippi Delta" />
+              </div>
+              <div class="adventure-text">
+                <h3>Airboat Rides</h3>
+                <p>
+                  Race across shallow marshes and open waterways on a thrilling airboat adventure. These iconic flat-
+                  bottomed vessels are the best way to reach the remote, untouched corners of the delta ecosystem.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="gallery">
+        <h2>Delta Gallery</h2>
+
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <img src="../imgs/mississippi-aerial.jpg" style="width: 100%" />
+            <div class="caption">Aerial view of the Mississippi River branching into the Gulf of Mexico.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="../imgs/cypress-swamp.jpg" style="width: 100%" />
+            <div class="caption">Ancient cypress trees draped in Spanish moss in the Louisiana bayou.</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="../imgs/delta-birds.jpg" style="width: 100%" />
+            <div class="caption">Brown pelicans and egrets nesting along the Louisiana coastline.</div>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
       </section>
     </main>
 
     <script>
       const hero = document.getElementById("hero");
+
       window.addEventListener("scroll", () => {
         if (window.scrollY > 150) {
           hero.classList.add("hidden");
@@ -216,6 +523,28 @@
           hero.classList.remove("hidden");
         }
       });
+
+      let slideIndex = 1;
+      showSlides(slideIndex);
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = slides.length;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex - 1].style.display = "block";
+      }
     </script>
 
     <!-- FOOTER PLACEHOLDER -->
