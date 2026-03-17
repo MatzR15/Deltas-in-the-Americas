@@ -78,13 +78,23 @@
         padding: 25px;
         border-radius: 12px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        transition: background 0.3s ease;
+        transition: all 0.3s ease;
         cursor: pointer;
       }
 
-      .tile h3,
-      .tile p {
-        transition: color 0.3s ease;
+      /* ✨ HOVER EFFECT */
+      .tile:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      /* Tekst iets sterker maken bij hover */
+      .tile:hover h3 {
+        transform: translateY(-2px);
+      }
+
+      .tile:hover p {
+        opacity: 0.85;
       }
 
       /* ===== TEGEL KLEUREN – Mississippi thema ===== */
@@ -373,65 +383,62 @@
       <section id="area" class="area">
         <h2>When to Visit</h2>
         <p>
-          Spring, from March through May, is the best time to visit the Mississippi Delta. The weather is warm and
-          pleasant, wildflowers bloom across the wetlands, and migratory birds fill the skies. It is the perfect
-          season to explore the bayous by boat, stroll through New Orleans' historic neighborhoods, and enjoy open-air
-          festivals without the intense summer heat.
+          Spring, from March through May, is the best time to visit the Mississippi Delta. The weather is warm and pleasant,
+          wildflowers bloom across the wetlands, and migratory birds fill the skies. It is the perfect season to explore the
+          bayous by boat, stroll through New Orleans' historic neighborhoods, and enjoy open-air festivals without the intense
+          summer heat.
         </p>
         <p>
-          Autumn is a great second option, with cooler temperatures and fewer crowds. If you love jazz and local
-          culture, plan your trip around the New Orleans Jazz and Heritage Festival in late April and early May, one
-          of the most celebrated music events in the world.
+          Autumn is a great second option, with cooler temperatures and fewer crowds. If you love jazz and local culture, plan
+          your trip around the New Orleans Jazz and Heritage Festival in late April and early May, one of the most celebrated
+          music events in the world.
         </p>
       </section>
 
       <section id="nature" class="nature">
         <h2>Wildlife You Will Not Forget</h2>
         <p>
-          The Mississippi Delta is one of the most spectacular places in North America to experience wildlife up close.
-          Over 400 species call this region home, from American alligators gliding through the cypress swamps to
-          roseate spoonbills wading in the shallow marshes. Whether you are a keen birdwatcher or simply someone who
-          loves nature, the delta will leave you speechless.
+          The Mississippi Delta is one of the most spectacular places in North America to experience wildlife up close. Over 400
+          species call this region home, from American alligators gliding through the cypress swamps to roseate spoonbills wading
+          in the shallow marshes. Whether you are a keen birdwatcher or simply someone who loves nature, the delta will leave you
+          speechless.
         </p>
         <p>
-          The delta sits along the Mississippi Flyway, one of the great bird migration routes of the continent. Every
-          spring and autumn, millions of birds pass through, making it a dream destination for wildlife photographers
-          and nature lovers alike. Guided swamp tours are the easiest way to get into the heart of this extraordinary
-          ecosystem, and experienced local guides will help you spot species you never expected to see.
+          The delta sits along the Mississippi Flyway, one of the great bird migration routes of the continent. Every spring and
+          autumn, millions of birds pass through, making it a dream destination for wildlife photographers and nature lovers
+          alike. Guided swamp tours are the easiest way to get into the heart of this extraordinary ecosystem, and experienced
+          local guides will help you spot species you never expected to see.
         </p>
       </section>
 
       <section id="coastline" class="coastline">
         <h2>A River Worth Exploring</h2>
         <p>
-          The Mississippi River stretches 3,730 kilometers from the forests of Minnesota all the way to the Gulf of
-          Mexico, and its final stretch through Louisiana is unlike anything else on Earth. Here the river splits into
-          a web of channels, bayous, and waterways that open up into a vast coastal landscape of marshes, barrier
-          islands, and open water.
+          The Mississippi River stretches 3,730 kilometers from the forests of Minnesota all the way to the Gulf of Mexico, and
+          its final stretch through Louisiana is unlike anything else on Earth. Here the river splits into a web of channels,
+          bayous, and waterways that open up into a vast coastal landscape of marshes, barrier islands, and open water.
         </p>
         <p>
-          Renting a boat or joining a river cruise is one of the most memorable ways to take in the delta. You can
-          glide past ancient cypress trees draped in Spanish moss, spot herons fishing along the banks, and watch the
-          sun set over a horizon with no buildings in sight. For those who prefer dry land, the Great River Road is a
-          scenic driving route that follows the Mississippi through charming riverside towns, historic plantations, and
-          sweeping viewpoints over the river.
+          Renting a boat or joining a river cruise is one of the most memorable ways to take in the delta. You can glide past
+          ancient cypress trees draped in Spanish moss, spot herons fishing along the banks, and watch the sun set over a horizon
+          with no buildings in sight. For those who prefer dry land, the Great River Road is a scenic driving route that follows
+          the Mississippi through charming riverside towns, historic plantations, and sweeping viewpoints over the river.
         </p>
       </section>
 
       <section id="economy" class="economy">
         <h2>Eat, Drink & Discover</h2>
         <p>
-          No visit to the Mississippi Delta is complete without sitting down to a proper Creole or Cajun meal. The
-          delta's waters produce some of the finest seafood in the world, and locals have been turning shrimp,
-          crawfish, oysters, and blue crab into extraordinary dishes for generations. From bustling New Orleans
-          restaurants to roadside shacks in the bayou, the food here is an experience in itself.
+          No visit to the Mississippi Delta is complete without sitting down to a proper Creole or Cajun meal. The delta's waters
+          produce some of the finest seafood in the world, and locals have been turning shrimp, crawfish, oysters, and blue crab
+          into extraordinary dishes for generations. From bustling New Orleans restaurants to roadside shacks in the bayou, the
+          food here is an experience in itself.
         </p>
         <p>
-          Beyond the plate, the delta is a place of deep cultural richness. New Orleans is famous the world over for
-          its music, its festivals, and its unique blend of French, African, and Caribbean influences. Wander through
-          the French Quarter, catch a live jazz performance on Frenchmen Street, or explore the colorful markets and
-          antique shops that line the old city streets. There is always something happening, and the locals are always
-          happy to show you a good time.
+          Beyond the plate, the delta is a place of deep cultural richness. New Orleans is famous the world over for its music,
+          its festivals, and its unique blend of French, African, and Caribbean influences. Wander through the French Quarter,
+          catch a live jazz performance on Frenchmen Street, or explore the colorful markets and antique shops that line the old
+          city streets. There is always something happening, and the locals are always happy to show you a good time.
         </p>
       </section>
 
@@ -448,8 +455,8 @@
               <div class="adventure-text">
                 <h3>Swamp Tours</h3>
                 <p>
-                  Glide through ancient cypress swamps and encounter alligators, turtles, and exotic birds up close.
-                  Guided swamp tours offer an unforgettable look into the mysterious heart of the Louisiana bayou.
+                  Glide through ancient cypress swamps and encounter alligators, turtles, and exotic birds up close. Guided swamp
+                  tours offer an unforgettable look into the mysterious heart of the Louisiana bayou.
                 </p>
               </div>
             </div>
@@ -458,14 +465,13 @@
           <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
             <div class="adventure-card reverse jazz">
               <div class="adventure-image">
-                <img src="../imgs/jazz-culture.jpg" alt="Jazz and culture Mississippi Delta" />
+                <img src="../imgs/jazz-culture.webp" alt="Jazz and culture Mississippi Delta" />
               </div>
               <div class="adventure-text">
                 <h3>Jazz & Cultural Heritage</h3>
                 <p>
-                  The Mississippi Delta is the birthplace of jazz, blues, and Creole culture. Explore vibrant music
-                  festivals, historic plantations, and the rich culinary traditions of New Orleans and surrounding
-                  communities.
+                  The Mississippi Delta is the birthplace of jazz, blues, and Creole culture. Explore vibrant music festivals,
+                  historic plantations, and the rich culinary traditions of New Orleans and surrounding communities.
                 </p>
               </div>
             </div>
@@ -474,13 +480,13 @@
           <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
             <div class="adventure-card airboat">
               <div class="adventure-image">
-                <img src="../imgs/airboat.jpg" alt="Airboat rides Mississippi Delta" />
+                <img src="../imgs/airboat.webp" alt="Airboat rides Mississippi Delta" />
               </div>
               <div class="adventure-text">
                 <h3>Airboat Rides</h3>
                 <p>
-                  Race across shallow marshes and open waterways on a thrilling airboat adventure. These iconic flat-
-                  bottomed vessels are the best way to reach the remote, untouched corners of the delta ecosystem.
+                  Race across shallow marshes and open waterways on a thrilling airboat adventure. These iconic flat- bottomed
+                  vessels are the best way to reach the remote, untouched corners of the delta ecosystem.
                 </p>
               </div>
             </div>
@@ -493,17 +499,17 @@
 
         <div class="slideshow-container">
           <div class="mySlides fade">
-            <img src="../imgs/mississippi-aerial.jpg" style="width: 100%" />
+            <img src="../imgs/mississippi-gulfofmexico.jfif" style="width: 100%" />
             <div class="caption">Aerial view of the Mississippi River branching into the Gulf of Mexico.</div>
           </div>
 
           <div class="mySlides fade">
-            <img src="../imgs/cypress-swamp.jpg" style="width: 100%" />
+            <img src="../imgs/mosstree.jpg" style="width: 100%" />
             <div class="caption">Ancient cypress trees draped in Spanish moss in the Louisiana bayou.</div>
           </div>
 
           <div class="mySlides fade">
-            <img src="../imgs/delta-birds.jpg" style="width: 100%" />
+            <img src="../imgs/pelikanen.jpg" style="width: 100%" />
             <div class="caption">Brown pelicans and egrets nesting along the Louisiana coastline.</div>
           </div>
 
