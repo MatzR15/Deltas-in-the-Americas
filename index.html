@@ -7,6 +7,7 @@
     <link rel="icon" type="image/x-icon" href="imgs/LOGO DitA.png" />
 
     <style>
+      /* ... (Existing styles kept) ... */
       * {
         margin: 0;
         padding: 0;
@@ -19,7 +20,6 @@
         color: #111;
       }
 
-      /* HERO */
       .hero {
         position: sticky;
         top: 0;
@@ -60,7 +60,6 @@
         opacity: 0.85;
       }
 
-      /* NAV */
       .top-nav {
         position: absolute;
         top: 20px;
@@ -75,7 +74,6 @@
         font-size: 0.9rem;
       }
 
-      /* CONTENT */
       main {
         padding: 80px 60px;
       }
@@ -94,7 +92,6 @@
         line-height: 1.6;
       }
 
-      /* CARDS */
       .cards {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -136,11 +133,11 @@
         font-size: 1.2rem;
         cursor: pointer;
         border-radius: 12px;
+        transition: background 0.3s ease;
       }
 
-      .card p {
-        font-size: 0.8rem;
-        line-height: 1.4;
+      .card button:hover {
+        background: rgba(255, 255, 255, 0.2);
       }
 
       .photo-credit {
@@ -153,20 +150,43 @@
       }
 
       @media screen and (max-width: 500px) {
-        .cards {
-          grid-template-columns: repeat(1, 1fr);
-        }
-        .card {
-          height: 300px;
-        }
+        .cards { grid-template-columns: repeat(1, 1fr); }
+        .card { height: 300px; }
       }
       @media screen and (min-width: 500px) and (max-width: 950px) {
-        .cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .card {
-          height: 350px;
-        }
+        .cards { grid-template-columns: repeat(2, 1fr); }
+        .card { height: 350px; }
+      }
+
+      /* ----------------------------------------------------------- */
+      /* NEW STYLES FOR THE FULL-WIDTH BOOKING TILE                  */
+      /* ----------------------------------------------------------- */
+
+      .booking-section {
+        margin-top: 100px;
+        text-align: center;
+      }
+
+      .booking-section h2 {
+        margin-bottom: 40px;
+      }
+
+      /* This tells the card to span all available grid columns */
+      .booking-card {
+        grid-column: 1 / -1; /* Stretch across all columns */
+        background: #111;   /* Optional: give it a distinct dark background */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 300px;       /* You can adjust the height as needed */
+      }
+
+      /* Optional: style the button inside the booking card specifically */
+      .booking-card button {
+        border-color: #ffd700; /* Example gold color for emphasis */
+        color: #ffd700;
+        padding: 15px 50px;  /* Make the button itself slightly bigger */
+        font-weight: bold;
       }
     </style>
   </head>
@@ -193,11 +213,7 @@
           River delta's are dynamic landscapes where rivers meet the sea, creating fertile environments and unique ecosystems. In
           the Americas, the delta's of the Mississippi River and the Paraná River are especially important, shaping local
           environments, supporting wildlife, and sustaining communities.
-          <br />
-          This website lets you explore these remarkable regions and learn more about major delta's across the Americas, their
-          formation, and their importance to both nature and society.
-          <br />
-          <br />
+          <br /><br />
           Click on the buttons below to explore the Delta's in the Americas.
         </p>
       </section>
@@ -212,7 +228,6 @@
             <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
-
         <article class="card">
           <img src="imgs/Parana_delta.jpg" alt="Paraná_delta" />
           <div class="card-overlay">
@@ -272,7 +287,9 @@
         <article class="card">
           <img src="imgs/Magdalena_delta.jpg" alt="Magdalena_delta" />
           <div class="card-overlay">
-            <button>Magdalena delta</button>
+            <a href="html/Magdalena-Delta.html" style="text-decoration: none; align-self: center">
+                <button>Magdalena delta</button>
+            </a>
             <span class="photo-credit">© NASA / USGS</span>
           </div>
         </article>
@@ -285,11 +302,27 @@
           </div>
         </article>
       </section>
+
+      <section class="booking-section">
+        <hr style="margin-bottom: 60px; border: 0; border-top: 1px solid #eee;" />
+        <h2>Plan Your Adventure</h2>
+        
+        <div class="cards">
+            <article class="card booking-card">
+                <div class="card-overlay" style="background: #222; justify-content: center;">
+                  <a href="html/UNDER-CONSTRUCTION.html" style="text-decoration: none; align-self: center">
+                    <button>Book your trip now</button>
+                  </a>
+                  <p style="text-align: center; margin-top: 10px; opacity: 0.8;">Explore the deltas in person.</p>
+                </div>
+            </article>
+        </div>
+      </section>
+
     </main>
 
     <script>
       const hero = document.getElementById("hero");
-
       window.addEventListener("scroll", () => {
         if (window.scrollY > 100) {
           hero.classList.add("hidden");
@@ -299,9 +332,7 @@
       });
     </script>
 
-    <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
-
     <script>
       fetch("html/Footer.html")
         .then((response) => response.text())
