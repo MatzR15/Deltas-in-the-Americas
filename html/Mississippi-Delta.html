@@ -26,8 +26,7 @@
         height: 60vh;
         background:
           linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
-          url("../imgs/Mississippi_delta.webp")
-            center/cover no-repeat;
+          url("../imgs/Mississippi_delta.webp") center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -72,7 +71,7 @@
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 20px;
-        padding: 40px;
+        padding: 40px 48px;
         background: #f7f7f7;
       }
       .tile {
@@ -125,8 +124,8 @@
 
       /* ── MAIN ── */
       main {
-        padding: 80px 20px;
-        max-width: 960px;
+        padding: 80px 48px;
+        max-width: 1280px;
         margin: 0 auto;
       }
       section {
@@ -191,7 +190,7 @@
       .img-wrap {
         display: flex;
         flex-direction: column;
-        width: 290px;
+        width: 360px;
         flex-shrink: 0;
         gap: 8px;
       }
@@ -327,7 +326,7 @@
       }
       .mySlides img {
         width: 100%;
-        height: 450px;
+        height: 650px;
         object-fit: cover;
         vertical-align: middle;
       }
@@ -439,7 +438,7 @@
           <!-- 💡 Medallion: vervang src door bijv. ../imgs/spring.jpg -->
           <img
             class="medallion"
-            src="https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?w=150&q=80"
+            src="../imgs/spring.jpg"
             alt="Lente Mississippi"
           />
           <h2>When to Visit</h2>
@@ -559,7 +558,7 @@
         <div class="section-header">
           <img
             class="medallion"
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=150&q=80"
+            src="../imgs/mississippi-river.jpg"
             alt="Mississippi rivier"
           />
           <h2>A River Worth Exploring</h2>
@@ -620,7 +619,7 @@
         <div class="section-header">
           <img
             class="medallion"
-            src="https://images.unsplash.com/photo-1534430480872-3498386e7856?w=150&q=80"
+            src="../imgs/food-festival.jpg"
             alt="Cajun eten"
           />
           <h2>Eat, Drink &amp; Discover</h2>
@@ -683,10 +682,7 @@
           <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
             <div class="adventure-card swamp">
               <div class="adventure-image">
-                <img
-                  src="../imgs/swamp-tour.jpg"
-                  alt="Swamp tour"
-                />
+                <img src="../imgs/swamp-tour.jpg" alt="Swamp tour" />
               </div>
               <div class="adventure-text">
                 <h3>Swamp Tours</h3>
@@ -702,10 +698,7 @@
           <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
             <div class="adventure-card reverse jazz">
               <div class="adventure-image">
-                <img
-                  src="../imgs/jazz-culture.webp"
-                  alt="Jazz culture"
-                />
+                <img src="../imgs/jazz-culture.webp" alt="Jazz culture" />
               </div>
               <div class="adventure-text">
                 <h3>Jazz &amp; Cultural Heritage</h3>
@@ -721,10 +714,7 @@
           <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
             <div class="adventure-card airboat">
               <div class="adventure-image">
-                <img
-                  src="../imgs/airboat.webp"
-                  alt="Airboat rides"
-                />
+                <img src="../imgs/airboat.webp" alt="Airboat rides" />
               </div>
               <div class="adventure-text">
                 <h3>Airboat Rides</h3>
@@ -745,27 +735,21 @@
         <h2>Delta Gallery</h2>
         <div class="slideshow-container">
           <div class="mySlides fade">
-            <img
-              src="../imgs/mississippi-gulfofmexico.jfif"
-            />
+            <img src="../imgs/mississippi-gulfofmexico.jfif" />
             <div class="caption">
               Aerial view of the Mississippi River branching into the Gulf of
               Mexico.
             </div>
           </div>
           <div class="mySlides fade">
-            <img
-              src="../imgs/mosstree.jpg"
-            />
+            <img src="../imgs/mosstree.jpg" />
             <div class="caption">
               Ancient cypress trees draped in Spanish moss in the Louisiana
               bayou.
             </div>
           </div>
           <div class="mySlides fade">
-            <img
-              src="../imgs/pelikanen.jpg"
-            />
+            <img src="../imgs/pelikanen.jpg" />
             <div class="caption">
               Brown pelicans and egrets nesting along the Louisiana coastline.
             </div>
@@ -793,6 +777,17 @@
         for (let s of slides) s.style.display = "none";
         slides[slideIndex - 1].style.display = "block";
       }
+    </script>
+    
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
     </script>
   </body>
 </html>
