@@ -505,6 +505,18 @@
         font-size: 0.92rem;
       }
 
+      /* ── IMAGE CREDITS ── */
+      .img-credit {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-style: italic;
+        z-index: 2;
+        pointer-events: none;
+      }
+
       /* ── FOOTER AREA ── */
       #footer-placeholder {
         position: relative;
@@ -573,7 +585,7 @@
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html#deltas">← Overview</a>
+        <a href="../index.html">← Overview</a>
         <a href="Compare.html">Compare</a>
         <a href="Contact.html">Contact</a>
       </nav>
@@ -615,6 +627,9 @@
       >
         <div class="chapter-image">
           <img src="../imgs/flowers.jpeg" alt="Spring flowers" />
+          <span class="img-credit"
+            >© Sparky Stensaas / The PhotoNaturalist</span
+          >
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
@@ -649,6 +664,7 @@
         <span class="image-break-label"
           >New Orleans Jazz & Heritage Festival</span
         >
+        <span class="img-credit">© TripAdvisor</span>
       </div>
 
       <!-- CHAPTER 2: WILDLIFE -->
@@ -659,6 +675,7 @@
       >
         <div class="chapter-image">
           <img src="../imgs/alligator.jpg" alt="Alligator" />
+          <span class="img-credit">© City of North Port, FL</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
@@ -692,12 +709,14 @@
         <span class="image-break-label"
           >Mississippi Flyway, millions of birds migrate each season</span
         >
+        <span class="img-credit">© Encyclopedia of Arkansas</span>
       </div>
 
       <!-- CHAPTER 3: RIVER -->
       <div id="river" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
           <img src="../imgs/sunset.jpg" alt="River sunset" />
+          <span class="img-credit">© The Wild Images</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
@@ -732,6 +751,7 @@
         <span class="image-break-label"
           >Ancient cypress trees, some over 500 years old</span
         >
+        <span class="img-credit">© Dreamstime</span>
       </div>
 
       <!-- CHAPTER 4: FOOD -->
@@ -742,6 +762,7 @@
       >
         <div class="chapter-image">
           <img src="../imgs/crab.webp" alt="Creole food" />
+          <span class="img-credit">© Domestic Fits</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
@@ -780,6 +801,7 @@
         <div class="activity-grid">
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <img src="../imgs/swamp-tour.jpg" alt="Swamp Tours" />
+            <span class="img-credit">© Shore Excursions Group</span>
             <div class="activity-overlay">
               <div class="activity-tag">Experience</div>
               <div class="activity-name">Swamp Tours</div>
@@ -793,6 +815,7 @@
           </a>
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <img src="../imgs/jazz-culture.webp" alt="Jazz Culture" />
+            <span class="img-credit">© Encyclopaedia Britannica</span>
             <div class="activity-overlay">
               <div class="activity-tag">Culture</div>
               <div class="activity-name">Jazz & Cultural Heritage</div>
@@ -805,6 +828,7 @@
           </a>
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <img src="../imgs/airboat.webp" alt="Airboat" />
+            <span class="img-credit">© Captain Jack's Airboat Tours</span>
             <div class="activity-overlay">
               <div class="activity-tag">Thrill</div>
               <div class="activity-name">Airboat Rides</div>
@@ -824,6 +848,7 @@
               alt="French Quarter"
               style="height: 100%; min-height: 200px"
             />
+            <span class="img-credit">© Viator</span>
             <div class="activity-overlay">
               <div class="activity-tag">City</div>
               <div class="activity-name">French Quarter</div>
@@ -845,6 +870,7 @@
               src="../imgs/mississippi-gulfofmexico.jfif"
               alt="Mississippi meets Gulf of Mexico"
             />
+            <span class="img-credit">© NASA / USGS</span>
             <div class="gallery-tile-caption">
               Aerial view of the Mississippi River branching into the Gulf of
               Mexico.
@@ -852,6 +878,7 @@
           </div>
           <div class="gallery-tile">
             <img src="../imgs/mosstree.jpg" alt="Cypress trees" />
+            <span class="img-credit">© via Facebook</span>
             <div class="gallery-tile-caption">
               Ancient cypress trees draped in Spanish moss in the Louisiana
               bayou.
@@ -859,18 +886,23 @@
           </div>
           <div class="gallery-tile">
             <img src="../imgs/pelikanen.jpg" alt="Pelicans" />
+            <span class="img-credit"
+              >© C.C. Lockwood / Country Roads Magazine</span
+            >
             <div class="gallery-tile-caption">
               Brown pelicans and egrets nesting along the Louisiana coastline.
             </div>
           </div>
           <div class="gallery-tile">
             <img src="../imgs/sunset.jpg" alt="Delta sunset" />
+            <span class="img-credit">© The Wild Images</span>
             <div class="gallery-tile-caption">
               Golden light over the winding waterways at dusk.
             </div>
           </div>
           <div class="gallery-tile">
             <img src="../imgs/alligator.jpg" alt="Alligator" />
+            <span class="img-credit">© City of North Port, FL</span>
             <div class="gallery-tile-caption">
               American alligators at rest in the cypress swamps.
             </div>
