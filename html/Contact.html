@@ -4,18 +4,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact</title>
-
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
       }
 
       body {
-        background: white;
-        color: #111;
+        font-family: "Libre Baskerville", Georgia, serif;
+        background: var(--mud);
+        color: var(--mist);
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
       /* HERO */
@@ -24,15 +47,20 @@
         top: 0;
         height: 60vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-          url("../imgs/contact-page.jpg") center / cover no-repeat;
+          linear-gradient(
+            to bottom,
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.72) 100%
+          ),
+          url("../imgs/contact-page.jpg") center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
         z-index: 10;
       }
-
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
@@ -40,29 +68,40 @@
       }
 
       .hero h1 {
-        color: white;
-        font-size: 4rem;
+        font-family: "Playfair Display", serif;
+        color: var(--fog);
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 900;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
         text-align: center;
       }
 
-      /* NAV */
       .top-nav {
         position: absolute;
-        top: 20px;
+        top: 22px;
         right: 40px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
       }
-
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover {
+        color: var(--sand);
       }
 
-      /* CONTENT */
+      /* MAIN */
       main {
         padding: 80px 20px;
         max-width: 900px;
@@ -74,30 +113,32 @@
       }
 
       h2 {
+        font-family: "Playfair Display", serif;
         font-size: 2rem;
+        font-weight: 700;
         margin-bottom: 30px;
         text-transform: uppercase;
+        color: var(--fog);
         display: inline-block;
       }
-
       h2::after {
         content: "";
         display: block;
-        width: 120px;
-        height: 4px;
-        background: #000000; /* kleur */
-        margin-top: 8px;
-        border-radius: 3px;
+        width: 60px;
+        height: 3px;
+        background: var(--sand);
+        margin-top: 10px;
+        border-radius: 0;
       }
 
       p {
-        line-height: 1.8;
+        line-height: 1.85;
         margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: #333;
+        font-size: 1rem;
+        color: rgba(232, 220, 200, 0.72);
       }
 
-      /* CONTACT FORM */
+      /* FORM */
       .contact-form {
         display: flex;
         flex-direction: column;
@@ -109,34 +150,46 @@
       .form-group {
         display: flex;
         flex-direction: column;
-        gap: 6px;
+        gap: 8px;
       }
 
       .form-group label {
-        font-weight: bold;
-        font-size: 0.9rem;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.72rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        color: #111;
+        letter-spacing: 3px;
+        color: var(--sand);
       }
 
       .form-group input,
       .form-group textarea,
       .form-group select {
-        padding: 12px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-family: Arial, Helvetica, sans-serif;
-        transition: border-color 0.2s ease;
-        background: white;
+        padding: 12px 14px;
+        border: 1px solid var(--earth);
+        border-radius: 0;
+        font-size: 0.95rem;
+        font-family: "Libre Baskerville", Georgia, serif;
+        color: var(--mist);
+        background: rgba(255, 255, 255, 0.04);
+        transition: border-color 0.25s;
+      }
+
+      .form-group input::placeholder,
+      .form-group textarea::placeholder {
+        color: rgba(232, 220, 200, 0.25);
+      }
+
+      .form-group select option {
+        background: var(--mud);
+        color: var(--mist);
       }
 
       .form-group input:focus,
       .form-group textarea:focus,
       .form-group select:focus {
         outline: none;
-        border-color: #111;
+        border-color: var(--sand);
       }
 
       .form-group textarea {
@@ -147,30 +200,33 @@
       .submit-btn {
         align-self: flex-start;
         padding: 14px 36px;
-        background: #111;
-        color: white;
+        background: var(--sand);
+        color: var(--mud);
         border: none;
-        border-radius: 6px;
-        font-size: 0.95rem;
-        font-weight: bold;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.78rem;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 4px;
         cursor: pointer;
-        transition: background 0.2s ease;
+        transition: background 0.25s;
       }
-
       .submit-btn:hover {
-        background: #333;
+        background: var(--fog);
       }
 
-      /* SUCCESS MESSAGE */
+      /* SUCCESS */
       .success-msg {
         display: none;
-        padding: 16px 20px;
-        background: #f4f4f4;
-        border-left: 4px solid #111;
-        font-size: 1rem;
-        color: #111;
+        padding: 18px 22px;
+        background: rgba(255, 255, 255, 0.04);
+        border-left: 3px solid var(--sand);
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--sand);
         margin-top: 20px;
         max-width: 600px;
       }
@@ -183,18 +239,29 @@
       .info-item {
         display: flex;
         align-items: flex-start;
-        gap: 14px;
+        gap: 16px;
         margin-bottom: 20px;
-        font-size: 1.05rem;
-        color: #333;
+        font-size: 1rem;
+        color: rgba(232, 220, 200, 0.65);
       }
 
-      .info-icon {
-        font-size: 1.3rem;
+      .info-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.68rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+        min-width: 60px;
         margin-top: 2px;
       }
 
-      @media screen and (max-width: 600px) {
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (max-width: 600px) {
         .hero h1 {
           font-size: 2.5rem;
         }
@@ -208,7 +275,7 @@
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back to Overview</a>
+        <a href="../index.html">← Overview</a>
         <a href="Compare.html">Compare</a>
       </nav>
       <h1>Contact</h1>
@@ -236,7 +303,6 @@
               required
             />
           </div>
-
           <div class="form-group">
             <label for="email">Email</label>
             <input
@@ -246,7 +312,6 @@
               required
             />
           </div>
-
           <div class="form-group">
             <label for="subject">Subject</label>
             <select id="subject">
@@ -257,7 +322,6 @@
               <option value="other">Other</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="message">Message</label>
             <textarea
@@ -266,56 +330,45 @@
               required
             ></textarea>
           </div>
-
           <button type="submit" class="submit-btn">Send Message</button>
         </form>
 
         <div class="success-msg" id="successMsg">
-          ✓ Your message has been sent. We'll be in touch soon!
+          Your message has been sent. We'll be in touch soon.
         </div>
 
         <div class="contact-info">
           <h2>Contact Info</h2>
           <div class="info-item">
-            <span class="info-icon">📧</span>
+            <span class="info-label">Email</span>
             <span>info@deltasintheamericas.com</span>
           </div>
           <div class="info-item">
-            <span class="info-icon">📍</span>
+            <span class="info-label">Location</span>
             <span>Delta's in the Americas BV, Almere, Netherlands</span>
           </div>
         </div>
       </section>
     </main>
 
-    <script>
-      // HERO SCROLL EFFECT
-      const hero = document.getElementById("hero");
+    <div id="footer-placeholder"></div>
 
+    <script>
+      const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
-        if (window.scrollY > 150) {
-          hero.classList.add("hidden");
-        } else {
-          hero.classList.remove("hidden");
-        }
+        hero.classList.toggle("hidden", window.scrollY > 150);
       });
 
-      // FORM SUBMIT
       function handleSubmit(e) {
         e.preventDefault();
         document.getElementById("contactForm").style.display = "none";
         document.getElementById("successMsg").style.display = "block";
       }
-    </script>
 
-    <!-- FOOTER PLACEHOLDER -->
-    <div id="footer-placeholder"></div>
-
-    <script>
       fetch("Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
   </body>

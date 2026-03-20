@@ -3,449 +3,625 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mississippi Delta - Deltas in the Americas</title>
+    <title>Mississippi Delta - Expedition Journal</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --bark: #7c5c3a;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+        --water: #1e3a4a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
+      }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
       }
       html {
         scroll-behavior: smooth;
       }
+
       body {
-        background: white;
-        color: #111;
+        background: var(--mud);
+        color: var(--mist);
+        font-family: "Libre Baskerville", Georgia, serif;
+        overflow-x: hidden;
+      }
+
+      /* ── NOISE TEXTURE OVERLAY ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
       /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
-        height: 60vh;
+        height: 65vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+          linear-gradient(
+            to bottom,
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.7) 100%
+          ),
           url("../imgs/Mississippi_delta.webp") center/cover no-repeat;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
         z-index: 10;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
         pointer-events: none;
       }
-      .hero h1 {
-        color: white;
-        font-size: 4rem;
+
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 8px;
         text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 14px;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        color: var(--fog);
+        text-align: center;
+        letter-spacing: -2px;
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
+      }
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.55em;
         letter-spacing: 2px;
+        font-weight: 400;
+      }
+      .hero-credit {
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-style: italic;
       }
       .top-nav {
         position: absolute;
         top: 20px;
         right: 40px;
+        display: flex;
+        gap: 24px;
       }
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
-        font-family: Arial, sans-serif;
-      }
-      .photo-credit {
-        position: absolute;
-        bottom: 8px;
-        right: 10px;
-        font-size: 0.65rem;
-        color: rgba(255, 255, 255, 0.7);
-        font-style: italic;
-      }
-
-      /* ── INFO TILES ── */
-      .info-tiles {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 40px 48px;
-        background: #f7f7f7;
-      }
-      .tile {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s;
-        cursor: pointer;
-        text-decoration: none;
-        display: block;
-      }
-      .tile:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      }
-      .tile.area {
-        background: #fff3e0;
-      }
-      .tile.area h3 {
-        color: #e65100;
-      }
-      .tile.population {
-        background: #fce4ec;
-      }
-      .tile.population h3 {
-        color: #880e4f;
-      }
-      .tile.coast {
-        background: #e8eaf6;
-      }
-      .tile.coast h3 {
-        color: #283593;
-      }
-      .tile.economy {
-        background: #e0f2f1;
-      }
-      .tile.economy h3 {
-        color: #00695c;
-      }
-      .tile h3 {
-        margin-bottom: 6px;
-        font-family: Arial, sans-serif;
-      }
-      .tile p {
-        font-family: Arial, sans-serif;
-        font-size: 0.95rem;
-        color: #555;
-      }
-
-      /* ── MAIN ── */
-      main {
-        padding: 80px 48px;
-        max-width: 1280px;
-        margin: 0 auto;
-      }
-      section {
-        margin-bottom: 110px;
-        scroll-margin-top: 120px;
-      }
-
-      /* ── SECTION HEADER with medallion ── */
-      .section-header {
-        display: flex;
-        align-items: center;
-        gap: 22px;
-        margin-bottom: 36px;
-      }
-      .medallion {
-        width: 72px;
-        height: 72px;
-        border-radius: 50%;
-        object-fit: cover;
-        flex-shrink: 0;
-        border: 3px solid white;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
-      }
-      .section-header h2 {
-        font-size: 2rem;
-        font-weight: 700;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        line-height: 1.1;
-        display: inline-block;
+        transition: color 0.3s;
       }
-      .section-header h2::after {
-        content: "";
-        display: block;
-        width: 80px;
-        height: 4px;
-        margin-top: 8px;
-        border-radius: 3px;
-      }
-      .area .section-header h2::after {
-        background: #e65100;
-      }
-      .nature .section-header h2::after {
-        background: #880e4f;
-      }
-      .coastline .section-header h2::after {
-        background: #283593;
-      }
-      .economy .section-header h2::after {
-        background: #00695c;
+      .top-nav a:hover {
+        color: var(--sand);
       }
 
-      /* ── TEXT + IMAGE SPLIT ── */
-      .split {
-        display: flex;
-        gap: 36px;
-        align-items: flex-start;
-        margin-bottom: 32px;
-      }
-      .split.reverse {
-        flex-direction: row-reverse;
-      }
-      .img-wrap {
-        display: flex;
-        flex-direction: column;
-        width: 360px;
-        flex-shrink: 0;
-        gap: 8px;
-      }
-      .split-img {
-        width: 100%;
-        border-radius: 14px;
-        object-fit: cover;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      }
-      .split-img.tall {
-        height: 320px;
-      }
-      .split-img.short {
-        height: 210px;
-      }
-
-      .split-text {
-        flex: 1;
-      }
-      .split-text p {
-        line-height: 1.8;
-        font-size: 1.1rem;
-        color: #333;
-        margin-bottom: 18px;
-      }
-      .split-text p:last-child {
-        margin-bottom: 0;
-      }
-      .img-caption {
-        font-size: 0.75rem;
-        color: #888;
-        font-style: italic;
-        text-align: center;
-        line-height: 1.4;
-      }
-
-      /* ── ACTIVITIES ── */
-      .activities-heading {
-        font-size: 2rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        margin-bottom: 40px;
-        display: inline-block;
-      }
-      .activities-heading::after {
-        content: "";
-        display: block;
-        width: 120px;
-        height: 4px;
-        background: #000;
-        margin-top: 8px;
-        border-radius: 3px;
-      }
-      .adventure-container {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-      }
-      .adventure-card {
-        display: flex;
-        align-items: center;
-        gap: 36px;
-        background: #f9f9f9;
-        padding: 28px;
-        border-radius: 16px;
-      }
-      .adventure-card.reverse {
-        flex-direction: row-reverse;
-      }
-      .adventure-image img {
-        width: 360px;
-        border-radius: 12px;
-        object-fit: cover;
-      }
-      .adventure-text {
-        flex: 1;
-      }
-      .adventure-text h3 {
-        font-size: 1.8rem;
-        margin-bottom: 12px;
-      }
-      .adventure-text p {
-        line-height: 1.8;
-        font-size: 1rem;
-        color: #444;
-      }
-      .adventure-card.swamp {
-        border-left: 6px solid #e65100;
-      }
-      .adventure-card.jazz {
-        border-right: 6px solid #880e4f;
-      }
-      .adventure-card.airboat {
-        border-left: 6px solid #283593;
-      }
-      .adventure-link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        transition: transform 0.3s;
-      }
-      .adventure-link:hover {
-        transform: translateY(-5px);
-      }
-      .adventure-link:hover .adventure-card {
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      /* ── GALLERY ── */
-      #gallery h2 {
-        font-size: 2rem;
-        text-transform: uppercase;
-        margin-bottom: 24px;
-        display: inline-block;
-      }
-      #gallery h2::after {
-        content: "";
-        display: block;
-        width: 120px;
-        height: 4px;
-        background: #000;
-        margin-top: 8px;
-        border-radius: 3px;
-      }
-      .slideshow-container {
-        position: relative;
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-      .mySlides {
-        display: none;
-      }
-      .mySlides img {
-        width: 100%;
-        height: 650px;
-        object-fit: cover;
-        vertical-align: middle;
-      }
-      .prev,
-      .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        padding: 16px;
-        margin-top: -22px;
-        color: white;
-        font-weight: bold;
-        font-size: 20px;
-        transition: 0.6s;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-        background: rgba(0, 0, 0, 0.3);
-      }
-      .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-      .prev:hover,
-      .next:hover {
-        background: rgba(0, 0, 0, 0.8);
-      }
-      .caption {
-        color: #fff;
-        font-size: 1rem;
-        padding: 15px 25px;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      }
-      .fade {
-        animation: fadeAnim 1.5s;
-      }
-      @keyframes fadeAnim {
+      @keyframes fadeUp {
         from {
-          opacity: 0.4;
+          opacity: 0;
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      @media (max-width: 700px) {
-        .split,
-        .split.reverse {
-          flex-direction: column;
+      /* ── CONTENT WRAPPER ── */
+      .page {
+        position: relative;
+        z-index: 5;
+        background: var(--mud);
+      }
+
+      /* ── CHAPTER OPENER ── */
+      .chapter-opener {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        position: relative;
+      }
+      .chapter-opener.flip {
+        direction: rtl;
+      }
+      .chapter-opener.flip > * {
+        direction: ltr;
+      }
+
+      .chapter-image {
+        position: relative;
+        overflow: hidden;
+      }
+      .chapter-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(20%) contrast(1.05);
+        transition: transform 8s ease;
+      }
+      .chapter-image:hover img {
+        transform: scale(1.04);
+      }
+      .chapter-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 60%, var(--mud) 100%);
+      }
+      .chapter-opener.flip .chapter-image::after {
+        background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
+      }
+
+      .chapter-text {
+        padding: 80px 60px 80px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .chapter-num {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 1;
+        color: var(--earth);
+        margin-bottom: -10px;
+      }
+      .chapter-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .chapter-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--fog);
+        margin-bottom: 28px;
+      }
+      .chapter-body p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(232, 220, 200, 0.78);
+        margin-bottom: 16px;
+      }
+      .chapter-divider {
+        width: 60px;
+        height: 2px;
+        background: var(--sand);
+        margin: 28px 0;
+      }
+
+      /* ── STAT TILES ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+      }
+      .stat-tile:last-child {
+        border-right: none;
+      }
+      .stat-tile::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .stat-tile:nth-child(1)::before {
+        background: var(--sand);
+      }
+      .stat-tile:nth-child(2)::before {
+        background: var(--rust);
+      }
+      .stat-tile:nth-child(3)::before {
+        background: var(--water);
+      }
+      .stat-tile:nth-child(4)::before {
+        background: var(--moss);
+      }
+      .stat-tile:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .stat-tile:hover::before {
+        transform: scaleX(1);
+      }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(232, 220, 200, 0.55);
+        margin-top: 4px;
+      }
+
+      /* ── FULL-BLEED IMAGE BREAK ── */
+      .image-break {
+        height: 50vh;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .image-break::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(30, 15, 5, 0.3) 0%,
+          rgba(30, 15, 5, 0.3) 60%,
+          rgba(30, 15, 5, 0.75) 100%
+        );
+      }
+      .image-break-label {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.92);
+        white-space: nowrap;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      }
+
+      /* ── ACTIVITIES ── */
+      .activities-section {
+        padding: 100px 80px;
+      }
+      .section-intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        border-bottom: 1px solid var(--earth);
+        padding-bottom: 40px;
+      }
+      .section-intro h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--fog);
+      }
+      .section-intro h2 em {
+        font-style: italic;
+        color: var(--sand);
+      }
+      .section-intro p {
+        max-width: 280px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: rgba(232, 220, 200, 0.6);
+        text-align: right;
+      }
+
+      .activity-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 400px 400px;
+        gap: 3px;
+      }
+      .activity-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .activity-card:first-child {
+        grid-row: span 2;
+      }
+      .activity-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+        filter: brightness(0.75) sepia(15%);
+      }
+      .activity-card:hover img {
+        transform: scale(1.06);
+        filter: brightness(0.55) sepia(25%);
+      }
+      .activity-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(20, 10, 5, 0.95) 0%,
+          rgba(20, 10, 5, 0.2) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 32px;
+      }
+      .activity-tag {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 8px;
+      }
+      .activity-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .activity-card:first-child .activity-name {
+        font-size: 2.4rem;
+      }
+      .activity-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: rgba(232, 220, 200, 0.75);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .activity-card:hover .activity-desc {
+        max-height: 200px;
+      }
+
+      /* ── GALLERY ── */
+      .gallery-section {
+        padding: 0 80px 100px;
+      }
+      .gallery-heading {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--fog);
+        margin-bottom: 30px;
+        padding-left: 4px;
+      }
+      .gallery-mosaic {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr;
+        grid-template-rows: 320px 280px;
+        gap: 4px;
+      }
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-tile:first-child {
+        grid-row: span 2;
+      }
+      .gallery-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(15%) contrast(1.05) brightness(0.92);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+      }
+      .gallery-tile:hover img {
+        transform: scale(1.05);
+        filter: sepia(5%) contrast(1.05) brightness(1);
+      }
+      .gallery-tile-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 36px 18px 14px;
+        background: linear-gradient(transparent, rgba(20, 10, 5, 0.88));
+        color: rgba(232, 220, 200, 0.85);
+        font-style: italic;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .gallery-tile:hover .gallery-tile-caption {
+        opacity: 1;
+      }
+      .gallery-tile:first-child .gallery-tile-caption {
+        font-size: 0.92rem;
+      }
+
+      /* ── FOOTER AREA ── */
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (max-width: 900px) {
+        .chapter-opener,
+        .chapter-opener.flip {
+          grid-template-columns: 1fr;
+          direction: ltr;
         }
-        .img-wrap {
-          width: 100%;
+        .chapter-image {
+          height: 55vw;
         }
-        .adventure-card,
-        .adventure-card.reverse {
-          flex-direction: column;
+        .chapter-image::after,
+        .chapter-opener.flip .chapter-image::after {
+          display: none;
         }
-        .adventure-image img {
-          width: 100%;
+        .chapter-text {
+          padding: 48px 28px;
         }
-        .section-header {
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-tile {
+          border-bottom: 1px solid var(--earth);
+        }
+        .activity-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .activity-card:first-child {
+          grid-row: span 1;
+          height: 380px;
+        }
+        .activity-card {
+          height: 260px;
+        }
+        .activities-section,
+        .gallery-section {
+          padding: 60px 24px;
+        }
+        .section-intro {
           flex-direction: column;
           align-items: flex-start;
+          gap: 16px;
         }
-        .hero h1 {
-          font-size: 2.4rem;
+        .section-intro p {
+          text-align: left;
+        }
+        .gallery-mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery-tile:first-child {
+          grid-row: span 1;
+          height: 56vw;
+        }
+        .gallery-tile {
+          height: 44vw;
         }
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back to Overview</a>
+        <a href="../index.html#deltas">← Overview</a>
         <a href="Compare.html">Compare</a>
         <a href="Contact.html">Contact</a>
       </nav>
-      <h1>Mississippi Delta</h1>
-      <span class="photo-credit">© NASA / USGS</span>
+      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <h1>Mississippi<em>Delta</em></h1>
+      <span class="hero-credit">© NASA / USGS</span>
     </header>
 
-    <section class="info-tiles">
-      <a href="#area" class="tile area">
-        <h3>Best visited</h3>
-        <p>March through May</p>
-      </a>
-      <a href="#nature" class="tile population">
-        <h3>400+ species</h3>
-        <p>Wildlife to discover</p>
-      </a>
-      <a href="#coastline" class="tile coast">
-        <h3>3.730 km</h3>
-        <p>Of river to explore</p>
-      </a>
-      <a href="#economy" class="tile economy">
-        <h3>World-class food</h3>
-        <p>Creole & Cajun cuisine</p>
-      </a>
-    </section>
+    <div class="page">
+      <!-- STAT TILES -->
+      <div class="stat-strip">
+        <a href="#when-to-visit" class="stat-tile">
+          <div class="stat-value">Mar–May</div>
+          <div class="stat-label">Best Season</div>
+          <div class="stat-desc">Warm weather & wildflowers</div>
+        </a>
+        <a href="#wildlife" class="stat-tile">
+          <div class="stat-value">400+</div>
+          <div class="stat-label">Species</div>
+          <div class="stat-desc">Wildlife to discover</div>
+        </a>
+        <a href="#river" class="stat-tile">
+          <div class="stat-value">3,730 km</div>
+          <div class="stat-label">River Length</div>
+          <div class="stat-desc">To explore by boat</div>
+        </a>
+        <a href="#food" class="stat-tile">
+          <div class="stat-value">World-class</div>
+          <div class="stat-label">Cuisine</div>
+          <div class="stat-desc">Creole & Cajun cooking</div>
+        </a>
+      </div>
 
-    <main>
-      <!-- ══ WHEN TO VISIT ══ -->
-      <section id="area" class="area">
-        <div class="section-header">
-          <!-- 💡 Medallion: vervang src door bijv. ../imgs/spring.jpg -->
-          <img
-            class="medallion"
-            src="../imgs/spring.jpg"
-            alt="Lente Mississippi"
-          />
-          <h2>When to Visit</h2>
+      <!-- CHAPTER 1: WHEN TO VISIT -->
+      <div
+        id="when-to-visit"
+        class="chapter-opener"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <img src="../imgs/flowers.jpeg" alt="Spring flowers" />
         </div>
-
-        <div class="split">
-          <div class="split-text">
+        <div class="chapter-text">
+          <div class="chapter-num">01</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">When to Visit</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
             <p>
               Spring, from March through May, is the best time to visit the
               Mississippi Delta. The weather is warm and pleasant, wildflowers
@@ -454,22 +630,6 @@
               through New Orleans' historic neighborhoods, and enjoy open-air
               festivals without the intense summer heat.
             </p>
-          </div>
-          <div class="img-wrap">
-            <!-- 💡 Vervang door ../imgs/jouw-foto.jpg -->
-            <img
-              class="split-img short"
-              src="../imgs/flowers.jpeg"
-              alt="Flowers Mississippi Delta"
-            />
-            <span class="img-caption"
-              >Wildflowers blooming along the bayou in early spring.</span
-            >
-          </div>
-        </div>
-
-        <div class="split reverse">
-          <div class="split-text">
             <p>
               Autumn is a great second option, with cooler temperatures and
               fewer crowds. If you love jazz and local culture, plan your trip
@@ -478,44 +638,34 @@
               world.
             </p>
           </div>
-          <div class="img-wrap">
-            <img
-              class="split-img short"
-              src="../imgs/jazz-festival.jpg"
-              alt="Jazz festival New Orleans"
-            />
-            <span class="img-caption"
-              >The New Orleans Jazz & Heritage Festival draws visitors from
-              around the world.</span
-            >
-          </div>
         </div>
-      </section>
+      </div>
 
-      <!-- ══ WILDLIFE ══ -->
-      <section id="nature" class="nature">
-        <div class="section-header">
-          <img
-            class="medallion"
-            src="../imgs/wildlife-swamp.jpg"
-            alt="Vogels Mississippi"
-          />
-          <h2>Wildlife You Will Not Forget</h2>
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url(&quot;../imgs/jazz-festival.jpg&quot;)"
+      >
+        <span class="image-break-label"
+          >New Orleans Jazz & Heritage Festival</span
+        >
+      </div>
+
+      <!-- CHAPTER 2: WILDLIFE -->
+      <div
+        id="wildlife"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <img src="../imgs/alligator.jpg" alt="Alligator" />
         </div>
-
-        <div class="split">
-          <div class="img-wrap">
-            <img
-              class="split-img tall"
-              src="../imgs/alligator.jpg"
-              alt="Alligator"
-            />
-            <span class="img-caption"
-              >American alligators are a common sight in the cypress
-              swamps.</span
-            >
-          </div>
-          <div class="split-text">
+        <div class="chapter-text">
+          <div class="chapter-num">02</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Wildlife You Will Not Forget</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
             <p>
               The Mississippi Delta is one of the most spectacular places in
               North America to experience wildlife up close. Over 400 species
@@ -524,58 +674,37 @@
               marshes. Whether you are a keen birdwatcher or simply someone who
               loves nature, the delta will leave you speechless.
             </p>
-          </div>
-        </div>
-
-        <div class="split reverse">
-          <div class="img-wrap">
-            <img
-              class="split-img tall"
-              src="../imgs/migratie-vogels.webp"
-              alt="Birds Mississippi Flyway"
-            />
-            <span class="img-caption"
-              >Millions of migratory birds pass through the Mississippi Flyway
-              each season.</span
-            >
-          </div>
-          <div class="split-text">
             <p>
               The delta sits along the Mississippi Flyway, one of the great bird
               migration routes of the continent. Every spring and autumn,
               millions of birds pass through, making it a dream destination for
-              wildlife photographers and nature lovers alike. Guided swamp tours
-              are the easiest way to get into the heart of this extraordinary
-              ecosystem, and experienced local guides will help you spot species
-              you never expected to see.
+              wildlife photographers and nature lovers alike.
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- ══ RIVER ══ -->
-      <section id="coastline" class="coastline">
-        <div class="section-header">
-          <img
-            class="medallion"
-            src="../imgs/mississippi-river.jpg"
-            alt="Mississippi rivier"
-          />
-          <h2>A River Worth Exploring</h2>
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url(&quot;../imgs/migratie-vogels.webp&quot;)"
+      >
+        <span class="image-break-label"
+          >Mississippi Flyway, millions of birds migrate each season</span
+        >
+      </div>
+
+      <!-- CHAPTER 3: RIVER -->
+      <div id="river" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/sunset.jpg" alt="River sunset" />
         </div>
-
-        <div class="split">
-          <div class="img-wrap">
-            <img
-              class="split-img tall"
-              src="../imgs/sunset.jpg"
-              alt="Sunset over the Mississippi Delta"
-            />
-            <span class="img-caption"
-              >Sunset over the vast waterways of the Mississippi Delta.</span
-            >
-          </div>
-          <div class="split-text">
+        <div class="chapter-text">
+          <div class="chapter-num">03</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">A River Worth Exploring</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
             <p>
               The Mississippi River stretches 3,730 kilometers from the forests
               of Minnesota all the way to the Gulf of Mexico, and its final
@@ -584,209 +713,184 @@
               that open up into a vast coastal landscape of marshes, barrier
               islands, and open water.
             </p>
-          </div>
-        </div>
-
-        <div class="split reverse">
-          <div class="img-wrap">
-            <img
-              class="split-img short"
-              src="../imgs/cypress-tree.webp"
-              alt="Spanish moss tree"
-            />
-            <span class="img-caption"
-              >Ancient cypress trees draped in Spanish moss line the
-              riverbanks.</span
-            >
-          </div>
-          <div class="split-text">
             <p>
               Renting a boat or joining a river cruise is one of the most
               memorable ways to take in the delta. You can glide past ancient
               cypress trees draped in Spanish moss, spot herons fishing along
               the banks, and watch the sun set over a horizon with no buildings
-              in sight. For those who prefer dry land, the Great River Road is a
-              scenic driving route that follows the Mississippi through charming
-              riverside towns, historic plantations, and sweeping viewpoints
-              over the river.
+              in sight.
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- ══ EAT & DRINK ══ -->
-      <section id="economy" class="economy">
-        <div class="section-header">
-          <img
-            class="medallion"
-            src="../imgs/food-festival.jpg"
-            alt="Cajun eten"
-          />
-          <h2>Eat, Drink &amp; Discover</h2>
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url(&quot;../imgs/cypress-tree.webp&quot;)"
+      >
+        <span class="image-break-label"
+          >Ancient cypress trees, some over 500 years old</span
+        >
+      </div>
+
+      <!-- CHAPTER 4: FOOD -->
+      <div
+        id="food"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <img src="../imgs/crab.webp" alt="Creole food" />
         </div>
-
-        <div class="split">
-          <div class="img-wrap">
-            <img
-              class="split-img short"
-              src="../imgs/crab.webp"
-              alt="Creole kitchen"
-            />
-            <span class="img-caption"
-              >Fresh crawfish and oysters are staples of Creole cooking.</span
-            >
-          </div>
-          <div class="split-text">
+        <div class="chapter-text">
+          <div class="chapter-num">04</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Eat, Drink & Discover</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
             <p>
               No visit to the Mississippi Delta is complete without sitting down
               to a proper Creole or Cajun meal. The delta's waters produce some
               of the finest seafood in the world, and locals have been turning
               shrimp, crawfish, oysters, and blue crab into extraordinary dishes
-              for generations. From bustling New Orleans restaurants to roadside
-              shacks in the bayou, the food here is an experience in itself.
+              for generations.
             </p>
-          </div>
-        </div>
-
-        <div class="split reverse">
-          <div class="img-wrap">
-            <img
-              class="split-img short"
-              src="../imgs/french-quarter.jpg"
-              alt="French Quarter New Orleans"
-            />
-            <span class="img-caption"
-              >The vibrant streets of the French Quarter, alive day and
-              night.</span
-            >
-          </div>
-          <div class="split-text">
             <p>
               Beyond the plate, the delta is a place of deep cultural richness.
               New Orleans is famous the world over for its music, its festivals,
               and its unique blend of French, African, and Caribbean influences.
               Wander through the French Quarter, catch a live jazz performance
               on Frenchmen Street, or explore the colorful markets and antique
-              shops that line the old city streets. There is always something
-              happening, and the locals are always happy to show you a good
-              time.
+              shops.
             </p>
           </div>
         </div>
-      </section>
+      </div>
 
-      <!-- ══ ACTIVITIES ══ -->
-      <section class="activities">
-        <h2 class="activities-heading">Activities &amp; Adventures</h2>
-        <div class="adventure-container">
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card swamp">
-              <div class="adventure-image">
-                <img src="../imgs/swamp-tour.jpg" alt="Swamp tour" />
-              </div>
-              <div class="adventure-text">
-                <h3>Swamp Tours</h3>
-                <p>
-                  Glide through ancient cypress swamps and encounter alligators,
-                  turtles, and exotic birds up close. Guided swamp tours offer
-                  an unforgettable look into the mysterious heart of the
-                  Louisiana bayou.
-                </p>
-              </div>
-            </div>
-          </a>
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card reverse jazz">
-              <div class="adventure-image">
-                <img src="../imgs/jazz-culture.webp" alt="Jazz culture" />
-              </div>
-              <div class="adventure-text">
-                <h3>Jazz &amp; Cultural Heritage</h3>
-                <p>
-                  The Mississippi Delta is the birthplace of jazz, blues, and
-                  Creole culture. Explore vibrant music festivals, historic
-                  plantations, and the rich culinary traditions of New Orleans
-                  and surrounding communities.
-                </p>
+      <!-- ACTIVITIES -->
+      <div class="activities-section">
+        <div class="section-intro">
+          <h2>Activities &<br /><em>Adventures</em></h2>
+          <p>
+            Discover the many ways to experience the Mississippi Delta, from
+            silent bayou cruises to the vibrant streets of New Orleans.
+          </p>
+        </div>
+        <div class="activity-grid">
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/swamp-tour.jpg" alt="Swamp Tours" />
+            <div class="activity-overlay">
+              <div class="activity-tag">Experience</div>
+              <div class="activity-name">Swamp Tours</div>
+              <div class="activity-desc">
+                Glide through ancient cypress swamps and encounter alligators,
+                turtles, and exotic birds up close. Guided swamp tours offer an
+                unforgettable look into the mysterious heart of the Louisiana
+                bayou.
               </div>
             </div>
           </a>
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card airboat">
-              <div class="adventure-image">
-                <img src="../imgs/airboat.webp" alt="Airboat rides" />
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/jazz-culture.webp" alt="Jazz Culture" />
+            <div class="activity-overlay">
+              <div class="activity-tag">Culture</div>
+              <div class="activity-name">Jazz & Cultural Heritage</div>
+              <div class="activity-desc">
+                The birthplace of jazz, blues, and Creole culture. Explore
+                vibrant music festivals and the rich culinary traditions of New
+                Orleans.
               </div>
-              <div class="adventure-text">
-                <h3>Airboat Rides</h3>
-                <p>
-                  Race across shallow marshes and open waterways on a thrilling
-                  airboat adventure. These iconic flat-bottomed vessels are the
-                  best way to reach the remote, untouched corners of the delta
-                  ecosystem.
-                </p>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/airboat.webp" alt="Airboat" />
+            <div class="activity-overlay">
+              <div class="activity-tag">Thrill</div>
+              <div class="activity-name">Airboat Rides</div>
+              <div class="activity-desc">
+                Race across shallow marshes on a thrilling airboat adventure,
+                reaching the remote, untouched corners of the delta ecosystem.
+              </div>
+            </div>
+          </a>
+          <a
+            href="UNDER-CONSTRUCTION.html"
+            class="activity-card"
+            style="height: auto"
+          >
+            <img
+              src="../imgs/french-quarter.jpg"
+              alt="French Quarter"
+              style="height: 100%; min-height: 200px"
+            />
+            <div class="activity-overlay">
+              <div class="activity-tag">City</div>
+              <div class="activity-name">French Quarter</div>
+              <div class="activity-desc">
+                Every street corner tells a story in this vibrant,
+                history-soaked neighborhood.
               </div>
             </div>
           </a>
         </div>
-      </section>
+      </div>
 
-      <!-- ══ GALLERY ══ -->
-      <section id="gallery">
-        <h2>Delta Gallery</h2>
-        <div class="slideshow-container">
-          <div class="mySlides fade">
-            <img src="../imgs/mississippi-gulfofmexico.jfif" />
-            <div class="caption">
+      <!-- GALLERY -->
+      <div class="gallery-section" id="gallery">
+        <h2 class="gallery-heading">Delta Gallery</h2>
+        <div class="gallery-mosaic">
+          <div class="gallery-tile">
+            <img
+              src="../imgs/mississippi-gulfofmexico.jfif"
+              alt="Mississippi meets Gulf of Mexico"
+            />
+            <div class="gallery-tile-caption">
               Aerial view of the Mississippi River branching into the Gulf of
               Mexico.
             </div>
           </div>
-          <div class="mySlides fade">
-            <img src="../imgs/mosstree.jpg" />
-            <div class="caption">
+          <div class="gallery-tile">
+            <img src="../imgs/mosstree.jpg" alt="Cypress trees" />
+            <div class="gallery-tile-caption">
               Ancient cypress trees draped in Spanish moss in the Louisiana
               bayou.
             </div>
           </div>
-          <div class="mySlides fade">
-            <img src="../imgs/pelikanen.jpg" />
-            <div class="caption">
+          <div class="gallery-tile">
+            <img src="../imgs/pelikanen.jpg" alt="Pelicans" />
+            <div class="gallery-tile-caption">
               Brown pelicans and egrets nesting along the Louisiana coastline.
             </div>
           </div>
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <div class="gallery-tile">
+            <img src="../imgs/sunset.jpg" alt="Delta sunset" />
+            <div class="gallery-tile-caption">
+              Golden light over the winding waterways at dusk.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <img src="../imgs/alligator.jpg" alt="Alligator" />
+            <div class="gallery-tile-caption">
+              American alligators at rest in the cypress swamps.
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
+    <!-- .page -->
+
+    <div id="footer-placeholder"></div>
 
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
         hero.classList.toggle("hidden", window.scrollY > 150);
       });
-      let slideIndex = 1;
-      showSlides(slideIndex);
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
-      function showSlides(n) {
-        let slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) slideIndex = 1;
-        if (n < 1) slideIndex = slides.length;
-        for (let s of slides) s.style.display = "none";
-        slides[slideIndex - 1].style.display = "block";
-      }
-    </script>
-    
-    <!-- FOOTER PLACEHOLDER -->
-    <div id="footer-placeholder"></div>
-
-    <script>
       fetch("Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
   </body>

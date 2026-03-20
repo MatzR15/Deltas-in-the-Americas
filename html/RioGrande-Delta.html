@@ -1,0 +1,1096 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rio Grande Delta - Deltas in the Americas</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: white;
+        color: #111;
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: sticky;
+        top: 0;
+        height: 60vh;
+        background:
+          linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+          url("../imgs/RioGrande_delta.webp") center/cover no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.6s ease;
+        z-index: 10;
+      }
+      .hero.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+      .hero h1 {
+        color: white;
+        font-size: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+      .top-nav {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+      }
+      .top-nav a {
+        color: white;
+        text-decoration: none;
+        margin-left: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        font-family: Arial, sans-serif;
+      }
+      .photo-credit {
+        position: absolute;
+        bottom: 8px;
+        right: 10px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.7);
+        font-style: italic;
+      }
+
+      /* ── INFO TILES ── */
+      .info-tiles {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        padding: 40px 48px;
+        background: #f7f7f7;
+      }
+      .tile {
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+      }
+      .tile:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      }
+      .tile.area {
+        background: #fdf3e3;
+      }
+      .tile.area h3 {
+        color: #7d3c00;
+      }
+      .tile.population {
+        background: #e8f8f5;
+      }
+      .tile.population h3 {
+        color: #0e6655;
+      }
+      .tile.coast {
+        background: #fef9e7;
+      }
+      .tile.coast h3 {
+        color: #9a7d0a;
+      }
+      .tile.economy {
+        background: #f4ecf7;
+      }
+      .tile.economy h3 {
+        color: #6c3483;
+      }
+      .tile h3 {
+        margin-bottom: 6px;
+        font-family: Arial, sans-serif;
+      }
+      .tile p {
+        font-family: Arial, sans-serif;
+        font-size: 0.95rem;
+        color: #555;
+      }
+
+      /* ── MAIN ── */
+      main {
+        padding: 80px 48px;
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+      section {
+        margin-bottom: 110px;
+        scroll-margin-top: 120px;
+      }
+
+      /* ── SECTION HEADER with medallion ── */
+      .section-header {
+        display: flex;
+        align-items: center;
+        gap: 22px;
+        margin-bottom: 36px;
+      }
+      .medallion {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+        flex-shrink: 0;
+        border: 3px solid white;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        display: block;
+      }
+      .section-header h2 {
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        line-height: 1.1;
+        display: inline-block;
+      }
+      .section-header h2::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 4px;
+        margin-top: 8px;
+        border-radius: 3px;
+      }
+      .area .section-header h2::after {
+        background: #7d3c00;
+      }
+      .nature .section-header h2::after {
+        background: #0e6655;
+      }
+      .coastline .section-header h2::after {
+        background: #9a7d0a;
+      }
+      .economy .section-header h2::after {
+        background: #6c3483;
+      }
+
+      /* ── TEXT + IMAGE SPLIT ── */
+      .split {
+        display: flex;
+        gap: 36px;
+        align-items: flex-start;
+        margin-bottom: 32px;
+      }
+      .split.reverse {
+        flex-direction: row-reverse;
+      }
+      .img-wrap {
+        display: flex;
+        flex-direction: column;
+        width: 360px;
+        flex-shrink: 0;
+        gap: 8px;
+      }
+      .split-img {
+        width: 100%;
+        border-radius: 14px;
+        object-fit: cover;
+        object-position: center;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        display: block;
+      }
+      .split-img.tall {
+        height: 320px;
+      }
+      .split-img.short {
+        height: 210px;
+      }
+
+      /* ── PLACEHOLDER IMAGE ── */
+      .placeholder-img {
+        width: 100%;
+        border-radius: 14px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        background: #fde8c8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: #7d3c00;
+        font-size: 0.85rem;
+        font-style: italic;
+        text-align: center;
+        padding: 16px;
+      }
+      .placeholder-img.tall {
+        height: 320px;
+      }
+      .placeholder-img.short {
+        height: 210px;
+      }
+      .placeholder-img svg {
+        width: 40px;
+        height: 40px;
+        opacity: 0.5;
+      }
+      .placeholder-img span {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 0.8rem;
+        color: #7d3c00;
+      }
+
+      .split-text {
+        flex: 1;
+      }
+      .split-text p {
+        line-height: 1.8;
+        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 18px;
+      }
+      .split-text p:last-child {
+        margin-bottom: 0;
+      }
+      .img-caption {
+        font-size: 0.75rem;
+        color: #888;
+        font-style: italic;
+        text-align: center;
+        line-height: 1.4;
+      }
+
+      /* ── ACTIVITIES ── */
+      .activities-heading {
+        font-size: 2rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 40px;
+        display: inline-block;
+      }
+      .activities-heading::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #000;
+        margin-top: 8px;
+        border-radius: 3px;
+      }
+      .adventure-container {
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+      }
+      .adventure-card {
+        display: flex;
+        align-items: center;
+        gap: 36px;
+        background: #f9f9f9;
+        padding: 28px;
+        border-radius: 16px;
+      }
+      .adventure-card.reverse {
+        flex-direction: row-reverse;
+      }
+      .adventure-image {
+        width: 360px;
+        flex-shrink: 0;
+      }
+      .adventure-image img {
+        width: 360px;
+        height: 220px;
+        border-radius: 12px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+      .placeholder-activity {
+        width: 360px;
+        height: 220px;
+        background: #fde8c8;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        color: #7d3c00;
+        font-size: 0.85rem;
+        font-style: italic;
+        text-align: center;
+        padding: 16px;
+      }
+      .placeholder-activity svg {
+        width: 40px;
+        height: 40px;
+        opacity: 0.5;
+      }
+      .placeholder-activity span {
+        font-weight: bold;
+        font-style: normal;
+        font-size: 0.8rem;
+        color: #7d3c00;
+      }
+      .adventure-text {
+        flex: 1;
+      }
+      .adventure-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 12px;
+      }
+      .adventure-text p {
+        line-height: 1.8;
+        font-size: 1rem;
+        color: #444;
+      }
+      .adventure-card.fishing {
+        border-left: 6px solid #7d3c00;
+      }
+      .adventure-card.birding {
+        border-right: 6px solid #0e6655;
+      }
+      .adventure-card.border {
+        border-left: 6px solid #9a7d0a;
+      }
+      .adventure-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        transition: transform 0.3s;
+      }
+      .adventure-link:hover {
+        transform: translateY(-5px);
+      }
+      .adventure-link:hover .adventure-card {
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* ── GALLERY ── */
+      #gallery h2 {
+        font-size: 2rem;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+        display: inline-block;
+      }
+      #gallery h2::after {
+        content: "";
+        display: block;
+        width: 120px;
+        height: 4px;
+        background: #000;
+        margin-top: 8px;
+        border-radius: 3px;
+      }
+      .slideshow-container {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+      .mySlides {
+        display: none;
+      }
+      /* ── FIX: geen vertical-align op block-elementen ── */
+      .mySlides img {
+        width: 100%;
+        height: 650px;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+      }
+      .mySlides .placeholder-slide {
+        width: 100%;
+        height: 650px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        background: #fde8c8;
+        color: #7d3c00;
+      }
+      .placeholder-slide svg {
+        width: 60px;
+        height: 60px;
+        opacity: 0.5;
+      }
+      .placeholder-slide span {
+        font-size: 1rem;
+        font-style: italic;
+        color: #7d3c00;
+      }
+      .placeholder-slide strong {
+        font-size: 1.1rem;
+        color: #5a2900;
+      }
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+      .prev:hover,
+      .next:hover {
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .caption {
+        color: #fff;
+        font-size: 1rem;
+        padding: 15px 25px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+      }
+      .fade {
+        animation: fadeAnim 1.5s;
+      }
+      @keyframes fadeAnim {
+        from {
+          opacity: 0.4;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* ── MEDALLION PLACEHOLDER ── */
+      .medallion-placeholder {
+        width: 72px;
+        height: 72px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        border: 3px solid white;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+        background: #fde8c8;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.55rem;
+        color: #7d3c00;
+        text-align: center;
+        padding: 6px;
+        font-style: italic;
+      }
+
+      @media (max-width: 700px) {
+        .split,
+        .split.reverse {
+          flex-direction: column;
+        }
+        .img-wrap {
+          width: 100%;
+        }
+        .adventure-card,
+        .adventure-card.reverse {
+          flex-direction: column;
+        }
+        .adventure-image img,
+        .adventure-image .placeholder-activity {
+          width: 100%;
+        }
+        .section-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .hero h1 {
+          font-size: 2.4rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="hero" id="hero">
+      <nav class="top-nav">
+        <a href="../index.html">← Back to Overview</a>
+        <a href="Compare.html">Compare</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+      <h1>Rio Grande Delta</h1>
+      <span class="photo-credit">© NASA / USGS</span>
+    </header>
+
+    <section class="info-tiles">
+      <a href="#area" class="tile area">
+        <h3>500+ bird species</h3>
+        <p>On the Great Texas Coastal Flyway</p>
+      </a>
+      <a href="#nature" class="tile population">
+        <h3>Resaca wetlands</h3>
+        <p>Ancient oxbow lakes of the delta</p>
+      </a>
+      <a href="#coastline" class="tile coast">
+        <h3>Two countries, one delta</h3>
+        <p>Where the US meets Mexico</p>
+      </a>
+      <a href="#economy" class="tile economy">
+        <h3>Tex-Mex cuisine</h3>
+        <p>A fusion born on the border</p>
+      </a>
+    </section>
+
+    <main>
+      <!-- ══ BIRDWATCHING ══ -->
+      <section id="area" class="area">
+        <div class="section-header">
+          <!-- PLACEHOLDER: Replace with ../imgs/riogrande-birds.jpg — colourful birds in the Lower Rio Grande Valley, e.g. green jay or altamira oriole -->
+          <div class="medallion-placeholder">rio grande birds</div>
+          <h2>500 Species on the Flyway</h2>
+        </div>
+
+        <div class="split">
+          <div class="split-text">
+            <p>
+              The Rio Grande Delta, known locally as the Lower Rio Grande
+              Valley, sits at the convergence of four major ecological zones,
+              making it one of the most important birdwatching destinations in
+              all of North America. Over 500 bird species have been recorded
+              here, drawn by the delta's unique mix of subtropical scrub,
+              coastal wetlands, and riparian forest. The colourful green jay,
+              the brilliant altamira oriole, and the elusive ferruginous pygmy
+              owl are just a few of the species that draw birders from around
+              the world.
+            </p>
+          </div>
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/green-jay.jpg — close-up photo of a green jay perched in subtropical scrub in the Rio Grande Valley -->
+            <div class="placeholder-img short">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>green-jay.jpg</span>
+              Green jay perched in subtropical scrub, Rio Grande Valley
+            </div>
+            <span class="img-caption"
+              >The vivid green jay is one of the Valley's most celebrated and
+              sought-after birds.</span
+            >
+          </div>
+        </div>
+
+        <div class="split reverse">
+          <div class="split-text">
+            <p>
+              Every spring and autumn, millions of migratory birds funnel
+              through the delta along the Great Texas Coastal Flyway, one of the
+              most significant bird migration corridors in the Western
+              Hemisphere. The Santa Ana National Wildlife Refuge and the
+              Bentsen–Rio Grande Valley State Park are the premier spots to
+              witness this annual spectacle, offering guided tours and tram
+              rides through habitats that simply do not exist anywhere else in
+              the United States.
+            </p>
+          </div>
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-flyway.jpg — flock of migrating birds over the Rio Grande delta, wide shot at dawn or dusk -->
+            <div class="placeholder-img short">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>riogrande-flyway.jpg</span>
+              Migrating birds funnelling over the Rio Grande delta at dusk
+            </div>
+            <span class="img-caption"
+              >Millions of birds pass through the delta each season along the
+              Great Texas Coastal Flyway.</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ RESACA WETLANDS ══ -->
+      <section id="nature" class="nature">
+        <div class="section-header">
+          <!-- PLACEHOLDER: Replace with ../imgs/resaca-wetland.jpg — still resaca oxbow lake reflecting sky and subtropical vegetation, Rio Grande Valley -->
+          <div class="medallion-placeholder">resaca wetland</div>
+          <h2>The Resacas: A Hidden Water World</h2>
+        </div>
+
+        <div class="split">
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/resaca-reflection.jpg — mirror-still resaca lake with herons or egrets, surrounded by palms and brush -->
+            <div class="placeholder-img tall">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>resaca-reflection.jpg</span>
+              Mirror-still resaca lake with herons and palms
+            </div>
+            <span class="img-caption"
+              >Resacas are ancient oxbow lakes left behind as the Rio Grande
+              shifted course over the centuries.</span
+            >
+          </div>
+          <div class="split-text">
+            <p>
+              The Rio Grande Delta is defined by its extraordinary network of
+              resacas, ancient oxbow lakes formed as the river slowly shifted
+              its course over thousands of years. These crescent-shaped wetlands
+              are now critical wildlife refuges, sheltering alligators, river
+              turtles, roseate spoonbills, and dozens of species of wading birds
+              within the heart of one of the most densely populated border
+              regions in the United States.
+            </p>
+          </div>
+        </div>
+
+        <div class="split reverse">
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-ocelot.jpg — ocelot in the brush of the Lower Rio Grande Valley, or camera trap image -->
+            <div class="placeholder-img tall">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>riogrande-ocelot.jpg</span>
+              Ocelot in the Rio Grande Valley brush scrub
+            </div>
+            <span class="img-caption"
+              >The endangered ocelot clings to survival in the last remaining
+              patches of thornscrub in the Rio Grande Valley.</span
+            >
+          </div>
+          <div class="split-text">
+            <p>
+              The delta's thornscrub and riparian forest are among the last
+              refuges for the endangered ocelot in the United States, fewer than
+              60 individuals are estimated to remain in the wild here.
+              Conservation efforts led by wildlife organisations and the US Fish
+              and Wildlife Service have created wildlife corridors linking
+              fragmented habitat patches, giving this secretive spotted cat a
+              fighting chance of survival in the only place it still roams north
+              of the Mexican border.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ TWO COUNTRIES ══ -->
+      <section id="coastline" class="coastline">
+        <div class="section-header">
+          <!-- PLACEHOLDER: Replace with ../imgs/riogrande-river-border.jpg — the Rio Grande river seen from the Texas bank, looking across to Mexico, wide and shallow -->
+          <div class="medallion-placeholder">rio grande border river</div>
+          <h2>Two Countries, One Living River</h2>
+        </div>
+
+        <div class="split">
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-mouth.jpg — aerial or coastal photo of the Rio Grande river mouth at Boca Chica, meeting the Gulf of Mexico -->
+            <div class="placeholder-img tall">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>riogrande-mouth.jpg</span>
+              Aerial view of the Rio Grande mouth at Boca Chica meeting the Gulf
+            </div>
+            <span class="img-caption"
+              >The Rio Grande finally reaches the Gulf of Mexico at Boca Chica,
+              after 3,000 kilometres from Colorado.</span
+            >
+          </div>
+          <div class="split-text">
+            <p>
+              The Rio Grande stretches over 3,000 kilometres from the Rocky
+              Mountains of Colorado all the way to the Gulf of Mexico, forming
+              the entire border between Texas and Mexico along its lower course.
+              At its mouth near Boca Chica, the river arrives exhausted —
+              heavily drained by agriculture and cities upstream — as a shallow
+              ribbon of water that barely makes it to the sea. Yet the delta it
+              has built over millennia remains a landscape of quiet, enduring
+              beauty.
+            </p>
+          </div>
+        </div>
+
+        <div class="split reverse">
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/boca-chica-beach.jpg — Boca Chica beach where the Rio Grande meets the Gulf of Mexico, wide open sky -->
+            <div class="placeholder-img short">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>boca-chica-beach.jpg</span>
+              Boca Chica beach where the Rio Grande meets the Gulf of Mexico
+            </div>
+            <span class="img-caption"
+              >Boca Chica is one of the most remote and unspoilt stretches of
+              the Texas Gulf Coast.</span
+            >
+          </div>
+          <div class="split-text">
+            <p>
+              Boca Chica Beach at the river's mouth is one of the most remote
+              corners of the Texas coast — a wide, wind-swept shoreline where
+              the brown water of the Rio Grande dissolves into the green Gulf of
+              Mexico. The surrounding Boca Chica State Park protects coastal
+              dunes, tidal flats, and rare nesting sites for the endangered
+              Kemp's ridley sea turtle, one of the world's rarest sea turtles,
+              which still returns each season to lay its eggs on these quiet
+              shores.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ TEX-MEX CULTURE ══ -->
+      <section id="economy" class="economy">
+        <div class="section-header">
+          <!-- PLACEHOLDER: Replace with ../imgs/texmex-food.jpg — colourful Tex-Mex dishes on a table: tacos, tamales, and local market produce -->
+          <div class="medallion-placeholder">tex-mex food</div>
+          <h2>Tex-Mex: A Culture Born on the Border</h2>
+        </div>
+
+        <div class="split">
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-market.jpg — vibrant market scene in McAllen or Matamoros, colourful produce, spices, and street food -->
+            <div class="placeholder-img short">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>riogrande-market.jpg</span>
+              Colourful market in McAllen or Matamoros with local produce
+            </div>
+            <span class="img-caption"
+              >The border markets of the Rio Grande Valley overflow with
+              chillies, citrus, and centuries of culinary tradition.</span
+            >
+          </div>
+          <div class="split-text">
+            <p>
+              The Rio Grande Delta is the birthplace of Tex-Mex cuisine, a
+              cooking tradition that grew from the blending of Mexican and Texan
+              cultures along this shared border over hundreds of years. The
+              Valley's famous Ruby Red grapefruit, grown in the subtropical
+              delta soil, is one of the most prized citrus fruits in the world.
+              Alongside it, chilli peppers, maize, and fresh Gulf seafood form
+              the backbone of a local food culture that is entirely its own.
+            </p>
+          </div>
+        </div>
+
+        <div class="split reverse">
+          <div class="img-wrap">
+            <!-- PLACEHOLDER: Replace with ../imgs/matamoros-street.jpg — colourful street scene in Matamoros or Brownsville, Tex-Mex architecture and culture -->
+            <div class="placeholder-img short">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span>matamoros-street.jpg</span>
+              Colourful street scene in Matamoros or Brownsville
+            </div>
+            <span class="img-caption"
+              >The twin cities of Brownsville and Matamoros straddle the river,
+              sharing history, family ties, and culture.</span
+            >
+          </div>
+          <div class="split-text">
+            <p>
+              The twin cities of Brownsville, Texas and Matamoros, Mexico face
+              each other across the river, connected by bridges and centuries of
+              shared history. Exploring both sides gives visitors a genuine
+              taste of border life, the music, the markets, the architecture,
+              and the warmth of a community that has always lived between two
+              worlds. The region's Tejano and norteño music traditions fill the
+              air at festivals and restaurants, and the Historic Brownsville
+              Museum tells the full story of this remarkable cultural
+              crossroads.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ ACTIVITIES ══ -->
+      <section class="activities">
+        <h2 class="activities-heading">Activities &amp; Adventures</h2>
+        <div class="adventure-container">
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card fishing">
+              <div class="adventure-image">
+                <!-- PLACEHOLDER: Replace with ../imgs/riogrande-fishing.jpg — fishing on the Rio Grande or in a resaca, flat-bottomed boat, golden morning light -->
+                <div class="placeholder-activity">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <span>riogrande-fishing.jpg</span>
+                  Fishing on the Rio Grande or in a resaca at golden hour
+                </div>
+              </div>
+              <div class="adventure-text">
+                <h3>Resaca &amp; River Fishing</h3>
+                <p>
+                  Cast a line in the delta's ancient resaca lakes or along the
+                  Rio Grande itself, where redfish, black drum, and catfish
+                  thrive in the warm, brackish waters. Guided fishing trips
+                  offer access to the most productive spots in this productive
+                  and remarkably undervisited corner of Texas.
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card reverse birding">
+              <div class="adventure-image">
+                <!-- PLACEHOLDER: Replace with ../imgs/santa-ana-refuge.jpg — birdwatcher at Santa Ana National Wildlife Refuge, subtropical forest trail, binoculars -->
+                <div class="placeholder-activity">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <span>santa-ana-refuge.jpg</span>
+                  Birdwatcher at Santa Ana National Wildlife Refuge
+                </div>
+              </div>
+              <div class="adventure-text">
+                <h3>World-Class Birdwatching</h3>
+                <p>
+                  The Lower Rio Grande Valley is ranked among the top ten
+                  birdwatching destinations in the United States. Visit the
+                  Santa Ana National Wildlife Refuge or Bentsen State Park for
+                  guided tours through subtropical forest and wetlands teeming
+                  with species found nowhere else north of the border.
+                </p>
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
+            <div class="adventure-card border">
+              <div class="adventure-image">
+                <!-- PLACEHOLDER: Replace with ../imgs/brownsville-matamoros.jpg — the international bridge between Brownsville and Matamoros, bicultural border scene -->
+                <div class="placeholder-activity">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                  >
+                    <rect x="3" y="3" width="18" height="18" rx="3" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="M21 15l-5-5L5 21" />
+                  </svg>
+                  <span>brownsville-matamoros.jpg</span>
+                  International bridge between Brownsville and Matamoros
+                </div>
+              </div>
+              <div class="adventure-text">
+                <h3>Cross-Border Culture Tours</h3>
+                <p>
+                  Cross the international bridge into Matamoros and explore the
+                  vibrant markets, street food, and colonial architecture of one
+                  of Mexico's most accessible border cities. Then return to
+                  Brownsville for a taste of Tejano culture, live norteño music,
+                  and some of the finest Mexican-American food anywhere in
+                  Texas.
+                </p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <!-- ══ GALLERY ══ -->
+      <section id="gallery">
+        <h2>Delta Gallery</h2>
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-delta-aerial.jpg — aerial view of the Rio Grande delta and Boca Chica coast meeting the Gulf of Mexico -->
+            <div class="placeholder-slide">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <strong>riogrande-delta-aerial.jpg</strong>
+              <span
+                >Aerial view of the Rio Grande delta at Boca Chica meeting the
+                Gulf of Mexico</span
+              >
+            </div>
+            <div class="caption">
+              Aerial view of the Rio Grande reaching the Gulf of Mexico at Boca
+              Chica, Texas.
+            </div>
+          </div>
+
+          <div class="mySlides fade">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-resaca-sunset.jpg — golden sunset over a resaca oxbow lake, herons silhouetted against the sky -->
+            <div class="placeholder-slide">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <strong>riogrande-resaca-sunset.jpg</strong>
+              <span
+                >Golden sunset over a resaca lake with silhouetted herons</span
+              >
+            </div>
+            <div class="caption">
+              A resaca oxbow lake at sunset — ancient traces of the Rio Grande's
+              ever-shifting course.
+            </div>
+          </div>
+
+          <div class="mySlides fade">
+            <!-- PLACEHOLDER: Replace with ../imgs/riogrande-spoonbills.jpg — roseate spoonbills wading in a shallow resaca or tidal flat in the Rio Grande Valley -->
+            <div class="placeholder-slide">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="3" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <strong>riogrande-spoonbills.jpg</strong>
+              <span
+                >Roseate spoonbills wading in a shallow resaca or tidal
+                flat</span
+              >
+            </div>
+            <div class="caption">
+              Roseate spoonbills wade through the shallow resacas of the Rio
+              Grande Delta in search of food.
+            </div>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
+      let slideIndex = 1;
+      showSlides(slideIndex);
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+      function showSlides(n) {
+        let slides = document.getElementsByClassName("mySlides");
+        if (n > slides.length) slideIndex = 1;
+        if (n < 1) slideIndex = slides.length;
+        for (let s of slides) s.style.display = "none";
+        slides[slideIndex - 1].style.display = "block";
+      }
+    </script>
+
+    <!-- FOOTER PLACEHOLDER -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      fetch("Footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

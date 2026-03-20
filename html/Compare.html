@@ -3,37 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delta Comparison</title>
-
+    <title>Delta Explorer – Compare</title>
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
       }
 
       body {
-        background: white;
-        color: #111;
+        font-family: "Libre Baskerville", Georgia, serif;
+        background: var(--mud);
+        color: var(--mist);
+        overflow-x: hidden;
       }
 
-      /* HERO */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
       .hero {
         position: sticky;
         top: 0;
         height: 60vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          linear-gradient(
+            to bottom,
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.72) 100%
+          ),
           url("https://images.unsplash.com/photo-1501785888041-af3ef285b470")
-            center / cover no-repeat;
+            center/cover no-repeat;
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
         z-index: 10;
       }
-
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
@@ -41,98 +69,256 @@
       }
 
       .hero h1 {
-        color: white;
-        font-size: 4rem;
+        font-family: "Playfair Display", serif;
+        color: var(--fog);
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 900;
+        letter-spacing: 3px;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        text-align: center;
+        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
       }
 
-      /* NAV */
       .top-nav {
         position: absolute;
-        top: 20px;
+        top: 22px;
         right: 40px;
+        display: flex;
+        gap: 20px;
+        align-items: center;
       }
-
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
         margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover {
+        color: var(--sand);
       }
 
-      /* CONTENT */
       main {
-        padding: 80px 20px;
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto;
+        padding: 80px 24px 120px;
       }
 
       section {
-        margin-bottom: 100px;
+        margin-bottom: 80px;
       }
 
       h2 {
+        font-family: "Playfair Display", serif;
         font-size: 2rem;
-        margin-bottom: 30px;
+        font-weight: 700;
         text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 8px;
+        color: var(--fog);
         display: inline-block;
       }
-
       h2::after {
         content: "";
         display: block;
-        width: 120px;
-        height: 4px;
-        background: #000000; /* standaard kleur */
-        margin-top: 8px;
-        border-radius: 3px;
+        width: 60px;
+        height: 3px;
+        background: var(--sand);
+        margin-top: 10px;
+        border-radius: 0;
       }
 
       p {
-        line-height: 1.8;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: #333;
+        line-height: 1.85;
+        font-size: 1rem;
+        color: rgba(232, 220, 200, 0.72);
+        margin-bottom: 16px;
+      }
+      p strong {
+        color: var(--sand);
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        letter-spacing: 0.5px;
       }
 
-      /* SELECT MENU */
-      select {
-        padding: 10px;
-        margin: 10px 10px 30px 0;
-        border-radius: 6px;
-        border: 1px solid #ccc;
+      .metric-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 32px;
       }
-
-      /* COMPARISON TABLE */
-      .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 40px;
-        display: none;
-      }
-
-      .comparison-table th,
-      .comparison-table td {
-        border: 1px solid #ddd;
-        padding: 15px;
-        text-align: left;
-      }
-
-      .comparison-table th {
-        background-color: #f4f4f4;
+      .metric-tab {
+        padding: 8px 18px;
+        border-radius: 100px;
+        border: 1px solid var(--earth);
+        background: transparent;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        font-size: 0.8rem;
+        color: rgba(232, 220, 200, 0.5);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .metric-tab:hover {
+        border-color: var(--sand);
+        color: var(--sand);
+      }
+      .metric-tab.active {
+        background: var(--sand);
+        border-color: var(--sand);
+        color: var(--mud);
       }
 
-      @media screen and (max-width: 600px) {
+      .delta-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+      .delta-btn {
+        position: relative;
+        padding: 14px 12px;
+        border-radius: 10px;
+        border: 1px solid var(--earth);
+        background: rgba(255, 255, 255, 0.03);
+        cursor: pointer;
+        text-align: left;
+        transition: all 0.2s;
+      }
+      .delta-btn:hover {
+        border-color: var(--sand);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+      .delta-btn.selected {
+        border-color: transparent;
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      }
+      .delta-btn .btn-name {
+        font-family: "Playfair Display", serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        color: var(--fog);
+        display: block;
+        margin-bottom: 4px;
+      }
+      .delta-btn .btn-country {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(232, 220, 200, 0.45);
+      }
+      .delta-btn .check {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .delta-btn.selected .check {
+        opacity: 1;
+      }
+
+      .chart-wrapper {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        border: 1px solid var(--earth);
+        padding: 32px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+        min-height: 420px;
+        position: relative;
+      }
+      .chart-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .chart-placeholder {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 340px;
+        gap: 12px;
+      }
+      .chart-placeholder svg {
+        opacity: 0.2;
+      }
+      .chart-placeholder p {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(232, 220, 200, 0.25);
+        text-align: center;
+        margin: 0;
+      }
+
+      canvas {
+        display: block;
+        width: 100% !important;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(232, 220, 200, 0.65);
+      }
+      .legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 3px;
+        flex-shrink: 0;
+      }
+
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (max-width: 600px) {
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.2rem;
         }
         .top-nav {
-          right: 20px;
+          right: 16px;
+        }
+        .delta-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
     </style>
@@ -141,9 +327,8 @@
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back to Overview</a>
+        <a href="../index.html">← Overview</a>
         <span id="last-delta-container"></span>
-        <!-- Hier komt de dynamische terug-knop -->
         <a href="Contact.html">Contact</a>
       </nav>
       <h1>Delta Explorer</h1>
@@ -153,153 +338,472 @@
       <section>
         <h2>About Deltas</h2>
         <p>
-          Deltas are landforms created by sediment deposits where rivers enter
-          slower-moving water bodies. They are rich ecosystems and often densely
-          populated regions.
+          Deltas are among the most fascinating and diverse landforms on Earth.
+          They form where rivers slow down and deposit their sediment load as
+          they meet a larger, calmer body of water, whether that's an ocean,
+          sea, or lake. Over thousands of years, these deposits build up into
+          intricate networks of channels, wetlands, and islands that are unlike
+          anywhere else on the planet.
+        </p>
+        <p>
+          For nature adventurers, deltas are a dream destination. They are home
+          to extraordinary concentrations of wildlife: migratory birds, rare
+          fish species, mammals, reptiles, and a dazzling variety of plant life
+          all thrive in these transitional zones between freshwater and
+          saltwater. Whether you're paddling through flooded forest, trekking
+          along muddy riverbanks, or watching a flock of herons take flight at
+          sunrise, a delta offers experiences that few other landscapes can
+          match.
+        </p>
+        <p>
+          From the icy, remote vastness of the Yukon Delta in Alaska to the
+          dense, steaming jungle of the Amazon, every delta has its own
+          character, rhythm, and set of wonders waiting to be explored.
         </p>
       </section>
 
       <section id="compare">
         <h2>Compare Deltas</h2>
-        <p>Select the delta's you want to compare in the box below!</p>
-        <br />
-        <label>Select Delta 1:</label>
-        <select id="delta1">
-          <option value="">-- Select Delta --</option>
-          <option value="parana">Paraná Delta</option>
-          <option value="mississippi">Mississippi Delta</option>
-        </select>
+        <p>
+          Not all deltas are created equal, and for the adventurous traveller,
+          the differences matter. Do you want the delta with the highest number
+          of wildlife species, or the one with the most kayak routes? Are you
+          looking for a place with extensive hiking trails, or a well-protected
+          natural reserve system?
+        </p>
+        <p>
+          Use the tool below to compare deltas side by side. Select one or more
+          deltas by clicking on them, then switch between metrics to find the
+          destination that matches your sense of adventure.
+        </p>
 
-        <label>Select Delta 2:</label>
-        <select id="delta2">
-          <option value="">-- Select Delta --</option>
-          <option value="parana">Paraná Delta</option>
-          <option value="mississippi">Mississippi Delta</option>
-        </select>
+        <div class="delta-grid" id="deltaGrid"></div>
+        <div class="metric-tabs" id="metricTabs"></div>
 
-        <table id="table" class="comparison-table">
-          <thead>
-            <tr>
-              <th>Statistic</th>
-              <th id="name1"></th>
-              <th id="name2"></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Area (km²)</td>
-              <td id="area1"></td>
-              <td id="area2"></td>
-            </tr>
-            <tr>
-              <td>Population</td>
-              <td id="pop1"></td>
-              <td id="pop2"></td>
-            </tr>
-            <tr>
-              <td>Biodiversity Index</td>
-              <td id="bio1"></td>
-              <td id="bio2"></td>
-            </tr>
-          </tbody>
-        </table>
+        <div class="chart-wrapper">
+          <div class="chart-label" id="chartLabel">Select a delta to begin</div>
+          <div id="chartPlaceholder" class="chart-placeholder">
+            <svg
+              width="64"
+              height="64"
+              viewBox="0 0 64 64"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 56 L8 20 L24 32 L40 12 L56 28"
+                stroke="#c9a96e"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <circle cx="8" cy="20" r="3" fill="#c9a96e" />
+              <circle cx="24" cy="32" r="3" fill="#c9a96e" />
+              <circle cx="40" cy="12" r="3" fill="#c9a96e" />
+              <circle cx="56" cy="28" r="3" fill="#c9a96e" />
+            </svg>
+            <p>Select deltas above<br />to see the comparison</p>
+          </div>
+          <canvas id="myChart" style="display: none"></canvas>
+          <div class="legend" id="legend"></div>
+        </div>
+
+        <div style="margin-top: 40px">
+          <h2>Metric Explanations</h2>
+          <p>
+            <strong>Wildlife Species:</strong> The total number of bird, mammal,
+            reptile, and amphibian species recorded in and around the delta. A
+            higher number means more opportunities for wildlife watching and
+            nature photography.
+          </p>
+          <p>
+            <strong>Hiking Trails (km):</strong> The total length of marked and
+            maintained hiking trails through the delta region. More kilometres
+            means more ground to explore on foot, from short walks to multi-day
+            treks.
+          </p>
+          <p>
+            <strong>Kayak Routes:</strong> The number of navigable kayak and
+            canoe routes through the delta's waterways. Deltas with many routes
+            offer the most variety for paddling adventurers, from calm
+            backwaters to open channels.
+          </p>
+          <p>
+            <strong>Nature Reserves:</strong> The number of officially protected
+            nature areas within or directly bordering the delta. More reserves
+            generally means better-preserved ecosystems, stricter conservation,
+            and a wilder experience.
+          </p>
+          <p>
+            <strong>Water Visibility (m):</strong> The average underwater
+            visibility in metres. Higher visibility is ideal for snorkelling,
+            diving, and observing aquatic life. Many delta rivers carry heavy
+            sediment, so visibility can vary greatly.
+          </p>
+          <p>
+            <strong>Best Season Score:</strong> A score out of 10 reflecting how
+            favourable the best visiting season is, based on weather conditions,
+            accessibility, wildlife activity, and overall comfort for outdoor
+            adventures. A 10 means near-perfect conditions during peak season.
+          </p>
+        </div>
       </section>
     </main>
 
+    <div id="footer-placeholder"></div>
     <script>
-      // HERO SCROLL EFFECT (same as yours)
-      const hero = document.getElementById("hero");
+      fetch("Footer.html")
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
+        })
+        .catch(() => {});
+    </script>
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 150) {
-          hero.classList.add("hidden");
-        } else {
-          hero.classList.remove("hidden");
-        }
-      });
-
-      // Hidden statistics data
-      const data = {
-        parana: {
-          name: "Paraná Delta",
-          area: 14000,
-          population: 500000,
-          biodiversity: 85,
-        },
+    <script>
+      const deltas = {
         mississippi: {
-          name: "Mississippi Delta",
-          area: 32000,
-          population: 2000000,
-          biodiversity: 70,
+          name: "Mississippi",
+          country: "🇺🇸 USA",
+          color: "#4a8fa8",
+          metrics: {
+            wildlife_species: {
+              value: 400,
+              label: "Wildlife Species",
+              unit: "species",
+            },
+            hiking_trails_km: {
+              value: 320,
+              label: "Hiking Trails",
+              unit: "km",
+            },
+            kayak_routes: { value: 85, label: "Kayak Routes", unit: "routes" },
+            nature_reserves: {
+              value: 12,
+              label: "Nature Reserves",
+              unit: "reserves",
+            },
+            avg_visibility_m: {
+              value: 2.5,
+              label: "Water Visibility",
+              unit: "m",
+            },
+            best_season_score: {
+              value: 7,
+              label: "Best Season Score",
+              unit: "/10",
+            },
+          },
         },
-        ganges: {
-          name: "Ganges Delta",
-          area: 105000,
-          population: 170000000,
-          biodiversity: 95,
+        parana: {
+          name: "Paraná",
+          country: "🇦🇷 Argentina",
+          color: "#7fb069",
+          metrics: {
+            wildlife_species: { value: 650 },
+            hiking_trails_km: { value: 180 },
+            kayak_routes: { value: 120 },
+            nature_reserves: { value: 8 },
+            avg_visibility_m: { value: 1.5 },
+            best_season_score: { value: 8 },
+          },
+        },
+        galveston: {
+          name: "Galveston",
+          country: "🇺🇸 USA",
+          color: "#c4884a",
+          metrics: {
+            wildlife_species: { value: 330 },
+            hiking_trails_km: { value: 95 },
+            kayak_routes: { value: 60 },
+            nature_reserves: { value: 6 },
+            avg_visibility_m: { value: 1.2 },
+            best_season_score: { value: 7 },
+          },
+        },
+        yukon: {
+          name: "Yukon",
+          country: "🇺🇸 Alaska",
+          color: "#8e6bbf",
+          metrics: {
+            wildlife_species: { value: 210 },
+            hiking_trails_km: { value: 450 },
+            kayak_routes: { value: 200 },
+            nature_reserves: { value: 18 },
+            avg_visibility_m: { value: 4.0 },
+            best_season_score: { value: 5 },
+          },
+        },
+        amazon: {
+          name: "Amazone",
+          country: "🇧🇷 Brazil",
+          color: "#2e8b57",
+          metrics: {
+            wildlife_species: { value: 3000 },
+            hiking_trails_km: { value: 280 },
+            kayak_routes: { value: 350 },
+            nature_reserves: { value: 32 },
+            avg_visibility_m: { value: 0.5 },
+            best_season_score: { value: 6 },
+          },
+        },
+        colorado: {
+          name: "Colorado",
+          country: "🇲🇽 Mexico",
+          color: "#d4804a",
+          metrics: {
+            wildlife_species: { value: 180 },
+            hiking_trails_km: { value: 140 },
+            kayak_routes: { value: 30 },
+            nature_reserves: { value: 4 },
+            avg_visibility_m: { value: 3.0 },
+            best_season_score: { value: 6 },
+          },
+        },
+        sanjuan: {
+          name: "San Juan",
+          country: "🇨🇷 Costa Rica",
+          color: "#e8c23a",
+          metrics: {
+            wildlife_species: { value: 520 },
+            hiking_trails_km: { value: 90 },
+            kayak_routes: { value: 75 },
+            nature_reserves: { value: 7 },
+            avg_visibility_m: { value: 2.0 },
+            best_season_score: { value: 8 },
+          },
+        },
+        magdalena: {
+          name: "Magdalena",
+          country: "🇨🇴 Colombia",
+          color: "#e8623a",
+          metrics: {
+            wildlife_species: { value: 860 },
+            hiking_trails_km: { value: 200 },
+            kayak_routes: { value: 95 },
+            nature_reserves: { value: 14 },
+            avg_visibility_m: { value: 1.0 },
+            best_season_score: { value: 7 },
+          },
+        },
+        riogrande: {
+          name: "Rio Grande",
+          country: "🇲🇽 Mexico",
+          color: "#a87a3a",
+          metrics: {
+            wildlife_species: { value: 270 },
+            hiking_trails_km: { value: 260 },
+            kayak_routes: { value: 50 },
+            nature_reserves: { value: 9 },
+            avg_visibility_m: { value: 2.2 },
+            best_season_score: { value: 7 },
+          },
         },
       };
 
-      document.getElementById("delta1").addEventListener("change", compare);
-      document.getElementById("delta2").addEventListener("change", compare);
+      const metricKeys = [
+        "wildlife_species",
+        "hiking_trails_km",
+        "kayak_routes",
+        "nature_reserves",
+        "avg_visibility_m",
+        "best_season_score",
+      ];
+      // Propagate labels/units from mississippi to others
+      metricKeys.forEach((k) => {
+        const ref = deltas.mississippi.metrics[k];
+        Object.values(deltas).forEach((d) => {
+          if (!d.metrics[k].label) d.metrics[k].label = ref.label;
+          if (!d.metrics[k].unit) d.metrics[k].unit = ref.unit;
+        });
+      });
 
-      function compare() {
-        const d1 = document.getElementById("delta1").value;
-        const d2 = document.getElementById("delta2").value;
+      let selectedDeltas = new Set();
+      let activeMetric = metricKeys[0];
+      let chartInstance = null;
 
-        if (!d1 || !d2 || d1 === d2) {
-          document.getElementById("table").style.display = "none";
+      const grid = document.getElementById("deltaGrid");
+      Object.entries(deltas).forEach(([key, d]) => {
+        const btn = document.createElement("button");
+        btn.className = "delta-btn";
+        btn.dataset.key = key;
+        btn.innerHTML = `
+        <span class="btn-name">${d.name}</span>
+        <span class="btn-country">${d.country}</span>
+        <span class="check">✓</span>
+      `;
+        btn.addEventListener("click", () => toggleDelta(key, btn, d.color));
+        grid.appendChild(btn);
+      });
+
+      const tabsEl = document.getElementById("metricTabs");
+      metricKeys.forEach((key, i) => {
+        const label = deltas.mississippi.metrics[key].label;
+        const tab = document.createElement("button");
+        tab.className = "metric-tab" + (i === 0 ? " active" : "");
+        tab.textContent = label;
+        tab.dataset.metric = key;
+        tab.addEventListener("click", () => {
+          document
+            .querySelectorAll(".metric-tab")
+            .forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+          activeMetric = key;
+          renderChart();
+        });
+        tabsEl.appendChild(tab);
+      });
+
+      function toggleDelta(key, btn, color) {
+        if (selectedDeltas.has(key)) {
+          selectedDeltas.delete(key);
+          btn.classList.remove("selected");
+          btn.style.background = "";
+          btn.style.borderColor = "";
+          btn.style.color = "";
+        } else {
+          selectedDeltas.add(key);
+          btn.classList.add("selected");
+          btn.style.background = color;
+          btn.style.borderColor = color;
+          btn.style.color = "#fff";
+        }
+        renderChart();
+      }
+
+      function renderChart() {
+        const canvas = document.getElementById("myChart");
+        const placeholder = document.getElementById("chartPlaceholder");
+        const legendEl = document.getElementById("legend");
+        const chartLabel = document.getElementById("chartLabel");
+
+        if (selectedDeltas.size === 0) {
+          canvas.style.display = "none";
+          placeholder.style.display = "flex";
+          legendEl.innerHTML = "";
+          chartLabel.textContent = "Select a delta to begin";
+          if (chartInstance) {
+            chartInstance.destroy();
+            chartInstance = null;
+          }
           return;
         }
 
-        const a = data[d1];
-        const b = data[d2];
+        placeholder.style.display = "none";
+        canvas.style.display = "block";
 
-        document.getElementById("name1").textContent = a.name;
-        document.getElementById("name2").textContent = b.name;
+        const firstKey = [...selectedDeltas][0];
+        const metricInfo = deltas[firstKey].metrics[activeMetric];
+        chartLabel.textContent = `${metricInfo.label} (${metricInfo.unit})`;
 
-        document.getElementById("area1").textContent = a.area;
-        document.getElementById("area2").textContent = b.area;
+        const labels = [...selectedDeltas].map((k) => deltas[k].name);
+        const values = [...selectedDeltas].map(
+          (k) => deltas[k].metrics[activeMetric].value,
+        );
+        const colors = [...selectedDeltas].map((k) => deltas[k].color);
+        const colorsFaded = colors.map((c) => c + "bb");
 
-        document.getElementById("pop1").textContent =
-          a.population.toLocaleString();
-        document.getElementById("pop2").textContent =
-          b.population.toLocaleString();
-        document.getElementById("pop1").textContent =
-          a.population.toLocaleString();
-        document.getElementById("pop2").textContent =
-          b.population.toLocaleString();
+        legendEl.innerHTML = "";
+        [...selectedDeltas].forEach((k) => {
+          const d = deltas[k];
+          legendEl.innerHTML += `
+          <div class="legend-item">
+            <span class="legend-dot" style="background:${d.color}"></span>
+            ${d.name} <span style="opacity:0.5">${d.country}</span>
+          </div>`;
+        });
 
-        document.getElementById("bio1").textContent = a.biodiversity;
-        document.getElementById("bio2").textContent = b.biodiversity;
+        if (chartInstance) chartInstance.destroy();
 
-        document.getElementById("table").style.display = "table";
+        const ctx = canvas.getContext("2d");
+        chartInstance = new Chart(ctx, {
+          type: "bar",
+          data: {
+            labels,
+            datasets: [
+              {
+                label: metricInfo.label,
+                data: values,
+                backgroundColor: colorsFaded,
+                borderColor: colors,
+                borderWidth: 2,
+                borderRadius: 8,
+                borderSkipped: false,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            animation: { duration: 500, easing: "easeInOutQuart" },
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                callbacks: {
+                  label: (ctx) => ` ${ctx.parsed.y} ${metricInfo.unit}`,
+                },
+                backgroundColor: "#1a0f07",
+                borderColor: "#4a3520",
+                borderWidth: 1,
+                titleColor: "#c9a96e",
+                bodyColor: "#e8dcc8",
+                padding: 12,
+                cornerRadius: 6,
+                titleFont: {
+                  family: "'Oswald', sans-serif",
+                  size: 11,
+                  weight: 300,
+                },
+                bodyFont: {
+                  family: "'Libre Baskerville', Georgia, serif",
+                  size: 13,
+                },
+              },
+            },
+            scales: {
+              x: {
+                grid: { display: false },
+                border: { color: "#4a3520" },
+                ticks: {
+                  color: "rgba(232,220,200,0.6)",
+                  font: {
+                    family: "'Oswald', sans-serif",
+                    size: 12,
+                    weight: 300,
+                  },
+                },
+              },
+              y: {
+                beginAtZero: true,
+                grid: { color: "rgba(74,53,32,0.5)" },
+                border: { color: "#4a3520" },
+                ticks: {
+                  color: "rgba(232,220,200,0.4)",
+                  font: {
+                    family: "'Oswald', sans-serif",
+                    size: 11,
+                    weight: 300,
+                  },
+                },
+              },
+            },
+          },
+        });
       }
-    </script>
 
-    <script>
-      // Dynamische terugknop op Compare.html
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
+
       const lastDeltaName = sessionStorage.getItem("lastDeltaName");
       const lastDeltaURL = sessionStorage.getItem("lastDeltaURL");
       const container = document.getElementById("last-delta-container");
-
       if (lastDeltaName && lastDeltaURL) {
         const link = document.createElement("a");
         link.href = lastDeltaURL;
-        link.textContent = `← Terug naar ${lastDeltaName}`;
-        link.style.margin = "0 20px"; // spacing tussen links
+        link.textContent = `← ${lastDeltaName}`;
         container.appendChild(link);
       }
-    </script>
-    <!-- FOOTER PLACEHOLDER -->
-    <div id="footer-placeholder"></div>
-
-    <script>
-      fetch("Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
-        });
     </script>
   </body>
 </html>

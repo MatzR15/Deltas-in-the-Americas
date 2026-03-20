@@ -1,0 +1,1233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>San Juan Delta - Deltas in the Americas</title>
+    <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+        --water: #1e3a4a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--mud);
+        color: var(--mist);
+        font-family: "Libre Baskerville", Georgia, serif;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ── HERO ── */
+      .hero {
+        position: sticky;
+        top: 0;
+        height: 65vh;
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.7) 100%
+          ),
+          url("../imgs/San-Juan_delta.jpg") center/cover no-repeat;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
+      }
+      .hero.hidden {
+        opacity: 0;
+        transform: translateY(-100%);
+        pointer-events: none;
+      }
+
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 14px;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
+      }
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        color: var(--fog);
+        text-align: center;
+        letter-spacing: -2px;
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
+      }
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.55em;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+      .hero-credit {
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-style: italic;
+      }
+      .top-nav {
+        position: absolute;
+        top: 20px;
+        right: 40px;
+        display: flex;
+        gap: 24px;
+      }
+      .top-nav a {
+        color: rgba(255, 255, 255, 0.8);
+        text-decoration: none;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover {
+        color: var(--sand);
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .page {
+        position: relative;
+        z-index: 5;
+        background: var(--mud);
+      }
+
+      /* ── STAT TILES ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+      }
+      .stat-tile:last-child {
+        border-right: none;
+      }
+      .stat-tile::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .stat-tile:nth-child(1)::before {
+        background: #e8623a;
+      }
+      .stat-tile:nth-child(2)::before {
+        background: #2e8b57;
+      }
+      .stat-tile:nth-child(3)::before {
+        background: #4a8fa8;
+      }
+      .stat-tile:nth-child(4)::before {
+        background: #8e6bbf;
+      }
+      .stat-tile:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .stat-tile:hover::before {
+        transform: scaleX(1);
+      }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(232, 220, 200, 0.55);
+        margin-top: 4px;
+      }
+
+      /* ── CHAPTER OPENER ── */
+      .chapter-opener {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        position: relative;
+      }
+      .chapter-opener.flip {
+        direction: rtl;
+      }
+      .chapter-opener.flip > * {
+        direction: ltr;
+      }
+
+      .chapter-image {
+        position: relative;
+        overflow: hidden;
+      }
+      .chapter-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(20%) contrast(1.05);
+        transition: transform 8s ease;
+      }
+      .chapter-image:hover img {
+        transform: scale(1.04);
+      }
+      .chapter-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 60%, var(--mud) 100%);
+      }
+      .chapter-opener.flip .chapter-image::after {
+        background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
+      }
+
+      /* ── IMAGE PLACEHOLDER ── */
+      .chapter-image .img-placeholder {
+        width: 100%;
+        height: 100%;
+        min-height: 500px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px dashed var(--earth);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        padding: 40px;
+        text-align: center;
+      }
+      .chapter-image .img-placeholder svg {
+        opacity: 0.2;
+        width: 48px;
+        height: 48px;
+      }
+      .chapter-image .img-placeholder .ph-filename {
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        color: var(--sand);
+      }
+      .chapter-image .img-placeholder .ph-desc {
+        font-size: 0.82rem;
+        color: rgba(232, 220, 200, 0.4);
+        font-style: italic;
+        line-height: 1.6;
+        max-width: 260px;
+      }
+
+      .chapter-text {
+        padding: 80px 60px 80px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .chapter-num {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 1;
+        color: var(--earth);
+        margin-bottom: -10px;
+      }
+      .chapter-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .chapter-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--fog);
+        margin-bottom: 28px;
+      }
+      .chapter-body p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(232, 220, 200, 0.78);
+        margin-bottom: 16px;
+      }
+      .chapter-divider {
+        width: 60px;
+        height: 2px;
+        background: var(--sand);
+        margin: 28px 0;
+      }
+
+      /* ── IMAGE BREAK ── */
+      .image-break {
+        height: 50vh;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .image-break::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(30, 15, 5, 0.3) 0%,
+          rgba(30, 15, 5, 0.3) 60%,
+          rgba(30, 15, 5, 0.75) 100%
+        );
+      }
+      .image-break-label {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.92);
+        white-space: nowrap;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      }
+      .image-break.placeholder-break {
+        height: 20vh;
+        background: rgba(255, 255, 255, 0.03);
+        border-top: 1px dashed var(--earth);
+        border-bottom: 1px dashed var(--earth);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .image-break.placeholder-break::after {
+        display: none;
+      }
+      .image-break.placeholder-break .ph-filename {
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.82rem;
+        letter-spacing: 3px;
+        color: var(--sand);
+      }
+      .image-break.placeholder-break .ph-desc {
+        font-size: 0.75rem;
+        color: rgba(232, 220, 200, 0.35);
+        font-style: italic;
+      }
+
+      /* ── ACTIVITIES ── */
+      .activities-section {
+        padding: 100px 80px;
+      }
+      .section-intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        border-bottom: 1px solid var(--earth);
+        padding-bottom: 40px;
+      }
+      .section-intro h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--fog);
+      }
+      .section-intro h2 em {
+        font-style: italic;
+        color: var(--sand);
+      }
+      .section-intro p {
+        max-width: 280px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: rgba(232, 220, 200, 0.6);
+        text-align: right;
+      }
+
+      .activity-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 400px 400px;
+        gap: 3px;
+      }
+      .activity-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .activity-card:first-child {
+        grid-row: span 2;
+      }
+      .activity-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+        filter: brightness(0.75) sepia(15%);
+      }
+      .activity-card:hover img {
+        transform: scale(1.06);
+        filter: brightness(0.55) sepia(25%);
+      }
+      .activity-card .act-placeholder {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px dashed var(--earth);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 24px;
+        text-align: center;
+      }
+      .activity-card .act-placeholder svg {
+        opacity: 0.15;
+        width: 36px;
+        height: 36px;
+      }
+      .activity-card .act-placeholder .ph-filename {
+        font-family: "Oswald", sans-serif;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        color: var(--sand);
+      }
+      .activity-card .act-placeholder .ph-desc {
+        font-size: 0.72rem;
+        color: rgba(232, 220, 200, 0.35);
+        font-style: italic;
+        line-height: 1.5;
+      }
+      .activity-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(20, 10, 5, 0.95) 0%,
+          rgba(20, 10, 5, 0.2) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 32px;
+      }
+      .activity-tag {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 8px;
+      }
+      .activity-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .activity-card:first-child .activity-name {
+        font-size: 2.4rem;
+      }
+      .activity-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: rgba(232, 220, 200, 0.75);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .activity-card:hover .activity-desc {
+        max-height: 200px;
+      }
+
+      /* ── GALLERY ── */
+      .gallery-section {
+        padding: 0 80px 100px;
+      }
+      .gallery-heading {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--fog);
+        margin-bottom: 30px;
+        padding-left: 4px;
+      }
+      .gallery-mosaic {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr;
+        grid-template-rows: 320px 280px;
+        gap: 4px;
+      }
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-tile:first-child {
+        grid-row: span 2;
+      }
+      .gallery-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(15%) contrast(1.05) brightness(0.92);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+      }
+      .gallery-tile:hover img {
+        transform: scale(1.05);
+        filter: sepia(5%) contrast(1.05) brightness(1);
+      }
+      .gallery-tile .gal-placeholder {
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px dashed var(--earth);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 20px;
+        text-align: center;
+      }
+      .gallery-tile .gal-placeholder svg {
+        opacity: 0.15;
+        width: 32px;
+        height: 32px;
+      }
+      .gallery-tile .gal-placeholder .ph-filename {
+        font-family: "Oswald", sans-serif;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        color: var(--sand);
+      }
+      .gallery-tile .gal-placeholder .ph-desc {
+        font-size: 0.68rem;
+        color: rgba(232, 220, 200, 0.35);
+        font-style: italic;
+        line-height: 1.5;
+      }
+      .gallery-tile-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 36px 18px 14px;
+        background: linear-gradient(transparent, rgba(20, 10, 5, 0.88));
+        color: rgba(232, 220, 200, 0.85);
+        font-style: italic;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .gallery-tile:hover .gallery-tile-caption {
+        opacity: 1;
+      }
+      .gallery-tile:first-child .gallery-tile-caption {
+        font-size: 0.92rem;
+      }
+
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (max-width: 900px) {
+        .chapter-opener,
+        .chapter-opener.flip {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+        .chapter-image {
+          height: 55vw;
+        }
+        .chapter-image .img-placeholder {
+          min-height: 200px;
+        }
+        .chapter-image::after,
+        .chapter-opener.flip .chapter-image::after {
+          display: none;
+        }
+        .chapter-text {
+          padding: 48px 28px;
+        }
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-tile {
+          border-bottom: 1px solid var(--earth);
+        }
+        .activity-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .activity-card:first-child {
+          grid-row: span 1;
+          height: 380px;
+        }
+        .activity-card {
+          height: 260px;
+        }
+        .activities-section,
+        .gallery-section {
+          padding: 60px 24px;
+        }
+        .section-intro {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .section-intro p {
+          text-align: left;
+        }
+        .gallery-mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery-tile:first-child {
+          grid-row: span 1;
+          height: 56vw;
+        }
+        .gallery-tile {
+          height: 44vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero" id="hero">
+      <nav class="top-nav">
+        <a href="../index.html#deltas">← Overview</a>
+        <a href="Compare.html">Compare</a>
+        <a href="Contact.html">Contact</a>
+      </nav>
+      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <h1>San Juan<em>Delta</em></h1>
+      <span class="hero-credit">© NASA / USGS</span>
+    </header>
+
+    <div class="page">
+      <!-- STAT TILES -->
+      <div class="stat-strip">
+        <a href="#area" class="stat-tile">
+          <div class="stat-value">Scarlet Ibis</div>
+          <div class="stat-label">Icon Species</div>
+          <div class="stat-desc">Thousands at dusk, every day</div>
+        </a>
+        <a href="#nature" class="stat-tile">
+          <div class="stat-value">40,000 km²</div>
+          <div class="stat-label">Delta Area</div>
+          <div class="stat-desc">Flooded delta wilderness</div>
+        </a>
+        <a href="#coastline" class="stat-tile">
+          <div class="stat-value">Moriche Palm</div>
+          <div class="stat-label">Tree of Life</div>
+          <div class="stat-desc">Food, shelter & life in one tree</div>
+        </a>
+        <a href="#economy" class="stat-tile">
+          <div class="stat-value">8,000 Years</div>
+          <div class="stat-label">Warao Culture</div>
+          <div class="stat-desc">Of river civilisation</div>
+        </a>
+      </div>
+
+      <!-- CHAPTER 1: THE SCARLET IBIS -->
+      <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → sanjuan-channels.jpg — luchtfoto van deltakanalen in het droge seizoen, laag water, blootliggende modderbanken -->
+          <div class="img-placeholder">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span class="ph-filename">sanjuan-channels.jpg</span>
+            <span class="ph-desc"
+              >Aerial view of delta channels during dry season, low water and
+              exposed mudbanks</span
+            >
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">01</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">The Scarlet Ibis: A Daily Spectacle</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The dry season, running from January through April, is the best
+              time to visit the San Juan Delta. Water levels drop significantly,
+              making it easier to navigate the delta's labyrinth of channels by
+              boat, and the reduced humidity makes jungle treks far more
+              comfortable. Wildlife is easier to spot as animals gather around
+              the remaining water sources, and the clear skies offer spectacular
+              stargazing far from any city light pollution.
+            </p>
+            <p>
+              The wet season from May through December transforms the landscape
+              entirely, flooding vast areas of forest and turning the delta into
+              an inland sea of extraordinary proportions. For those who want to
+              experience the full drama of the delta at its most powerful,
+              arriving in October and November offers the spectacle of the river
+              at peak flood, a raw and humbling natural phenomenon that few
+              travellers ever witness.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → sanjuan-flood.jpg — overstroomd deltalandschap bij hoogwater, bomen deels ondergedompeld -->
+      <div class="image-break placeholder-break">
+        <span class="ph-filename">sanjuan-flood.jpg</span>
+        <span class="ph-desc"
+          >Flooded delta landscape at peak wet season, a vast inland sea</span
+        >
+      </div>
+
+      <!-- CHAPTER 2: WILDLIFE -->
+      <div
+        id="nature"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → scarlet-ibis.jpg — zwerm scarlet ibis in vlucht of in mangrove bij zonsondergang, fel rood -->
+          <div class="img-placeholder">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span class="ph-filename">scarlet-ibis.jpg</span>
+            <span class="ph-desc"
+              >Flock of scarlet ibis roosting in mangroves at sunset, vibrant
+              red</span
+            >
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">02</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">40,000 km² of Wild Delta</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The San Juan Delta and the broader Orinoco Delta system is home to
+              over 600 bird species, making it one of the finest birdwatching
+              destinations in all of South America. The scarlet ibis is the
+              undisputed star of the show, and at dusk thousands of these
+              brilliantly red birds return to their mangrove roosts in
+              spectacular formations that stain the sky. Alongside them,
+              anacondas, caimans, giant anteaters, and river otters inhabit the
+              dense network of waterways and forest.
+            </p>
+            <p>
+              The moriche palm forests that dominate the delta interior are a
+              world of their own, sheltering rare orchids, brightly coloured
+              frogs, and the moriche oriole, a bird found almost exclusively in
+              this ecosystem. Guided boat tours through the narrower channels
+              reveal a hidden world of extraordinary biodiversity, and
+              knowledgeable local Warao guides will point out details of the
+              forest and river that most visitors would walk straight past.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → capybara-delta.jpg — capibara's op de oever of in ondiep water in de Orinoco-delta -->
+      <div class="image-break placeholder-break">
+        <span class="ph-filename">capybara-delta.jpg</span>
+        <span class="ph-desc"
+          >Capybaras resting on a delta riverbank in the Orinoco Delta</span
+        >
+      </div>
+
+      <!-- CHAPTER 3: THE MORICHE PALM -->
+      <div
+        id="coastline"
+        class="chapter-opener"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → sanjuan-sunset-river.jpg — gouden zonsondergang boven de Orinoco met silhouet van palmbomen -->
+          <div class="img-placeholder">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span class="ph-filename">sanjuan-sunset-river.jpg</span>
+            <span class="ph-desc"
+              >Golden sunset over the Orinoco with silhouetted moriche
+              palms</span
+            >
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">03</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">The Moriche Palm: Tree of Life</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The Orinoco River stretches 2,140 kilometres from its source in
+              the Parima Highlands of Venezuela all the way to the Atlantic
+              Ocean. Its vast delta, known locally as the Delta Amacuro, fans
+              out across roughly 40,000 square kilometres of channels, islands,
+              and flooded forest before finally spilling into the sea. The San
+              Juan River is the delta's main navigable artery, connecting the
+              interior to the coast and serving as the lifeline of the Warao
+              communities that have called this water world home for thousands
+              of years.
+            </p>
+            <p>
+              Travelling by motorised dugout canoe through the delta's smaller
+              channels is the only way to reach the most remote corners of this
+              extraordinary landscape. The experience of drifting through a
+              narrow waterway with the forest closing in overhead, the sounds of
+              birds and insects filling the air, and the occasional flash of a
+              caiman's eyes at the water's edge is something that simply cannot
+              be replicated anywhere else.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → warao-stilt-houses.jpg — Warao paalwoningen boven het water in de deltakanalen -->
+      <div class="image-break placeholder-break">
+        <span class="ph-filename">warao-stilt-houses.jpg</span>
+        <span class="ph-desc"
+          >Warao indigenous stilt houses built directly over the delta
+          channels</span
+        >
+      </div>
+
+      <!-- CHAPTER 4: CULTURE & FOOD -->
+      <div
+        id="economy"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → moriche-palm-food.jpg — moriche-palmvrucht of traditionele Warao-voedselbereiding -->
+          <div class="img-placeholder">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="8.5" cy="8.5" r="1.5" />
+              <path d="M21 15l-5-5L5 21" />
+            </svg>
+            <span class="ph-filename">moriche-palm-food.jpg</span>
+            <span class="ph-desc"
+              >Moriche palm fruit or traditional Warao food preparation</span
+            >
+          </div>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">04</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">8,000 Years on the Water</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The Warao people, whose name means "boat people" in their own
+              language, have lived in the Orinoco Delta for at least 8,000
+              years, building an entire civilisation on the water. Their
+              traditional diet revolves around the moriche palm, river fish,
+              game, and the edible larvae of the palm weevil, a protein-rich
+              delicacy eaten raw or cooked. A visit to a Warao community is a
+              profoundly moving experience, offering a genuine window into one
+              of the last great river-based cultures in the Americas.
+            </p>
+            <p>
+              In Tucupita, the small but lively capital of Delta Amacuro state,
+              local restaurants serve freshwater fish dishes that reflect the
+              region's Venezuelan and indigenous heritage. The town's waterfront
+              malecón is the social heart of the community, where locals gather
+              at sunset and tour operators prepare their boats for the next
+              day's adventure.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → tucupita-market.jpg — straatscène of markt in Tucupita, gateway tot de delta -->
+      <div class="image-break placeholder-break">
+        <span class="ph-filename">tucupita-market.jpg</span>
+        <span class="ph-desc"
+          >Street scene or market in Tucupita, the gateway town to the
+          delta</span
+        >
+      </div>
+
+      <!-- ACTIVITIES -->
+      <div class="activities-section">
+        <div class="section-intro">
+          <h2>Activities &<br /><em>Adventures</em></h2>
+          <p>
+            Discover the many ways to experience the San Juan Delta, from silent
+            kayak trips through moriche palms to watching thousands of scarlet
+            ibis return at dusk.
+          </p>
+        </div>
+        <div class="activity-grid">
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <!-- PLACEHOLDER: voeg toe → sanjuan-kayak.jpg — kajak door smal deltakanaal omgeven door moriche palmen -->
+            <div class="act-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">sanjuan-kayak.jpg</span>
+              <span class="ph-desc"
+                >Kayaking through a narrow delta channel lined with moriche
+                palms</span
+              >
+            </div>
+            <div class="activity-overlay">
+              <div class="activity-tag">Paddle</div>
+              <div class="activity-name">Kayaking the Delta Channels</div>
+              <div class="activity-desc">
+                Paddle silently through the delta's narrow waterways in a kayak
+                or dugout canoe, slipping beneath overhanging palms and into
+                flooded forest clearings where caimans bask and herons stand
+                motionless in the shallows.
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <!-- PLACEHOLDER: voeg toe → warao-village-visit.jpg — bezoekers samen met Warao-gemeenschap, culturele uitwisseling of ambachtsdemonstatie -->
+            <div class="act-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">warao-village-visit.jpg</span>
+              <span class="ph-desc"
+                >Cultural visit to a Warao community in the delta</span
+              >
+            </div>
+            <div class="activity-overlay">
+              <div class="activity-tag">Culture</div>
+              <div class="activity-name">Warao Cultural Experiences</div>
+              <div class="activity-desc">
+                Visit one of the Warao communities deep in the delta and learn
+                about the traditions, craftsmanship, and river knowledge of one
+                of Venezuela's most remarkable indigenous peoples.
+              </div>
+            </div>
+          </a>
+
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <!-- PLACEHOLDER: voeg toe → ibis-birdwatching.jpg — vogelaars met verrekijkers die scarlet ibis of reigers observeren bij gouden uur -->
+            <div class="act-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">ibis-birdwatching.jpg</span>
+              <span class="ph-desc"
+                >Birdwatcher observing scarlet ibis at golden hour in the
+                delta</span
+              >
+            </div>
+            <div class="activity-overlay">
+              <div class="activity-tag">Wildlife</div>
+              <div class="activity-name">Birdwatching at Dusk</div>
+              <div class="activity-desc">
+                Position yourself along the channels at sunset and watch as tens
+                of thousands of scarlet ibis return to their mangrove roosts in
+                one of nature's most spectacular daily rituals.
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="gallery-section" id="gallery">
+        <h2 class="gallery-heading">Delta Gallery</h2>
+        <div class="gallery-mosaic">
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → sanjuan-delta-aerial.jpg — luchtfoto van de San Juan / Orinoco-delta richting de Atlantische Oceaan -->
+            <div class="gal-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">sanjuan-delta-aerial.jpg</span>
+              <span class="ph-desc"
+                >Aerial view of the Orinoco Delta fanning toward the Atlantic
+                Ocean</span
+              >
+            </div>
+            <div class="gallery-tile-caption">
+              Aerial view of the Orinoco Delta's vast network of channels
+              stretching toward the Atlantic Ocean.
+            </div>
+          </div>
+
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → sanjuan-moriche-palms.jpg — moriche-palmbos weerspiegeld in stil deltawater bij gouden uur -->
+            <div class="gal-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">sanjuan-moriche-palms.jpg</span>
+              <span class="ph-desc"
+                >Moriche palm forest reflected in still delta water at golden
+                hour</span
+              >
+            </div>
+            <div class="gallery-tile-caption">
+              Moriche palm forests reflected in the mirror-still channels of the
+              San Juan Delta at golden hour.
+            </div>
+          </div>
+
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → sanjuan-ibis-sunset.jpg — massa scarlet ibis in vlucht tegen dramatische oranje zonsondergang -->
+            <div class="gal-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">sanjuan-ibis-sunset.jpg</span>
+              <span class="ph-desc"
+                >Mass of scarlet ibis in flight against an orange sunset
+                sky</span
+              >
+            </div>
+            <div class="gallery-tile-caption">
+              Thousands of scarlet ibis take flight at dusk, one of the most
+              breathtaking wildlife spectacles in the Americas.
+            </div>
+          </div>
+
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → scarlet-ibis.jpg — scarlet ibis in mangrove bij zonsondergang, fel rood -->
+            <div class="gal-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">scarlet-ibis.jpg</span>
+              <span class="ph-desc"
+                >Scarlet ibis roosting in mangroves, turning them blazing
+                red</span
+              >
+            </div>
+            <div class="gallery-tile-caption">
+              Scarlet ibis gather in enormous roosts at sunset, turning the
+              mangroves a blazing red.
+            </div>
+          </div>
+
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → warao-stilt-houses.jpg — Warao paalwoningen boven het water in de delta -->
+            <div class="gal-placeholder">
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.5"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="2" />
+                <circle cx="8.5" cy="8.5" r="1.5" />
+                <path d="M21 15l-5-5L5 21" />
+              </svg>
+              <span class="ph-filename">warao-stilt-houses.jpg</span>
+              <span class="ph-desc"
+                >Warao stilt houses built directly over the delta
+                waterways</span
+              >
+            </div>
+            <div class="gallery-tile-caption">
+              Warao communities build their homes on stilts directly above the
+              water, perfectly adapted to the delta's rhythms.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- .page -->
+
+    <div id="footer-placeholder"></div>
+
+    <script>
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
+      fetch("Footer.html")
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
+        });
+    </script>
+  </body>
+</html>

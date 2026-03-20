@@ -5,556 +5,910 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Galveston Bay - Deltas in the Americas</title>
     <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --bark: #7c5c3a;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+        --water: #1e3a4a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
+      }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
       }
       html {
         scroll-behavior: smooth;
       }
+
       body {
-        background: white;
-        color: #111;
+        background: var(--mud);
+        color: var(--mist);
+        font-family: "Libre Baskerville", Georgia, serif;
+        overflow-x: hidden;
       }
 
-      /* HERO */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
-        height: 60vh;
+        height: 65vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+          linear-gradient(
+            to bottom,
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.7) 100%
+          ),
           url("../imgs/Galveston_bay.jpg") center/cover no-repeat;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
         z-index: 10;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
-
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
         pointer-events: none;
       }
 
-      .hero h1 {
-        color: white;
-        font-size: 4rem;
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 8px;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        color: var(--sand);
+        margin-bottom: 14px;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
       }
-
-      /* NAV */
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        color: var(--fog);
+        text-align: center;
+        letter-spacing: -2px;
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
+      }
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.55em;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+      .hero-credit {
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-style: italic;
+      }
       .top-nav {
         position: absolute;
         top: 20px;
         right: 40px;
+        display: flex;
+        gap: 24px;
       }
-
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
-      }
-
-      /* INFO TILES */
-      .info-tiles {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 40px;
-        background: #f7f7f7;
-      }
-
-      .tile {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        cursor: pointer;
-      }
-
-      /* ✨ HOVER EFFECT */
-      .tile:hover {
-        transform: translateY(-8px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-      }
-
-      /* Tekst iets sterker maken bij hover */
-      .tile:hover h3 {
-        transform: translateY(-2px);
-      }
-
-      .tile:hover p {
-        opacity: 0.85;
-      }
-
-      /* ===== VASTE TEGEL KLEUREN ===== */
-
-      .tile.area {
-        background: #e3f2fd;
-      }
-      .tile.area h3 {
-        color: #1565c0;
-      }
-
-      .tile.population {
-        background: #e8f5e9;
-      }
-      .tile.population h3 {
-        color: #2e7d32;
-      }
-
-      .tile.coast {
-        background: #e0f7fa;
-      }
-      .tile.coast h3 {
-        color: #00838f;
-      }
-
-      .tile.economy {
-        background: #f3e5f5;
-      }
-      .tile.economy h3 {
-        color: #6a1b9a;
-      }
-      /* CONTENT */
-      main {
-        padding: 80px 20px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      section {
-        margin-bottom: 100px;
-      }
-
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        display: inline-block;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover {
+        color: var(--sand);
       }
 
-      h2::after {
-        content: "";
-        display: block;
-        width: 120px;
-        height: 4px;
-        background: #000000; /* Zwarte onderstreep */
-        margin-top: 8px;
-        border-radius: 3px;
-      }
-
-      /* Keep this to ensure the "Activities" title stays centered and clean */
-      .activities-title::after {
-        margin: 8px 0 0 0;
-      }
-
-      .activities-title {
-        text-align: left;
-        display: block;
-        width: 100%;
-        margin: 0 0 40px 0;
-      }
-
-      p {
-        line-height: 1.8;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: #333;
-      }
-
-      /* ===== ADVENTURE CARDS NIEUW DESIGN ===== */
-
-      .adventure-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        gap: 60px;
-      }
-
-      .adventure-card {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        background: #f9f9f9;
-        padding: 30px;
-        border-radius: 16px;
-      }
-
-      /* om en om */
-      .adventure-card.reverse {
-        flex-direction: row-reverse;
-      }
-
-      .adventure-image img {
-        width: 400px;
-        border-radius: 14px;
-        object-fit: cover;
-      }
-
-      .adventure-text {
-        flex: 1;
-      }
-
-      .adventure-text h3 {
-        font-size: 1.8rem;
-        margin-bottom: 15px;
-        position: relative;
-      }
-
-      /* Kayaking = blauw */
-      .adventure-card.kayaking {
-        border-left: 6px solid #1565c0;
-      }
-
-      /* Birds = groen */
-      .adventure-card.birds {
-        border-right: 6px solid #2e7d32;
-      }
-
-      /* Fishing = turquoise */
-      .adventure-card.fishing {
-        border-left: 6px solid #00838f;
-      }
-
-      /* Kleuren streepjes h2's */
-
-      /* Nature = groen */
-      .nature h2::after {
-        background: #2e7d32;
-      }
-
-      /* Economy = paars */
-      .economy h2::after {
-        background: #6a1b9a;
-      }
-
-      /* Coastline = blauw */
-      .coastline h2::after {
-        background: #00838f;
-      }
-
-      /* SLIDESHOW STYLES */
-      .slideshow-container {
-        max-width: 100%;
-        position: relative;
-        margin: auto;
-        border-radius: 16px; /* Matches your adventure cards */
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .mySlides {
-        display: none;
-      }
-
-      .mySlides img {
-        vertical-align: middle;
-        height: 650px;
-        object-fit: cover;
-      }
-
-      .prev,
-      .next {
-        cursor: pointer;
-        position: absolute;
-        top: 50%;
-        width: auto;
-        padding: 16px;
-        margin-top: -22px;
-        color: white;
-        font-weight: bold;
-        font-size: 20px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-        background-color: rgba(0, 0, 0, 0.3);
-      }
-
-      .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
-      }
-
-      .prev:hover,
-      .next:hover {
-        background-color: rgba(0, 0, 0, 0.8);
-      }
-
-      .caption {
-        color: #fff;
-        font-size: 1rem;
-        padding: 15px 25px;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-      }
-
-      .fade {
-        animation: fadeAnim 1.5s;
-      }
-
-      @keyframes fadeAnim {
+      @keyframes fadeUp {
         from {
-          opacity: 0.4;
+          opacity: 0;
+          transform: translateY(20px);
         }
         to {
           opacity: 1;
+          transform: translateY(0);
         }
       }
 
-      .photo-credit {
+      .page {
+        position: relative;
+        z-index: 5;
+        background: var(--mud);
+      }
+
+      /* ── STAT TILES ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+      }
+      .stat-tile:last-child {
+        border-right: none;
+      }
+      .stat-tile::before {
+        content: "";
         position: absolute;
-        bottom: 8px;
-        right: 10px;
-        font-size: 0.65rem;
-        color: rgba(255, 255, 255, 0.7);
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .stat-tile:nth-child(1)::before {
+        background: #4a8fa8;
+      }
+      .stat-tile:nth-child(2)::before {
+        background: #c4884a;
+      }
+      .stat-tile:nth-child(3)::before {
+        background: #7fb069;
+      }
+      .stat-tile:nth-child(4)::before {
+        background: #8e6bbf;
+      }
+      .stat-tile:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .stat-tile:hover::before {
+        transform: scaleX(1);
+      }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(232, 220, 200, 0.55);
+        margin-top: 4px;
+      }
+
+      /* ── CHAPTER OPENER ── */
+      .chapter-opener {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        position: relative;
+      }
+      .chapter-opener.flip {
+        direction: rtl;
+      }
+      .chapter-opener.flip > * {
+        direction: ltr;
+      }
+
+      .chapter-image {
+        position: relative;
+        overflow: hidden;
+      }
+      .chapter-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(20%) contrast(1.05);
+        transition: transform 8s ease;
+      }
+      .chapter-image:hover img {
+        transform: scale(1.04);
+      }
+      .chapter-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 60%, var(--mud) 100%);
+      }
+      .chapter-opener.flip .chapter-image::after {
+        background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
+      }
+
+      .chapter-text {
+        padding: 80px 60px 80px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .chapter-num {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 1;
+        color: var(--earth);
+        margin-bottom: -10px;
+      }
+      .chapter-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .chapter-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--fog);
+        margin-bottom: 28px;
+      }
+      .chapter-body p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(232, 220, 200, 0.78);
+        margin-bottom: 16px;
+      }
+      .chapter-divider {
+        width: 60px;
+        height: 2px;
+        background: var(--sand);
+        margin: 28px 0;
+      }
+
+      /* ── IMAGE BREAK ── */
+      .image-break {
+        height: 50vh;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .image-break::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(30, 15, 5, 0.3) 0%,
+          rgba(30, 15, 5, 0.3) 60%,
+          rgba(30, 15, 5, 0.75) 100%
+        );
+      }
+      .image-break-label {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.92);
+        white-space: nowrap;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      }
+
+      /* ── ACTIVITIES ── */
+      .activities-section {
+        padding: 100px 80px;
+      }
+      .section-intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        border-bottom: 1px solid var(--earth);
+        padding-bottom: 40px;
+      }
+      .section-intro h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--fog);
+      }
+      .section-intro h2 em {
         font-style: italic;
+        color: var(--sand);
+      }
+      .section-intro p {
+        max-width: 280px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: rgba(232, 220, 200, 0.6);
+        text-align: right;
+      }
+
+      .activity-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 400px 400px;
+        gap: 3px;
+      }
+      .activity-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .activity-card:first-child {
+        grid-row: span 2;
+      }
+      .activity-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+        filter: brightness(0.75) sepia(15%);
+      }
+      .activity-card:hover img {
+        transform: scale(1.06);
+        filter: brightness(0.55) sepia(25%);
+      }
+      .activity-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(20, 10, 5, 0.95) 0%,
+          rgba(20, 10, 5, 0.2) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 32px;
+      }
+      .activity-tag {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 8px;
+      }
+      .activity-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .activity-card:first-child .activity-name {
+        font-size: 2.4rem;
+      }
+      .activity-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: rgba(232, 220, 200, 0.75);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .activity-card:hover .activity-desc {
+        max-height: 200px;
+      }
+
+      /* ── GALLERY ── */
+      .gallery-section {
+        padding: 0 80px 100px;
+      }
+      .gallery-heading {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--fog);
+        margin-bottom: 30px;
+        padding-left: 4px;
+      }
+      .gallery-mosaic {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr;
+        grid-template-rows: 320px 280px;
+        gap: 4px;
+      }
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-tile:first-child {
+        grid-row: span 2;
+      }
+      .gallery-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(15%) contrast(1.05) brightness(0.92);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+      }
+      .gallery-tile:hover img {
+        transform: scale(1.05);
+        filter: sepia(5%) contrast(1.05) brightness(1);
+      }
+      .gallery-tile-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 36px 18px 14px;
+        background: linear-gradient(transparent, rgba(20, 10, 5, 0.88));
+        color: rgba(232, 220, 200, 0.85);
+        font-style: italic;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .gallery-tile:hover .gallery-tile-caption {
+        opacity: 1;
+      }
+      .gallery-tile:first-child .gallery-tile-caption {
+        font-size: 0.92rem;
+      }
+
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (max-width: 900px) {
+        .chapter-opener,
+        .chapter-opener.flip {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+        .chapter-image {
+          height: 55vw;
+        }
+        .chapter-image::after,
+        .chapter-opener.flip .chapter-image::after {
+          display: none;
+        }
+        .chapter-text {
+          padding: 48px 28px;
+        }
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-tile {
+          border-bottom: 1px solid var(--earth);
+        }
+        .activity-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .activity-card:first-child {
+          grid-row: span 1;
+          height: 380px;
+        }
+        .activity-card {
+          height: 260px;
+        }
+        .activities-section,
+        .gallery-section {
+          padding: 60px 24px;
+        }
+        .section-intro {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .section-intro p {
+          text-align: left;
+        }
+        .gallery-mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery-tile:first-child {
+          grid-row: span 1;
+          height: 56vw;
+        }
+        .gallery-tile {
+          height: 44vw;
+        }
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back to Overview</a>
+        <a href="../index.html#deltas">← Overview</a>
         <a href="Compare.html">Compare</a>
         <a href="Contact.html">Contact</a>
       </nav>
-      <h1>Galveston Bay</h1>
-      <span class="photo-credit">© Galveston Bay Foundation</span>
+      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <h1>Galveston<em>Bay</em></h1>
+      <span class="hero-credit">© Galveston Bay Foundation</span>
     </header>
 
-    <!-- INFO TILES -->
-    <section class="info-tiles">
-      <a href="#area" class="tile area" style="text-decoration: none">
-        <div>
-          <h3>1.600 km²</h3>
-          <p>Area</p>
+    <div class="page">
+      <!-- STAT TILES -->
+      <div class="stat-strip">
+        <a href="#area" class="stat-tile">
+          <div class="stat-value">1,600 km²</div>
+          <div class="stat-label">Area</div>
+          <div class="stat-desc">Total estuary surface</div>
+        </a>
+        <a href="#nature" class="stat-tile">
+          <div class="stat-value">~7 Million</div>
+          <div class="stat-label">Population</div>
+          <div class="stat-desc">Regional inhabitants</div>
+        </a>
+        <a href="#coastline" class="stat-tile">
+          <div class="stat-value">600 km</div>
+          <div class="stat-label">Coastline</div>
+          <div class="stat-desc">Channels & shoreline</div>
+        </a>
+        <a href="#economy" class="stat-tile">
+          <div class="stat-value">$178 Billion</div>
+          <div class="stat-label">Economic Value</div>
+          <div class="stat-desc">Annual contribution</div>
+        </a>
+      </div>
+
+      <!-- CHAPTER 1: AREA & GEOGRAPHY -->
+      <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → aerial/overview foto van Galveston Bay kanalen (was: placeholder-area.jpg / placeholder-area-1.jpg) -->
+          <img
+            src="../imgs/placeholder-area-1.jpg"
+            alt="[TODO: Winding channels and tidal flats of Galveston Bay seen from above]"
+          />
         </div>
-      </a>
-
-      <a href="#nature" class="tile population" style="text-decoration: none">
-        <div>
-          <h3>~7 Million</h3>
-          <p>Regional population</p>
+        <div class="chapter-text">
+          <div class="chapter-num">01</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Area & Geography</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              Explore the vast waters and winding channels of Galveston Bay,
+              where freshwater from the Trinity and San Jacinto Rivers meets the
+              Gulf of Mexico. Paddle through marshes, glide across open waters,
+              and discover hidden coves teeming with wildlife. Every turn
+              reveals a new view, from quiet tidal flats to sunlit oyster reefs.
+            </p>
+            <p>
+              Get ready to experience the bay's dramatic contrasts, from wide
+              open expanses to narrow twisting waterways. Watch the tides shift
+              and the wildlife come alive, making each visit a unique adventure.
+              Photographers and nature lovers alike will find endless
+              opportunities to capture the beauty of this dynamic ecosystem.
+            </p>
+          </div>
         </div>
-      </a>
+      </div>
 
-      <a href="#coastline" class="tile coast" style="text-decoration: none">
-        <div>
-          <h3>600 km</h3>
-          <p>Coastline & channels</p>
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → foto van kayaker in smalle moeraskanalen (was: placeholder-area-2.jpg) -->
+      <div
+        class="image-break"
+        style="
+          background-image: url(&quot;../imgs/placeholder-area-2.jpg&quot;);
+        "
+      >
+        <span class="image-break-label"
+          >Hidden coves and twisting waterways of Galveston Bay</span
+        >
+      </div>
+
+      <!-- CHAPTER 2: NATURE & ECOSYSTEM -->
+      <div
+        id="nature"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → foto van pelikanen/reigers in ondiep water (was: placeholder-nature-1.jpg) -->
+          <img
+            src="../imgs/placeholder-nature-1.jpg"
+            alt="[TODO: Pelicans and egrets wading along the marshy shores of Galveston Bay]"
+          />
         </div>
-      </a>
-
-      <a href="#economy" class="tile economy" style="text-decoration: none">
-        <div>
-          <h3>$178 Billion</h3>
-          <p>Economic value</p>
+        <div class="chapter-text">
+          <div class="chapter-num">02</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Nature & Ecosystem</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              Step into one of Texas' most vibrant ecosystems, home to hundreds
+              of bird, fish, and plant species. Spot herons hunting along the
+              shore, pelicans diving into the water, and egrets standing tall in
+              the marshes. Discover oyster reefs and seagrass beds that shelter
+              countless species and keep the bay healthy.
+            </p>
+            <p>
+              Join guided tours or follow nature trails to get closer to
+              wildlife and learn about the delicate balance of this ecosystem.
+              From open waters to dense marshes, the bay invites you to explore,
+              observe, and connect with nature in an unforgettable way.
+            </p>
+          </div>
         </div>
-      </a>
-    </section>
+      </div>
 
-    <main>
-      <section id="area" class="area">
-        <h2>Area & Geography</h2>
-        <p>
-          Explore the vast waters and winding channels of Galveston Bay, where freshwater from the Trinity and San Jacinto Rivers
-          meets the Gulf of Mexico. Paddle through marshes, glide across open waters, and discover hidden coves teeming with
-          wildlife. Every turn reveals a new view, from quiet tidal flats to sunlit oyster reefs.
-        </p>
-        <p>
-          Get ready to experience the bay’s dramatic contrasts, from wide open expanses to narrow twisting waterways. Watch the
-          tides shift and the wildlife come alive, making each visit a unique adventure. Photographers and nature lovers alike
-          will find endless opportunities to capture the beauty of this dynamic ecosystem.
-        </p>
-      </section>
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → onderwaterfoto van oesterrif of zeegras (was: placeholder-nature-2.jpg) -->
+      <div
+        class="image-break"
+        style="
+          background-image: url(&quot;../imgs/placeholder-nature-2.jpg&quot;);
+        "
+      >
+        <span class="image-break-label"
+          >Oyster reefs and seagrass beds, the foundation of the bay</span
+        >
+      </div>
 
-      <section id="nature" class="nature">
-        <h2>Nature & Ecosystem</h2>
-        <p>
-          Step into one of Texas’ most vibrant ecosystems, home to hundreds of bird, fish, and plant species. Spot herons hunting along the shore, pelicans diving into the water, and egrets standing tall in the marshes. Discover oyster reefs and seagrass beds that shelter countless species and keep the bay healthy.
-        </p>
-        <p>
-          Join guided tours or follow nature trails to get closer to wildlife and learn about the delicate balance of this ecosystem. From open waters to dense marshes, the bay invites you to explore, observe, and connect with nature in an unforgettable way.
-        </p>
-      </section>
+      <!-- CHAPTER 3: COASTLINE & CHALLENGES -->
+      <div
+        id="coastline"
+        class="chapter-opener"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → foto van kustlijn met getijdenvlakten en open water (was: placeholder-coastline-1.jpg) -->
+          <img
+            src="../imgs/placeholder-coastline-1.jpg"
+            alt="[TODO: Scenic marsh channel at Galveston Bay with tidal mudflats and open water]"
+          />
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">03</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Coastline & Challenges</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              Walk, kayak, or boat along Galveston Bay's ever-changing coastline
+              and see how tides, storms, and shifting sediments shape the
+              landscape. Discover hidden marshes, peaceful channels, and scenic
+              overlooks that showcase the bay's natural beauty.
+            </p>
+            <p>
+              Learn about the challenges this ecosystem faces, from erosion to
+              rising seas. Join conservation efforts or simply witness how local
+              initiatives are protecting wildlife and restoring wetlands. Every
+              visit offers a chance to experience nature while understanding the
+              importance of preserving this unique environment.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <section id="coastline" class="coastline">
-        <h2>Coastline & Challenges</h2>
-        <p>
-          Walk, kayak, or boat along Galveston Bay’s ever-changing coastline and see how tides, storms, and shifting sediments shape the landscape. Discover hidden marshes, peaceful channels, and scenic overlooks that showcase the bay’s natural beauty.
-        </p>
-        <p>
-         Learn about the challenges this ecosystem faces, from erosion to rising seas. Join conservation efforts or simply witness how local initiatives are protecting wildlife and restoring wetlands. Every visit offers a chance to experience nature while understanding the importance of preserving this unique environment.
-        </p>
-      </section>
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → foto van vrijwilligers die moerasplanten aanplanten (was: placeholder-coastline-2.jpg) -->
+      <div
+        class="image-break"
+        style="
+          background-image: url(&quot;../imgs/placeholder-coastline-2.jpg&quot;);
+        "
+      >
+        <span class="image-break-label"
+          >Local conservation initiatives restoring the bay's wetlands</span
+        >
+      </div>
 
-      <section id="economy" class="economy">
-        <h2>Economy & Human Impact</h2>
-        <p>
-          Experience the ways humans and nature coexist along Galveston Bay. Fishing, boating, and wildlife tours provide exciting outdoor activities while supporting local communities. Explore the bay and see how its natural resources sustain livelihoods and recreational adventures.
-        </p>
-        <p>
-          Understand the impact of pollution and urban development while witnessing the ongoing efforts to protect and restore habitats. By exploring responsibly, visitors can enjoy the beauty of the bay while supporting conservation and sustainable tourism.
-        </p>
-      </section>
+      <!-- CHAPTER 4: ECONOMY & HUMAN IMPACT -->
+      <div
+        id="economy"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
+        <div class="chapter-image">
+          <!-- PLACEHOLDER: voeg toe → foto van vissersboot bij zonsopgang op Galveston Bay (was: placeholder-economy-1.jpg) -->
+          <img
+            src="../imgs/placeholder-economy-1.jpg"
+            alt="[TODO: Recreational fishing boat on the open waters of Galveston Bay at sunrise]"
+          />
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">04</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Economy & Human Impact</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              Experience the ways humans and nature coexist along Galveston Bay.
+              Fishing, boating, and wildlife tours provide exciting outdoor
+              activities while supporting local communities. Explore the bay and
+              see how its natural resources sustain livelihoods and recreational
+              adventures.
+            </p>
+            <p>
+              Understand the impact of pollution and urban development while
+              witnessing the ongoing efforts to protect and restore habitats. By
+              exploring responsibly, visitors can enjoy the beauty of the bay
+              while supporting conservation and sustainable tourism.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <style>
-        /* Add this to your style section to prevent the sticky header from covering the titles */
-        section {
-          scroll-margin-top: 120px;
-        }
-
-        /* Make the activity links look like the original cards */
-        .adventure-link {
-          text-decoration: none;
-          color: inherit;
-          display: block;
-          transition: transform 0.3s ease;
-        }
-
-        .adventure-link:hover {
-          transform: translateY(-5px); /* Adds a subtle lift on hover */
-        }
-
-        .adventure-link:hover .adventure-card {
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-      </style>
+      <!-- IMAGE BREAK -->
+      <!-- PLACEHOLDER: voeg toe → foto van petrochemische industrie langs Houston Ship Channel (was: placeholder-economy-2.jpg) -->
+      <div
+        class="image-break"
+        style="
+          background-image: url(&quot;../imgs/placeholder-economy-2.jpg&quot;);
+        "
+      >
+        <span class="image-break-label"
+          >Urban development and industry along the shores of Galveston
+          Bay</span
+        >
+      </div>
 
       <!-- ACTIVITIES -->
-      <section class="activities">
-        <h2 class="activities-title">Activities & Adventures</h2>
-
-        <div class="adventure-container">
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card kayaking">
-              <div class="adventure-image">
-                <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
-              </div>
-              <div class="adventure-text kayaking">
-                <h3>Kayaking & Boating</h3>
-                <p>
-                  Explore the marshes, wetlands and open waters of Galveston Bay. Kayaking offers a peaceful way to experience the
-                  rich coastal ecosystem.
-                </p>
-              </div>
-            </div>
-          </a>
-
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card reverse birds">
-              <div class="adventure-image">
-                <img src="../imgs/birb-watching.jpg" alt="Bird watching Galveston Bay" />
-              </div>
-              <div class="adventure-text birds">
-                <h3>Bird Watching</h3>
-                <p>
-                  Spot hundreds of migratory species along the coastline. Galveston Bay is a paradise for bird lovers and wildlife
-                  photographers.
-                </p>
+      <div class="activities-section">
+        <div class="section-intro">
+          <h2>Activities &<br /><em>Adventures</em></h2>
+          <p>
+            Discover the many ways to experience Galveston Bay, from quiet
+            paddle routes through the marshes to world-class fishing on open
+            water.
+          </p>
+        </div>
+        <div class="activity-grid">
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/Kayak.png" alt="Kayaking Galveston Bay" />
+            <div class="activity-overlay">
+              <div class="activity-tag">Paddle</div>
+              <div class="activity-name">Kayaking & Boating</div>
+              <div class="activity-desc">
+                Explore the marshes, wetlands and open waters of Galveston Bay.
+                Kayaking offers a peaceful way to experience the rich coastal
+                ecosystem up close.
               </div>
             </div>
           </a>
-
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card fishing">
-              <div class="adventure-image">
-                <img src="../imgs/fish.jpg" alt="Fishing Galveston Bay" />
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/birb-watching.jpg" alt="Bird watching" />
+            <div class="activity-overlay">
+              <div class="activity-tag">Wildlife</div>
+              <div class="activity-name">Bird Watching</div>
+              <div class="activity-desc">
+                Spot hundreds of migratory species along the coastline.
+                Galveston Bay is a paradise for bird lovers and wildlife
+                photographers.
               </div>
-              <div class="adventure-text fishing">
-                <h3>Fishing</h3>
-                <p>
-                  The bay is a popular destination for recreational and commercial fishing, offering rich waters filled with
-                  diverse marine life.
-                </p>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/fish.jpg" alt="Fishing" />
+            <div class="activity-overlay">
+              <div class="activity-tag">Sport</div>
+              <div class="activity-name">Fishing</div>
+              <div class="activity-desc">
+                The bay is a popular destination for recreational and commercial
+                fishing, offering rich waters filled with diverse marine life.
               </div>
             </div>
           </a>
         </div>
-      </section>
+      </div>
 
-      <section id="gallery">
-        <h2><i class="fa-solid fa-camera"></i> Bay Gallery</h2>
-
-        <div class="slideshow-container">
-          <div class="mySlides fade">
-            <img src="../imgs/galveston-bay-aerial.webp" style="width: 100%" />
-            <div class="caption">An aerial view of the vast estuary and shipping channels.</div>
+      <!-- GALLERY -->
+      <div class="gallery-section" id="gallery">
+        <h2 class="gallery-heading">Bay Gallery</h2>
+        <div class="gallery-mosaic">
+          <div class="gallery-tile">
+            <img
+              src="../imgs/galveston-bay-aerial.webp"
+              alt="Aerial view of Galveston Bay"
+            />
+            <div class="gallery-tile-caption">
+              An aerial view of the vast estuary and shipping channels.
+            </div>
           </div>
-
-          <div class="mySlides fade">
-            <img src="../imgs/oyster-reef.png" style="width: 100%" />
-            <div class="caption">Critical oyster reefs that filter water and protect the coastline.</div>
+          <div class="gallery-tile">
+            <img src="../imgs/oyster-reef.png" alt="Oyster reef" />
+            <div class="gallery-tile-caption">
+              Critical oyster reefs that filter water and protect the coastline.
+            </div>
           </div>
-
-          <div class="mySlides fade">
-            <img src="../imgs/port-of-houston.jpg" style="width: 100%" />
-            <div class="caption">The bustling industrial heart of the Texas coast.</div>
+          <div class="gallery-tile">
+            <img src="../imgs/port-of-houston.jpg" alt="Port of Houston" />
+            <div class="gallery-tile-caption">
+              The bustling industrial heart of the Texas coast.
+            </div>
           </div>
-
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → foto van vogels/wildlife langs de oever (was: placeholder-nature-1.jpg) -->
+            <img
+              src="../imgs/placeholder-nature-1.jpg"
+              alt="[TODO: Herons and pelicans along the bay's rich shoreline]"
+            />
+            <div class="gallery-tile-caption">
+              Herons and pelicans thriving along the bay's rich shoreline.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <!-- PLACEHOLDER: voeg toe → foto van moeraskanalen (was: placeholder-coastline-1.jpg) -->
+            <img
+              src="../imgs/placeholder-coastline-1.jpg"
+              alt="[TODO: Tidal marshes and channels winding through the bay's interior]"
+            />
+            <div class="gallery-tile-caption">
+              Tidal marshes and channels wind through the bay's interior.
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </div>
+    <!-- .page -->
 
-    <script>
-      const hero = document.getElementById("hero");
-
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 150) {
-          hero.classList.add("hidden");
-        } else {
-          hero.classList.remove("hidden");
-        }
-      });
-
-      let slideIndex = 1;
-      showSlides(slideIndex);
-
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) {
-          slideIndex = 1;
-        }
-        if (n < 1) {
-          slideIndex = slides.length;
-        }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
-      }
-    </script>
-
-    <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
 
     <script>
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
       fetch("Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
   </body>

@@ -3,202 +3,594 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Delta’s in the Americas</title>
+    <title>Delta's in the Americas</title>
     <link rel="icon" type="image/x-icon" href="imgs/LOGO DitA.png" />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* ... (Existing styles kept) ... */
+      :root {
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+        --water: #1e3a4a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
+      }
+
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
-        background: white;
-        color: #111;
+        background: var(--mud);
+        color: var(--mist);
+        font-family: "Libre Baskerville", Georgia, serif;
+        overflow-x: hidden;
       }
 
+      /* ── NOISE TEXTURE ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
         height: 80vh;
-        background: url("https://scitechdaily.com/images/River-Delta-Kamchatka.jpg") center / cover no-repeat;
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(20, 10, 5, 0.25) 0%,
+            rgba(20, 10, 5, 0.75) 100%
+          ),
+          url("https://scitechdaily.com/images/River-Delta-Kamchatka.jpg")
+            center/cover no-repeat;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
         z-index: 10;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
-
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
         pointer-events: none;
       }
 
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.8rem;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 18px;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
+      }
       .hero h1 {
-        color: white;
-        font-size: 4rem;
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(3.2rem, 8vw, 7rem);
+        line-height: 0.88;
         text-transform: uppercase;
-        letter-spacing: 2px;
+        color: var(--fog);
+        text-align: center;
+        letter-spacing: -2px;
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
       }
-
-      .hero-text {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.45em;
+        letter-spacing: 6px;
+        font-weight: 400;
+        margin-top: 10px;
       }
-
-      .hero-subtitle {
-        color: white;
-        font-size: 1.1rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        opacity: 0.85;
+      .hero-credit {
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-style: italic;
       }
-
       .top-nav {
         position: absolute;
-        top: 20px;
-        right: 40px;
+        top: 24px;
+        right: 44px;
+        display: flex;
+        gap: 28px;
       }
-
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.82rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover {
+        color: var(--sand);
       }
 
-      main {
-        padding: 80px 60px;
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      .intro {
-        max-width: 700px;
-        margin: 0 auto 100px auto;
-        text-align: center;
+      /* ── PAGE BODY ── */
+      .page {
+        position: relative;
+        z-index: 5;
+        background: var(--mud);
       }
 
-      .intro h2 {
+      /* ── INTRO ── */
+      .intro-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--earth);
+      }
+      .intro-text {
+        padding: 80px 72px 80px 80px;
+        border-right: 1px solid var(--earth);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .intro-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.72rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--sand);
         margin-bottom: 20px;
       }
+      .intro-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(1.8rem, 3vw, 2.6rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--fog);
+        margin-bottom: 28px;
+      }
+      .intro-divider {
+        width: 56px;
+        height: 2px;
+        background: var(--sand);
+        margin-bottom: 28px;
+      }
+      .intro-text p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(232, 220, 200, 0.72);
+        margin-bottom: 16px;
+      }
+      .intro-text p strong {
+        color: var(--mist);
+        font-weight: 700;
+      }
+      .intro-map {
+        position: relative;
+        overflow: hidden;
+        min-height: 460px;
+      }
+      .intro-map::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 60px;
+        background: linear-gradient(90deg, var(--mud), transparent);
+        pointer-events: none;
+        z-index: 401;
+      }
+      #delta-map {
+        width: 100%;
+        height: 100%;
+        min-height: 460px;
+        display: block;
+      }
 
-      .intro p {
+      /* ── SECTION HEADING ── */
+      .section-heading {
+        padding: 64px 80px 48px;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--earth);
+      }
+      .section-heading h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 900;
+        line-height: 0.95;
+        color: var(--fog);
+      }
+      .section-heading h2 em {
+        font-style: italic;
+        color: var(--sand);
+      }
+      .section-heading p {
+        max-width: 260px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.78rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: rgba(232, 220, 200, 0.45);
+        text-align: right;
         line-height: 1.6;
       }
 
-      .cards {
+      /* ── DELTA GRID ── */
+      .delta-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+        grid-template-columns: 2fr 1.2fr 1.6fr;
+        grid-template-rows: 360px 260px 320px;
+        gap: 1px;
+        background: var(--earth);
+        border-bottom: 1px solid var(--earth);
       }
 
-      .card {
+      /* Card 1: Mississippi — tall left column spanning rows 1+2 */
+      .delta-card:nth-child(1) {
+        grid-column: 1;
+        grid-row: 1 / 3;
+      }
+      /* Card 2: Paraná — top middle */
+      .delta-card:nth-child(2) {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      /* Card 3: Galveston — top right */
+      .delta-card:nth-child(3) {
+        grid-column: 3;
+        grid-row: 1;
+      }
+      /* Card 4: Yukon — middle, spans col 2+3 */
+      .delta-card:nth-child(4) {
+        grid-column: 2 / 4;
+        grid-row: 2;
+      }
+      /* Card 5: Amazon — bottom left, wide */
+      .delta-card:nth-child(5) {
+        grid-column: 1 / 3;
+        grid-row: 3;
+      }
+      /* Card 6: Colorado — bottom right */
+      .delta-card:nth-child(6) {
+        grid-column: 3;
+        grid-row: 3;
+      }
+
+      /* Row 4 for remaining 3 cards */
+      .delta-grid {
+        grid-template-rows: 360px 260px 300px 280px;
+      }
+      .delta-card:nth-child(7) {
+        grid-column: 1;
+        grid-row: 4;
+      }
+      .delta-card:nth-child(8) {
+        grid-column: 2;
+        grid-row: 4;
+      }
+      .delta-card:nth-child(9) {
+        grid-column: 3;
+        grid-row: 4;
+      }
+
+      .delta-card {
         position: relative;
         overflow: hidden;
-        height: 420px;
-        border-radius: 12px;
+        background: var(--mud);
+        text-decoration: none;
+        display: block;
+        min-height: 220px;
       }
-
-      .card img {
+      .delta-card img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
+        filter: sepia(20%) brightness(0.75) contrast(1.05);
+        transition:
+          transform 0.8s ease,
+          filter 0.5s;
       }
-
-      .card-overlay {
+      .delta-card:hover img {
+        transform: scale(1.06);
+        filter: sepia(5%) brightness(0.65) contrast(1.05);
+      }
+      .delta-overlay {
         position: absolute;
         inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(20, 10, 5, 0.92) 0%,
+          rgba(20, 10, 5, 0.15) 55%,
+          transparent 100%
+        );
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
-        padding: 20px;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-        color: white;
+        padding: 32px;
+        transition: background 0.4s;
       }
-
-      .card button {
-        align-self: center;
-        margin-bottom: 10px;
-        padding: 10px 30px;
-        background: transparent;
-        border: 2px solid white;
-        color: white;
-        font-size: 1.2rem;
-        cursor: pointer;
-        border-radius: 12px;
-        transition: background 0.3s ease;
+      .delta-card:hover .delta-overlay {
+        background: linear-gradient(
+          to top,
+          rgba(20, 10, 5, 0.96) 0%,
+          rgba(20, 10, 5, 0.35) 60%,
+          transparent 100%
+        );
       }
-
-      .card button:hover {
-        background: rgba(255, 255, 255, 0.2);
-      }
-
-      .photo-credit {
-        position: absolute;
-        bottom: 8px;
-        right: 10px;
+      .delta-region {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
         font-size: 0.65rem;
-        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 8px;
+        opacity: 0.85;
+      }
+      .delta-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 14px;
+      }
+      .delta-card.featured .delta-name {
+        font-size: 1.7rem;
+      }
+      .delta-card:nth-child(1) .delta-name,
+      .delta-card:nth-child(5) .delta-name {
+        font-size: 2.2rem;
+      }
+      .delta-card:nth-child(4) .delta-name {
+        font-size: 1.95rem;
+      }
+      .delta-cta {
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.72rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        opacity: 0;
+        transform: translateY(6px);
+        transition:
+          opacity 0.35s,
+          transform 0.35s;
+      }
+      .delta-cta::after {
+        content: "";
+        display: inline-block;
+        width: 24px;
+        height: 1px;
+        background: var(--sand);
+        transition: width 0.3s;
+      }
+      .delta-card:hover .delta-cta {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .delta-card:hover .delta-cta::after {
+        width: 40px;
+      }
+
+      .delta-credit {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.3);
         font-style: italic;
+        z-index: 2;
       }
 
-      @media screen and (max-width: 500px) {
-        .cards {
-          grid-template-columns: repeat(1, 1fr);
-        }
-        .card {
-          height: 300px;
-        }
+      /* ── PLAN YOUR ADVENTURE ── */
+      .adventure-section {
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1px;
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+        background: var(--earth);
+        margin-top: 80px;
       }
-      @media screen and (min-width: 500px) and (max-width: 950px) {
-        .cards {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        .card {
-          height: 350px;
-        }
+      .adventure-text {
+        background: var(--mud);
+        padding: 100px 80px 100px 80px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .adventure-text .intro-label {
+        margin-bottom: 20px;
+      }
+      .adventure-text h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 24px;
+      }
+      .adventure-text p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(232, 220, 200, 0.68);
+        margin-bottom: 36px;
+      }
+      .adventure-btn {
+        display: inline-block;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.78rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--mud);
+        background: var(--sand);
+        padding: 16px 36px;
+        text-decoration: none;
+        transition:
+          background 0.3s,
+          color 0.3s;
+        align-self: flex-start;
+      }
+      .adventure-btn:hover {
+        background: var(--fog);
       }
 
-      /* ----------------------------------------------------------- */
-      /* NEW STYLES FOR THE FULL-WIDTH BOOKING TILE                  */
-      /* ----------------------------------------------------------- */
-
-      .booking-section {
-        margin-top: 100px;
-        text-align: center;
-      }
-
-      .booking-section h2 {
-        margin-bottom: 40px;
-      }
-
-      /* This tells the card to span all available grid columns */
-      .booking-card {
-        grid-column: 1 / -1; /* Stretch across all columns */
-        background: #111; /* Optional: give it a distinct dark background */
+      .adventure-image {
+        background: var(--mud);
+        padding: 80px 80px 80px 72px;
         display: flex;
         align-items: center;
+      }
+      .adventure-image-inner {
+        position: relative;
+        width: 100%;
+      }
+      .adventure-image img {
+        width: 100%;
+        height: 360px;
+        object-fit: cover;
+        display: block;
+        filter: sepia(20%) contrast(1.05) brightness(0.85);
+        border-radius: 2px;
+      }
+      .adventure-image-badge {
+        position: absolute;
+        top: -18px;
+        right: -18px;
+        width: 90px;
+        height: 90px;
+        background: var(--sand);
+        border-radius: 50%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         justify-content: center;
-        height: 300px; /* You can adjust the height as needed */
+        font-family: "Playfair Display", serif;
+        font-size: 0.65rem;
+        font-style: italic;
+        color: var(--mud);
+        text-align: center;
+        line-height: 1.3;
+        font-weight: 700;
+        padding: 8px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
       }
 
-      /* Optional: style the button inside the booking card specifically */
-      .booking-card button {
-        border-color: #ffd700; /* Example gold color for emphasis */
-        color: #ffd700;
-        padding: 15px 50px; /* Make the button itself slightly bigger */
-        font-weight: bold;
+      /* ── RESPONSIVE ── */
+      @media (max-width: 900px) {
+        .intro-section {
+          grid-template-columns: 1fr;
+        }
+        .intro-text {
+          padding: 56px 28px;
+          border-right: none;
+          border-bottom: 1px solid var(--earth);
+        }
+        .intro-map {
+          min-height: 50vw;
+        }
+        .intro-map::after {
+          display: none;
+        }
+        .section-heading {
+          padding: 48px 28px 36px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .section-heading p {
+          text-align: left;
+        }
+        .delta-grid {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+          background: var(--earth);
+        }
+        .delta-card:nth-child(n) {
+          grid-column: auto;
+          grid-row: auto;
+          min-height: 240px;
+        }
+        .delta-card:nth-child(1) {
+          grid-column: 1 / 3;
+          min-height: 300px;
+        }
+        .delta-card:nth-child(1) .delta-name,
+        .delta-card:nth-child(5) .delta-name,
+        .delta-card:nth-child(4) .delta-name {
+          font-size: 1.7rem;
+        }
+        .delta-cta {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        .adventure-section {
+          grid-template-columns: 1fr;
+          padding: 60px 28px;
+          background: var(--mud);
+          gap: 40px;
+        }
+        .adventure-text {
+          padding: 0;
+        }
+        .adventure-image {
+          padding: 0;
+        }
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
@@ -206,157 +598,308 @@
         <a href="html/Contact.html">Contact</a>
         <a href="#">Language</a>
       </nav>
-
-      <div class="hero-text">
-        <h1>Delta's in the Americas</h1>
-        <p class="hero-subtitle">Discover • Compare • Experience</p>
-        <span class="photo-credit">© NASA / USGS</span>
-      </div>
+      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <h1>
+        Delta's in<br />the Americas<em>Discover · Compare · Experience</em>
+      </h1>
+      <span class="hero-credit">© NASA / USGS</span>
     </header>
 
-    <main>
-      <section class="intro">
-        <h2>Delta's: The Earth’s Living Veins</h2>
-        <p>
-          River deltas are among the most dynamic and productive landscapes on our planet, shifting masterpieces where mighty
-          rivers finally surrender to the sea. These vast, aquatic labyrinths are more than just geographical landmarks; they are
-          the Earth’s living veins, carving out fertile sanctuaries and cradling some of the most unique ecosystems found in the
-          Western Hemisphere.
-          <br /><br />
-          In the Americas, the legendary Mississippi and the sprawling Paraná stand as titans of nature, sculpting the very
-          terrain they inhabit. From the cypress-lined bayous of the North to the lush, tropical wetlands of the South, these
-          deltas act as vital lifelines; sheltering rare wildlife, filtering our waters, and sustaining the vibrant cultures of
-          the communities that call their banks home.
-          <br /><br />
-          <b
-            >The journey begins where the river ends. Click below to explore the breathtaking deltas of the Americas and discover
-            the wild wonders that await.</b
-          >
-          <br /><br />
-          Click on the buttons below to explore the Delta's in the Americas.
-        </p>
-      </section>
-
-      <section class="cards">
-        <article class="card">
-          <img src="imgs/Mississippi_delta.webp" alt="Mississippi_delta" />
-          <div class="card-overlay">
-            <a href="html/Mississippi-Delta.html" style="text-decoration: none; align-self: center">
-              <button>Mississippi delta</button>
-            </a>
-            <span class="photo-credit">© NASA / USGS</span>
-          </div>
-        </article>
-        <article class="card">
-          <img src="imgs/Parana_delta.jpg" alt="Paraná_delta" />
-          <div class="card-overlay">
-            <a href="html/Paraná-Delta.html" style="text-decoration: none; align-self: center">
-              <button>Paraná delta</button>
-            </a>
-            <span class="photo-credit">© NASA / USGS</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/Galveston_bay.jpg" alt="Galveston_bay" />
-          <div class="card-overlay">
-            <a href="html/Galveston-Bay.html" style="text-decoration: none; align-self: center">
-              <button>Galveston bay</button>
-            </a>
-            <span class="photo-credit">© Galveston Bay Foundation</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/Yukon_delta.jpg" alt="Yukon_delta" />
-          <div class="card-overlay">
-            <a href="html/Yukon-Delta.html" style="text-decoration: none; align-self: center">
-              <button>Yukon delta</button>
-            </a>
-            <span class="photo-credit">© NASA / USGS</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/Amazone_delta.jpg" alt="Amazone_delta" />
-          <div class="card-overlay">
-            <button>Amazone delta</button>
-            <span class="photo-credit">© NASA / USGS</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/Colorado_delta.jpg" alt="Colorado_delta" />
-          <div class="card-overlay">
-            <a href="html/Colorado-Delta.html" style="text-decoration: none; align-self: center">
-              <button>Colorado delta</button>
-            </a>
-            <span class="photo-credit">© Tom Hegen</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/San-Juan_delta.jpg" alt="San Juan_delta" />
-          <div class="card-overlay">
-            <button>San Juan delta</button>
-            <span class="photo-credit">© San Juan Water District</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/Magdalena_delta.jpg" alt="Magdalena_delta" />
-          <div class="card-overlay">
-            <a href="html/Magdalena-Delta.html" style="text-decoration: none; align-self: center">
-              <button>Magdalena delta</button>
-            </a>
-            <span class="photo-credit">© NASA / USGS</span>
-          </div>
-        </article>
-
-        <article class="card">
-          <img src="imgs/Rio-Grande_delta.webp" alt="Rio Grande_delta" />
-          <div class="card-overlay">
-            <button>Rio Grande delta</button>
-            <span class="photo-credit">© Major King</span>
-          </div>
-        </article>
-      </section>
-
-      <section class="booking-section">
-        <hr style="margin-bottom: 60px; border: 0; border-top: 1px solid #eee" />
-        <h2>Plan Your Adventure</h2>
-
-        <div class="cards">
-          <article class="card booking-card">
-            <div class="card-overlay" style="background: #222; justify-content: center">
-              <a href="html/UNDER-CONSTRUCTION.html" style="text-decoration: none; align-self: center">
-                <button>Book your trip now</button>
-              </a>
-              <p style="text-align: center; margin-top: 10px; opacity: 0.8">Explore the deltas in person.</p>
-            </div>
-          </article>
+    <div class="page">
+      <!-- INTRO -->
+      <div class="intro-section">
+        <div class="intro-text">
+          <div class="intro-label">Field Notes</div>
+          <h2>The Earth's Living Veins</h2>
+          <div class="intro-divider"></div>
+          <p>
+            River deltas are among the most dynamic and productive landscapes on
+            our planet — shifting masterpieces where mighty rivers finally
+            surrender to the sea. These vast, aquatic labyrinths are more than
+            geographical landmarks; they are the Earth's living veins, carving
+            out fertile sanctuaries and cradling some of the most unique
+            ecosystems found in the Western Hemisphere.
+          </p>
+          <p>
+            In the Americas, the legendary Mississippi and the sprawling Paraná
+            stand as titans of nature, sculpting the very terrain they inhabit.
+            From the cypress-lined bayous of the North to the lush, tropical
+            wetlands of the South, these deltas act as vital lifelines,
+            sheltering rare wildlife, filtering our waters, and sustaining the
+            vibrant cultures of the communities that call their banks home.
+          </p>
+          <p><strong>The journey begins where the river ends.</strong></p>
         </div>
-      </section>
-    </main>
+        <div class="intro-map">
+          <div id="delta-map"></div>
+        </div>
+      </div>
 
+      <!-- DELTA GRID HEADING -->
+      <div class="section-heading" id="deltas">
+        <h2>Explore the<br /><em>Deltas</em></h2>
+        <p>
+          Nine extraordinary river deltas across the Americas, each with its own
+          story to tell
+        </p>
+      </div>
+
+      <!-- DELTA CARDS -->
+      <div class="delta-grid">
+        <a href="html/Mississippi-Delta.html" class="delta-card">
+          <img src="imgs/Mississippi_delta.webp" alt="Mississippi Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">North America</div>
+            <div class="delta-name">Mississippi Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© NASA / USGS</span>
+        </a>
+
+        <a href="html/Paraná-Delta.html" class="delta-card">
+          <img src="imgs/Parana_delta.jpg" alt="Paraná Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">South America</div>
+            <div class="delta-name">Paraná Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© NASA / USGS</span>
+        </a>
+
+        <a href="html/Galveston-Bay.html" class="delta-card">
+          <img src="imgs/Galveston_bay.jpg" alt="Galveston Bay" />
+          <div class="delta-overlay">
+            <div class="delta-region">North America</div>
+            <div class="delta-name">Galveston Bay</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© Galveston Bay Foundation</span>
+        </a>
+
+        <a href="html/Yukon-Delta.html" class="delta-card">
+          <img src="imgs/Yukon_delta.jpg" alt="Yukon Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">North America</div>
+            <div class="delta-name">Yukon Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© NASA / USGS</span>
+        </a>
+
+        <a href="html/Amazone-delta.html" class="delta-card">
+          <img src="imgs/Amazone_delta.jpg" alt="Amazon Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">South America</div>
+            <div class="delta-name">Amazon Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© NASA / USGS</span>
+        </a>
+
+        <a href="html/Colorado-Delta.html" class="delta-card">
+          <img src="imgs/Colorado_delta.jpg" alt="Colorado Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">North America</div>
+            <div class="delta-name">Colorado Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© Tom Hegen</span>
+        </a>
+
+        <a href="html/SanJuan-Delta.html" class="delta-card">
+          <img src="imgs/San-Juan_delta.jpg" alt="San Juan Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">Central America</div>
+            <div class="delta-name">San Juan Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© San Juan Water District</span>
+        </a>
+
+        <a href="html/Magdalena-Delta.html" class="delta-card">
+          <img src="imgs/Magdalena_delta.jpg" alt="Magdalena Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">South America</div>
+            <div class="delta-name">Magdalena Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© NASA / USGS</span>
+        </a>
+
+        <a href="html/RioGrande-Delta.html" class="delta-card">
+          <img src="imgs/Rio-Grande_delta.webp" alt="Rio Grande Delta" />
+          <div class="delta-overlay">
+            <div class="delta-region">North America</div>
+            <div class="delta-name">Rio Grande Delta</div>
+            <div class="delta-cta">Explore</div>
+          </div>
+          <span class="delta-credit">© Major King</span>
+        </a>
+      </div>
+
+      <!-- PLAN YOUR ADVENTURE -->
+      <div class="adventure-section">
+        <div class="adventure-text">
+          <div class="intro-label">Next Step</div>
+          <h2>Plan Your Adventure</h2>
+          <div class="intro-divider"></div>
+          <p>
+            Ready to leave the map behind and step into the wild? Whether you
+            are drawn to the slow drift of a bayou cruise, the raw power of the
+            Amazon, or the haunting silence of the Yukon delta, we can help you
+            plan a journey you will never forget.
+          </p>
+          <a href="html/UNDER-CONSTRUCTION.html" class="adventure-btn"
+            >Book your trip</a
+          >
+        </div>
+        <div class="adventure-image">
+          <div class="adventure-image-inner">
+            <img src="imgs/delta-general.jpg" alt="Delta adventure" />
+                      <span class="delta-credit">© National Graphic Education</span>
+            <div class="adventure-image-badge">Explore<br />in person</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- .page -->
+
+    <div id="footer-placeholder"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
-        if (window.scrollY > 150) {
-          hero.classList.add("hidden");
-        } else {
-          hero.classList.remove("hidden");
-        }
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
+      fetch("html/Footer.html")
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
+        });
+
+      // Leaflet map
+      const map = L.map("delta-map", {
+        center: [10, -70],
+        zoom: 2,
+        zoomControl: false,
+        scrollWheelZoom: false,
+        attributionControl: false,
+      });
+
+      L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png",
+        {
+          maxZoom: 19,
+        },
+      ).addTo(map);
+
+      const markerStyle = L.divIcon({
+        className: "",
+        html: `<div style="
+        width:10px;height:10px;
+        background:#c9a96e;
+        border-radius:50%;
+        border:2px solid #f4ede0;
+        box-shadow:0 0 0 3px rgba(201,169,110,0.3);
+      "></div>`,
+        iconSize: [10, 10],
+        iconAnchor: [5, 5],
+      });
+
+      const deltas = [
+        {
+          name: "Mississippi Delta",
+          lat: 29.1,
+          lng: -89.2,
+          url: "html/Mississippi-Delta.html",
+        },
+        {
+          name: "Paraná Delta",
+          lat: -34.1,
+          lng: -58.5,
+          url: "html/Paraná-Delta.html",
+        },
+        {
+          name: "Galveston Bay",
+          lat: 29.5,
+          lng: -94.8,
+          url: "html/Galveston-Bay.html",
+        },
+        {
+          name: "Yukon Delta",
+          lat: 62.5,
+          lng: -164.5,
+          url: "html/Yukon-Delta.html",
+        },
+        {
+          name: "Amazon Delta",
+          lat: 0.5,
+          lng: -50.0,
+          url: "html/Amazone-delta.html",
+        },
+        {
+          name: "Colorado Delta",
+          lat: 31.8,
+          lng: -114.7,
+          url: "html/Colorado-Delta.html",
+        },
+        {
+          name: "San Juan Delta",
+          lat: 10.9,
+          lng: -83.7,
+          url: "html/SanJuan-Delta.html",
+        },
+        {
+          name: "Magdalena Delta",
+          lat: 11.0,
+          lng: -74.8,
+          url: "html/Magdalena-Delta.html",
+        },
+        {
+          name: "Rio Grande Delta",
+          lat: 25.9,
+          lng: -97.2,
+          url: "html/RioGrande-Delta.html",
+        },
+      ];
+
+      deltas.forEach((d) => {
+        const marker = L.marker([d.lat, d.lng], { icon: markerStyle })
+          .addTo(map)
+          .bindTooltip(d.name, {
+            permanent: false,
+            direction: "top",
+            offset: [0, -8],
+            className: "delta-tooltip",
+          });
+        marker.on("click", () => {
+          window.location.href = d.url;
+        });
+        marker.getElement()?.style.setProperty("cursor", "pointer");
       });
     </script>
-
-    <div id="footer-placeholder"></div>
-    <script>
-      fetch("html/Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
-        });
-    </script>
+    <style>
+      .delta-tooltip {
+        background: #1a0f07;
+        border: 1px solid #4a3520;
+        color: #c9a96e;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 5px 10px;
+        border-radius: 2px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        white-space: nowrap;
+      }
+      .delta-tooltip::before {
+        display: none;
+      }
+      .leaflet-container {
+        background: #1a1a1a;
+      }
+    </style>
   </body>
 </html>

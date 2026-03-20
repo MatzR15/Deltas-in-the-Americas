@@ -6,33 +6,58 @@
     <title>Footer</title>
     <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
     <style>
-      /* FOOTER */
+      @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400&display=swap");
+
       .site-footer {
-        background: #737270;
-        color: white;
-        padding: 40px 20px;
-        text-align: center;
+        background: #1a0f07;
+        color: #e8dcc8;
+        padding: 56px 80px 40px;
+        border-top: 1px solid #4a3520;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+      }
+
+      .site-footer .footer-divider {
+        width: 48px;
+        height: 2px;
+        background: #c9a96e;
+        margin-bottom: 24px;
       }
 
       .site-footer h3 {
-        margin-bottom: 15px;
+        font-family: "Playfair Display", serif;
+        font-size: 1.25rem;
+        font-weight: 700;
         letter-spacing: 1px;
+        color: #f4ede0;
+        margin-bottom: 20px;
+        text-transform: uppercase;
       }
 
       .site-footer p {
-        color: #ccc;
-        font-size: 0.9rem;
-        margin-bottom: 8px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: rgba(201, 169, 110, 0.65);
+        margin-bottom: 6px;
+      }
+
+      .site-footer p:last-child {
+        margin-bottom: 0;
       }
     </style>
   </head>
 
   <body>
-    <!-- footer.html -->
     <footer class="site-footer">
+      <div class="footer-divider"></div>
       <h3>Delta's in the Americas</h3>
-      <p>© 2026 — Aeres Hogeschool </p>
-      <p>Matz Robijn • Cas Groenigen</p>
+      <p>© 2026 — Aeres Hogeschool</p>
+      <p>Matz Robijn · Cas Groenigen</p>
     </footer>
   </body>
 </html>
