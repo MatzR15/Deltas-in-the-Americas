@@ -29,14 +29,12 @@
       html {
         scroll-behavior: smooth;
       }
-
       body {
         background: var(--mud);
         color: var(--mist);
         font-family: "Libre Baskerville", Georgia, serif;
         overflow-x: hidden;
       }
-
       body::before {
         content: "";
         position: fixed;
@@ -73,7 +71,6 @@
         transform: translateY(-100%);
         pointer-events: none;
       }
-
       .hero-eyebrow {
         font-family: "Oswald", sans-serif;
         font-weight: 300;
@@ -133,7 +130,6 @@
       .top-nav a:hover {
         color: var(--sand);
       }
-
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -201,7 +197,6 @@
       .stat-tile:hover::before {
         transform: scaleX(1);
       }
-
       .stat-value {
         font-family: "Playfair Display", serif;
         font-size: 1.8rem;
@@ -222,7 +217,7 @@
         margin-top: 4px;
       }
 
-      /* ── CHAPTER OPENER ── */
+      /* ── CHAPTER ── */
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -235,7 +230,6 @@
       .chapter-opener.flip > * {
         direction: ltr;
       }
-
       .chapter-image {
         position: relative;
         overflow: hidden;
@@ -260,7 +254,6 @@
       .chapter-opener.flip .chapter-image::after {
         background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
       }
-
       .chapter-text {
         padding: 80px 60px 80px 50px;
         display: flex;
@@ -339,6 +332,18 @@
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
 
+      /* ── IMAGE CREDITS ── */
+      .img-credit {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-style: italic;
+        z-index: 3;
+        pointer-events: none;
+      }
+
       /* ── ACTIVITIES ── */
       .activities-section {
         padding: 100px 80px;
@@ -369,7 +374,6 @@
         color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
-
       .activity-grid {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr;
@@ -608,11 +612,11 @@
       <!-- CHAPTER 1: AREA & GEOGRAPHY -->
       <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → aerial/overview foto van Galveston Bay kanalen (was: placeholder-area.jpg / placeholder-area-1.jpg) -->
           <img
-            src="../imgs/placeholder-area-1.jpg"
-            alt="[TODO: Winding channels and tidal flats of Galveston Bay seen from above]"
+            src="../imgs/galveston-flats.jpeg"
+            alt="Winding channels and tidal flats of Galveston Bay seen from above"
           />
+          <span class="img-credit">© Texas Saltwater Fishing Magazine</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
@@ -639,16 +643,14 @@
       </div>
 
       <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → foto van kayaker in smalle moeraskanalen (was: placeholder-area-2.jpg) -->
       <div
         class="image-break"
-        style="
-          background-image: url(&quot;../imgs/placeholder-area-2.jpg&quot;);
-        "
+        style="background-image: url(&quot;../imgs/coves.jpg&quot;)"
       >
         <span class="image-break-label"
           >Hidden coves and twisting waterways of Galveston Bay</span
         >
+        <span class="img-credit">© AARP Travel</span>
       </div>
 
       <!-- CHAPTER 2: NATURE & ECOSYSTEM -->
@@ -658,11 +660,11 @@
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → foto van pelikanen/reigers in ondiep water (was: placeholder-nature-1.jpg) -->
           <img
-            src="../imgs/placeholder-nature-1.jpg"
-            alt="[TODO: Pelicans and egrets wading along the marshy shores of Galveston Bay]"
+            src="../imgs/galveston-pelicans.jpg"
+            alt="Pelicans and egrets wading along the marshy shores of Galveston Bay"
           />
+          <span class="img-credit">© Galveston Bay Foundation</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
@@ -688,16 +690,16 @@
       </div>
 
       <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → onderwaterfoto van oesterrif of zeegras (was: placeholder-nature-2.jpg) -->
       <div
         class="image-break"
         style="
-          background-image: url(&quot;../imgs/placeholder-nature-2.jpg&quot;);
+          background-image: url(&quot;../imgs/galveston-oysters.avif&quot;);
         "
       >
         <span class="image-break-label"
           >Oyster reefs and seagrass beds, the foundation of the bay</span
         >
+        <span class="img-credit">© The Conversation</span>
       </div>
 
       <!-- CHAPTER 3: COASTLINE & CHALLENGES -->
@@ -707,11 +709,11 @@
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → foto van kustlijn met getijdenvlakten en open water (was: placeholder-coastline-1.jpg) -->
           <img
-            src="../imgs/placeholder-coastline-1.jpg"
-            alt="[TODO: Scenic marsh channel at Galveston Bay with tidal mudflats and open water]"
+            src="../imgs/tidal-mudflat.jpg"
+            alt="Scenic marsh channel at Galveston Bay with tidal mudflats and open water"
           />
+          <span class="img-credit">© Bay Flats Lodge</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
@@ -737,16 +739,16 @@
       </div>
 
       <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → foto van vrijwilligers die moerasplanten aanplanten (was: placeholder-coastline-2.jpg) -->
       <div
         class="image-break"
         style="
-          background-image: url(&quot;../imgs/placeholder-coastline-2.jpg&quot;);
+          background-image: url(&quot;../imgs/galveston-bay-foundation.jpg&quot;);
         "
       >
         <span class="image-break-label"
           >Local conservation initiatives restoring the bay's wetlands</span
         >
+        <span class="img-credit">© Galveston Bay Foundation</span>
       </div>
 
       <!-- CHAPTER 4: ECONOMY & HUMAN IMPACT -->
@@ -756,11 +758,11 @@
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → foto van vissersboot bij zonsopgang op Galveston Bay (was: placeholder-economy-1.jpg) -->
           <img
-            src="../imgs/placeholder-economy-1.jpg"
-            alt="[TODO: Recreational fishing boat on the open waters of Galveston Bay at sunrise]"
+            src="../imgs/sunset-fishing.jpg"
+            alt="Recreational fishing boat on the open waters of Galveston Bay at sunrise"
           />
+          <span class="img-credit">© Travel Texas</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
@@ -786,17 +788,17 @@
       </div>
 
       <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → foto van petrochemische industrie langs Houston Ship Channel (was: placeholder-economy-2.jpg) -->
       <div
         class="image-break"
         style="
-          background-image: url(&quot;../imgs/placeholder-economy-2.jpg&quot;);
+          background-image: url(&quot;../imgs/galveston-bay-industry.jpg&quot;);
         "
       >
         <span class="image-break-label"
           >Urban development and industry along the shores of Galveston
           Bay</span
         >
+        <span class="img-credit">© Galveston Chamber of Commerce</span>
       </div>
 
       <!-- ACTIVITIES -->
@@ -857,38 +859,41 @@
               src="../imgs/galveston-bay-aerial.webp"
               alt="Aerial view of Galveston Bay"
             />
+            <span class="img-credit">© NASA / USGS</span>
             <div class="gallery-tile-caption">
               An aerial view of the vast estuary and shipping channels.
             </div>
           </div>
           <div class="gallery-tile">
             <img src="../imgs/oyster-reef.png" alt="Oyster reef" />
+            <span class="img-credit">© The Conversation</span>
             <div class="gallery-tile-caption">
               Critical oyster reefs that filter water and protect the coastline.
             </div>
           </div>
           <div class="gallery-tile">
             <img src="../imgs/port-of-houston.jpg" alt="Port of Houston" />
+            <span class="img-credit">© Galveston Chamber of Commerce</span>
             <div class="gallery-tile-caption">
               The bustling industrial heart of the Texas coast.
             </div>
           </div>
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → foto van vogels/wildlife langs de oever (was: placeholder-nature-1.jpg) -->
             <img
-              src="../imgs/placeholder-nature-1.jpg"
-              alt="[TODO: Herons and pelicans along the bay's rich shoreline]"
+              src="../imgs/galveston-pelicans.jpg"
+              alt="Herons and pelicans along the bay's rich shoreline"
             />
+            <span class="img-credit">© Galveston Bay Foundation</span>
             <div class="gallery-tile-caption">
               Herons and pelicans thriving along the bay's rich shoreline.
             </div>
           </div>
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → foto van moeraskanalen (was: placeholder-coastline-1.jpg) -->
             <img
-              src="../imgs/placeholder-coastline-1.jpg"
-              alt="[TODO: Tidal marshes and channels winding through the bay's interior]"
+              src="../imgs/galveston-flats.jpeg"
+              alt="Tidal marshes and channels winding through the bay's interior"
             />
+            <span class="img-credit">© Texas Saltwater Fishing Magazine</span>
             <div class="gallery-tile-caption">
               Tidal marshes and channels wind through the bay's interior.
             </div>
@@ -899,7 +904,6 @@
     <!-- .page -->
 
     <div id="footer-placeholder"></div>
-
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
