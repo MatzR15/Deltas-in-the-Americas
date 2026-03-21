@@ -28,14 +28,12 @@
       html {
         scroll-behavior: smooth;
       }
-
       body {
         background: var(--mud);
         color: var(--mist);
         font-family: "Libre Baskerville", Georgia, serif;
         overflow-x: hidden;
       }
-
       body::before {
         content: "";
         position: fixed;
@@ -72,7 +70,6 @@
         transform: translateY(-100%);
         pointer-events: none;
       }
-
       .hero-eyebrow {
         font-family: "Oswald", sans-serif;
         font-weight: 300;
@@ -132,7 +129,6 @@
       .top-nav a:hover {
         color: var(--sand);
       }
-
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -200,7 +196,6 @@
       .stat-tile:hover::before {
         transform: scaleX(1);
       }
-
       .stat-value {
         font-family: "Playfair Display", serif;
         font-size: 1.8rem;
@@ -221,7 +216,7 @@
         margin-top: 4px;
       }
 
-      /* ── CHAPTER OPENER ── */
+      /* ── CHAPTER ── */
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -234,7 +229,6 @@
       .chapter-opener.flip > * {
         direction: ltr;
       }
-
       .chapter-image {
         position: relative;
         overflow: hidden;
@@ -259,42 +253,6 @@
       .chapter-opener.flip .chapter-image::after {
         background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
       }
-
-      /* ── IMAGE PLACEHOLDER ── */
-      .chapter-image .img-placeholder {
-        width: 100%;
-        height: 100%;
-        min-height: 500px;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px dashed var(--earth);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 16px;
-        padding: 40px;
-        text-align: center;
-      }
-      .chapter-image .img-placeholder svg {
-        opacity: 0.2;
-        width: 48px;
-        height: 48px;
-      }
-      .chapter-image .img-placeholder .ph-filename {
-        font-family: "Oswald", sans-serif;
-        font-weight: 400;
-        font-size: 0.9rem;
-        letter-spacing: 2px;
-        color: var(--sand);
-      }
-      .chapter-image .img-placeholder .ph-desc {
-        font-size: 0.82rem;
-        color: rgba(232, 220, 200, 0.4);
-        font-style: italic;
-        line-height: 1.6;
-        max-width: 260px;
-      }
-
       .chapter-text {
         padding: 80px 60px 80px 50px;
         display: flex;
@@ -372,31 +330,17 @@
         white-space: nowrap;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
-      .image-break.placeholder-break {
-        height: 20vh;
-        background: rgba(255, 255, 255, 0.03);
-        border-top: 1px dashed var(--earth);
-        border-bottom: 1px dashed var(--earth);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 8px;
-      }
-      .image-break.placeholder-break::after {
-        display: none;
-      }
-      .image-break.placeholder-break .ph-filename {
-        font-family: "Oswald", sans-serif;
-        font-weight: 400;
-        font-size: 0.82rem;
-        letter-spacing: 3px;
-        color: var(--sand);
-      }
-      .image-break.placeholder-break .ph-desc {
-        font-size: 0.75rem;
-        color: rgba(232, 220, 200, 0.35);
+
+      /* ── IMAGE CREDITS ── */
+      .img-credit {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.35);
         font-style: italic;
+        z-index: 3;
+        pointer-events: none;
       }
 
       /* ── ACTIVITIES ── */
@@ -429,7 +373,6 @@
         color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
-
       .activity-grid {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr;
@@ -457,36 +400,6 @@
       .activity-card:hover img {
         transform: scale(1.06);
         filter: brightness(0.55) sepia(25%);
-      }
-      .activity-card .act-placeholder {
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px dashed var(--earth);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 24px;
-        text-align: center;
-      }
-      .activity-card .act-placeholder svg {
-        opacity: 0.15;
-        width: 36px;
-        height: 36px;
-      }
-      .activity-card .act-placeholder .ph-filename {
-        font-family: "Oswald", sans-serif;
-        font-size: 0.78rem;
-        letter-spacing: 2px;
-        color: var(--sand);
-      }
-      .activity-card .act-placeholder .ph-desc {
-        font-size: 0.72rem;
-        color: rgba(232, 220, 200, 0.35);
-        font-style: italic;
-        line-height: 1.5;
       }
       .activity-overlay {
         position: absolute;
@@ -573,36 +486,6 @@
         transform: scale(1.05);
         filter: sepia(5%) contrast(1.05) brightness(1);
       }
-      .gallery-tile .gal-placeholder {
-        width: 100%;
-        height: 100%;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px dashed var(--earth);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        padding: 20px;
-        text-align: center;
-      }
-      .gallery-tile .gal-placeholder svg {
-        opacity: 0.15;
-        width: 32px;
-        height: 32px;
-      }
-      .gallery-tile .gal-placeholder .ph-filename {
-        font-family: "Oswald", sans-serif;
-        font-size: 0.72rem;
-        letter-spacing: 2px;
-        color: var(--sand);
-      }
-      .gallery-tile .gal-placeholder .ph-desc {
-        font-size: 0.68rem;
-        color: rgba(232, 220, 200, 0.35);
-        font-style: italic;
-        line-height: 1.5;
-      }
       .gallery-tile-caption {
         position: absolute;
         bottom: 0;
@@ -637,9 +520,6 @@
         }
         .chapter-image {
           height: 55vw;
-        }
-        .chapter-image .img-placeholder {
-          min-height: 200px;
         }
         .chapter-image::after,
         .chapter-opener.flip .chapter-image::after {
@@ -731,24 +611,11 @@
       <!-- CHAPTER 1: THE SCARLET IBIS -->
       <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → sanjuan-channels.jpg — luchtfoto van deltakanalen in het droge seizoen, laag water, blootliggende modderbanken -->
-          <div class="img-placeholder">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="M21 15l-5-5L5 21" />
-            </svg>
-            <span class="ph-filename">sanjuan-channels.jpg</span>
-            <span class="ph-desc"
-              >Aerial view of delta channels during dry season, low water and
-              exposed mudbanks</span
-            >
-          </div>
+          <!-- vervang sanjuan-channels.jpg met de juiste bestandsnaam -->
+          <img
+            src="../imgs/sanjuan-channels.jpg"
+            alt="Aerial view of delta channels during dry season, low water and exposed mudbanks"
+          />
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
@@ -778,12 +645,13 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → sanjuan-flood.jpg — overstroomd deltalandschap bij hoogwater, bomen deels ondergedompeld -->
-      <div class="image-break placeholder-break">
-        <span class="ph-filename">sanjuan-flood.jpg</span>
-        <span class="ph-desc"
-          >Flooded delta landscape at peak wet season, a vast inland sea</span
+      <!-- IMAGE BREAK — vervang sanjuan-flood.jpg met de juiste bestandsnaam -->
+      <div
+        class="image-break"
+        style="background-image: url(&quot;../imgs/sanjuan-flood.jpg&quot;)"
+      >
+        <span class="image-break-label"
+          >Flooded delta landscape at peak wet season</span
         >
       </div>
 
@@ -794,24 +662,11 @@
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → scarlet-ibis.jpg — zwerm scarlet ibis in vlucht of in mangrove bij zonsondergang, fel rood -->
-          <div class="img-placeholder">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="M21 15l-5-5L5 21" />
-            </svg>
-            <span class="ph-filename">scarlet-ibis.jpg</span>
-            <span class="ph-desc"
-              >Flock of scarlet ibis roosting in mangroves at sunset, vibrant
-              red</span
-            >
-          </div>
+          <!-- vervang scarlet-ibis.jpg met de juiste bestandsnaam -->
+          <img
+            src="../imgs/scarlet-ibis.jpg"
+            alt="Flock of scarlet ibis roosting in mangroves at sunset, vibrant red"
+          />
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
@@ -842,11 +697,12 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → capybara-delta.jpg — capibara's op de oever of in ondiep water in de Orinoco-delta -->
-      <div class="image-break placeholder-break">
-        <span class="ph-filename">capybara-delta.jpg</span>
-        <span class="ph-desc"
+      <!-- IMAGE BREAK — vervang capybara-delta.jpg met de juiste bestandsnaam -->
+      <div
+        class="image-break"
+        style="background-image: url(&quot;../imgs/capybara-delta.jpg&quot;)"
+      >
+        <span class="image-break-label"
           >Capybaras resting on a delta riverbank in the Orinoco Delta</span
         >
       </div>
@@ -858,24 +714,11 @@
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → sanjuan-sunset-river.jpg — gouden zonsondergang boven de Orinoco met silhouet van palmbomen -->
-          <div class="img-placeholder">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="M21 15l-5-5L5 21" />
-            </svg>
-            <span class="ph-filename">sanjuan-sunset-river.jpg</span>
-            <span class="ph-desc"
-              >Golden sunset over the Orinoco with silhouetted moriche
-              palms</span
-            >
-          </div>
+          <!-- vervang sanjuan-sunset-river.jpg met de juiste bestandsnaam -->
+          <img
+            src="../imgs/sanjuan-sunset-river.jpg"
+            alt="Golden sunset over the Orinoco with silhouetted moriche palms"
+          />
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
@@ -907,11 +750,14 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → warao-stilt-houses.jpg — Warao paalwoningen boven het water in de deltakanalen -->
-      <div class="image-break placeholder-break">
-        <span class="ph-filename">warao-stilt-houses.jpg</span>
-        <span class="ph-desc"
+      <!-- IMAGE BREAK — vervang warao-stilt-houses.jpg met de juiste bestandsnaam -->
+      <div
+        class="image-break"
+        style="
+          background-image: url(&quot;../imgs/warao-stilt-houses.jpg&quot;);
+        "
+      >
+        <span class="image-break-label"
           >Warao indigenous stilt houses built directly over the delta
           channels</span
         >
@@ -924,23 +770,11 @@
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- PLACEHOLDER: voeg toe → moriche-palm-food.jpg — moriche-palmvrucht of traditionele Warao-voedselbereiding -->
-          <div class="img-placeholder">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-            >
-              <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="8.5" cy="8.5" r="1.5" />
-              <path d="M21 15l-5-5L5 21" />
-            </svg>
-            <span class="ph-filename">moriche-palm-food.jpg</span>
-            <span class="ph-desc"
-              >Moriche palm fruit or traditional Warao food preparation</span
-            >
-          </div>
+          <!-- vervang moriche-palm-food.jpg met de juiste bestandsnaam -->
+          <img
+            src="../imgs/moriche-palm-food.jpg"
+            alt="Moriche palm fruit or traditional Warao food preparation"
+          />
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
@@ -970,11 +804,12 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK -->
-      <!-- PLACEHOLDER: voeg toe → tucupita-market.jpg — straatscène of markt in Tucupita, gateway tot de delta -->
-      <div class="image-break placeholder-break">
-        <span class="ph-filename">tucupita-market.jpg</span>
-        <span class="ph-desc"
+      <!-- IMAGE BREAK — vervang tucupita-market.jpg met de juiste bestandsnaam -->
+      <div
+        class="image-break"
+        style="background-image: url(&quot;../imgs/tucupita-market.jpg&quot;)"
+      >
+        <span class="image-break-label"
           >Street scene or market in Tucupita, the gateway town to the
           delta</span
         >
@@ -992,24 +827,11 @@
         </div>
         <div class="activity-grid">
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- PLACEHOLDER: voeg toe → sanjuan-kayak.jpg — kajak door smal deltakanaal omgeven door moriche palmen -->
-            <div class="act-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">sanjuan-kayak.jpg</span>
-              <span class="ph-desc"
-                >Kayaking through a narrow delta channel lined with moriche
-                palms</span
-              >
-            </div>
+            <!-- vervang sanjuan-kayak.jpg met de juiste bestandsnaam -->
+            <img
+              src="../imgs/sanjuan-kayak.jpg"
+              alt="Kayaking through a narrow delta channel lined with moriche palms"
+            />
             <div class="activity-overlay">
               <div class="activity-tag">Paddle</div>
               <div class="activity-name">Kayaking the Delta Channels</div>
@@ -1023,23 +845,11 @@
           </a>
 
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- PLACEHOLDER: voeg toe → warao-village-visit.jpg — bezoekers samen met Warao-gemeenschap, culturele uitwisseling of ambachtsdemonstatie -->
-            <div class="act-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">warao-village-visit.jpg</span>
-              <span class="ph-desc"
-                >Cultural visit to a Warao community in the delta</span
-              >
-            </div>
+            <!-- vervang warao-village-visit.jpg met de juiste bestandsnaam -->
+            <img
+              src="../imgs/warao-village-visit.jpg"
+              alt="Cultural visit to a Warao community in the delta"
+            />
             <div class="activity-overlay">
               <div class="activity-tag">Culture</div>
               <div class="activity-name">Warao Cultural Experiences</div>
@@ -1052,24 +862,11 @@
           </a>
 
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- PLACEHOLDER: voeg toe → ibis-birdwatching.jpg — vogelaars met verrekijkers die scarlet ibis of reigers observeren bij gouden uur -->
-            <div class="act-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">ibis-birdwatching.jpg</span>
-              <span class="ph-desc"
-                >Birdwatcher observing scarlet ibis at golden hour in the
-                delta</span
-              >
-            </div>
+            <!-- vervang ibis-birdwatching.jpg met de juiste bestandsnaam -->
+            <img
+              src="../imgs/ibis-birdwatching.jpg"
+              alt="Birdwatcher observing scarlet ibis at golden hour in the delta"
+            />
             <div class="activity-overlay">
               <div class="activity-tag">Wildlife</div>
               <div class="activity-name">Birdwatching at Dusk</div>
@@ -1088,24 +885,11 @@
         <h2 class="gallery-heading">Delta Gallery</h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → sanjuan-delta-aerial.jpg — luchtfoto van de San Juan / Orinoco-delta richting de Atlantische Oceaan -->
-            <div class="gal-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">sanjuan-delta-aerial.jpg</span>
-              <span class="ph-desc"
-                >Aerial view of the Orinoco Delta fanning toward the Atlantic
-                Ocean</span
-              >
-            </div>
+            <!-- vervang sanjuan-delta-aerial.jpg met de juiste bestandsnaam -->
+            <img
+              src="../imgs/sanjuan-delta-aerial.jpg"
+              alt="Aerial view of the Orinoco Delta fanning toward the Atlantic Ocean"
+            />
             <div class="gallery-tile-caption">
               Aerial view of the Orinoco Delta's vast network of channels
               stretching toward the Atlantic Ocean.
@@ -1113,24 +897,11 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → sanjuan-moriche-palms.jpg — moriche-palmbos weerspiegeld in stil deltawater bij gouden uur -->
-            <div class="gal-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">sanjuan-moriche-palms.jpg</span>
-              <span class="ph-desc"
-                >Moriche palm forest reflected in still delta water at golden
-                hour</span
-              >
-            </div>
+            <!-- vervang sanjuan-moriche-palms.jpg met de juiste bestandsnaam -->
+            <img
+              src="../imgs/sanjuan-moriche-palms.jpg"
+              alt="Moriche palm forest reflected in still delta water at golden hour"
+            />
             <div class="gallery-tile-caption">
               Moriche palm forests reflected in the mirror-still channels of the
               San Juan Delta at golden hour.
@@ -1138,24 +909,11 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → sanjuan-ibis-sunset.jpg — massa scarlet ibis in vlucht tegen dramatische oranje zonsondergang -->
-            <div class="gal-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">sanjuan-ibis-sunset.jpg</span>
-              <span class="ph-desc"
-                >Mass of scarlet ibis in flight against an orange sunset
-                sky</span
-              >
-            </div>
+            <!-- vervang sanjuan-ibis-sunset.jpg met de juiste bestandsnaam -->
+            <img
+              src="../imgs/sanjuan-ibis-sunset.jpg"
+              alt="Mass of scarlet ibis in flight against an orange sunset sky"
+            />
             <div class="gallery-tile-caption">
               Thousands of scarlet ibis take flight at dusk, one of the most
               breathtaking wildlife spectacles in the Americas.
@@ -1163,24 +921,11 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → scarlet-ibis.jpg — scarlet ibis in mangrove bij zonsondergang, fel rood -->
-            <div class="gal-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">scarlet-ibis.jpg</span>
-              <span class="ph-desc"
-                >Scarlet ibis roosting in mangroves, turning them blazing
-                red</span
-              >
-            </div>
+            <!-- vervang scarlet-ibis.jpg (gallery) met de juiste bestandsnaam -->
+            <img
+              src="../imgs/scarlet-ibis.jpg"
+              alt="Scarlet ibis roosting in mangroves, turning them blazing red"
+            />
             <div class="gallery-tile-caption">
               Scarlet ibis gather in enormous roosts at sunset, turning the
               mangroves a blazing red.
@@ -1188,24 +933,11 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- PLACEHOLDER: voeg toe → warao-stilt-houses.jpg — Warao paalwoningen boven het water in de delta -->
-            <div class="gal-placeholder">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.5"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <path d="M21 15l-5-5L5 21" />
-              </svg>
-              <span class="ph-filename">warao-stilt-houses.jpg</span>
-              <span class="ph-desc"
-                >Warao stilt houses built directly over the delta
-                waterways</span
-              >
-            </div>
+            <!-- vervang warao-stilt-houses.jpg (gallery) met de juiste bestandsnaam -->
+            <img
+              src="../imgs/warao-stilt-houses.jpg"
+              alt="Warao stilt houses built directly over the delta waterways"
+            />
             <div class="gallery-tile-caption">
               Warao communities build their homes on stilts directly above the
               water, perfectly adapted to the delta's rhythms.
@@ -1217,7 +949,6 @@
     <!-- .page -->
 
     <div id="footer-placeholder"></div>
-
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
