@@ -5,332 +5,473 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Magdalena Delta - Deltas in the Americas</title>
     <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
-
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      :root {
+        --mud: #0e1a10;
+        --earth: #1e3520;
+        --sand: #e8b84b;
+        --bark: #5a8c3a;
+        --mist: #e8f0d8;
+        --fog: #f5f9ee;
+        --water: #1a4a2e;
+        --moss: #4a7a1e;
+        --rust: #c47a1a;
       }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
 
       body {
-        font-family: Arial, Helvetica, sans-serif;
-        background: #faf8f4;
-        color: #1a1a1a;
+        background: var(--mud);
+        color: var(--mist);
+        font-family: "Libre Baskerville", Georgia, serif;
+        overflow-x: hidden;
       }
 
-      html {
-        scroll-behavior: smooth;
+      /* ── NOISE TEXTURE OVERLAY ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
-      /* HERO */
+      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
-        height: 60vh;
+        height: 65vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.38), rgba(0, 0, 0, 0.38)),
+          linear-gradient(
+            to bottom,
+            rgba(5, 20, 8, 0.3) 0%,
+            rgba(5, 20, 8, 0.7) 100%
+          ),
           url("../imgs/magdalena_delta.webp") center/cover no-repeat;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
         z-index: 10;
+        transition: opacity 0.5s, transform 0.5s;
       }
-
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
         pointer-events: none;
       }
 
-      .hero h1 {
-        color: white;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-size: 4rem;
-        font-weight: 900;
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 8px;
         text-transform: uppercase;
-        letter-spacing: 3px;
-        text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+        color: var(--sand);
+        margin-bottom: 14px;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
       }
-
-      /* NAV */
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        color: var(--fog);
+        text-align: center;
+        letter-spacing: -2px;
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
+      }
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.55em;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+      .hero-credit {
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-style: italic;
+      }
       .top-nav {
         position: absolute;
         top: 20px;
         right: 40px;
+        display: flex;
+        gap: 24px;
       }
-
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
-        font-family: 'Source Serif 4', serif;
-        letter-spacing: 0.5px;
-      }
-
-      /* INFO TILES */
-      .info-tiles {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 20px;
-        padding: 40px;
-        background: #f0ebe1;
-      }
-
-      .tile {
-        background: white;
-        padding: 25px;
-        border-radius: 12px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.07);
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-        cursor: pointer;
-        text-decoration: none;
-        display: block;
-      }
-
-      .tile:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-      }
-
-      .tile h3,
-      .tile p {
-        transition: color 0.3s ease;
-        font-family: 'Source Serif 4', serif;
-      }
-
-      .tile h3 {
-        font-size: 1.1rem;
-        margin-bottom: 6px;
-      }
-
-      .tile p {
-        font-size: 0.95rem;
-        color: #555;
-      }
-
-      /* Magdalena tile colour theme — lush tropical greens, gold, terracotta, river blue */
-      .tile.season {
-        background: #fff8e1;
-      }
-      .tile.season h3 {
-        color: #c17f00;
-      }
-
-      .tile.wildlife {
-        background: #e8f5e9;
-      }
-      .tile.wildlife h3 {
-        color: #2e7d32;
-      }
-
-      .tile.river {
-        background: #e3f2fd;
-      }
-      .tile.river h3 {
-        color: #1565c0;
-      }
-
-      .tile.culture {
-        background: #fbe9e7;
-      }
-      .tile.culture h3 {
-        color: #bf360c;
-      }
-
-      /* CONTENT */
-      main {
-        padding: 80px 20px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      section {
-        margin-bottom: 100px;
-        scroll-margin-top: 120px;
-      }
-
-      h2 {
-        font-size: 2rem;
-        font-weight: 900;
-        margin-bottom: 30px;
-        text-transform: uppercase;
-        display: inline-block;
-        letter-spacing: 1px;
-      }
-
-      h2::after {
-        content: "";
-        display: block;
-        width: 120px;
-        height: 4px;
-        background: #1a1a1a;
-        margin-top: 8px;
-        border-radius: 3px;
-      }
-
-      .activities-title::after {
-        margin: 8px 0 0 0;
-      }
-
-      .activities-title {
-        text-align: left;
-        display: block;
-        width: 100%;
-        margin: 0 0 40px 0;
-      }
-
-      p {
-        line-height: 1.85;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: #333;
+        font-family: "Oswald", sans-serif;
         font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover { color: var(--sand); }
+
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to   { opacity: 1; transform: translateY(0); }
       }
 
-      /* Section underline colours */
-      .season h2::after   { background: #c17f00; }
-      .nature h2::after   { background: #2e7d32; }
-      .coastline h2::after { background: #1565c0; }
-      .economy h2::after  { background: #bf360c; }
+      /* ── CONTENT WRAPPER ── */
+      .page {
+        position: relative;
+        z-index: 5;
+        background: var(--mud);
+      }
 
-      /* ===== ADVENTURE CARDS ===== */
-      .adventure-container {
-        max-width: 1100px;
-        margin: 0 auto;
+      /* ── STAT TILES ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
         display: flex;
         flex-direction: column;
-        gap: 60px;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
       }
-
-      .adventure-card {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        background: #f4f0e8;
-        padding: 30px;
-        border-radius: 16px;
-        transition: box-shadow 0.3s ease;
+      .stat-tile:last-child { border-right: none; }
+      .stat-tile::before {
+        content: "";
+        position: absolute;
+        bottom: 0; left: 0;
+        width: 100%; height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
       }
+      .stat-tile:nth-child(1)::before { background: var(--sand); }
+      .stat-tile:nth-child(2)::before { background: var(--rust); }
+      .stat-tile:nth-child(3)::before { background: var(--water); }
+      .stat-tile:nth-child(4)::before { background: var(--moss); }
+      .stat-tile:hover { background: rgba(255, 255, 255, 0.03); }
+      .stat-tile:hover::before { transform: scaleX(1); }
 
-      .adventure-card.reverse {
-        flex-direction: row-reverse;
-      }
-
-      .adventure-image img {
-        width: 400px;
-        border-radius: 14px;
-        object-fit: cover;
-      }
-
-      .adventure-text {
-        flex: 1;
-      }
-
-      .adventure-text h3 {
+      .stat-value {
+        font-family: "Playfair Display", serif;
         font-size: 1.8rem;
         font-weight: 700;
-        margin-bottom: 15px;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(232, 240, 216, 0.55);
+        margin-top: 4px;
       }
 
-      /* Card accent colours */
-      .adventure-card.birdwatch {
-        border-left: 6px solid #2e7d32;
-      }
-
-      .adventure-card.canoe {
-        border-right: 6px solid #1565c0;
-      }
-
-      .adventure-card.carnival {
-        border-left: 6px solid #c17f00;
-      }
-
-      /* Adventure link hover */
-      .adventure-link {
-        text-decoration: none;
-        color: inherit;
-        display: block;
-        transition: transform 0.3s ease;
-      }
-
-      .adventure-link:hover {
-        transform: translateY(-5px);
-      }
-
-      .adventure-link:hover .adventure-card {
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-      }
-
-      /* SLIDESHOW */
-      .slideshow-container {
-        max-width: 100%;
+      /* ── CHAPTER OPENER ── */
+      .chapter-opener {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
         position: relative;
-        margin: auto;
-        border-radius: 16px;
+      }
+      .chapter-opener.flip { direction: rtl; }
+      .chapter-opener.flip > * { direction: ltr; }
+
+      .chapter-image {
+        position: relative;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
       }
-
-      .mySlides {
-        display: none;
-      }
-
-      .mySlides img {
-        vertical-align: middle;
+      .chapter-image img {
         width: 100%;
-        height: 450px;
+        height: 100%;
         object-fit: cover;
+        display: block;
+        filter: sepia(10%) contrast(1.05);
+        transition: transform 8s ease;
       }
-
-      .prev,
-      .next {
-        cursor: pointer;
+      .chapter-image:hover img { transform: scale(1.04); }
+      .chapter-image::after {
+        content: "";
         position: absolute;
-        top: 50%;
-        width: auto;
-        padding: 16px;
-        margin-top: -22px;
-        color: white;
-        font-weight: bold;
-        font-size: 20px;
-        transition: 0.6s ease;
-        border-radius: 0 3px 3px 0;
-        user-select: none;
-        background-color: rgba(0, 0, 0, 0.3);
+        inset: 0;
+        background: linear-gradient(90deg, transparent 60%, var(--mud) 100%);
+      }
+      .chapter-opener.flip .chapter-image::after {
+        background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
       }
 
-      .next {
-        right: 0;
-        border-radius: 3px 0 0 3px;
+      .chapter-text {
+        padding: 80px 60px 80px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
-
-      .prev:hover,
-      .next:hover {
-        background-color: rgba(0, 0, 0, 0.75);
+      .chapter-num {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 1;
+        color: var(--earth);
+        margin-bottom: -10px;
       }
-
-      .caption {
-        color: #fff;
+      .chapter-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .chapter-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--fog);
+        margin-bottom: 28px;
+      }
+      .chapter-body p {
         font-size: 1rem;
-        padding: 15px 25px;
+        line-height: 1.85;
+        color: rgba(232, 240, 216, 0.78);
+        margin-bottom: 16px;
+      }
+      .chapter-divider {
+        width: 60px;
+        height: 2px;
+        background: var(--sand);
+        margin: 28px 0;
+      }
+
+      /* ── FULL-BLEED IMAGE BREAK ── */
+      .image-break {
+        height: 50vh;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .image-break::after {
+        content: "";
         position: absolute;
-        bottom: 0;
-        width: 100%;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+        inset: 0;
+        background: linear-gradient(
+          rgba(5, 20, 8, 0.3) 0%,
+          rgba(5, 20, 8, 0.3) 60%,
+          rgba(5, 20, 8, 0.75) 100%
+        );
+      }
+      .image-break-label {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.92);
+        white-space: nowrap;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
 
-      .fade {
-        animation: fadeAnim 1.5s;
+      /* ── ACTIVITIES ── */
+      .activities-section { padding: 100px 80px; }
+      .section-intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        border-bottom: 1px solid var(--earth);
+        padding-bottom: 40px;
+      }
+      .section-intro h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--fog);
+      }
+      .section-intro h2 em { font-style: italic; color: var(--sand); }
+      .section-intro p {
+        max-width: 280px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: rgba(232, 240, 216, 0.6);
+        text-align: right;
       }
 
-      @keyframes fadeAnim {
-        from { opacity: 0.4; }
-        to   { opacity: 1; }
+      .activity-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 400px 400px;
+        gap: 3px;
+      }
+      .activity-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .activity-card:first-child { grid-row: span 2; }
+      .activity-card img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease, filter 0.5s;
+        filter: brightness(0.75) sepia(10%);
+      }
+      .activity-card:hover img {
+        transform: scale(1.06);
+        filter: brightness(0.55) sepia(20%);
+      }
+      .activity-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(5, 20, 8, 0.95) 0%,
+          rgba(5, 20, 8, 0.2) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 32px;
+      }
+      .activity-tag {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 8px;
+      }
+      .activity-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .activity-card:first-child .activity-name { font-size: 2.4rem; }
+      .activity-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: rgba(232, 240, 216, 0.75);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .activity-card:hover .activity-desc { max-height: 200px; }
+
+      /* ── GALLERY ── */
+      .gallery-section { padding: 0 80px 100px; }
+      .gallery-heading {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--fog);
+        margin-bottom: 30px;
+        padding-left: 4px;
+      }
+      .gallery-mosaic {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr;
+        grid-template-rows: 320px 280px;
+        gap: 4px;
+      }
+      .gallery-tile { position: relative; overflow: hidden; }
+      .gallery-tile:first-child { grid-row: span 2; }
+      .gallery-tile img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(10%) contrast(1.05) brightness(0.92);
+        transition: transform 0.7s ease, filter 0.5s;
+      }
+      .gallery-tile:hover img {
+        transform: scale(1.05);
+        filter: sepia(0%) contrast(1.05) brightness(1);
+      }
+      .gallery-tile-caption {
+        position: absolute;
+        bottom: 0; left: 0; right: 0;
+        padding: 36px 18px 14px;
+        background: linear-gradient(transparent, rgba(5, 20, 8, 0.88));
+        color: rgba(232, 240, 216, 0.85);
+        font-style: italic;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .gallery-tile:hover .gallery-tile-caption { opacity: 1; }
+      .gallery-tile:first-child .gallery-tile-caption { font-size: 0.92rem; }
+
+      /* ── IMAGE CREDITS ── */
+      .img-credit {
+        position: absolute;
+        bottom: 10px; right: 12px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-style: italic;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* ── FOOTER AREA ── */
+      #footer-placeholder { position: relative; z-index: 5; }
+
+      @media (max-width: 900px) {
+        .chapter-opener, .chapter-opener.flip {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+        .chapter-image { height: 55vw; }
+        .chapter-image::after,
+        .chapter-opener.flip .chapter-image::after { display: none; }
+        .chapter-text { padding: 48px 28px; }
+        .stat-strip { grid-template-columns: 1fr 1fr; }
+        .stat-tile { border-bottom: 1px solid var(--earth); }
+        .activity-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+        .activity-card:first-child { grid-row: span 1; height: 380px; }
+        .activity-card { height: 260px; }
+        .activities-section, .gallery-section { padding: 60px 24px; }
+        .section-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
+        .section-intro p { text-align: left; }
+        .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+        .gallery-tile:first-child { grid-row: span 1; height: 56vw; }
+        .gallery-tile { height: 44vw; }
       }
     </style>
   </head>
@@ -338,220 +479,318 @@
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back to Overview</a>
+        <a href="../index.html">← Overview</a>
         <a href="Compare.html">Compare</a>
         <a href="Contact.html">Contact</a>
       </nav>
-      <h1>Magdalena Delta</h1>
+      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <h1>Magdalena<em>Delta</em></h1>
+      <span class="hero-credit">© ProColombia</span>
     </header>
 
-    <!-- INFO TILES -->
-    <section class="info-tiles">
-      <a href="#season" class="tile season">
-        <h3>Best visited</h3>
-        <p>December through March</p>
-      </a>
+    <div class="page">
 
-      <a href="#nature" class="tile wildlife">
-        <h3>300+ species</h3>
-        <p>Birds in the delta wetlands</p>
-      </a>
+      <!-- STAT TILES -->
+      <div class="stat-strip">
+        <a href="#when-to-visit" class="stat-tile">
+          <div class="stat-value">Dec–Mar</div>
+          <div class="stat-label">Best Season</div>
+          <div class="stat-desc">Dry season & Carnival time</div>
+        </a>
+        <a href="#wildlife" class="stat-tile">
+          <div class="stat-value">300+</div>
+          <div class="stat-label">Bird Species</div>
+          <div class="stat-desc">Scarlet ibis, storks & more</div>
+        </a>
+        <a href="#river" class="stat-tile">
+          <div class="stat-value">1,528 km</div>
+          <div class="stat-label">River Length</div>
+          <div class="stat-desc">Colombia's greatest river</div>
+        </a>
+        <a href="#food" class="stat-tile">
+          <div class="stat-value">UNESCO</div>
+          <div class="stat-label">Carnival Heritage</div>
+          <div class="stat-desc">Barranquilla's world-famous festival</div>
+        </a>
+      </div>
 
-      <a href="#coastline" class="tile river">
-        <h3>1,528 km</h3>
-        <p>Colombia's greatest river</p>
-      </a>
+      <!-- CHAPTER 1: WHEN TO VISIT -->
+      <div id="when-to-visit" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/magdalena_delta.webp" alt="Magdalena Delta wetlands" />
+          <span class="img-credit">© ProColombia</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">01</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">When to Visit</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The best time to visit the Magdalena Delta is during the dry 
+              season, running from December through March. Skies are clear, 
+              the wetlands begin to recede, and wildlife concentrates around 
+              the remaining water channels — creating exceptional conditions 
+              for birdwatching and wildlife encounters throughout the coastal 
+              lagoons and ciénagas of northern Colombia.
+            </p>
+            <p>
+              If you are drawn to Colombia's extraordinary cultural energy, 
+              time your visit for late January and early February, when 
+              Barranquilla erupts into the world-famous Carnival — four 
+              electrifying days of cumbia, mapalé, and comparsas that rival 
+              even Rio de Janeiro. The city transforms into a riot of colour, 
+              music, and warmth that is unmistakably Caribbean.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <a href="#economy" class="tile culture">
-        <h3>UNESCO heritage</h3>
-        <p>Carnival de Barranquilla</p>
-      </a>
-    </section>
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url('../imgs/carnival-barranquilla.jpg')"
+      >
+        <span class="image-break-label">Carnival de Barranquilla — a UNESCO Intangible Cultural Heritage</span>
+      </div>
 
-    <main>
-      <section id="season" class="season">
-        <h2>When to Visit</h2>
-        <p>
-          The best time to visit the Magdalena Delta is during the dry season, which runs from December through March.
-          During these months the skies are clear, the wetlands begin to recede, and wildlife concentrates around the
-          remaining water channels — making for exceptional birdwatching and wildlife encounters throughout the coastal
-          lagoons and ciénagas of northern Colombia.
-        </p>
-        <p>
-          If you are drawn to Colombia's extraordinary cultural energy, plan your visit around late January and early
-          February, when Barranquilla erupts into the world-famous Carnival — four days of music, dance, and colour
-          that rival even Rio. The city comes alive with cumbia rhythms, elaborate costumes, and a warmth and
-          hospitality that is unmistakably Caribbean.
-        </p>
-      </section>
+      <!-- CHAPTER 2: WILDLIFE -->
+      <div id="wildlife" class="chapter-opener flip" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/birdwatching-magdalena.jpg" alt="Scarlet ibis and waterbirds in the Magdalena Delta" />
+          <span class="img-credit">© Parques Nacionales Colombia</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">02</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Wildlife You Will Not Forget</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The Magdalena Delta is one of South America's most significant 
+              wetland ecosystems. Its mosaic of mangrove forests, freshwater 
+              lagoons, and coastal marshes shelters over 300 bird species — 
+              including the spectacular <strong>scarlet ibis</strong>, the 
+              jabiru stork, and countless herons and egrets that wheel over 
+              the water at sunrise in scenes that feel almost prehistoric.
+            </p>
+            <p>
+              Beneath the surface, the Magdalena River is home to the 
+              critically endangered <strong>Magdalena River turtle</strong> 
+              and several endemic freshwater fish species found nowhere else 
+              on Earth. West Indian manatees glide silently through the 
+              quieter backwaters, and the surrounding dry tropical forest 
+              shelters howler monkeys, capybaras, and the elusive ocelot. 
+              This is a destination that rewards those who slow down.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <section id="nature" class="nature">
-        <h2>Wildlife You Will Not Forget</h2>
-        <p>
-          The Magdalena Delta is one of South America's most significant wetland ecosystems, and its biodiversity is
-          staggering. The delta's mosaic of mangrove forests, freshwater lagoons, and coastal marshes shelters over
-          300 bird species, including the spectacular scarlet ibis, the jabiru stork, and dozens of heron and egret
-          varieties. Flocks wheel over the water at sunrise in scenes that feel almost prehistoric.
-        </p>
-        <p>
-          Beneath the surface, the Magdalena River is home to the critically endangered Magdalena River turtle and
-          several endemic freshwater fish species found nowhere else on Earth. West Indian manatees glide silently
-          through the quieter backwaters, and the surrounding dry tropical forest shelters howler monkeys, capybaras,
-          and the elusive ocelot. This is a destination that rewards those who slow down and look carefully.
-        </p>
-      </section>
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url('../imgs/cienaga-grande.jpg')"
+      >
+        <span class="image-break-label">Ciénaga Grande de Santa Marta — a Ramsar Wetland of International Importance</span>
+      </div>
 
-      <section id="coastline" class="coastline">
-        <h2>A River Worth Exploring</h2>
-        <p>
-          The Río Magdalena is Colombia's lifeline — a 1,528-kilometre artery that drains the heart of the Andes and
-          empties into the Caribbean Sea near the city of Barranquilla. Its lower delta is a spectacular maze of
-          shifting channels, oxbow lakes, floating meadows, and the vast Ciénaga Grande de Santa Marta, one of the
-          largest coastal lagoons in Latin America and a Ramsar Wetland of International Importance.
-        </p>
-        <p>
-          Exploring the delta by boat is an unforgettable experience. Wooden lancha boats navigate the narrow
-          waterways past stilted fishing villages, where communities have lived in harmony with the river for
-          centuries. The horizon stretches endlessly over the lagoon, flamingos wade in the shallows, and the Sierra
-          Nevada de Santa Marta — the world's highest coastal mountain range — rises dramatically in the background,
-          snow-capped and impossibly close to the sea.
-        </p>
-      </section>
+      <!-- CHAPTER 3: RIVER -->
+      <div id="river" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/canoe-magdalena.jpg" alt="Lancha boats on the Magdalena River" />
+          <span class="img-credit">© Colombia Travel</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">03</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">A River Worth Exploring</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The Río Magdalena is Colombia's lifeline — a 1,528-kilometre 
+              artery that drains the heart of the Andes and empties into the 
+              Caribbean Sea near Barranquilla. Its lower delta is a 
+              spectacular maze of shifting channels, oxbow lakes, and the 
+              vast <strong>Ciénaga Grande de Santa Marta</strong>, one of 
+              the largest coastal lagoons in Latin America.
+            </p>
+            <p>
+              Exploring the delta by wooden <em>lancha</em> boat is 
+              unforgettable. Narrow waterways open past stilted fishing 
+              villages where communities have lived in harmony with the 
+              river for centuries. And rising dramatically on the horizon — 
+              snow-capped and impossibly close to the sea — the 
+              <strong>Sierra Nevada de Santa Marta</strong>, the world's 
+              highest coastal mountain range, watches over it all.
+            </p>
+          </div>
+        </div>
+      </div>
 
-      <section id="economy" class="economy">
-        <h2>Eat, Drink & Discover</h2>
-        <p>
-          The Caribbean coast of Colombia is a feast for all the senses. The delta's rich waters produce an abundance
-          of seafood, and local cooks transform fresh mojarra fish, shrimp, and clams into dishes full of coconut,
-          plantain, and ají. Do not leave without trying a bowl of sancocho de pescado — a slow-simmered fish broth
-          that is the soul food of the Colombian coast — or the simple perfection of fresh ceviche by the waterfront
-          in Barranquilla.
-        </p>
-        <p>
-          Beyond the food, the Magdalena Delta region pulses with cultural life. Barranquilla's Carnival is a
-          UNESCO Intangible Cultural Heritage of Humanity, and the city's music scene — rooted in cumbia, vallenato,
-          and porro — is alive every weekend of the year. Nearby, the colonial city of Mompox drifts in a timeless
-          haze along a quiet branch of the Magdalena, its cobblestone streets and whitewashed churches seemingly
-          untouched by the modern world.
-        </p>
-      </section>
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url('../imgs/mompox-river.jpg')"
+      >
+        <span class="image-break-label">Mompox — the timeless colonial city adrift on the Magdalena</span>
+      </div>
+
+      <!-- CHAPTER 4: FOOD & CULTURE -->
+      <div id="food" class="chapter-opener flip" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/carnival-barranquilla.jpg" alt="Barranquilla food and culture" />
+          <span class="img-credit">© Alcaldía de Barranquilla</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">04</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Eat, Drink & Discover</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The Caribbean coast of Colombia is a feast for all the senses. 
+              The delta's rich waters produce an abundance of fresh seafood, 
+              and local cooks transform mojarra fish, shrimp, and clams 
+              into dishes full of coconut, plantain, and ají. Do not leave 
+              without trying a bowl of <strong>sancocho de pescado</strong> — 
+              a slow-simmered fish broth that is the soul food of the 
+              Colombian coast — or fresh ceviche by the waterfront in 
+              Barranquilla.
+            </p>
+            <p>
+              Beyond the food, the delta region pulses with cultural life. 
+              Barranquilla's Carnival is a UNESCO Intangible Cultural Heritage 
+              of Humanity, and the city's music scene — rooted in cumbia, 
+              vallenato, and porro — is alive every weekend of the year. 
+              Nearby, the colonial city of <strong>Mompox</strong> drifts in 
+              a timeless haze along a quiet Magdalena backwater, its 
+              cobblestone streets seemingly untouched by the modern world.
+            </p>
+          </div>
+        </div>
+      </div>
 
       <!-- ACTIVITIES -->
-      <section class="activities">
-        <h2 class="activities-title">Activities &amp; Adventures</h2>
-
-        <div class="adventure-container">
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card birdwatch">
-              <div class="adventure-image">
-                <img src="../imgs/birdwatching-magdalena.jpg" alt="Birdwatching in the Magdalena Delta" />
-              </div>
-              <div class="adventure-text">
-                <h3>Birdwatching &amp; Wildlife Tours</h3>
-                <p>
-                  Explore the Ciénaga Grande de Santa Marta on a guided boat tour and witness flocks of scarlet ibis,
-                  flamingos, and herons in one of South America's most important wetland bird sanctuaries.
-                </p>
-              </div>
-            </div>
-          </a>
-
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card reverse canoe">
-              <div class="adventure-image">
-                <img src="../imgs/canoe-magdalena.jpg" alt="Canoeing the Magdalena River channels" />
-              </div>
-              <div class="adventure-text">
-                <h3>River &amp; Lagoon Canoeing</h3>
-                <p>
-                  Paddle through narrow mangrove channels and open lagoons in a traditional canoe, drifting past
-                  stilted fishing villages and into the heart of the delta's pristine, untouched waterways.
-                </p>
+      <div class="activities-section">
+        <div class="section-intro">
+          <h2>Activities &<br /><em>Adventures</em></h2>
+          <p>
+            Discover the many ways to experience the Magdalena Delta, from 
+            silent lagoon paddles to the thundering rhythms of Barranquilla's 
+            Carnival.
+          </p>
+        </div>
+        <div class="activity-grid">
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/birdwatching-magdalena.jpg" alt="Birdwatching in the Magdalena Delta" />
+            <span class="img-credit">© Parques Nacionales Colombia</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Nature</div>
+              <div class="activity-name">Birdwatching & Wildlife Tours</div>
+              <div class="activity-desc">
+                Explore the Ciénaga Grande de Santa Marta on a guided boat 
+                tour and witness flocks of scarlet ibis, flamingos, and 
+                herons in one of South America's most important wetland bird 
+                sanctuaries — a spectacle that stays with you for life.
               </div>
             </div>
           </a>
-
-          <a href="UNDER-CONSTRUCTION.html" class="adventure-link">
-            <div class="adventure-card carnival">
-              <div class="adventure-image">
-                <img src="../imgs/carnival-barranquilla.jpg" alt="Carnival de Barranquilla" />
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/canoe-magdalena.jpg" alt="Canoeing the Magdalena" />
+            <span class="img-credit">© Colombia Travel</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Experience</div>
+              <div class="activity-name">River & Lagoon Canoeing</div>
+              <div class="activity-desc">
+                Paddle through narrow mangrove channels and open lagoons, 
+                drifting past stilted fishing villages into the heart of 
+                the delta's pristine waterways.
               </div>
-              <div class="adventure-text">
-                <h3>Carnival de Barranquilla</h3>
-                <p>
-                  Immerse yourself in one of the world's greatest carnivals — four days of cumbia, mapalé, and
-                  comparsas that transform Barranquilla into a vibrant celebration of Colombia's African, Indigenous,
-                  and European heritage.
-                </p>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/carnival-barranquilla.jpg" alt="Carnival de Barranquilla" />
+            <span class="img-credit">© Alcaldía de Barranquilla</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Culture</div>
+              <div class="activity-name">Carnival de Barranquilla</div>
+              <div class="activity-desc">
+                Four days of cumbia, mapalé, and comparsas that transform 
+                Barranquilla into a vibrant celebration of Colombia's 
+                African, Indigenous, and European heritage.
+              </div>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card" style="height: auto">
+            <img src="../imgs/mompox-river.jpg" alt="Mompox colonial city" style="height: 100%; min-height: 200px" />
+            <span class="img-credit">© Colombia Travel</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Heritage</div>
+              <div class="activity-name">Colonial Mompox</div>
+              <div class="activity-desc">
+                A UNESCO World Heritage city adrift in time on a quiet branch of the Magdalena.
               </div>
             </div>
           </a>
         </div>
-      </section>
+      </div>
 
-      <section id="gallery">
-        <h2>Delta Gallery</h2>
-
-        <div class="slideshow-container">
-          <div class="mySlides fade">
+      <!-- GALLERY -->
+      <div class="gallery-section" id="gallery">
+        <h2 class="gallery-heading">Delta Gallery</h2>
+        <div class="gallery-mosaic">
+          <div class="gallery-tile">
             <img src="../imgs/magdalena-aerial.jpg" alt="Aerial view of the Magdalena Delta" />
-            <div class="caption">Aerial view of the Magdalena River meeting the Caribbean Sea near Barranquilla.</div>
+            <span class="img-credit">© NASA / IGAC Colombia</span>
+            <div class="gallery-tile-caption">
+              Aerial view of the Magdalena River branching into the Caribbean Sea near Barranquilla.
+            </div>
           </div>
-
-          <div class="mySlides fade">
+          <div class="gallery-tile">
             <img src="../imgs/cienaga-grande.jpg" alt="Ciénaga Grande de Santa Marta" />
-            <div class="caption">The vast Ciénaga Grande de Santa Marta — a Ramsar Wetland and UNESCO Biosphere Reserve.</div>
+            <span class="img-credit">© Parques Nacionales Colombia</span>
+            <div class="gallery-tile-caption">
+              The vast Ciénaga Grande de Santa Marta — a Ramsar Wetland and UNESCO Biosphere Reserve.
+            </div>
           </div>
-
-          <div class="mySlides fade">
-            <img src="../imgs/mompox-river.jpg" alt="Mompox on the Magdalena River" />
-            <div class="caption">The timeless colonial town of Mompox, adrift on a quiet branch of the Magdalena.</div>
+          <div class="gallery-tile">
+            <img src="../imgs/birdwatching-magdalena.jpg" alt="Waterbirds in the delta" />
+            <span class="img-credit">© ProColombia</span>
+            <div class="gallery-tile-caption">
+              Scarlet ibis and herons at rest in the mangrove wetlands of the northern delta.
+            </div>
           </div>
-
-          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          <div class="gallery-tile">
+            <img src="../imgs/mompox-river.jpg" alt="Mompox on the Magdalena" />
+            <span class="img-credit">© Colombia Travel</span>
+            <div class="gallery-tile-caption">
+              The timeless colonial town of Mompox, drifting on a quiet backwater of the Magdalena.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <img src="../imgs/carnival-barranquilla.jpg" alt="Carnival de Barranquilla" />
+            <span class="img-credit">© Alcaldía de Barranquilla</span>
+            <div class="gallery-tile-caption">
+              Carnival de Barranquilla — four days of cumbia, colour, and Caribbean joy.
+            </div>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
 
-    <script>
-      const hero = document.getElementById("hero");
+    </div><!-- .page -->
 
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 150) {
-          hero.classList.add("hidden");
-        } else {
-          hero.classList.remove("hidden");
-        }
-      });
-
-      let slideIndex = 1;
-      showSlides(slideIndex);
-
-      function plusSlides(n) {
-        showSlides((slideIndex += n));
-      }
-
-      function showSlides(n) {
-        let i;
-        let slides = document.getElementsByClassName("mySlides");
-        if (n > slides.length) { slideIndex = 1; }
-        if (n < 1) { slideIndex = slides.length; }
-        for (i = 0; i < slides.length; i++) {
-          slides[i].style.display = "none";
-        }
-        slides[slideIndex - 1].style.display = "block";
-      }
-    </script>
-
-    <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
 
     <script>
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
       fetch("Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
   </body>
