@@ -44,7 +44,6 @@
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
 
-      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
@@ -146,7 +145,6 @@
         background: var(--mud);
       }
 
-      /* ── STAT TILES ── */
       .stat-strip {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -179,13 +177,13 @@
         transition: transform 0.4s;
       }
       .stat-tile:nth-child(1)::before {
-        background: #e8623a;
-      }
-      .stat-tile:nth-child(2)::before {
         background: #2e8b57;
       }
+      .stat-tile:nth-child(2)::before {
+        background: #1a6ea8;
+      }
       .stat-tile:nth-child(3)::before {
-        background: #4a8fa8;
+        background: #c4884a;
       }
       .stat-tile:nth-child(4)::before {
         background: #8e6bbf;
@@ -216,7 +214,6 @@
         margin-top: 4px;
       }
 
-      /* ── CHAPTER ── */
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -297,7 +294,6 @@
         margin: 28px 0;
       }
 
-      /* ── IMAGE BREAK ── */
       .image-break {
         height: 50vh;
         background-attachment: fixed;
@@ -331,7 +327,6 @@
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
 
-      /* ── IMAGE CREDITS ── */
       .img-credit {
         position: absolute;
         bottom: 10px;
@@ -343,7 +338,6 @@
         pointer-events: none;
       }
 
-      /* ── ACTIVITIES ── */
       .activities-section {
         padding: 100px 80px;
       }
@@ -447,7 +441,6 @@
         max-height: 200px;
       }
 
-      /* ── GALLERY ── */
       .gallery-section {
         padding: 0 80px 100px;
       }
@@ -587,59 +580,60 @@
       <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#area" class="stat-tile">
-          <div class="stat-value">Scarlet Ibis</div>
-          <div class="stat-label">Icon Species</div>
-          <div class="stat-desc">Thousands at dusk, every day</div>
+          <div class="stat-value">800 km²</div>
+          <div class="stat-label">Delta Area</div>
+          <div class="stat-desc">Largest on South America's Pacific coast</div>
         </a>
         <a href="#nature" class="stat-tile">
-          <div class="stat-value">40,000 km²</div>
-          <div class="stat-label">Delta Area</div>
-          <div class="stat-desc">Flooded delta wilderness</div>
+          <div class="stat-value">11,000 mm</div>
+          <div class="stat-label">Annual Rainfall</div>
+          <div class="stat-desc">One of the wettest places on Earth</div>
         </a>
         <a href="#coastline" class="stat-tile">
-          <div class="stat-value">Moriche Palm</div>
-          <div class="stat-label">Tree of Life</div>
-          <div class="stat-desc">Food, shelter & life in one tree</div>
+          <div class="stat-value">Chocó</div>
+          <div class="stat-label">Region</div>
+          <div class="stat-desc">Colombia's biodiversity hotspot</div>
         </a>
         <a href="#economy" class="stat-tile">
-          <div class="stat-value">8,000 Years</div>
-          <div class="stat-label">Warao Culture</div>
-          <div class="stat-desc">Of river civilisation</div>
+          <div class="stat-value">5,000 BP</div>
+          <div class="stat-label">Delta Age</div>
+          <div class="stat-desc">Years of continuous growth</div>
         </a>
       </div>
 
-      <!-- CHAPTER 1: THE SCARLET IBIS -->
+      <!-- CHAPTER 1: THE DELTA -->
       <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
           <!-- vervang sanjuan-channels.jpg met de juiste bestandsnaam -->
           <img
-            src="../imgs/sanjuan-channels.jpg"
-            alt="Aerial view of delta channels during dry season, low water and exposed mudbanks"
+            src="../imgs/river-meets-ocean.jpg"
+            alt="Aerial view of the San Juan delta channels meeting the Pacific Ocean"
           />
+          <span class="img-credit">© EO Puget Sound</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
           <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">The Scarlet Ibis: A Daily Spectacle</h2>
+          <h2 class="chapter-title">Where the Andes Meet the Pacific</h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The dry season, running from January through April, is the best
-              time to visit the San Juan Delta. Water levels drop significantly,
-              making it easier to navigate the delta's labyrinth of channels by
-              boat, and the reduced humidity makes jungle treks far more
-              comfortable. Wildlife is easier to spot as animals gather around
-              the remaining water sources, and the clear skies offer spectacular
-              stargazing far from any city light pollution.
+              The Río San Juan begins high in the Western Andes on Cerro
+              Caramanta and travels 380 kilometres through the rainforests of
+              Colombia's Chocó department before fanning out into the Pacific
+              Ocean. Its delta, covering 800 square kilometres, is the largest
+              on the entire Pacific coast of South America: a tide-dominated
+              labyrinth of distributary channels, mangrove forests, and barrier
+              islands shaped by the constant tug-of-war between river force and
+              ocean swell.
             </p>
             <p>
-              The wet season from May through December transforms the landscape
-              entirely, flooding vast areas of forest and turning the delta into
-              an inland sea of extraordinary proportions. For those who want to
-              experience the full drama of the delta at its most powerful,
-              arriving in October and November offers the spectacle of the river
-              at peak flood, a raw and humbling natural phenomenon that few
-              travellers ever witness.
+              The dry season from December through March offers the best
+              conditions for exploring the delta. Water levels settle, making
+              boat navigation through the smaller channels easier, and wildlife
+              concentrates along the distributaries. But this is Chocó, and even
+              the dry season brings frequent rain, and the landscape is never
+              anything less than lush, green, and overwhelmingly alive.
             </p>
           </div>
         </div>
@@ -648,14 +642,16 @@
       <!-- IMAGE BREAK — vervang sanjuan-flood.jpg met de juiste bestandsnaam -->
       <div
         class="image-break"
-        style="background-image: url(&quot;../imgs/sanjuan-flood.jpg&quot;)"
+        style="background-image: url(&quot;../imgs/sanjuan-flooding.jpg&quot;)"
       >
         <span class="image-break-label"
-          >Flooded delta landscape at peak wet season</span
+          >The San Juan River at peak discharge, swelling toward the
+          Pacific</span
         >
+        <span class="img-credit">© This Is My Earth / Chocó Forest</span>
       </div>
 
-      <!-- CHAPTER 2: WILDLIFE -->
+      <!-- CHAPTER 2: BIODIVERSITY -->
       <div
         id="nature"
         class="chapter-opener flip"
@@ -664,34 +660,34 @@
         <div class="chapter-image">
           <!-- vervang scarlet-ibis.jpg met de juiste bestandsnaam -->
           <img
-            src="../imgs/scarlet-ibis.jpg"
-            alt="Flock of scarlet ibis roosting in mangroves at sunset, vibrant red"
+            src="../imgs/whatthebirb.png"
+            alt="Wildlife of the Chocó rainforest surrounding the San Juan Delta"
           />
+          <span class="img-credit">© CGTN News</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
           <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">40,000 km² of Wild Delta</h2>
+          <h2 class="chapter-title">The Chocó: A Biodiversity Hotspot</h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The San Juan Delta and the broader Orinoco Delta system is home to
-              over 600 bird species, making it one of the finest birdwatching
-              destinations in all of South America. The scarlet ibis is the
-              undisputed star of the show, and at dusk thousands of these
-              brilliantly red birds return to their mangrove roosts in
-              spectacular formations that stain the sky. Alongside them,
-              anacondas, caimans, giant anteaters, and river otters inhabit the
-              dense network of waterways and forest.
+              The San Juan Delta sits at the heart of the Chocó biogeographic
+              region, one of the most biodiverse places on the planet. The
+              extreme rainfall, up to 11,000 mm per year, feeds forests of
+              extraordinary density and diversity. Poison dart frogs, harpy
+              eagles, jaguars, giant anteaters, and several species of caiman
+              share a landscape that has remained largely untouched by roads or
+              industrial development.
             </p>
             <p>
-              The moriche palm forests that dominate the delta interior are a
-              world of their own, sheltering rare orchids, brightly coloured
-              frogs, and the moriche oriole, a bird found almost exclusively in
-              this ecosystem. Guided boat tours through the narrower channels
-              reveal a hidden world of extraordinary biodiversity, and
-              knowledgeable local Warao guides will point out details of the
-              forest and river that most visitors would walk straight past.
+              The mangrove forests fringing the delta's distributaries are among
+              the most productive in the Americas. Dense stands of red and black
+              mangrove provide shelter and nursery grounds for countless fish
+              species, while pelicans, frigatebirds, and herons patrol the tidal
+              channels. The Chocó's isolation has made it an evolutionary
+              cradle, and a disproportionate number of species here are found
+              nowhere else on Earth.
             </p>
           </div>
         </div>
@@ -703,11 +699,12 @@
         style="background-image: url(&quot;../imgs/capybara-delta.jpg&quot;)"
       >
         <span class="image-break-label"
-          >Capybaras resting on a delta riverbank in the Orinoco Delta</span
+          >Dense mangrove channels threading through the delta interior</span
         >
+        <span class="img-credit">© only.one / Colombia Marine</span>
       </div>
 
-      <!-- CHAPTER 3: THE MORICHE PALM -->
+      <!-- CHAPTER 3: THE RIVER -->
       <div
         id="coastline"
         class="chapter-opener"
@@ -716,35 +713,38 @@
         <div class="chapter-image">
           <!-- vervang sanjuan-sunset-river.jpg met de juiste bestandsnaam -->
           <img
-            src="../imgs/sanjuan-sunset-river.jpg"
-            alt="Golden sunset over the Orinoco with silhouetted moriche palms"
+            src="../imgs/sanjuan-river.jpeg"
+            alt="The Río San Juan flowing through Chocó rainforest toward the Pacific"
           />
+          <span class="img-credit">© Earth Experience / Utría NP</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
           <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">The Moriche Palm: Tree of Life</h2>
+          <h2 class="chapter-title">
+            The Fastest-Growing Delta on the West Coast
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The Orinoco River stretches 2,140 kilometres from its source in
-              the Parima Highlands of Venezuela all the way to the Atlantic
-              Ocean. Its vast delta, known locally as the Delta Amacuro, fans
-              out across roughly 40,000 square kilometres of channels, islands,
-              and flooded forest before finally spilling into the sea. The San
-              Juan River is the delta's main navigable artery, connecting the
-              interior to the coast and serving as the lifeline of the Warao
-              communities that have called this water world home for thousands
-              of years.
+              The Río San Juan carries an average of 2,550 cubic metres of water
+              per second into the Pacific, the highest discharge of any river on
+              the west coast of South America. This immense flow also carries an
+              extraordinary sediment load of 16 million tonnes per year, making
+              the San Juan one of the most productive delta-building rivers in
+              the world. Analysis of shoreline changes over the past century
+              shows consistent advance of the delta front, even as rising sea
+              levels and tectonic activity work against it.
             </p>
             <p>
-              Travelling by motorised dugout canoe through the delta's smaller
-              channels is the only way to reach the most remote corners of this
-              extraordinary landscape. The experience of drifting through a
-              narrow waterway with the forest closing in overhead, the sounds of
-              birds and insects filling the air, and the occasional flash of a
-              caiman's eyes at the water's edge is something that simply cannot
-              be replicated anywhere else.
+              The Pacific coast of Colombia is one of the most geologically
+              active zones on Earth. The Nazca oceanic plate grinds beneath the
+              South American plate at 54 mm per year, producing frequent
+              earthquakes and occasional tsunamis. This tectonic energy shapes
+              the coastline around the delta in dramatic ways, creating a
+              shoreline that is simultaneously advancing through sediment
+              deposition and retreating through erosion and subsidence, a
+              constant, dynamic balance.
             </p>
           </div>
         </div>
@@ -758,12 +758,13 @@
         "
       >
         <span class="image-break-label"
-          >Warao indigenous stilt houses built directly over the delta
+          >Traditional Afro-Colombian fishing communities along the delta
           channels</span
         >
+        <span class="img-credit">© NPR / Afro-Colombian Community</span>
       </div>
 
-      <!-- CHAPTER 4: CULTURE & FOOD -->
+      <!-- CHAPTER 4: PEOPLE & CULTURE -->
       <div
         id="economy"
         class="chapter-opener flip"
@@ -772,33 +773,36 @@
         <div class="chapter-image">
           <!-- vervang moriche-palm-food.jpg met de juiste bestandsnaam -->
           <img
-            src="../imgs/moriche-palm-food.jpg"
-            alt="Moriche palm fruit or traditional Warao food preparation"
+            src="../imgs/fishing-colombia.jpg"
+            alt="Afro-Colombian and indigenous communities of the San Juan Delta"
           />
+          <span class="img-credit">© Uncover Colombia</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
           <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">8,000 Years on the Water</h2>
+          <h2 class="chapter-title">Afro-Colombian Communities of the Chocó</h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The Warao people, whose name means "boat people" in their own
-              language, have lived in the Orinoco Delta for at least 8,000
-              years, building an entire civilisation on the water. Their
-              traditional diet revolves around the moriche palm, river fish,
-              game, and the edible larvae of the palm weevil, a protein-rich
-              delicacy eaten raw or cooked. A visit to a Warao community is a
-              profoundly moving experience, offering a genuine window into one
-              of the last great river-based cultures in the Americas.
+              The San Juan Delta and the surrounding Chocó lowlands are home to
+              some of Colombia's most resilient communities. Afro-Colombian
+              families have fished these waters and farmed these forests for
+              generations, and indigenous Emberá and Wounaan peoples maintain
+              deep ties to the river and its resources. Their traditional
+              knowledge of the forest, the tides, and the fish cycles is
+              extraordinary, built over centuries of intimate coexistence with
+              one of the world's most demanding environments.
             </p>
             <p>
-              In Tucupita, the small but lively capital of Delta Amacuro state,
-              local restaurants serve freshwater fish dishes that reflect the
-              region's Venezuelan and indigenous heritage. The town's waterfront
-              malecón is the social heart of the community, where locals gather
-              at sunset and tour operators prepare their boats for the next
-              day's adventure.
+              The delta region has historically been among the most isolated in
+              Colombia, accessible only by river or sea, with no road
+              connections to the interior. This isolation has preserved its
+              extraordinary ecosystems and the cultural traditions of its
+              communities, but it has also meant limited access to services and
+              economic opportunity. Responsible ecotourism, guided by local
+              Afro-Colombian and indigenous operators, is slowly emerging as a
+              way to share this remarkable landscape with the world.
             </p>
           </div>
         </div>
@@ -810,9 +814,9 @@
         style="background-image: url(&quot;../imgs/tucupita-market.jpg&quot;)"
       >
         <span class="image-break-label"
-          >Street scene or market in Tucupita, the gateway town to the
-          delta</span
+          >Local fishing culture at the heart of delta life in Chocó</span
         >
+        <span class="img-credit">© Rio on Watch</span>
       </div>
 
       <!-- ACTIVITIES -->
@@ -820,9 +824,9 @@
         <div class="section-intro">
           <h2>Activities &<br /><em>Adventures</em></h2>
           <p>
-            Discover the many ways to experience the San Juan Delta, from silent
-            kayak trips through moriche palms to watching thousands of scarlet
-            ibis return at dusk.
+            Discover the many ways to experience the San Juan Delta, from dugout
+            canoe trips through pristine mangroves to birdwatching in one of
+            Earth's richest forests.
           </p>
         </div>
         <div class="activity-grid">
@@ -830,16 +834,17 @@
             <!-- vervang sanjuan-kayak.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/sanjuan-kayak.jpg"
-              alt="Kayaking through a narrow delta channel lined with moriche palms"
+              alt="Dugout canoe through mangrove channels of the San Juan Delta"
             />
+            <span class="img-credit">© The Dyrt</span>
             <div class="activity-overlay">
               <div class="activity-tag">Paddle</div>
-              <div class="activity-name">Kayaking the Delta Channels</div>
+              <div class="activity-name">Canoe the Delta Channels</div>
               <div class="activity-desc">
-                Paddle silently through the delta's narrow waterways in a kayak
-                or dugout canoe, slipping beneath overhanging palms and into
-                flooded forest clearings where caimans bask and herons stand
-                motionless in the shallows.
+                Travel by traditional dugout canoe through the delta's tidal
+                distributaries, slipping between towering mangrove roots while
+                local guides point out caimans, river otters, and the countless
+                birds that make these waterways their home.
               </div>
             </div>
           </a>
@@ -847,16 +852,18 @@
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <!-- vervang warao-village-visit.jpg met de juiste bestandsnaam -->
             <img
-              src="../imgs/warao-village-visit.jpg"
-              alt="Cultural visit to a Warao community in the delta"
+              src="../imgs/afro-colombians.jpeg"
+              alt="Visit an Afro-Colombian or Emberá community in the Chocó"
             />
+            <span class="img-credit">© NPR / Afro-Colombian Community</span>
             <div class="activity-overlay">
               <div class="activity-tag">Culture</div>
-              <div class="activity-name">Warao Cultural Experiences</div>
+              <div class="activity-name">Community Visits</div>
               <div class="activity-desc">
-                Visit one of the Warao communities deep in the delta and learn
-                about the traditions, craftsmanship, and river knowledge of one
-                of Venezuela's most remarkable indigenous peoples.
+                Meet the Afro-Colombian and Emberá communities who have lived
+                along these rivers for generations, and learn about their
+                traditions, fishing practices, and deep knowledge of the Chocó
+                forest.
               </div>
             </div>
           </a>
@@ -864,16 +871,18 @@
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <!-- vervang ibis-birdwatching.jpg met de juiste bestandsnaam -->
             <img
-              src="../imgs/ibis-birdwatching.jpg"
-              alt="Birdwatcher observing scarlet ibis at golden hour in the delta"
+              src="../imgs/scarlet-ibis.jpeg"
+              alt="Birdwatching in the Chocó rainforest near the San Juan Delta"
             />
+            <span class="img-credit">© CGTN News</span>
             <div class="activity-overlay">
               <div class="activity-tag">Wildlife</div>
-              <div class="activity-name">Birdwatching at Dusk</div>
+              <div class="activity-name">Birdwatching in the Chocó</div>
               <div class="activity-desc">
-                Position yourself along the channels at sunset and watch as tens
-                of thousands of scarlet ibis return to their mangrove roosts in
-                one of nature's most spectacular daily rituals.
+                The Chocó is one of the world's premier birdwatching
+                destinations, with hundreds of endemic species. Guided walks
+                through the forest at dawn offer encounters with rare species
+                found nowhere else on Earth.
               </div>
             </div>
           </a>
@@ -887,60 +896,64 @@
           <div class="gallery-tile">
             <!-- vervang sanjuan-delta-aerial.jpg met de juiste bestandsnaam -->
             <img
-              src="../imgs/sanjuan-delta-aerial.jpg"
-              alt="Aerial view of the Orinoco Delta fanning toward the Atlantic Ocean"
+              src="../imgs/San-Juan_delta.jpg"
+              alt="Aerial view of the San Juan Delta meeting the Pacific Ocean"
             />
             <div class="gallery-tile-caption">
-              Aerial view of the Orinoco Delta's vast network of channels
-              stretching toward the Atlantic Ocean.
+              Aerial view of the Río San Juan fanning into the Pacific Ocean
+              across 800 km² of delta plain.
             </div>
           </div>
 
           <div class="gallery-tile">
             <!-- vervang sanjuan-moriche-palms.jpg met de juiste bestandsnaam -->
             <img
-              src="../imgs/sanjuan-moriche-palms.jpg"
-              alt="Moriche palm forest reflected in still delta water at golden hour"
+              src="../imgs/mangrove bos.jpeg"
+              alt="Mangrove forest along the distributary channels of the San Juan Delta"
             />
+            <span class="img-credit">© National Geographic</span>
             <div class="gallery-tile-caption">
-              Moriche palm forests reflected in the mirror-still channels of the
-              San Juan Delta at golden hour.
+              Dense mangrove forests line the distributary channels, providing
+              habitat for countless fish, birds, and mammals.
             </div>
           </div>
 
           <div class="gallery-tile">
             <!-- vervang sanjuan-ibis-sunset.jpg met de juiste bestandsnaam -->
             <img
-              src="../imgs/sanjuan-ibis-sunset.jpg"
-              alt="Mass of scarlet ibis in flight against an orange sunset sky"
+              src="../imgs/sunset-sanjuan.avif"
+              alt="Sunset over the Pacific from the San Juan Delta coastline"
             />
+            <span class="img-credit">© Earth Experience / Utría NP</span>
             <div class="gallery-tile-caption">
-              Thousands of scarlet ibis take flight at dusk, one of the most
-              breathtaking wildlife spectacles in the Americas.
+              The Pacific horizon at dusk, seen from the delta's advancing
+              shoreline of barrier islands and beach ridges.
             </div>
           </div>
 
           <div class="gallery-tile">
             <!-- vervang scarlet-ibis.jpg (gallery) met de juiste bestandsnaam -->
             <img
-              src="../imgs/scarlet-ibis.jpg"
-              alt="Scarlet ibis roosting in mangroves, turning them blazing red"
+              src="../imgs/jaguar.jpg"
+              alt="Wildlife of the Chocó, one of the world's most biodiverse regions"
             />
+            <span class="img-credit">© Colombia One</span>
             <div class="gallery-tile-caption">
-              Scarlet ibis gather in enormous roosts at sunset, turning the
-              mangroves a blazing red.
+              The Chocó bioregion surrounding the delta is home to a staggering
+              density of endemic species.
             </div>
           </div>
 
           <div class="gallery-tile">
             <!-- vervang warao-stilt-houses.jpg (gallery) met de juiste bestandsnaam -->
             <img
-              src="../imgs/warao-stilt-houses.jpg"
-              alt="Warao stilt houses built directly over the delta waterways"
+              src="../imgs/stilthouses.jpg"
+              alt="Traditional stilt houses of Afro-Colombian communities over the delta waterways"
             />
+            <span class="img-credit">© Rio on Watch</span>
             <div class="gallery-tile-caption">
-              Warao communities build their homes on stilts directly above the
-              water, perfectly adapted to the delta's rhythms.
+              Afro-Colombian and Emberá communities build their lives directly
+              over the water, perfectly adapted to the delta's rhythms.
             </div>
           </div>
         </div>
