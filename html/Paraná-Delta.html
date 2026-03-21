@@ -5,125 +5,564 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Paraná Delta - Deltas in the Americas</title>
     <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --mud: #0e1f1a;
+        --earth: #1e3d30;
+        --sand: #7ec8a0;
+        --bark: #3a7c5c;
+        --mist: #d8ece2;
+        --fog: #f0f7f2;
+        --water: #1e3a4a;
+        --moss: #2e5e3e;
+        --rust: #7a9b3a;
+      }
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        font-family: Arial, Helvetica, sans-serif;
+      }
+      html {
+        scroll-behavior: smooth;
       }
 
       body {
-        background: white;
-        color: #111;
+        background: var(--mud);
+        color: var(--mist);
+        font-family: "Libre Baskerville", Georgia, serif;
+        overflow-x: hidden;
       }
 
-      /* HERO */
+      /* ── NOISE TEXTURE OVERLAY ── */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        pointer-events: none;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      }
+
+      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
-        height: 60vh;
+        height: 65vh;
         background:
-          linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-          url("../imgs/Parana_delta.jpg") center / cover no-repeat;
+          linear-gradient(
+            to bottom,
+            rgba(5, 20, 10, 0.3) 0%,
+            rgba(5, 20, 10, 0.7) 100%
+          ),
+          url("../imgs/Parana_delta.jpg") center/cover no-repeat;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: all 0.6s ease;
         z-index: 10;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
-
       .hero.hidden {
         opacity: 0;
         transform: translateY(-100%);
         pointer-events: none;
       }
 
-      .hero h1 {
-        color: white;
-        font-size: 4rem;
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 8px;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        text-align: center;
+        color: var(--sand);
+        margin-bottom: 14px;
+        opacity: 0;
+        animation: fadeUp 1s 0.3s forwards;
       }
-
-      /* NAV */
+      .hero h1 {
+        font-family: "Playfair Display", serif;
+        font-weight: 900;
+        font-size: clamp(3rem, 8vw, 6.5rem);
+        line-height: 0.9;
+        text-transform: uppercase;
+        color: var(--fog);
+        text-align: center;
+        letter-spacing: -2px;
+        opacity: 0;
+        animation: fadeUp 1s 0.6s forwards;
+      }
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.55em;
+        letter-spacing: 2px;
+        font-weight: 400;
+      }
+      .hero-credit {
+        position: absolute;
+        bottom: 12px;
+        right: 16px;
+        font-size: 0.65rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-style: italic;
+      }
       .top-nav {
         position: absolute;
         top: 20px;
         right: 40px;
+        display: flex;
+        gap: 24px;
       }
-
       .top-nav a {
-        color: white;
+        color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        margin-left: 20px;
-        font-weight: bold;
-        font-size: 0.9rem;
-      }
-
-      /* CONTENT */
-      main {
-        padding: 80px 20px;
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      section {
-        margin-bottom: 100px;
-      }
-
-      h2 {
-        font-size: 2rem;
-        margin-bottom: 30px;
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.85rem;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        display: inline-block;
+        transition: color 0.3s;
+      }
+      .top-nav a:hover {
+        color: var(--sand);
       }
 
-      h2::after {
-        content: "";
-        display: block;
-        width: 120px;
-        height: 4px;
-        background: #000000; /* standaard kleur */
-        margin-top: 8px;
-        border-radius: 3px;
-      }
-
-      p {
-        line-height: 1.8;
-        margin-bottom: 20px;
-        font-size: 1.1rem;
-        color: #333;
-      }
-
-      /* COMPARISON TABLE */
-      .comparison-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 40px;
-      }
-
-      .comparison-table th,
-      .comparison-table td {
-        border: 1px solid #ddd;
-        padding: 15px;
-        text-align: left;
-      }
-
-      .comparison-table th {
-        background-color: #f4f4f4;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-      }
-
-      @media screen and (max-width: 600px) {
-        .hero h1 {
-          font-size: 2.5rem;
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        .top-nav {
-          right: 20px;
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ── CONTENT WRAPPER ── */
+      .page {
+        position: relative;
+        z-index: 5;
+        background: var(--mud);
+      }
+
+      /* ── STAT STRIP ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+      }
+      .stat-tile:last-child {
+        border-right: none;
+      }
+      .stat-tile::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .stat-tile:nth-child(1)::before { background: var(--sand); }
+      .stat-tile:nth-child(2)::before { background: var(--rust); }
+      .stat-tile:nth-child(3)::before { background: var(--water); }
+      .stat-tile:nth-child(4)::before { background: var(--moss); }
+      .stat-tile:hover { background: rgba(255, 255, 255, 0.03); }
+      .stat-tile:hover::before { transform: scaleX(1); }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(216, 236, 226, 0.55);
+        margin-top: 4px;
+      }
+
+      /* ── CHAPTER OPENER ── */
+      .chapter-opener {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+        position: relative;
+      }
+      .chapter-opener.flip {
+        direction: rtl;
+      }
+      .chapter-opener.flip > * {
+        direction: ltr;
+      }
+
+      .chapter-image {
+        position: relative;
+        overflow: hidden;
+      }
+      .chapter-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(10%) contrast(1.05);
+        transition: transform 8s ease;
+      }
+      .chapter-image:hover img {
+        transform: scale(1.04);
+      }
+      .chapter-image::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, transparent 60%, var(--mud) 100%);
+      }
+      .chapter-opener.flip .chapter-image::after {
+        background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
+      }
+
+      .chapter-text {
+        padding: 80px 60px 80px 50px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .chapter-num {
+        font-family: "Oswald", sans-serif;
+        font-weight: 700;
+        font-size: 7rem;
+        line-height: 1;
+        color: var(--earth);
+        margin-bottom: -10px;
+      }
+      .chapter-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 6px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .chapter-title {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
+        font-weight: 700;
+        line-height: 1.15;
+        color: var(--fog);
+        margin-bottom: 28px;
+      }
+      .chapter-body p {
+        font-size: 1rem;
+        line-height: 1.85;
+        color: rgba(216, 236, 226, 0.78);
+        margin-bottom: 16px;
+      }
+      .chapter-divider {
+        width: 60px;
+        height: 2px;
+        background: var(--sand);
+        margin: 28px 0;
+      }
+
+      /* ── FULL-BLEED IMAGE BREAK ── */
+      .image-break {
+        height: 50vh;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+      }
+      .image-break::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          rgba(5, 20, 10, 0.3) 0%,
+          rgba(5, 20, 10, 0.3) 60%,
+          rgba(5, 20, 10, 0.75) 100%
+        );
+      }
+      .image-break-label {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 2;
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 5px;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.92);
+        white-space: nowrap;
+        text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+      }
+
+      /* ── ACTIVITIES ── */
+      .activities-section {
+        padding: 100px 80px;
+      }
+      .section-intro {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        margin-bottom: 60px;
+        border-bottom: 1px solid var(--earth);
+        padding-bottom: 40px;
+      }
+      .section-intro h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        color: var(--fog);
+      }
+      .section-intro h2 em {
+        font-style: italic;
+        color: var(--sand);
+      }
+      .section-intro p {
+        max-width: 280px;
+        font-size: 0.9rem;
+        line-height: 1.7;
+        color: rgba(216, 236, 226, 0.6);
+        text-align: right;
+      }
+
+      .activity-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-rows: 400px 400px;
+        gap: 3px;
+      }
+      .activity-card {
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .activity-card:first-child {
+        grid-row: span 2;
+      }
+      .activity-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.7s ease, filter 0.5s;
+        filter: brightness(0.75) sepia(10%);
+      }
+      .activity-card:hover img {
+        transform: scale(1.06);
+        filter: brightness(0.55) sepia(20%);
+      }
+      .activity-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(5, 20, 10, 0.95) 0%,
+          rgba(5, 20, 10, 0.2) 50%,
+          transparent 100%
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 32px;
+      }
+      .activity-tag {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.7rem;
+        letter-spacing: 4px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 8px;
+      }
+      .activity-name {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+        line-height: 1.1;
+        margin-bottom: 10px;
+      }
+      .activity-card:first-child .activity-name {
+        font-size: 2.4rem;
+      }
+      .activity-desc {
+        font-size: 0.88rem;
+        line-height: 1.65;
+        color: rgba(216, 236, 226, 0.75);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+      }
+      .activity-card:hover .activity-desc {
+        max-height: 200px;
+      }
+
+      /* ── GALLERY ── */
+      .gallery-section {
+        padding: 0 80px 100px;
+      }
+      .gallery-heading {
+        font-family: "Playfair Display", serif;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--fog);
+        margin-bottom: 30px;
+        padding-left: 4px;
+      }
+      .gallery-mosaic {
+        display: grid;
+        grid-template-columns: 1.6fr 1fr 1fr;
+        grid-template-rows: 320px 280px;
+        gap: 4px;
+      }
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-tile:first-child {
+        grid-row: span 2;
+      }
+      .gallery-tile img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: sepia(10%) contrast(1.05) brightness(0.92);
+        transition: transform 0.7s ease, filter 0.5s;
+      }
+      .gallery-tile:hover img {
+        transform: scale(1.05);
+        filter: sepia(0%) contrast(1.05) brightness(1);
+      }
+      .gallery-tile-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 36px 18px 14px;
+        background: linear-gradient(transparent, rgba(5, 20, 10, 0.88));
+        color: rgba(216, 236, 226, 0.85);
+        font-style: italic;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        opacity: 0;
+        transition: opacity 0.4s;
+      }
+      .gallery-tile:hover .gallery-tile-caption {
+        opacity: 1;
+      }
+      .gallery-tile:first-child .gallery-tile-caption {
+        font-size: 0.92rem;
+      }
+
+      /* ── IMAGE CREDITS ── */
+      .img-credit {
+        position: absolute;
+        bottom: 10px;
+        right: 12px;
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.35);
+        font-style: italic;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      /* ── FOOTER AREA ── */
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
+
+      @media (max-width: 900px) {
+        .chapter-opener,
+        .chapter-opener.flip {
+          grid-template-columns: 1fr;
+          direction: ltr;
+        }
+        .chapter-image {
+          height: 55vw;
+        }
+        .chapter-image::after,
+        .chapter-opener.flip .chapter-image::after {
+          display: none;
+        }
+        .chapter-text {
+          padding: 48px 28px;
+        }
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-tile {
+          border-bottom: 1px solid var(--earth);
+        }
+        .activity-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .activity-card:first-child {
+          grid-row: span 1;
+          height: 380px;
+        }
+        .activity-card {
+          height: 260px;
+        }
+        .activities-section,
+        .gallery-section {
+          padding: 60px 24px;
+        }
+        .section-intro {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .section-intro p {
+          text-align: left;
+        }
+        .gallery-mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery-tile:first-child {
+          grid-row: span 1;
+          height: 56vw;
+        }
+        .gallery-tile {
+          height: 44vw;
         }
       }
     </style>
@@ -132,60 +571,305 @@
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back to Overview</a>
+        <a href="../index.html">← Overview</a>
         <a href="Compare.html">Compare</a>
         <a href="Contact.html">Contact</a>
       </nav>
-      <h1>Paraná Delta</h1>
+      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <h1>Paraná<em>Delta</em></h1>
+      <span class="hero-credit">© Argentina Tourism</span>
     </header>
 
-    <main>
-      <section id="nature">
-        <h2>Nature & Biodiversity</h2>
-        <p>
-          The Paraná Delta is a unique labyrinth of islands and channels where the Paraná River empties into the Río de la Plata.
-          Unlike most deltas, it does not flow into the ocean but into another river, creating a massive freshwater ecosystem.
-        </p>
-        <p>
-          It is a biodiversity hotspot, home to the <strong>Marsh Deer</strong>, capybaras, and over 300 species of birds. The
-          flora is dominated by "Monte Blanco" forests and wetlands that act as a natural water purifier for the surrounding
-          regions, including nearby Buenos Aires.
-        </p>
-      </section>
+    <div class="page">
 
-      <section id="history">
-        <h2>History & Culture</h2>
-        <p>
-          Historically, the delta was inhabited by the <strong>Guaraní people</strong>, who navigated its complex waterways with
-          expert precision. In the late 19th and early 20th centuries, the area became a hub for fruit production and wood
-          extraction, leading to the unique "stilt-house" (palafitos) architecture seen today in towns like Tigre.
-        </p>
-        <p>
-          Today, it represents a delicate balance between a growing weekend tourism industry and the traditional "Isleño"
-          lifestyle, where boats serve as the only form of public transport, from school buses to grocery stores.
-        </p>
-      </section>
-    </main>
+      <!-- STAT TILES -->
+      <div class="stat-strip">
+        <a href="#when-to-visit" class="stat-tile">
+          <div class="stat-value">Mar–May</div>
+          <div class="stat-label">Best Season</div>
+          <div class="stat-desc">Mild weather & blooming wetlands</div>
+        </a>
+        <a href="#wildlife" class="stat-tile">
+          <div class="stat-value">300+</div>
+          <div class="stat-label">Bird Species</div>
+          <div class="stat-desc">Plus capybaras & marsh deer</div>
+        </a>
+        <a href="#river" class="stat-tile">
+          <div class="stat-value">4,880 km</div>
+          <div class="stat-label">River Length</div>
+          <div class="stat-desc">One of the world's longest rivers</div>
+        </a>
+        <a href="#culture" class="stat-tile">
+          <div class="stat-value">Unique</div>
+          <div class="stat-label">Isleño Life</div>
+          <div class="stat-desc">Boats as the only transport</div>
+        </a>
+      </div>
 
-    <script>
-      const hero = document.getElementById("hero");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 150) {
-          hero.classList.add("hidden");
-        } else {
-          hero.classList.remove("hidden");
-        }
-      });
-    </script>
+      <!-- CHAPTER 1: WHEN TO VISIT -->
+      <div id="when-to-visit" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/Parana_delta.jpg" alt="Paraná Delta wetlands" />
+          <span class="img-credit">© Argentina Tourism</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">01</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">When to Visit</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              Autumn — March through May — is the ideal time to visit the Paraná Delta. 
+              The summer heat gives way to comfortable temperatures, the wetlands are 
+              lush and teeming with wildlife, and the waterways run calm and clear. 
+              It is the perfect season to explore the labyrinth of islands by kayak, 
+              wander the stilt-house communities of Tigre, and watch the fog roll in 
+              over the channels at sunrise.
+            </p>
+            <p>
+              Spring (September to November) is an excellent second option, 
+              with pleasant warmth and spectacular birdlife as species return to 
+              nest. Avoid the height of summer, when humidity can be intense and 
+              seasonal flooding occasionally disrupts access to some islands.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url('../imgs/Parana_delta.jpg')"
+      >
+        <span class="image-break-label">A labyrinth of islands, channels and wetlands</span>
+      </div>
+
+      <!-- CHAPTER 2: WILDLIFE -->
+      <div id="wildlife" class="chapter-opener flip" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/Parana_delta.jpg" alt="Capybara in the Paraná Delta" />
+          <span class="img-credit">© Wildlife Argentina</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">02</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">Wildlife You Will Not Forget</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The Paraná Delta is a biodiversity hotspot unlike any other in 
+              South America. Over 300 bird species inhabit its wetlands and 
+              forests — from the scarlet-headed blackbird to the jabiru stork. 
+              Along the water's edge, you may spot capybaras grazing in family 
+              groups, or the elusive <strong>Marsh Deer</strong> emerging from 
+              the reeds at dusk.
+            </p>
+            <p>
+              The flora is equally extraordinary. "Monte Blanco" forests of 
+              ceibo, timbó, and sarandí line the islands, while vast floating 
+              meadows of water hyacinth drift through the channels. The entire 
+              ecosystem acts as a natural water purifier for the greater Buenos 
+              Aires region, making conservation here a matter of regional importance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url('../imgs/Parana_delta.jpg')"
+      >
+        <span class="image-break-label">The wetlands: home to 300+ bird species and countless mammals</span>
+      </div>
+
+      <!-- CHAPTER 3: RIVER -->
+      <div id="river" class="chapter-opener" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/Parana_delta.jpg" alt="Paraná River channels" />
+          <span class="img-credit">© Tigre Tourism</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">03</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">A River Worth Exploring</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              Stretching 4,880 kilometres from the Brazilian highlands to the 
+              Río de la Plata, the Paraná is one of the great rivers of the world. 
+              Uniquely, its delta does not empty into the open ocean but into 
+              another river — creating a vast, freshwater maze of channels, 
+              oxbow lakes, and floating islands that shifts and changes shape 
+              with every flood season.
+            </p>
+            <p>
+              Exploring by kayak or wooden rowboat is the most intimate way to 
+              experience the delta. You drift past vine-draped banks, hear nothing 
+              but birdsong and water, and arrive at tiny island communities reachable 
+              only by boat — where life moves at the pace of the current.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- IMAGE BREAK -->
+      <div
+        class="image-break"
+        style="background-image: url('../imgs/Parana_delta.jpg')"
+      >
+        <span class="image-break-label">Floating islands that shift and reshape with every flood season</span>
+      </div>
+
+      <!-- CHAPTER 4: CULTURE -->
+      <div id="culture" class="chapter-opener flip" style="scroll-margin-top: 80px">
+        <div class="chapter-image">
+          <img src="../imgs/Parana_delta.jpg" alt="Palafito stilt houses" />
+          <span class="img-credit">© Tigre Municipal Tourism</span>
+        </div>
+        <div class="chapter-text">
+          <div class="chapter-num">04</div>
+          <div class="chapter-label">Field Notes</div>
+          <h2 class="chapter-title">History, Culture & the Isleño Way</h2>
+          <div class="chapter-divider"></div>
+          <div class="chapter-body">
+            <p>
+              The delta was first navigated by the <strong>Guaraní people</strong>, 
+              who mastered its waterways long before European contact. In the 
+              late 19th and early 20th centuries, waves of European immigrants 
+              settled the islands, building the distinctive 
+              <em>palafitos</em> — stilt houses perched above the floodwaters — 
+              that define the landscape of towns like Tigre today.
+            </p>
+            <p>
+              Modern delta life retains a remarkable sense of isolation and 
+              community. There are no cars on the islands. Boats are the school bus, 
+              the delivery van, the ambulance. Children row themselves to school. 
+              Neighbours call to each other across the water. This is the 
+              "Isleño" way — and experiencing it even briefly is to step into 
+              a world that feels entirely its own.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTIVITIES -->
+      <div class="activities-section">
+        <div class="section-intro">
+          <h2>Activities &<br /><em>Adventures</em></h2>
+          <p>
+            Discover the many ways to experience the Paraná Delta, from silent 
+            kayak journeys to the vibrant pulse of nearby Buenos Aires.
+          </p>
+        </div>
+        <div class="activity-grid">
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/Parana_delta.jpg" alt="Kayaking the Delta" />
+            <span class="img-credit">© Delta Kayak Tours</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Experience</div>
+              <div class="activity-name">Kayaking the Channels</div>
+              <div class="activity-desc">
+                Paddle through a living maze of waterways, slipping beneath 
+                overhanging branches and past floating islands alive with 
+                birdsong. Guided and self-guided routes available for all levels.
+              </div>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/Parana_delta.jpg" alt="Birdwatching" />
+            <span class="img-credit">© Aves Argentinas</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Nature</div>
+              <div class="activity-name">Birdwatching</div>
+              <div class="activity-desc">
+                With over 300 species, the delta is one of Argentina's premier 
+                birdwatching destinations, from jabiru storks to kingfishers.
+              </div>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card">
+            <img src="../imgs/Parana_delta.jpg" alt="Tigre Town" />
+            <span class="img-credit">© Tigre Tourism</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">Culture</div>
+              <div class="activity-name">Tigre & the Fruit Market</div>
+              <div class="activity-desc">
+                Explore the gateway town of Tigre, its colourful river market, 
+                and the Museum of Fine Arts before heading deeper into the islands.
+              </div>
+            </div>
+          </a>
+          <a href="UNDER-CONSTRUCTION.html" class="activity-card" style="height: auto">
+            <img src="../imgs/Parana_delta.jpg" alt="Buenos Aires day trip" style="height: 100%; min-height: 200px" />
+            <span class="img-credit">© Buenos Aires Tourism</span>
+            <div class="activity-overlay">
+              <div class="activity-tag">City</div>
+              <div class="activity-name">Buenos Aires Day Trip</div>
+              <div class="activity-desc">
+                Just an hour away, the energy of Buenos Aires makes the perfect contrast to the delta's stillness.
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- GALLERY -->
+      <div class="gallery-section" id="gallery">
+        <h2 class="gallery-heading">Delta Gallery</h2>
+        <div class="gallery-mosaic">
+          <div class="gallery-tile">
+            <img src="../imgs/Parana_delta.jpg" alt="Paraná Delta aerial" />
+            <span class="img-credit">© NASA / ESA</span>
+            <div class="gallery-tile-caption">
+              Aerial view of the Paraná Delta's branching channels meeting the Río de la Plata.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <img src="../imgs/Parana_delta.jpg" alt="Stilt houses" />
+            <span class="img-credit">© La Nación Argentina</span>
+            <div class="gallery-tile-caption">
+              Traditional palafito stilt houses built to rise above seasonal floodwaters.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <img src="../imgs/Parana_delta.jpg" alt="Capybara family" />
+            <span class="img-credit">© Wildlife Argentina</span>
+            <div class="gallery-tile-caption">
+              A capybara family at rest on the riverbank at dusk.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <img src="../imgs/Parana_delta.jpg" alt="Delta waterway" />
+            <span class="img-credit">© Tigre Tourism Board</span>
+            <div class="gallery-tile-caption">
+              Morning mist over a quiet channel deep in the delta interior.
+            </div>
+          </div>
+          <div class="gallery-tile">
+            <img src="../imgs/Parana_delta.jpg" alt="Water hyacinth" />
+            <span class="img-credit">© CONICET Argentina</span>
+            <div class="gallery-tile-caption">
+              Floating meadows of water hyacinth, a defining feature of the delta ecosystem.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- .page -->
 
     <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
 
     <script>
+      const hero = document.getElementById("hero");
+      window.addEventListener("scroll", () => {
+        hero.classList.toggle("hidden", window.scrollY > 150);
+      });
       fetch("Footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer-placeholder").innerHTML = data;
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
   </body>
