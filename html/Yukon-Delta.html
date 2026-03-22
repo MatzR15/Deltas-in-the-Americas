@@ -29,15 +29,12 @@
       html {
         scroll-behavior: smooth;
       }
-
       body {
         background: var(--mud);
         color: var(--mist);
         font-family: "Libre Baskerville", Georgia, serif;
         overflow-x: hidden;
       }
-
-      /* ── NOISE TEXTURE OVERLAY ── */
       body::before {
         content: "";
         position: fixed;
@@ -47,8 +44,6 @@
         opacity: 0.03;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-
-      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
@@ -74,7 +69,6 @@
         transform: translateY(-100%);
         pointer-events: none;
       }
-
       .hero-eyebrow {
         font-family: "Oswald", sans-serif;
         font-weight: 300;
@@ -134,7 +128,6 @@
       .top-nav a:hover {
         color: var(--sand);
       }
-
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -145,15 +138,11 @@
           transform: translateY(0);
         }
       }
-
-      /* ── CONTENT WRAPPER ── */
       .page {
         position: relative;
         z-index: 5;
         background: var(--mud);
       }
-
-      /* ── CHAPTER OPENER ── */
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -166,7 +155,6 @@
       .chapter-opener.flip > * {
         direction: ltr;
       }
-
       .chapter-image {
         position: relative;
         overflow: hidden;
@@ -191,7 +179,6 @@
       .chapter-opener.flip .chapter-image::after {
         background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
       }
-
       .chapter-text {
         padding: 80px 60px 80px 50px;
         display: flex;
@@ -235,8 +222,6 @@
         background: var(--sand);
         margin: 28px 0;
       }
-
-      /* ── STAT TILES ── */
       .stat-strip {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -286,7 +271,6 @@
       .stat-tile:hover::before {
         transform: scaleX(1);
       }
-
       .stat-value {
         font-family: "Playfair Display", serif;
         font-size: 1.8rem;
@@ -306,8 +290,6 @@
         color: rgba(232, 220, 200, 0.55);
         margin-top: 4px;
       }
-
-      /* ── FULL-BLEED IMAGE BREAK ── */
       .image-break {
         height: 50vh;
         background-attachment: fixed;
@@ -340,8 +322,6 @@
         white-space: nowrap;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
-
-      /* ── ACTIVITIES ── */
       .activities-section {
         padding: 100px 80px;
       }
@@ -371,7 +351,6 @@
         color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
-
       .activity-grid {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr;
@@ -445,8 +424,6 @@
       .activity-card:hover .activity-desc {
         max-height: 200px;
       }
-
-      /* ── GALLERY ── */
       .gallery-section {
         padding: 0 80px 100px;
       }
@@ -505,8 +482,6 @@
       .gallery-tile:first-child .gallery-tile-caption {
         font-size: 0.92rem;
       }
-
-      /* ── IMAGE CREDITS ── */
       .img-credit {
         position: absolute;
         bottom: 10px;
@@ -517,13 +492,10 @@
         z-index: 2;
         pointer-events: none;
       }
-
-      /* ── FOOTER AREA ── */
       #footer-placeholder {
         position: relative;
         z-index: 5;
       }
-
       @media (max-width: 900px) {
         .chapter-opener,
         .chapter-opener.flip {
@@ -583,46 +555,67 @@
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Overview</a>
-        <a href="Compare.html">Compare</a>
-        <a href="Contact.html">Contact</a>
+        <a href="../index.html#deltas" data-lang-key="nav_overview"
+          >← Overview</a
+        >
+        <a href="Compare.html" data-lang-key="nav_compare">Compare</a>
+        <a href="Contact.html" data-lang-key="nav_contact">Contact</a>
+        <a href="#" data-lang-key="nav_language" onclick="return false;"
+          >Language</a
+        >
       </nav>
-      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <div class="hero-eyebrow" data-lang-key="delta_eyebrow">
+        Expedition Field Notes
+      </div>
       <h1>Yukon<em>Delta</em></h1>
       <span class="hero-credit">© NASA / USGS</span>
     </header>
 
     <div class="page">
-
-      <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#when-to-visit" class="stat-tile">
-          <div class="stat-value">Jun–Aug</div>
-          <div class="stat-label">Best Season</div>
-          <div class="stat-desc">Midnight sun & peak wildlife</div>
+          <div class="stat-value" data-lang-key="yuk_stat1_value">Jun–Aug</div>
+          <div class="stat-label" data-lang-key="yuk_stat1_label">
+            Best Season
+          </div>
+          <div class="stat-desc" data-lang-key="yuk_stat1_desc">
+            Midnight sun & peak wildlife
+          </div>
         </a>
         <a href="#wildlife" class="stat-tile">
-          <div class="stat-value">Millions</div>
-          <div class="stat-label">Migratory Birds</div>
-          <div class="stat-desc">From every continent on Earth</div>
+          <div class="stat-value" data-lang-key="yuk_stat2_value">Millions</div>
+          <div class="stat-label" data-lang-key="yuk_stat2_label">
+            Migratory Birds
+          </div>
+          <div class="stat-desc" data-lang-key="yuk_stat2_desc">
+            From every continent on Earth
+          </div>
         </a>
         <a href="#river" class="stat-tile">
-          <div class="stat-value">129,500 km²</div>
-          <div class="stat-label">Delta Area</div>
-          <div class="stat-desc">One of the world's largest</div>
+          <div class="stat-value" data-lang-key="yuk_stat3_value">
+            129,500 km²
+          </div>
+          <div class="stat-label" data-lang-key="yuk_stat3_label">
+            Delta Area
+          </div>
+          <div class="stat-desc" data-lang-key="yuk_stat3_desc">
+            One of the world's largest
+          </div>
         </a>
         <a href="#culture" class="stat-tile">
-          <div class="stat-value">Yup'ik</div>
-          <div class="stat-label">Indigenous Culture</div>
-          <div class="stat-desc">Thousands of years of heritage</div>
+          <div class="stat-value" data-lang-key="yuk_stat4_value">Yup'ik</div>
+          <div class="stat-label" data-lang-key="yuk_stat4_label">
+            Indigenous Culture
+          </div>
+          <div class="stat-desc" data-lang-key="yuk_stat4_desc">
+            Thousands of years of heritage
+          </div>
         </a>
       </div>
 
-      <!-- CHAPTER 1: WHEN TO VISIT -->
       <div
         id="when-to-visit"
         class="chapter-opener"
@@ -634,85 +627,90 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">When to Visit</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="yuk_ch1_title">
+            When to Visit
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
+            <p data-lang-key="yuk_ch1_p1">
               Summer, from June through August, is the only practical window for
               visiting the Yukon-Kuskokwim Delta. The tundra thaws, the
-              waterways open, and the landscape bursts into life under the
-              long subarctic days. With up to 20 hours of daylight, there is
-              time to explore vast wetlands, watch salmon runs, and witness
-              one of the great wildlife spectacles on Earth.
+              waterways open, and the landscape bursts into life under the long
+              subarctic days. With up to 20 hours of daylight, there is time to
+              explore vast wetlands, watch salmon runs, and witness one of the
+              great wildlife spectacles on Earth.
             </p>
-            <p>
+            <p data-lang-key="yuk_ch1_p2">
               Late May and early June offer the most dramatic birdlife, as
               millions of migratory birds arrive simultaneously to breed.
               Winters are extreme and largely inaccessible to visitors, though
               the frozen delta holds a haunting beauty of its own, traversed
-              only by snowmobile and the communities who have called it home
-              for millennia.
+              only by snowmobile and the communities who have called it home for
+              millennia.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/Yukon-waterways.jfif')"
+        style="background-image: url(&quot;../imgs/Yukon-waterways.jfif&quot;)"
       >
-        <span class="image-break-label">The Yukon-Kuskokwim: a maze of tundra waterways</span>
+        <span class="image-break-label" data-lang-key="yuk_break1_label"
+          >The Yukon-Kuskokwim: a maze of tundra waterways</span
+        >
       </div>
-
-      <!-- CHAPTER 2: WILDLIFE -->
       <div
         id="wildlife"
         class="chapter-opener flip"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <img src="../imgs/Migratory-birds.jpg" alt="Migratory birds over the Yukon Delta" />
+          <img
+            src="../imgs/Migratory-birds.jpg"
+            alt="Migratory birds over the Yukon Delta"
+          />
           <span class="img-credit">© USFWS / Steve Hillebrand</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">Wildlife You Will Not Forget</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="yuk_ch2_title">
+            Wildlife You Will Not Forget
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
-              The Yukon-Kuskokwim Delta is one of the most important
-              wildlife refuges on the planet. Every summer, millions of
-              birds converge here from six continents, among them the
-              rare <strong>Emperor Goose</strong>, bar-tailed godwits,
-              tundra swans, and vast flocks of shorebirds that darken
-              the sky. No other delta in the Americas hosts a migration
-              event of this scale.
+            <p data-lang-key="yuk_ch2_p1">
+              The Yukon-Kuskokwim Delta is one of the most important wildlife
+              refuges on the planet. Every summer, millions of birds converge
+              here from six continents, among them the rare Emperor Goose,
+              bar-tailed godwits, tundra swans, and vast flocks of shorebirds
+              that darken the sky. No other delta in the Americas hosts a
+              migration event of this scale.
             </p>
-            <p>
-              Beneath the surface, all five species of
-              <strong>Pacific Salmon</strong> surge through the rivers
-              in numbers that feed the entire ecosystem, from brown
-              bears wading the banks to beluga whales gathering at the
-              river mouths. The delta's thousands of lakes and ponds
-              are nurseries for waterfowl that will eventually spread
-              across the entire Western Hemisphere.
+            <p data-lang-key="yuk_ch2_p2">
+              Beneath the surface, all five species of Pacific Salmon surge
+              through the rivers in numbers that feed the entire ecosystem, from
+              brown bears wading the banks to beluga whales gathering at the
+              river mouths. The delta's thousands of lakes and ponds are
+              nurseries for waterfowl that will eventually spread across the
+              entire Western Hemisphere.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/phalaropes.webp')"
+        style="background-image: url(&quot;../imgs/phalaropes.webp&quot;)"
       >
-        <span class="image-break-label">Millions of birds arrive each spring from across the globe</span>
+        <span class="image-break-label" data-lang-key="yuk_break2_label"
+          >Millions of birds arrive each spring from across the globe</span
+        >
       </div>
-
-      <!-- CHAPTER 3: RIVER & LANDSCAPE -->
       <div id="river" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
           <img src="../imgs/Yukon-waterways.jfif" alt="Yukon Delta waterways" />
@@ -720,40 +718,41 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">A Landscape Unlike Any Other</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="yuk_ch3_title">
+            A Landscape Unlike Any Other
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
-              Covering 129,500 square kilometres, roughly the size of
-              Louisiana, the Yukon-Kuskokwim Delta is one of the largest
-              river deltas on Earth. It is a flat, treeless world of
-              permafrost and peat, dotted with tens of thousands of
-              lakes and threaded by channels that shift course with
-              every spring thaw. There are no roads connecting the
-              delta's villages to the outside world.
+            <p data-lang-key="yuk_ch3_p1">
+              Covering 129,500 square kilometres, roughly the size of Louisiana,
+              the Yukon-Kuskokwim Delta is one of the largest river deltas on
+              Earth. It is a flat, treeless world of permafrost and peat, dotted
+              with tens of thousands of lakes and threaded by channels that
+              shift course with every spring thaw. There are no roads connecting
+              the delta's villages to the outside world.
             </p>
-            <p>
-              The landscape is defined by extremes. In winter, the entire
-              delta freezes solid under Arctic darkness. In summer, the
-              permafrost beneath the surface creates strange "drunken
-              forests" of tilting black spruce at its margins, and
-              the tundra blooms with cotton grass, lichens, and
-              wildflowers in a brief, spectacular flourishing.
+            <p data-lang-key="yuk_ch3_p2">
+              The landscape is defined by extremes. In winter, the entire delta
+              freezes solid under Arctic darkness. In summer, the permafrost
+              beneath the surface creates strange "drunken forests" of tilting
+              black spruce at its margins, and the tundra blooms with cotton
+              grass, lichens, and wildflowers in a brief, spectacular
+              flourishing.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/tundra.webp')"
+        style="background-image: url(&quot;../imgs/tundra.webp&quot;)"
       >
-        <span class="image-break-label">Subarctic tundra, vast, treeless, and teeming with life</span>
+        <span class="image-break-label" data-lang-key="yuk_break3_label"
+          >Subarctic tundra, vast, treeless, and teeming with life</span
+        >
       </div>
-
-      <!-- CHAPTER 4: CULTURE -->
       <div
         id="culture"
         class="chapter-opener flip"
@@ -765,40 +764,46 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">The Yup'ik People & a Threatened Homeland</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="yuk_ch4_title">
+            The Yup'ik People & a Threatened Homeland
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
-              For thousands of years, the delta has been the homeland of
-              the <strong>Yup'ik and Cup'ik peoples</strong>, whose culture
-              is woven from subsistence fishing, hunting, and a profound
-              knowledge of the tundra and its seasons. Salmon, moose,
-              beluga whale, and migratory birds have sustained these
-              communities across generations, and that relationship
-              remains central to life here today.
+            <p data-lang-key="yuk_ch4_p1">
+              For thousands of years, the delta has been the homeland of the
+              Yup'ik and Cup'ik peoples, whose culture is woven from subsistence
+              fishing, hunting, and a profound knowledge of the tundra and its
+              seasons. Salmon, moose, beluga whale, and migratory birds have
+              sustained these communities across generations, and that
+              relationship remains central to life here today.
             </p>
-            <p>
-              The delta now stands on the front lines of climate change.
-              Rising sea levels and rapidly thawing permafrost are causing
-              severe coastal erosion, threatening ancestral villages that
-              have stood for centuries. Several communities face
-              relocation, a crisis that has brought the Yup'ik people's
-              story to international attention and made the Yukon Delta
-              one of the most urgent conservation stories of our time.
+            <p data-lang-key="yuk_ch4_p2">
+              The delta now stands on the front lines of climate change. Rising
+              sea levels and rapidly thawing permafrost are causing severe
+              coastal erosion, threatening ancestral villages that have stood
+              for centuries. Several communities face relocation, a crisis that
+              has brought the Yup'ik people's story to international attention
+              and made the Yukon Delta one of the most urgent conservation
+              stories of our time.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- ACTIVITIES -->
       <div class="activities-section">
         <div class="section-intro">
-          <h2>Activities &<br /><em>Adventures</em></h2>
-          <p>
-            Discover the many ways to experience the Yukon Delta, from
-            silent tundra hikes to salmon-rich river expeditions at the
-            edge of the world.
+          <h2>
+            <span data-lang-key="delta_activities">Activities &</span><br /><em
+              data-lang-key="delta_adventures"
+              >Adventures</em
+            >
+          </h2>
+          <p data-lang-key="yuk_act_intro">
+            Discover the many ways to experience the Yukon Delta, from silent
+            tundra hikes to salmon-rich river expeditions at the edge of the
+            world.
           </p>
         </div>
         <div class="activity-grid">
@@ -806,13 +811,17 @@
             <img src="../imgs/Migratory-birds.jpg" alt="Birdwatching" />
             <span class="img-credit">© USFWS Alaska</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Nature</div>
-              <div class="activity-name">Birdwatching Expeditions</div>
-              <div class="activity-desc">
+              <div class="activity-tag" data-lang-key="yuk_act1_tag">
+                Nature
+              </div>
+              <div class="activity-name" data-lang-key="yuk_act1_name">
+                Birdwatching Expeditions
+              </div>
+              <div class="activity-desc" data-lang-key="yuk_act1_desc">
                 Witness one of the planet's great wildlife spectacles as
-                millions of birds converge on the tundra each spring.
-                Emperor Geese, tundra swans, and shorebirds in numbers
-                that must be seen to be believed.
+                millions of birds converge on the tundra each spring. Emperor
+                Geese, tundra swans, and shorebirds in numbers that must be seen
+                to be believed.
               </div>
             </div>
           </a>
@@ -820,12 +829,15 @@
             <img src="../imgs/Yukon-waterways.jfif" alt="River journeys" />
             <span class="img-credit">© Alaska Outdoor Directions</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Expedition</div>
-              <div class="activity-name">River Journeys</div>
-              <div class="activity-desc">
-                Float the braided channels of the Yukon and Kuskokwim
-                by raft or kayak, through a wilderness accessible only
-                by water or air.
+              <div class="activity-tag" data-lang-key="yuk_act2_tag">
+                Expedition
+              </div>
+              <div class="activity-name" data-lang-key="yuk_act2_name">
+                River Journeys
+              </div>
+              <div class="activity-desc" data-lang-key="yuk_act2_desc">
+                Float the braided channels of the Yukon and Kuskokwim by raft or
+                kayak, through a wilderness accessible only by water or air.
               </div>
             </div>
           </a>
@@ -833,11 +845,15 @@
             <img src="../imgs/tundra.webp" alt="Tundra hiking" />
             <span class="img-credit">© USFWS / Bob Dreeszen</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Wilderness</div>
-              <div class="activity-name">Tundra Hiking</div>
-              <div class="activity-desc">
-                Trek across a landscape of permafrost, cotton grass, and
-                open sky, a silence broken only by wind and birdsong.
+              <div class="activity-tag" data-lang-key="yuk_act3_tag">
+                Wilderness
+              </div>
+              <div class="activity-name" data-lang-key="yuk_act3_name">
+                Tundra Hiking
+              </div>
+              <div class="activity-desc" data-lang-key="yuk_act3_desc">
+                Trek across a landscape of permafrost, cotton grass, and open
+                sky, a silence broken only by wind and birdsong.
               </div>
             </div>
           </a>
@@ -853,28 +869,32 @@
             />
             <span class="img-credit">© Alaska Native Heritage Center</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Culture</div>
-              <div class="activity-name">Yup'ik Cultural Visits</div>
-              <div class="activity-desc">
-                Learn from communities whose traditions stretch back thousands of years.
+              <div class="activity-tag" data-lang-key="yuk_act4_tag">
+                Culture
+              </div>
+              <div class="activity-name" data-lang-key="yuk_act4_name">
+                Yup'ik Cultural Visits
+              </div>
+              <div class="activity-desc" data-lang-key="yuk_act4_desc">
+                Learn from communities whose traditions stretch back thousands
+                of years.
               </div>
             </div>
           </a>
         </div>
       </div>
 
-      <!-- GALLERY -->
       <div class="gallery-section" id="gallery">
-        <h2 class="gallery-heading">Delta Gallery</h2>
+        <h2 class="gallery-heading" data-lang-key="delta_gallery">
+          Delta Gallery
+        </h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <img
-              src="../imgs/tundrayukon.jpg"
-              alt="Yukon Delta from above"
-            />
+            <img src="../imgs/tundrayukon.jpg" alt="Yukon Delta from above" />
             <span class="img-credit">© NASA Earth Observatory</span>
-            <div class="gallery-tile-caption">
-              Aerial view of the Yukon-Kuskokwim Delta's vast network of lakes, channels, and tundra.
+            <div class="gallery-tile-caption" data-lang-key="yuk_gal1_cap">
+              Aerial view of the Yukon-Kuskokwim Delta's vast network of lakes,
+              channels, and tundra.
             </div>
           </div>
           <div class="gallery-tile">
@@ -883,8 +903,9 @@
               alt="Migratory birds in flight"
             />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              Millions of birds gather on the delta each spring in one of nature's great migrations.
+            <div class="gallery-tile-caption" data-lang-key="yuk_gal2_cap">
+              Millions of birds gather on the delta each spring in one of
+              nature's great migrations.
             </div>
           </div>
           <div class="gallery-tile">
@@ -893,8 +914,9 @@
               alt="Arctic tundra landscape"
             />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              The open subarctic tundra, treeless, vast, and luminous under the midnight sun.
+            <div class="gallery-tile-caption" data-lang-key="yuk_gal3_cap">
+              The open subarctic tundra, treeless, vast, and luminous under the
+              midnight sun.
             </div>
           </div>
           <div class="gallery-tile">
@@ -903,8 +925,9 @@
               alt="Remote village in Alaska"
             />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              A Yup'ik village on the delta edge, reachable only by boat or small plane.
+            <div class="gallery-tile-caption" data-lang-key="yuk_gal4_cap">
+              A Yup'ik village on the delta edge, reachable only by boat or
+              small plane.
             </div>
           </div>
           <div class="gallery-tile">
@@ -913,18 +936,16 @@
               alt="Braided river delta from above"
             />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              The braided waterways of the delta shift and reform with every spring flood.
+            <div class="gallery-tile-caption" data-lang-key="yuk_gal5_cap">
+              The braided waterways of the delta shift and reform with every
+              spring flood.
             </div>
           </div>
         </div>
       </div>
-
     </div>
-    <!-- .page -->
 
     <div id="footer-placeholder"></div>
-
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
@@ -936,5 +957,6 @@
           document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
+    <script src="../lang.js"></script>
   </body>
 </html>

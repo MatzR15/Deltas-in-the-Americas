@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Colorado River Delta - Deltas in the Americas</title>
+    <title>Colorado Delta - Deltas in the Americas</title>
     <link rel="icon" type="image/x-icon" href="../imgs/LOGO DitA.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Oswald:wght@300;400;600;700&display=swap"
@@ -29,15 +29,12 @@
       html {
         scroll-behavior: smooth;
       }
-
       body {
         background: var(--mud);
         color: var(--mist);
         font-family: "Libre Baskerville", Georgia, serif;
         overflow-x: hidden;
       }
-
-      /* ── NOISE TEXTURE OVERLAY ── */
       body::before {
         content: "";
         position: fixed;
@@ -47,8 +44,6 @@
         opacity: 0.03;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-
-      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
@@ -74,7 +69,6 @@
         transform: translateY(-100%);
         pointer-events: none;
       }
-
       .hero-eyebrow {
         font-family: "Oswald", sans-serif;
         font-weight: 300;
@@ -134,7 +128,6 @@
       .top-nav a:hover {
         color: var(--sand);
       }
-
       @keyframes fadeUp {
         from {
           opacity: 0;
@@ -145,15 +138,11 @@
           transform: translateY(0);
         }
       }
-
-      /* ── CONTENT WRAPPER ── */
       .page {
         position: relative;
         z-index: 5;
         background: var(--mud);
       }
-
-      /* ── CHAPTER OPENER ── */
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -166,7 +155,6 @@
       .chapter-opener.flip > * {
         direction: ltr;
       }
-
       .chapter-image {
         position: relative;
         overflow: hidden;
@@ -191,7 +179,6 @@
       .chapter-opener.flip .chapter-image::after {
         background: linear-gradient(270deg, transparent 60%, var(--mud) 100%);
       }
-
       .chapter-text {
         padding: 80px 60px 80px 50px;
         display: flex;
@@ -235,8 +222,6 @@
         background: var(--sand);
         margin: 28px 0;
       }
-
-      /* ── STAT TILES ── */
       .stat-strip {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -286,7 +271,6 @@
       .stat-tile:hover::before {
         transform: scaleX(1);
       }
-
       .stat-value {
         font-family: "Playfair Display", serif;
         font-size: 1.8rem;
@@ -306,8 +290,6 @@
         color: rgba(232, 220, 200, 0.55);
         margin-top: 4px;
       }
-
-      /* ── FULL-BLEED IMAGE BREAK ── */
       .image-break {
         height: 50vh;
         background-attachment: fixed;
@@ -340,8 +322,6 @@
         white-space: nowrap;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
-
-      /* ── ACTIVITIES ── */
       .activities-section {
         padding: 100px 80px;
       }
@@ -371,7 +351,6 @@
         color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
-
       .activity-grid {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr;
@@ -445,8 +424,6 @@
       .activity-card:hover .activity-desc {
         max-height: 200px;
       }
-
-      /* ── GALLERY ── */
       .gallery-section {
         padding: 0 80px 100px;
       }
@@ -505,8 +482,6 @@
       .gallery-tile:first-child .gallery-tile-caption {
         font-size: 0.92rem;
       }
-
-      /* ── IMAGE CREDITS ── */
       .img-credit {
         position: absolute;
         bottom: 10px;
@@ -517,13 +492,10 @@
         z-index: 2;
         pointer-events: none;
       }
-
-      /* ── FOOTER AREA ── */
       #footer-placeholder {
         position: relative;
         z-index: 5;
       }
-
       @media (max-width: 900px) {
         .chapter-opener,
         .chapter-opener.flip {
@@ -583,138 +555,168 @@
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Overview</a>
-        <a href="Compare.html">Compare</a>
-        <a href="Contact.html">Contact</a>
+        <a href="../index.html#deltas" data-lang-key="nav_overview"
+          >← Overview</a
+        >
+        <a href="Compare.html" data-lang-key="nav_compare">Compare</a>
+        <a href="Contact.html" data-lang-key="nav_contact">Contact</a>
+        <a href="#" data-lang-key="nav_language" onclick="return false;"
+          >Language</a
+        >
       </nav>
-      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <div class="hero-eyebrow" data-lang-key="delta_eyebrow">
+        Expedition Field Notes
+      </div>
       <h1>Colorado<em>River Delta</em></h1>
       <span class="hero-credit">© NASA / USGS</span>
     </header>
 
     <div class="page">
-
-      <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#when-to-visit" class="stat-tile">
-          <div class="stat-value">Oct–Apr</div>
-          <div class="stat-label">Best Season</div>
-          <div class="stat-desc">Mild desert winter & bird peaks</div>
+          <div class="stat-value" data-lang-key="col_stat1_value">Oct–Apr</div>
+          <div class="stat-label" data-lang-key="col_stat1_label">
+            Best Season
+          </div>
+          <div class="stat-desc" data-lang-key="col_stat1_desc">
+            Mild desert winter & bird peaks
+          </div>
         </a>
         <a href="#wildlife" class="stat-tile">
-          <div class="stat-value">~7,800 km²</div>
-          <div class="stat-label">Historic Area</div>
-          <div class="stat-desc">Once a lush desert estuary</div>
+          <div class="stat-value" data-lang-key="col_stat2_value">
+            ~7,800 km²
+          </div>
+          <div class="stat-label" data-lang-key="col_stat2_label">
+            Historic Area
+          </div>
+          <div class="stat-desc" data-lang-key="col_stat2_desc">
+            Once a lush desert estuary
+          </div>
         </a>
         <a href="#river" class="stat-tile">
-          <div class="stat-value">2,330 km</div>
-          <div class="stat-label">River Length</div>
-          <div class="stat-desc">Rarely reaching the sea today</div>
+          <div class="stat-value" data-lang-key="col_stat3_value">2,330 km</div>
+          <div class="stat-label" data-lang-key="col_stat3_label">
+            River Length
+          </div>
+          <div class="stat-desc" data-lang-key="col_stat3_desc">
+            Rarely reaching the sea today
+          </div>
         </a>
         <a href="#culture" class="stat-tile">
-          <div class="stat-value">Cucapá</div>
-          <div class="stat-label">Indigenous People</div>
-          <div class="stat-desc">Over 1,000 years of river culture</div>
+          <div class="stat-value" data-lang-key="col_stat4_value">Cucapá</div>
+          <div class="stat-label" data-lang-key="col_stat4_label">
+            Indigenous People
+          </div>
+          <div class="stat-desc" data-lang-key="col_stat4_desc">
+            Over 1,000 years of river culture
+          </div>
         </a>
       </div>
 
-      <!-- CHAPTER 1: WHEN TO VISIT -->
       <div
         id="when-to-visit"
         class="chapter-opener"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <img src="../imgs/landscapecolorado.jpeg" alt="Colorado River Delta landscape" />
+          <img
+            src="../imgs/landscapecolorado.jpeg"
+            alt="Colorado River Delta landscape"
+          />
           <span class="img-credit">© Sonoran Institute</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">When to Visit</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="col_ch1_title">
+            When to Visit
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
+            <p data-lang-key="col_ch1_p1">
               October through April is the ideal time to visit the Colorado
-              River Delta. Desert winters are mild and clear, making hiking
-              and paddling comfortable under vast open skies. Migratory
-              waterbirds flood the remaining wetlands during these months,
-              and the low winter light turns the cracked mudflats and
-              salt flats into extraordinary landscapes of copper and gold.
+              River Delta. Desert winters are mild and clear, making hiking and
+              paddling comfortable under vast open skies. Migratory waterbirds
+              flood the remaining wetlands during these months, and the low
+              winter light turns the cracked mudflats and salt flats into
+              extraordinary landscapes of copper and gold.
             </p>
-            <p>
-              Spring, particularly March and April, brings an added
-              spectacle: on rare years when binational pulse flows are
-              released, water courses through the dry channels and the
-              delta briefly comes alive with birdsong, blooming cottonwoods,
-              and the distant glint of water reaching toward the sea.
-              Summers are extreme, with temperatures regularly exceeding 45°C.
+            <p data-lang-key="col_ch1_p2">
+              Spring, particularly March and April, brings an added spectacle:
+              on rare years when binational pulse flows are released, water
+              courses through the dry channels and the delta briefly comes alive
+              with birdsong, blooming cottonwoods, and the distant glint of
+              water reaching toward the sea. Summers are extreme, with
+              temperatures regularly exceeding 45°C.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/nature-resilliance-colorado.jpg')"
+        style="
+          background-image: url(&quot;../imgs/nature-resilliance-colorado.jpg&quot;);
+        "
       >
-        <span class="image-break-label">A delta defined by absence and the fight to bring water back</span>
+        <span class="image-break-label" data-lang-key="col_break1_label"
+          >A delta defined by absence and the fight to bring water back</span
+        >
       </div>
-
-      <!-- CHAPTER 2: WILDLIFE & RESTORATION -->
       <div
         id="wildlife"
         class="chapter-opener flip"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <img src="../imgs/wetlands.jpeg" alt="Ciénaga de Santa Clara wetland" />
+          <img
+            src="../imgs/wetlands.jpeg"
+            alt="Ciénaga de Santa Clara wetland"
+          />
           <span class="img-credit">© Pronatura Noroeste</span>
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">Wildlife & the Fight for Restoration</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="col_ch2_title">
+            Wildlife & the Fight for Restoration
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
-              Despite decades of water diversion, the Colorado Delta
-              remains a critical stopover on the Pacific Flyway. The
-              <strong>Ciénega de Santa Clara</strong>, the largest
-              remaining wetland in the delta, shelters thousands of
-              migratory waterbirds, including the endangered
-              <strong>Yuma Ridgway's Rail</strong> and the
-              southwestern willow flycatcher. Roseate spoonbills,
-              great blue herons, and clouds of shorebirds wheel
+            <p data-lang-key="col_ch2_p1">
+              Despite decades of water diversion, the Colorado Delta remains a
+              critical stopover on the Pacific Flyway. The Ciénega de Santa
+              Clara, the largest remaining wetland in the delta, shelters
+              thousands of migratory waterbirds, including the endangered Yuma
+              Ridgway's Rail and the southwestern willow flycatcher. Roseate
+              spoonbills, great blue herons, and clouds of shorebirds wheel
               overhead during peak migration.
             </p>
-            <p>
+            <p data-lang-key="col_ch2_p2">
               Binational agreements known as Minute 319 and Minute 323 have
-              allowed conservation groups to release experimental pulse
-              flows, mimicking natural spring floods. At restoration
-              sites like Laguna Grande, native cottonwood and willow
-              forests have returned, and with them, species not seen
-              here in a generation. It is a slow, determined
-              reclaiming of a lost landscape.
+              allowed conservation groups to release experimental pulse flows,
+              mimicking natural spring floods. At restoration sites like Laguna
+              Grande, native cottonwood and willow forests have returned, and
+              with them, species not seen here in a generation. It is a slow,
+              determined reclaiming of a lost landscape.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/cottonwood.webp')"
+        style="background-image: url(&quot;../imgs/cottonwood.webp&quot;)"
       >
-        <span class="image-break-label">Cottonwood and willow groves returning to restored delta sites</span>
+        <span class="image-break-label" data-lang-key="col_break2_label"
+          >Cottonwood and willow groves returning to restored delta sites</span
+        >
       </div>
-
-      <!-- CHAPTER 3: RIVER -->
       <div id="river" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
           <img src="../imgs/Colorado_delta.jpg" alt="Colorado River channels" />
@@ -722,40 +724,41 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">A River Running Dry</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="col_ch3_title">
+            A River Running Dry
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
-              The Colorado River travels 2,330 kilometres from the
-              Rocky Mountains to the Gulf of California, yet for most
-              of the year it never arrives. So much water is drawn off
-              for agriculture and cities across seven US states and
-              two Mexican states that the river regularly runs dry
-              miles before it reaches the sea.
+            <p data-lang-key="col_ch3_p1">
+              The Colorado River travels 2,330 kilometres from the Rocky
+              Mountains to the Gulf of California, yet for most of the year it
+              never arrives. So much water is drawn off for agriculture and
+              cities across seven US states and two Mexican states that the
+              river regularly runs dry miles before it reaches the sea.
             </p>
-            <p>
-              This is one of the most dramatic human alterations of a
-              river system anywhere on Earth. What was once described by
-              writer Aldo Leopold as a "milk and honey wilderness," a
-              vast, lush estuary, is now largely cracked mudflat and
-              sand. Only the <strong>Rio Hardy</strong> maintains
-              year-round flow, offering a narrow ribbon of the
-              riparian beauty that once defined the entire delta.
+            <p data-lang-key="col_ch3_p2">
+              This is one of the most dramatic human alterations of a river
+              system anywhere on Earth. What was once described by writer Aldo
+              Leopold as a "milk and honey wilderness," a vast, lush estuary, is
+              now largely cracked mudflat and sand. Only the Rio Hardy maintains
+              year-round flow, offering a narrow ribbon of the riparian beauty
+              that once defined the entire delta.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/grandcanyon.jpg')"
+        style="background-image: url(&quot;../imgs/grandcanyon.jpg&quot;)"
       >
-        <span class="image-break-label">The Upper Gulf of California, home to the world's most endangered porpoise</span>
+        <span class="image-break-label" data-lang-key="col_break3_label"
+          >The Upper Gulf of California, home to the world's most endangered
+          porpoise</span
+        >
       </div>
-
-      <!-- CHAPTER 4: CULTURE -->
       <div
         id="culture"
         class="chapter-opener flip"
@@ -767,40 +770,45 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">The Cucapá & a Binational Delta</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="col_ch4_title">
+            The Cucapá & a Binational Delta
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
-              For over a thousand years, the <strong>Cucapá people</strong>,
-              whose name means "People of the River," have lived alongside
-              the Colorado, fishing its channels and cultivating its
-              floodplains. The delta has been their physical and spiritual
-              home across generations. Today their fishing rights in the
-              Upper Gulf of California are contested, and their traditional
-              way of life is increasingly fragile.
+            <p data-lang-key="col_ch4_p1">
+              For over a thousand years, the Cucapá people, whose name means
+              "People of the River," have lived alongside the Colorado, fishing
+              its channels and cultivating its floodplains. The delta has been
+              their physical and spiritual home across generations. Today their
+              fishing rights in the Upper Gulf of California are contested, and
+              their traditional way of life is increasingly fragile.
             </p>
-            <p>
-              The delta also sits at the heart of a complex binational
-              economy. The surrounding <strong>Mexicali Valley</strong>
-              is one of Mexico's most productive agricultural regions,
-              irrigated by the very water that was once meant for the
-              delta's wetlands. Managing these competing demands across
-              the US–Mexico border is one of the defining environmental
+            <p data-lang-key="col_ch4_p2">
+              The delta also sits at the heart of a complex binational economy.
+              The surrounding Mexicali Valley is one of Mexico's most productive
+              agricultural regions, irrigated by the very water that was once
+              meant for the delta's wetlands. Managing these competing demands
+              across the US-Mexico border is one of the defining environmental
               negotiations of the 21st century.
             </p>
           </div>
         </div>
       </div>
-
-      <!-- ACTIVITIES -->
       <div class="activities-section">
         <div class="section-intro">
-          <h2>Activities &<br /><em>Adventures</em></h2>
-          <p>
+          <h2>
+            <span data-lang-key="delta_activities">Activities &</span><br /><em
+              data-lang-key="delta_adventures"
+              >Adventures</em
+            >
+          </h2>
+          <p data-lang-key="col_act_intro">
             Discover the many ways to experience the Colorado Delta, from
-            paddling the Rio Hardy to birdwatching at the Ciénega de
-            Santa Clara.
+            paddling the Rio Hardy to birdwatching at the Ciénega de Santa
+            Clara.
           </p>
         </div>
         <div class="activity-grid">
@@ -808,13 +816,17 @@
             <img src="../imgs/canooeee.jpg" alt="Canoeing the Rio Hardy" />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Experience</div>
-              <div class="activity-name">Canoeing the Rio Hardy</div>
-              <div class="activity-desc">
-                Paddle the Rio Hardy, the only stretch of the delta
-                with year-round water flow, drifting past restored
-                cottonwood banks and reed beds alive with herons,
-                rails, and kingfishers. A glimpse of the old delta's beauty.
+              <div class="activity-tag" data-lang-key="col_act1_tag">
+                Experience
+              </div>
+              <div class="activity-name" data-lang-key="col_act1_name">
+                Canoeing the Rio Hardy
+              </div>
+              <div class="activity-desc" data-lang-key="col_act1_desc">
+                Paddle the Rio Hardy, the only stretch of the delta with
+                year-round water flow, drifting past restored cottonwood banks
+                and reed beds alive with herons, rails, and kingfishers. A
+                glimpse of the old delta's beauty.
               </div>
             </div>
           </a>
@@ -822,12 +834,16 @@
             <img src="../imgs/birdscolorado.jpeg" alt="Birdwatching" />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Nature</div>
-              <div class="activity-name">Avian Expeditions</div>
-              <div class="activity-desc">
-                Visit the Ciénega de Santa Clara, the delta's largest
-                remaining wetland, during migration season for some of
-                the finest birdwatching in the American Southwest.
+              <div class="activity-tag" data-lang-key="col_act2_tag">
+                Nature
+              </div>
+              <div class="activity-name" data-lang-key="col_act2_name">
+                Avian Expeditions
+              </div>
+              <div class="activity-desc" data-lang-key="col_act2_desc">
+                Visit the Ciénega de Santa Clara, the delta's largest remaining
+                wetland, during migration season for some of the finest
+                birdwatching in the American Southwest.
               </div>
             </div>
           </a>
@@ -835,12 +851,16 @@
             <img src="../imgs/fishingcolor.webp" alt="Artisanal fishing" />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Culture</div>
-              <div class="activity-name">Artisanal Fishing Tours</div>
-              <div class="activity-desc">
-                Join local Cucapá fishermen on traditional excursions
-                in the Upper Gulf, where tidal nutrients still support
-                rich marine life near the delta's mouth.
+              <div class="activity-tag" data-lang-key="col_act3_tag">
+                Culture
+              </div>
+              <div class="activity-name" data-lang-key="col_act3_name">
+                Artisanal Fishing Tours
+              </div>
+              <div class="activity-desc" data-lang-key="col_act3_desc">
+                Join local Cucapá fishermen on traditional excursions in the
+                Upper Gulf, where tidal nutrients still support rich marine life
+                near the delta's mouth.
               </div>
             </div>
           </a>
@@ -856,28 +876,32 @@
             />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Wilderness</div>
-              <div class="activity-name">Desert Trail Hiking</div>
-              <div class="activity-desc">
-                Traverse the stark beauty where dunes meet restored wetland edges.
+              <div class="activity-tag" data-lang-key="col_act4_tag">
+                Wilderness
+              </div>
+              <div class="activity-name" data-lang-key="col_act4_name">
+                Desert Trail Hiking
+              </div>
+              <div class="activity-desc" data-lang-key="col_act4_desc">
+                Traverse the stark beauty where dunes meet restored wetland
+                edges.
               </div>
             </div>
           </a>
         </div>
       </div>
 
-      <!-- GALLERY -->
       <div class="gallery-section" id="gallery">
-        <h2 class="gallery-heading">Delta Gallery</h2>
+        <h2 class="gallery-heading" data-lang-key="delta_gallery">
+          Delta Gallery
+        </h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <img
-              src="../imgs/Colorado_delta.jpg"
-              alt="Colorado Delta aerial"
-            />
+            <img src="../imgs/Colorado_delta.jpg" alt="Colorado Delta aerial" />
             <span class="img-credit">© NASA / USGS</span>
-            <div class="gallery-tile-caption">
-              Aerial view of the Colorado River's branching channels as they fade into the desert before the Gulf of California.
+            <div class="gallery-tile-caption" data-lang-key="col_gal1_cap">
+              Aerial view of the Colorado River's branching channels as they
+              fade into the desert before the Gulf of California.
             </div>
           </div>
           <div class="gallery-tile">
@@ -886,28 +910,25 @@
               alt="Restored cottonwood groves"
             />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              Restored cottonwood and willow groves at Laguna Grande, life returning to the delta.
+            <div class="gallery-tile-caption" data-lang-key="col_gal2_cap">
+              Restored cottonwood and willow groves at Laguna Grande, life
+              returning to the delta.
             </div>
           </div>
           <div class="gallery-tile">
-            <img
-              src="../imgs/grutto.jpg"
-              alt="Migratory waterbirds at the Ciénaga de Santa Clara"
-            />
+            <img src="../imgs/grutto.jpg" alt="Migratory waterbirds" />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              The Ciénaga de Santa Clara, the largest remaining wetland in the delta and a refuge for endangered birds.
+            <div class="gallery-tile-caption" data-lang-key="col_gal3_cap">
+              The Ciénaga de Santa Clara, the largest remaining wetland in the
+              delta and a refuge for endangered birds.
             </div>
           </div>
           <div class="gallery-tile">
-            <img
-              src="../imgs/crackedmud.webp"
-              alt="Cracked desert mudflats"
-            />
+            <img src="../imgs/crackedmud.webp" alt="Cracked desert mudflats" />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              Cracked mudflats where the Colorado once ran wide, a landscape awaiting water.
+            <div class="gallery-tile-caption" data-lang-key="col_gal4_cap">
+              Cracked mudflats where the Colorado once ran wide, a landscape
+              awaiting water.
             </div>
           </div>
           <div class="gallery-tile">
@@ -916,18 +937,16 @@
               alt="Gulf of California coastline"
             />
             <span class="img-credit">© Unsplash</span>
-            <div class="gallery-tile-caption">
-              The Upper Gulf of California at dusk, home to the critically endangered Vaquita porpoise.
+            <div class="gallery-tile-caption" data-lang-key="col_gal5_cap">
+              The Upper Gulf of California at dusk, home to the critically
+              endangered Vaquita porpoise.
             </div>
           </div>
         </div>
       </div>
-
     </div>
-    <!-- .page -->
 
     <div id="footer-placeholder"></div>
-
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
@@ -939,5 +958,6 @@
           document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
+    <script src="../lang.js"></script>
   </body>
 </html>

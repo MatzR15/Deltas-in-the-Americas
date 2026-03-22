@@ -1206,7 +1206,7 @@ const TRANSLATIONS = {
   /* ── Contact page extra ── */
   contact_intro_p: {
     en: "Have a question about a delta, a suggestion, or want to collaborate? Fill in the form below and we'll get back to you as soon as possible.",
-    es: "¿Tienes una pregunta sobre un delta, una sugerencia o quieres colaborar? Rellena el formulario a continuación y nos pondremos en contacto contigo lo antes posible.",
+    es: "Tienes una pregunta sobre un delta, una sugerencia o quieres colaborar? Rellena el formulario a continuación y nos pondremos en contacto contigo lo antes posible.",
     pt: "Tem uma pergunta sobre um delta, uma sugestão ou quer colaborar? Preencha o formulário abaixo e entraremos em contato com você o mais rápido possível.",
   },
   contact_opt_select: {
@@ -1224,6 +1224,933 @@ const TRANSLATIONS = {
     en: "Delta's in the Americas BV, Almere, Netherlands",
     es: "Delta's in the Americas BV, Almere, Países Bajos",
     pt: "Delta's in the Americas BV, Almere, Países Baixos",
+  },
+
+  /* ══════════════════════════════════════════════
+     PARANÁ DELTA
+  ══════════════════════════════════════════════ */
+  para_stat1_value: {
+    en: "Mar\u2013May",
+    es: "Mar\u2013May",
+    pt: "Mar\u2013Mai",
+  },
+  para_stat1_label: {
+    en: "Best Season",
+    es: "Mejor \u00c9poca",
+    pt: "Melhor \u00c9poca",
+  },
+  para_stat1_desc: {
+    en: "Mild weather & blooming wetlands",
+    es: "Clima suave y humedales en flor",
+    pt: "Clima ameno e zonas \u00famidas floridas",
+  },
+  para_stat2_value: { en: "300+", es: "300+", pt: "300+" },
+  para_stat2_label: {
+    en: "Bird Species",
+    es: "Especies de Aves",
+    pt: "Esp\u00e9cies de Aves",
+  },
+  para_stat2_desc: {
+    en: "Plus capybaras & marsh deer",
+    es: "Adem\u00e1s de capibaras y ciervos de los pantanos",
+    pt: "Al\u00e9m de capivaras e veados do p\u00e2ntano",
+  },
+  para_stat3_value: { en: "4,880 km", es: "4.880 km", pt: "4.880 km" },
+  para_stat3_label: {
+    en: "River Length",
+    es: "Longitud del R\u00edo",
+    pt: "Comprimento do Rio",
+  },
+  para_stat3_desc: {
+    en: "One of the world's longest rivers",
+    es: "Uno de los r\u00edos m\u00e1s largos del mundo",
+    pt: "Um dos rios mais longos do mundo",
+  },
+  para_stat4_value: { en: "Unique", es: "\u00danico", pt: "\u00danico" },
+  para_stat4_label: {
+    en: "Isle\u00f1o Life",
+    es: "Vida Isle\u00f1a",
+    pt: "Vida Insular",
+  },
+  para_stat4_desc: {
+    en: "Boats as the only transport",
+    es: "Los barcos como \u00fanico transporte",
+    pt: "Barcos como \u00fanico transporte",
+  },
+  para_ch1_title: {
+    en: "When to Visit",
+    es: "Cu\u00e1ndo Visitar",
+    pt: "Quando Visitar",
+  },
+  para_ch1_p1: {
+    en: "Running from March through May, autumn is the ideal time to visit the Paran\u00e1 Delta. The summer heat gives way to comfortable temperatures, the wetlands are lush and teeming with wildlife, and the waterways run calm and clear. It is the perfect season to explore the labyrinth of islands by kayak, wander the stilt-house communities of Tigre, and watch the fog roll in over the channels at sunrise.",
+    es: "De marzo a mayo, el oto\u00f1o es la \u00e9poca ideal para visitar el Delta del Paran\u00e1. El calor del verano da paso a temperaturas agradables, los humedales est\u00e1n exuberantes y llenos de vida silvestre, y las v\u00edas fluviales fluyen tranquilas y claras. Es la estaci\u00f3n perfecta para explorar el laberinto de islas en kayak, recorrer las comunidades de casas sobre pilotes de Tigre y ver c\u00f3mo la niebla se adentra por los canales al amanecer.",
+    pt: "De mar\u00e7o a maio, o outono \u00e9 a \u00e9poca ideal para visitar o Delta do Paran\u00e1. O calor do ver\u00e3o d\u00e1 lugar a temperaturas agrad\u00e1veis, os p\u00e2ntanos s\u00e3o exuberantes e cheios de vida selvagem, e as vias fluviais correm calmas e claras. \u00c9 a esta\u00e7\u00e3o perfeita para explorar o labirinto de ilhas de caiaque, passear pelas comunidades de casas sobre palafitas de Tigre e ver a n\u00e9voa entrar pelos canais ao nascer do sol.",
+  },
+  para_ch1_p2: {
+    en: "Spring (September to November) is an excellent second option, with pleasant warmth and spectacular birdlife as species return to nest. Avoid the height of summer, when humidity can be intense and seasonal flooding occasionally disrupts access to some islands.",
+    es: "La primavera (de septiembre a noviembre) es una excelente segunda opci\u00f3n, con un calor agradable y una espectacular avifauna a medida que las especies regresan para anidar. Evita el pleno verano, cuando la humedad puede ser intensa y las inundaciones estacionales ocasionalmente interrumpen el acceso a algunas islas.",
+    pt: "A primavera (setembro a novembro) \u00e9 uma excelente segunda op\u00e7\u00e3o, com calor agrad\u00e1vel e vida avi\u00e1ria espetacular enquanto as esp\u00e9cies retornam para nidificar. Evite o auge do ver\u00e3o, quando a umidade pode ser intensa e as inunda\u00e7\u00f5es sazonais ocasionalmente interrompem o acesso a algumas ilhas.",
+  },
+  para_break1_label: {
+    en: "A labyrinth of islands, channels and wetlands",
+    es: "Un laberinto de islas, canales y humedales",
+    pt: "Um labirinto de ilhas, canais e zonas \u00famidas",
+  },
+  para_ch2_title: {
+    en: "Wildlife You Will Not Forget",
+    es: "Fauna Que No Olvidar\u00e1s",
+    pt: "Fauna Que Voc\u00ea N\u00e3o Vai Esquecer",
+  },
+  para_ch2_p1: {
+    en: "The Paran\u00e1 Delta is a biodiversity hotspot unlike any other in South America. Over 300 bird species inhabit its wetlands and forests, from the scarlet-headed blackbird to the jabiru stork. Along the water's edge, you may spot capybaras grazing in family groups, or the elusive Marsh Deer emerging from the reeds at dusk.",
+    es: "El Delta del Paran\u00e1 es un punto caliente de biodiversidad como ning\u00fan otro en Am\u00e9rica del Sur. M\u00e1s de 300 especies de aves habitan sus humedales y bosques, desde el tordo de cabeza escarlata hasta la cig\u00fce\u00f1a jabir\u00fa. A orillas del agua, puedes avistar capibaras pastando en grupos familiares, o el esquivo ciervo de los pantanos emergiendo de los juncos al atardecer.",
+    pt: "O Delta do Paran\u00e1 \u00e9 um hotspot de biodiversidade \u00fanico na Am\u00e9rica do Sul. Mais de 300 esp\u00e9cies de aves habitam seus p\u00e2ntanos e florestas, do p\u00e1ssaro-de-cabe\u00e7a-escarlate ao jabiru. \u00c0 beira da \u00e1gua, voc\u00ea pode avistar capivaras pastando em grupos familiares, ou o esquivo cervo-do-pantanal emergindo dos juncos ao entardecer.",
+  },
+  para_ch2_p2: {
+    en: '"Monte Blanco" forests of ceibo, timb\u00f3, and sarand\u00ed line the islands, while vast floating meadows of water hyacinth drift through the channels. The entire ecosystem acts as a natural water purifier for the greater Buenos Aires region, making conservation here a matter of regional importance.',
+    es: 'Los bosques de "Monte Blanco" de ceibo, timb\u00f3 y sarand\u00ed bordean las islas, mientras que vastas praderas flotantes de jacinto de agua se deslizan por los canales. El ecosistema act\u00faa como purificador natural del agua para la regi\u00f3n metropolitana de Buenos Aires, lo que hace de la conservaci\u00f3n aqu\u00ed un asunto de importancia regional.',
+    pt: 'As florestas de "Monte Blanco" de ceibo, timb\u00f3 e sarand\u00ed bordejam as ilhas, enquanto vastas prad\u00e1rias flutuantes de aguap\u00e9 derivam pelos canais. O ecossistema atua como purificador natural de \u00e1gua para a grande regi\u00e3o de Buenos Aires, tornando a conserva\u00e7\u00e3o aqui uma quest\u00e3o de import\u00e2ncia regional.',
+  },
+  para_break2_label: {
+    en: "The wetlands: home to 300+ bird species and countless mammals",
+    es: "Los humedales: hogar de m\u00e1s de 300 especies de aves e innumerables mam\u00edferos",
+    pt: "Os p\u00e2ntanos: lar de mais de 300 esp\u00e9cies de aves e in\u00fameros mam\u00edferos",
+  },
+  para_ch3_title: {
+    en: "A River Worth Exploring",
+    es: "Un R\u00edo que Vale la Pena Explorar",
+    pt: "Um Rio que Vale Explorar",
+  },
+  para_ch3_p1: {
+    en: "Stretching 4,880 kilometres from the Brazilian highlands to the R\u00edo de la Plata, the Paran\u00e1 is one of the great rivers of the world. Uniquely, its delta does not empty into the open ocean but into another river, creating a vast, freshwater maze of channels, oxbow lakes, and floating islands that shifts and changes shape with every flood season.",
+    es: "Con 4.880 kil\u00f3metros desde las tierras altas de Brasil hasta el R\u00edo de la Plata, el Paran\u00e1 es uno de los grandes r\u00edos del mundo. De manera \u00fanica, su delta no desemboca en el oc\u00e9ano abierto sino en otro r\u00edo, creando un vasto laberinto de agua dulce con canales, lagunas y islas flotantes que cambian de forma con cada temporada de crecidas.",
+    pt: "Com 4.880 quil\u00f4metros desde as terras altas do Brasil at\u00e9 o R\u00edo de la Plata, o Paran\u00e1 \u00e9 um dos grandes rios do mundo. De forma \u00fanica, seu delta n\u00e3o desemboca no oceano aberto, mas em outro rio, criando um vasto labirinto de \u00e1gua doce de canais, lagos meandrantes e ilhas flutuantes que mudam de forma a cada temporada de cheias.",
+  },
+  para_ch3_p2: {
+    en: "Exploring by kayak or wooden rowboat is the most intimate way to experience the delta. You drift past vine-draped banks, hear nothing but birdsong and water, and arrive at tiny island communities reachable only by boat, where life moves at the pace of the current.",
+    es: "Explorar en kayak o en bote de remos de madera es la forma m\u00e1s \u00edntima de vivir el delta. Te deslizas junto a orillas cubiertas de enredaderas, no escuchas nada m\u00e1s que el canto de los p\u00e1jaros y el agua, y llegas a peque\u00f1as comunidades isle\u00f1as solo accesibles en barco, donde la vida avanza al ritmo de la corriente.",
+    pt: "Explorar de caiaque ou barco de remos de madeira \u00e9 a forma mais \u00edntima de vivenciar o delta. Voc\u00ea deriva por margens cobertas de trepadeiras, n\u00e3o ouve nada al\u00e9m do canto dos p\u00e1ssaros e da \u00e1gua, e chega a pequenas comunidades insulares acess\u00edveis apenas por barco, onde a vida avan\u00e7a no ritmo da correnteza.",
+  },
+  para_break3_label: {
+    en: "Floating islands that shift and reshape with every flood season",
+    es: "Islas flotantes que se desplazan y remodelan con cada temporada de crecidas",
+    pt: "Ilhas flutuantes que se deslocam e se remodelam a cada temporada de cheias",
+  },
+  para_ch4_title: {
+    en: "History, Culture & the Isle\u00f1o Way",
+    es: "Historia, Cultura y el Estilo Isle\u00f1o",
+    pt: "Hist\u00f3ria, Cultura e o Jeito Isle\u00f1o",
+  },
+  para_ch4_p1: {
+    en: "The delta was first navigated by the Guaran\u00ed people, who mastered its waterways long before European contact. In the late 19th and early 20th centuries, waves of European immigrants settled the islands, building the distinctive palafitos, stilt houses perched above the floodwaters, that define the landscape of towns like Tigre today.",
+    es: "El delta fue navegado por primera vez por el pueblo guaran\u00ed, que domin\u00f3 sus v\u00edas fluviales mucho antes del contacto europeo. A finales del siglo XIX y principios del XX, oleadas de inmigrantes europeos se establecieron en las islas, construyendo los caracter\u00edsticos palafitos, casas sobre pilotes elevadas sobre las aguas de las crecidas, que definen el paisaje de ciudades como Tigre hoy.",
+    pt: "O delta foi navegado pela primeira vez pelo povo Guaran\u00ed, que dominou suas vias fluviais muito antes do contato europeu. No final do s\u00e9culo XIX e in\u00edcio do s\u00e9culo XX, ondas de imigrantes europeus se estabeleceram nas ilhas, construindo os caracter\u00edsticos palafitos, casas sobre pilares elevadas acima das cheias, que definem a paisagem de cidades como Tigre hoje.",
+  },
+  para_ch4_p2: {
+    en: 'Modern delta life retains a remarkable sense of isolation and community. There are no cars on the islands. Boats are the school bus, the delivery van, the ambulance. Children row themselves to school. Neighbours call to each other across the water. This is the "Isle\u00f1o" way, and experiencing it even briefly is to step into a world that feels entirely its own.',
+    es: 'La vida moderna en el delta conserva un notable sentido de aislamiento y comunidad. No hay coches en las islas. Los barcos son el autob\u00fas escolar, la furgoneta de reparto, la ambulancia. Los ni\u00f1os reman hasta la escuela. Los vecinos se llaman unos a otros a trav\u00e9s del agua. Este es el estilo "isle\u00f1o", y vivirlo aunque sea brevemente es adentrarse en un mundo completamente propio.',
+    pt: 'A vida moderna no delta mant\u00e9m um not\u00e1vel senso de isolamento e comunidade. N\u00e3o h\u00e1 carros nas ilhas. Os barcos s\u00e3o o \u00f4nibus escolar, a van de entregas, a ambu\u00e2ncia. As crian\u00e7as remam at\u00e9 a escola. Os vizinhos se chamam uns aos outros atrav\u00e9s da \u00e1gua. Este \u00e9 o jeito "Isle\u00f1o", e vivenci\u00e1-lo mesmo que brevemente \u00e9 entrar em um mundo que parece inteiramente pr\u00f3prio.',
+  },
+  para_act_intro: {
+    en: "Discover the many ways to experience the Paran\u00e1 Delta, from silent kayak journeys to the vibrant pulse of nearby Buenos Aires.",
+    es: "Descubre las muchas formas de vivir el Delta del Paran\u00e1, desde silenciosos viajes en kayak hasta el vibrante pulso de Buenos Aires.",
+    pt: "Descubra as muitas formas de vivenciar o Delta do Paran\u00e1, desde silenciosas viagens de caiaque at\u00e9 o vibrante pulso de Buenos Aires.",
+  },
+  para_act1_tag: {
+    en: "Experience",
+    es: "Experiencia",
+    pt: "Experi\u00eancia",
+  },
+  para_act1_name: {
+    en: "Kayaking the Channels",
+    es: "Kayak por los Canales",
+    pt: "Caiaque pelos Canais",
+  },
+  para_act1_desc: {
+    en: "Paddle through a living maze of waterways, slipping beneath overhanging branches and past floating islands alive with birdsong. Guided and self-guided routes available for all levels.",
+    es: "Rema por un laberinto vivo de v\u00edas fluviales, desliz\u00e1ndote bajo ramas colgantes y junto a islas flotantes llenas de canto de aves. Rutas guiadas y autoguiadas disponibles para todos los niveles.",
+    pt: "Reme por um labirinto vivo de vias fluviais, deslizando sob galhos pendentes e por ilhas flutuantes repletas de canto de p\u00e1ssaros. Rotas guiadas e autoguiadas dispon\u00edveis para todos os n\u00edveis.",
+  },
+  para_act2_tag: { en: "Nature", es: "Naturaleza", pt: "Natureza" },
+  para_act2_name: {
+    en: "Birdwatching",
+    es: "Avistamiento de Aves",
+    pt: "Observa\u00e7\u00e3o de Aves",
+  },
+  para_act2_desc: {
+    en: "With over 300 species, the delta is one of Argentina's premier birdwatching destinations, from jabiru storks to kingfishers.",
+    es: "Con m\u00e1s de 300 especies, el delta es uno de los principales destinos de avistamiento de aves de Argentina, desde cig\u00fce\u00f1as jabir\u00fa hasta martines pescadores.",
+    pt: "Com mais de 300 esp\u00e9cies, o delta \u00e9 um dos principais destinos de observa\u00e7\u00e3o de aves da Argentina, de cegonhas-jabiru a martins-pescadores.",
+  },
+  para_act3_tag: { en: "Culture", es: "Cultura", pt: "Cultura" },
+  para_act3_name: {
+    en: "Tigre & the Fruit Market",
+    es: "Tigre y el Mercado de Frutas",
+    pt: "Tigre e o Mercado de Frutas",
+  },
+  para_act3_desc: {
+    en: "Explore the gateway town of Tigre, its colourful river market, and the Museum of Fine Arts before heading deeper into the islands.",
+    es: "Explora la ciudad de entrada de Tigre, su colorido mercado fluvial y el Museo de Bellas Artes antes de adentrarte en las islas.",
+    pt: "Explore a cidade de entrada de Tigre, seu colorido mercado fluvial e o Museu de Belas Artes antes de se aventurar mais fundo nas ilhas.",
+  },
+  para_act4_tag: { en: "City", es: "Ciudad", pt: "Cidade" },
+  para_act4_name: {
+    en: "Buenos Aires Day Trip",
+    es: "Excursi\u00f3n a Buenos Aires",
+    pt: "Excurs\u00e3o a Buenos Aires",
+  },
+  para_act4_desc: {
+    en: "Just an hour away, the energy of Buenos Aires makes the perfect contrast to the delta's stillness.",
+    es: "A solo una hora, la energ\u00eda de Buenos Aires es el contraste perfecto con la quietud del delta.",
+    pt: "A apenas uma hora, a energia de Buenos Aires \u00e9 o contraste perfeito com a quietude do delta.",
+  },
+  para_gal1_cap: {
+    en: "Aerial view of the Paran\u00e1 Delta's branching channels meeting the R\u00edo de la Plata.",
+    es: "Vista a\u00e9rea de los canales ramificados del Delta del Paran\u00e1 que confluyen con el R\u00edo de la Plata.",
+    pt: "Vista a\u00e9rea dos canais ramificados do Delta do Paran\u00e1 encontrando o R\u00edo de la Plata.",
+  },
+  para_gal2_cap: {
+    en: "Traditional palafito stilt houses built to rise above seasonal floodwaters.",
+    es: "Casas tradicionales de palafito construidas para elevarse sobre las aguas de las crecidas estacionales.",
+    pt: "Casas tradicionais de palafita constru\u00eddas para se elevar acima das \u00e1guas das cheias sazonais.",
+  },
+  para_gal3_cap: {
+    en: "A capybara family at rest on the riverbank at dusk.",
+    es: "Una familia de capibaras descansando en la orilla del r\u00edo al atardecer.",
+    pt: "Uma fam\u00edlia de capivaras descansando na margem do rio ao entardecer.",
+  },
+  para_gal4_cap: {
+    en: "Morning mist over a quiet channel deep in the delta interior.",
+    es: "Niebla matutina sobre un canal tranquilo en el interior profundo del delta.",
+    pt: "N\u00e9voa matinal sobre um canal tranquilo no interior profundo do delta.",
+  },
+  para_gal5_cap: {
+    en: "Floating meadows of water hyacinth, a defining feature of the delta ecosystem.",
+    es: "Praderas flotantes de jacinto de agua, una caracter\u00edstica definitoria del ecosistema del delta.",
+    pt: "Prad\u00e1rias flutuantes de aguap\u00e9, uma caracter\u00edstica definidora do ecossistema do delta.",
+  },
+
+  /* ══════════════════════════════════════════════
+     MAGDALENA DELTA
+  ══════════════════════════════════════════════ */
+  magd_stat1_value: {
+    en: "Dec\u2013Mar",
+    es: "Dic\u2013Mar",
+    pt: "Dez\u2013Mar",
+  },
+  magd_stat1_label: {
+    en: "Best Season",
+    es: "Mejor \u00c9poca",
+    pt: "Melhor \u00c9poca",
+  },
+  magd_stat1_desc: {
+    en: "Dry season & Carnival time",
+    es: "Temporada seca y \u00e9poca de Carnaval",
+    pt: "Esta\u00e7\u00e3o seca e \u00e9poca do Carnaval",
+  },
+  magd_stat2_value: { en: "300+", es: "300+", pt: "300+" },
+  magd_stat2_label: {
+    en: "Bird Species",
+    es: "Especies de Aves",
+    pt: "Esp\u00e9cies de Aves",
+  },
+  magd_stat2_desc: {
+    en: "Scarlet ibis, storks & more",
+    es: "Ibis escarlata, cig\u00fce\u00f1as y m\u00e1s",
+    pt: "Guar\u00e1 vermelho, cegonhas e mais",
+  },
+  magd_stat3_value: { en: "1,528 km", es: "1.528 km", pt: "1.528 km" },
+  magd_stat3_label: {
+    en: "River Length",
+    es: "Longitud del R\u00edo",
+    pt: "Comprimento do Rio",
+  },
+  magd_stat3_desc: {
+    en: "Colombia's greatest river",
+    es: "El r\u00edo m\u00e1s grande de Colombia",
+    pt: "O maior rio da Col\u00f4mbia",
+  },
+  magd_stat4_value: { en: "UNESCO", es: "UNESCO", pt: "UNESCO" },
+  magd_stat4_label: {
+    en: "Carnival Heritage",
+    es: "Patrimonio Carnavalero",
+    pt: "Patrim\u00f4nio do Carnaval",
+  },
+  magd_stat4_desc: {
+    en: "Barranquilla's world-famous festival",
+    es: "El festival mundialmente famoso de Barranquilla",
+    pt: "O festival mundialmente famoso de Barranquilla",
+  },
+  magd_ch1_title: {
+    en: "When to Visit",
+    es: "Cu\u00e1ndo Visitar",
+    pt: "Quando Visitar",
+  },
+  magd_ch1_p1: {
+    en: "The best time to visit the Magdalena Delta is during the dry season, running from December through March. Skies are clear, the wetlands begin to recede, and wildlife concentrates around the remaining water channels, creating exceptional conditions for birdwatching and wildlife encounters throughout the coastal lagoons and ci\u00e9nagas of northern Colombia.",
+    es: "La mejor \u00e9poca para visitar el Delta del Magdalena es durante la temporada seca, de diciembre a marzo. Los cielos est\u00e1n despejados, los humedales comienzan a retroceder y la fauna se concentra alrededor de los canales de agua restantes, creando condiciones excepcionales para el avistamiento de aves y encuentros con la fauna a lo largo de las lagunas costeras y ci\u00e9nagas del norte de Colombia.",
+    pt: "A melhor \u00e9poca para visitar o Delta do Magdalena \u00e9 durante a esta\u00e7\u00e3o seca, de dezembro a mar\u00e7o. Os c\u00e9us est\u00e3o limpos, os p\u00e2ntanos come\u00e7am a recuar e a fauna se concentra nos canais de \u00e1gua restantes, criando condi\u00e7\u00f5es excepcionais para observa\u00e7\u00e3o de aves e encontros com a fauna ao longo das lagoas costeiras e ci\u00e9nagas do norte da Col\u00f4mbia.",
+  },
+  magd_ch1_p2: {
+    en: "If you are drawn to Colombia's extraordinary cultural energy, time your visit for late January and early February, when Barranquilla erupts into the world-famous Carnival. Four electrifying days of cumbia, mapal\u00e9, and comparsas rival even Rio de Janeiro. The city transforms into a riot of colour, music, and warmth that is unmistakably Caribbean.",
+    es: "Si te atrae la extraordinaria energ\u00eda cultural de Colombia, programa tu visita para finales de enero y principios de febrero, cuando Barranquilla estalla en el mundialmente famoso Carnaval. Cuatro electrizantes d\u00edas de cumbia, mapal\u00e9 y comparsas rivalizan incluso con R\u00edo de Janeiro. La ciudad se transforma en un estallido de color, m\u00fasica y calidez que es inconfundiblemente caribe\u00f1o.",
+    pt: "Se voc\u00ea \u00e9 atra\u00eddo pela extraordin\u00e1ria energia cultural da Col\u00f4mbia, programe sua visita para o final de janeiro e in\u00edcio de fevereiro, quando Barranquilla explode no mundialmente famoso Carnaval. Quatro dias eletrizantes de cumbia, mapal\u00e9 e comparsas rivalizam at\u00e9 com o Rio de Janeiro. A cidade se transforma em uma explos\u00e3o de cor, m\u00fasica e calor inconfund\u00edvelmente caribenha.",
+  },
+  magd_break1_label: {
+    en: "Carnival de Barranquilla, a UNESCO Intangible Cultural Heritage",
+    es: "Carnaval de Barranquilla, Patrimonio Cultural Inmaterial de la UNESCO",
+    pt: "Carnaval de Barranquilla, Patrim\u00f4nio Cultural Imaterial da UNESCO",
+  },
+  magd_ch2_title: {
+    en: "Wildlife You Will Not Forget",
+    es: "Fauna Que No Olvidar\u00e1s",
+    pt: "Fauna Que Voc\u00ea N\u00e3o Vai Esquecer",
+  },
+  magd_ch2_p1: {
+    en: "The Magdalena Delta is one of South America's most significant wetland ecosystems. Its mosaic of mangrove forests, freshwater lagoons, and coastal marshes shelters over 300 bird species, including the spectacular scarlet ibis, the jabiru stork, and countless herons and egrets that wheel over the water at sunrise in scenes that feel almost prehistoric.",
+    es: "El Delta del Magdalena es uno de los ecosistemas de humedales m\u00e1s importantes de Am\u00e9rica del Sur. Su mosaico de manglares, lagunas de agua dulce y marismas costeras alberga m\u00e1s de 300 especies de aves, incluido el espectacular ibis escarlata, la cig\u00fce\u00f1a jabir\u00fa, e innumerables garzas y garcetas que sobrevuelan el agua al amanecer en escenas que parecen casi prehist\u00f3ricas.",
+    pt: "O Delta do Magdalena \u00e9 um dos ecossistemas de zonas \u00famidas mais significativos da Am\u00e9rica do Sul. Seu mosaico de florestas de mangue, lagoas de \u00e1gua doce e p\u00e2ntanos costeiros abriga mais de 300 esp\u00e9cies de aves, incluindo o espetacular guar\u00e1 vermelho, a cegonha-jabiru e in\u00fameras gar\u00e7as que sobrevoam a \u00e1gua ao nascer do sol em cenas que parecem quase pr\u00e9-hist\u00f3ricas.",
+  },
+  magd_ch2_p2: {
+    en: "Beneath the surface, the Magdalena River is home to the critically endangered Magdalena River turtle and several endemic freshwater fish species found nowhere else on Earth. West Indian manatees glide silently through the quieter backwaters, and the surrounding dry tropical forest shelters howler monkeys, capybaras, and the elusive ocelot. This is a destination that rewards those who slow down.",
+    es: "Bajo la superficie, el r\u00edo Magdalena es hogar de la tortuga del r\u00edo Magdalena en peligro cr\u00edtico y de varias especies end\u00e9micas de peces de agua dulce que no se encuentran en ning\u00fan otro lugar de la Tierra. Los mana t\u00edos del Caribe se deslizan silenciosamente por las aguas m\u00e1s tranquilas, y el bosque tropical seco circundante alberga monos aulladores, capibaras y el esquivo ocelote. Es un destino que recompensa a quienes reducen el ritmo.",
+    pt: "Sob a superf\u00edcie, o rio Magdalena \u00e9 lar da tartaruga do rio Magdalena em estado cr\u00edtico de amea\u00e7a e de v\u00e1rias esp\u00e9cies end\u00eamicas de peixes de \u00e1gua doce n\u00e3o encontradas em nenhum outro lugar da Terra. Os peixe-bois das \u00cdndias Ocidentais deslizam silenciosamente pelos remansos mais calmos, e a floresta tropical seca circundante abriga macacos-bugios, capivaras e o esquivo gato-maracat\u00e1. Este \u00e9 um destino que recompensa quem desacelera.",
+  },
+  magd_break2_label: {
+    en: "Ci\u00e9naga Grande de Santa Marta, a Ramsar Wetland of International Importance",
+    es: "Ci\u00e9naga Grande de Santa Marta, Humedal Ramsar de Importancia Internacional",
+    pt: "Ci\u00e9naga Grande de Santa Marta, Zona \u00damida Ramsar de Import\u00e2ncia Internacional",
+  },
+  magd_ch3_title: {
+    en: "A River Worth Exploring",
+    es: "Un R\u00edo que Vale la Pena Explorar",
+    pt: "Um Rio que Vale Explorar",
+  },
+  magd_ch3_p1: {
+    en: "The R\u00edo Magdalena is Colombia's lifeline, a 1,528-kilometre artery that drains the heart of the Andes and empties into the Caribbean Sea near Barranquilla. Its lower delta is a spectacular maze of shifting channels, oxbow lakes, and the vast Ci\u00e9naga Grande de Santa Marta, one of the largest coastal lagoons in Latin America.",
+    es: "El R\u00edo Magdalena es el eje vital de Colombia, una arteria de 1.528 kil\u00f3metros que drena el coraz\u00f3n de los Andes y desemboca en el mar Caribe cerca de Barranquilla. Su delta inferior es un espectacular laberinto de canales cambiantes, lagos de meandro y la vasta Ci\u00e9naga Grande de Santa Marta, una de las lagunas costeras m\u00e1s grandes de Am\u00e9rica Latina.",
+    pt: "O Rio Magdalena \u00e9 a veia vital da Col\u00f4mbia, uma art\u00e9ria de 1.528 quil\u00f4metros que drena o cora\u00e7\u00e3o dos Andes e desemboca no mar do Caribe perto de Barranquilla. Seu delta inferior \u00e9 um espetacular labirinto de canais em constante mudan\u00e7a, lagos meandrantes e a vasta Ci\u00e9naga Grande de Santa Marta, uma das maiores lagoas costeiras da Am\u00e9rica Latina.",
+  },
+  magd_ch3_p2: {
+    en: "Exploring the delta by wooden lancha boat is unforgettable. Narrow waterways open past stilted fishing villages where communities have lived in harmony with the river for centuries. And rising dramatically on the horizon, snow-capped and impossibly close to the sea, stands the Sierra Nevada de Santa Marta, the world's highest coastal mountain range.",
+    es: "Explorar el delta en una lancha de madera es inolvidable. Estrechas v\u00edas fluviales se abren junto a pueblos pesqueros sobre pilotes donde las comunidades han vivido en armon\u00eda con el r\u00edo durante siglos. Y alz\u00e1ndose dr\u00e1maticamente en el horizonte, coronada de nieve e imposiblemente cerca del mar, se encuentra la Sierra Nevada de Santa Marta, la cordillera costera m\u00e1s alta del mundo.",
+    pt: "Explorar o delta em uma lancha de madeira \u00e9 inesquec\u00edvel. Estreitas vias fluviais se abrem por vilas de pesca sobre palafitas onde as comunidades viveram em harmonia com o rio por s\u00e9culos. E se elevando dramaticamente no horizonte, coberta de neve e impossibilitavelmente perto do mar, est\u00e1 a Sierra Nevada de Santa Marta, a cordilheira costeira mais alta do mundo.",
+  },
+  magd_break3_label: {
+    en: "Mompox, the timeless colonial city adrift on the Magdalena",
+    es: "Mompox, la ciudad colonial atemporal a la deriva en el Magdalena",
+    pt: "Mompox, a atemporal cidade colonial \u00e0 deriva no Magdalena",
+  },
+  magd_ch4_title: {
+    en: "Eat, Drink & Discover",
+    es: "Come, Bebe y Descubre",
+    pt: "Comer, Beber e Descobrir",
+  },
+  magd_ch4_p1: {
+    en: "The Caribbean coast of Colombia is a feast for all the senses. The delta's rich waters produce an abundance of fresh seafood, and local cooks transform mojarra fish, shrimp, and clams into dishes full of coconut, plantain, and aj\u00ed. Do not leave without trying a bowl of sancocho de pescado, a slow-simmered fish broth that is the soul food of the Colombian coast, or fresh ceviche by the waterfront in Barranquilla.",
+    es: "La costa caribe\u00f1a de Colombia es un fest\u00edn para todos los sentidos. Las ricas aguas del delta producen una abundancia de mariscos frescos, y los cocineros locales transforman el pescado mojarra, los camarones y las almejas en platos llenos de coco, pl\u00e1tano y aj\u00ed. No te vayas sin probar un sancocho de pescado, un caldo de pescado a fuego lento que es el alimento del alma de la costa colombiana, o ceviche fresco junto al malec\u00f3n de Barranquilla.",
+    pt: "A costa caribenha da Col\u00f4mbia \u00e9 um banquete para todos os sentidos. As ricas \u00e1guas do delta produzem uma abund\u00e2ncia de frutos do mar frescos, e os cozinheiros locais transformam peixe mojarra, camer\u00e3o e mariscos em pratos cheios de coco, banana-da-terra e aj\u00ed. N\u00e3o saia sem provar uma tigela de sancocho de pescado, um caldo de peixe cozido lentamente que \u00e9 a comida da alma da costa colombiana, ou ceviche fresco \u00e0 beira do porto em Barranquilla.",
+  },
+  magd_ch4_p2: {
+    en: "Beyond the food, the delta region pulses with cultural life. Barranquilla's Carnival is a UNESCO Intangible Cultural Heritage of Humanity, and the city's music scene, rooted in cumbia, vallenato, and porro, is alive every weekend of the year. Nearby, the colonial city of Mompox drifts in a timeless haze along a quiet Magdalena backwater, its cobblestone streets seemingly untouched by the modern world.",
+    es: "M\u00e1s all\u00e1 de la comida, la regi\u00f3n del delta pulsa con vida cultural. El Carnaval de Barranquilla es Patrimonio Cultural Inmaterial de la Humanidad de la UNESCO, y la escena musical de la ciudad, enraizada en la cumbia, el vallenato y el porro, est\u00e1 viva todos los fines de semana del a\u00f1o. Cerca, la ciudad colonial de Mompox se desliza en una atm\u00f3sfera atemporal a lo largo de un tranquilo remanso del Magdalena, con sus calles adoquinadas aparentemente intactas por el mundo moderno.",
+    pt: "Al\u00e9m da comida, a regi\u00e3o do delta pulsa com vida cultural. O Carnaval de Barranquilla \u00e9 Patrim\u00f4nio Cultural Imaterial da Humanidade da UNESCO, e a cena musical da cidade, enraizada na cumbia, no vallenato e no porro, est\u00e1 viva todos os fins de semana do ano. Pr\u00f3xima, a cidade colonial de Mompox deriva em uma n\u00e9voa atemporal ao longo de um remanso tranquilo do Magdalena, com suas ruas de paralelepipedos aparentemente intocadas pelo mundo moderno.",
+  },
+  magd_act_intro: {
+    en: "Discover the many ways to experience the Magdalena Delta, from silent lagoon paddles to the thundering rhythms of Barranquilla's Carnival.",
+    es: "Descubre las muchas formas de vivir el Delta del Magdalena, desde silenciosos paseos en canoa por las lagunas hasta los atronadores ritmos del Carnaval de Barranquilla.",
+    pt: "Descubra as muitas formas de vivenciar o Delta do Magdalena, desde silenciosos passeios de canoa pelas lagoas at\u00e9 os trovejantes ritmos do Carnaval de Barranquilla.",
+  },
+  magd_act1_tag: { en: "Nature", es: "Naturaleza", pt: "Natureza" },
+  magd_act1_name: {
+    en: "Birdwatching & Wildlife Tours",
+    es: "Avistamiento de Aves y Tours de Fauna",
+    pt: "Observa\u00e7\u00e3o de Aves e Tours de Fauna",
+  },
+  magd_act1_desc: {
+    en: "Explore the Ci\u00e9naga Grande de Santa Marta on a guided boat tour and witness flocks of scarlet ibis, flamingos, and herons in one of South America's most important wetland bird sanctuaries, a spectacle that stays with you for life.",
+    es: "Explora la Ci\u00e9naga Grande de Santa Marta en un tour en barco guiado y presencia bandadas de ibis escarlata, flamencos y garzas en uno de los santuarios de aves m\u00e1s importantes de Am\u00e9rica del Sur, un espect\u00e1culo que permanece contigo de por vida.",
+    pt: "Explore a Ci\u00e9naga Grande de Santa Marta em um passeio de barco guiado e testemunhe bandos de guar\u00e1 vermelho, flamingos e gar\u00e7as em um dos mais importantes santu\u00e1rios de aves de zonas \u00famidas da Am\u00e9rica do Sul, um espet\u00e1culo que fica com voc\u00ea para sempre.",
+  },
+  magd_act2_tag: {
+    en: "Experience",
+    es: "Experiencia",
+    pt: "Experi\u00eancia",
+  },
+  magd_act2_name: {
+    en: "River & Lagoon Canoeing",
+    es: "Canoa por R\u00edos y Lagunas",
+    pt: "Canoa por Rios e Lagoas",
+  },
+  magd_act2_desc: {
+    en: "Paddle through narrow mangrove channels and open lagoons, drifting past stilted fishing villages into the heart of the delta's pristine waterways.",
+    es: "Rema por estrechos canales de manglares y lagunas abiertas, desliz\u00e1ndote junto a pueblos pesqueros sobre pilotes hacia el coraz\u00f3n de las pristinas v\u00edas fluviales del delta.",
+    pt: "Reme por estreitos canais de mangue e lagoas abertas, derivando por vilas de pesca sobre palafitas rumo ao cora\u00e7\u00e3o das pristinas vias fluviais do delta.",
+  },
+  magd_act3_tag: { en: "Culture", es: "Cultura", pt: "Cultura" },
+  magd_act3_name: {
+    en: "Carnival de Barranquilla",
+    es: "Carnaval de Barranquilla",
+    pt: "Carnaval de Barranquilla",
+  },
+  magd_act3_desc: {
+    en: "Four days of cumbia, mapal\u00e9, and comparsas that transform Barranquilla into a vibrant celebration of Colombia's African, Indigenous, and European heritage.",
+    es: "Cuatro d\u00edas de cumbia, mapal\u00e9 y comparsas que transforman Barranquilla en una celebraci\u00f3n vibrante del patrimonio africano, ind\u00edgena y europeo de Colombia.",
+    pt: "Quatro dias de cumbia, mapal\u00e9 e comparsas que transformam Barranquilla em uma vibrante celebra\u00e7\u00e3o do patrim\u00f4nio africano, ind\u00edgena e europeu da Col\u00f4mbia.",
+  },
+  magd_act4_tag: { en: "Heritage", es: "Patrimonio", pt: "Patrim\u00f4nio" },
+  magd_act4_name: {
+    en: "Colonial Mompox",
+    es: "Mompox Colonial",
+    pt: "Mompox Colonial",
+  },
+  magd_act4_desc: {
+    en: "A UNESCO World Heritage city adrift in time on a quiet branch of the Magdalena.",
+    es: "Una ciudad Patrimonio Mundial de la UNESCO a la deriva en el tiempo en un tranquilo afluente del Magdalena.",
+    pt: "Uma cidade Patrim\u00f4nio Mundial da UNESCO \u00e0 deriva no tempo em um ramo tranquilo do Magdalena.",
+  },
+  magd_gal1_cap: {
+    en: "Aerial view of the Magdalena River branching into the Caribbean Sea near Barranquilla.",
+    es: "Vista a\u00e9rea del r\u00edo Magdalena ramific\u00e1ndose hacia el mar Caribe cerca de Barranquilla.",
+    pt: "Vista a\u00e9rea do rio Magdalena se ramificando para o mar do Caribe perto de Barranquilla.",
+  },
+  magd_gal2_cap: {
+    en: "The vast Ci\u00e9naga Grande de Santa Marta, a Ramsar Wetland and UNESCO Biosphere Reserve.",
+    es: "La vasta Ci\u00e9naga Grande de Santa Marta, Humedal Ramsar y Reserva de Biosfera de la UNESCO.",
+    pt: "A vasta Ci\u00e9naga Grande de Santa Marta, Zona \u00damida Ramsar e Reserva da Biosfera da UNESCO.",
+  },
+  magd_gal3_cap: {
+    en: "Scarlet ibis and herons at rest in the mangrove wetlands of the northern delta.",
+    es: "Ibis escarlata y garzas en reposo en los humedales de manglar del delta norte.",
+    pt: "Guar\u00e1 vermelho e gar\u00e7as em repouso nos p\u00e2ntanos de mangue do delta norte.",
+  },
+  magd_gal4_cap: {
+    en: "The timeless colonial town of Mompox, drifting on a quiet backwater of the Magdalena.",
+    es: "La ciudad colonial atemporal de Mompox, a la deriva en un tranquilo remanso del Magdalena.",
+    pt: "A atemporal cidade colonial de Mompox, \u00e0 deriva em um remanso tranquilo do Magdalena.",
+  },
+  magd_gal5_cap: {
+    en: "Carnival de Barranquilla, four days of cumbia, colour, and Caribbean joy.",
+    es: "Carnaval de Barranquilla, cuatro d\u00edas de cumbia, color y alegr\u00eda caribe\u00f1a.",
+    pt: "Carnaval de Barranquilla, quatro dias de cumbia, cor e alegria caribenha.",
+  },
+
+  /* ══════════════════════════════════════════════
+     YUKON DELTA
+  ══════════════════════════════════════════════ */
+  yuk_stat1_value: {
+    en: "Jun\u2013Aug",
+    es: "Jun\u2013Ago",
+    pt: "Jun\u2013Ago",
+  },
+  yuk_stat1_label: {
+    en: "Best Season",
+    es: "Mejor \u00c9poca",
+    pt: "Melhor \u00c9poca",
+  },
+  yuk_stat1_desc: {
+    en: "Midnight sun & peak wildlife",
+    es: "Sol de medianoche y fauna en su apogeo",
+    pt: "Sol da meia-noite e fauna no auge",
+  },
+  yuk_stat2_value: { en: "Millions", es: "Millones", pt: "Milh\u00f5es" },
+  yuk_stat2_label: {
+    en: "Migratory Birds",
+    es: "Aves Migratorias",
+    pt: "Aves Migrat\u00f3rias",
+  },
+  yuk_stat2_desc: {
+    en: "From every continent on Earth",
+    es: "De todos los continentes de la Tierra",
+    pt: "De todos os continentes da Terra",
+  },
+  yuk_stat3_value: {
+    en: "129,500 km\u00b2",
+    es: "129.500 km\u00b2",
+    pt: "129.500 km\u00b2",
+  },
+  yuk_stat3_label: {
+    en: "Delta Area",
+    es: "\u00c1rea del Delta",
+    pt: "\u00c1rea do Delta",
+  },
+  yuk_stat3_desc: {
+    en: "One of the world's largest",
+    es: "Uno de los m\u00e1s grandes del mundo",
+    pt: "Um dos maiores do mundo",
+  },
+  yuk_stat4_value: { en: "Yup'ik", es: "Yup'ik", pt: "Yup'ik" },
+  yuk_stat4_label: {
+    en: "Indigenous Culture",
+    es: "Cultura Ind\u00edgena",
+    pt: "Cultura Ind\u00edgena",
+  },
+  yuk_stat4_desc: {
+    en: "Thousands of years of heritage",
+    es: "Miles de a\u00f1os de patrimonio",
+    pt: "Milhares de anos de patrim\u00f4nio",
+  },
+  yuk_ch1_title: {
+    en: "When to Visit",
+    es: "Cu\u00e1ndo Visitar",
+    pt: "Quando Visitar",
+  },
+  yuk_ch1_p1: {
+    en: "Summer, from June through August, is the only practical window for visiting the Yukon-Kuskokwim Delta. The tundra thaws, the waterways open, and the landscape bursts into life under the long subarctic days. With up to 20 hours of daylight, there is time to explore vast wetlands, watch salmon runs, and witness one of the great wildlife spectacles on Earth.",
+    es: "El verano, de junio a agosto, es la \u00fanica ventana pr\u00e1ctica para visitar el Delta de Yuk\u00f3n-Kuskokwim. La tundra se descongela, las v\u00edas fluviales se abren y el paisaje estalla en vida bajo los largos d\u00edas sub\u00e1rticos. Con hasta 20 horas de luz diurna, hay tiempo para explorar vastos humedales, observar las migraciones del salm\u00f3n y presenciar uno de los grandes espect\u00e1culos de fauna de la Tierra.",
+    pt: "O ver\u00e3o, de junho a agosto, \u00e9 a \u00fanica janela pr\u00e1tica para visitar o Delta Yukon-Kuskokwim. A tundra descongela, as vias fluviais se abrem e a paisagem explode em vida sob os longos dias sub\u00e1rticos. Com at\u00e9 20 horas de luz do dia, h\u00e1 tempo para explorar vastos p\u00e2ntanos, observar as corridas de salm\u00e3o e testemunhar um dos grandes espet\u00e1culos de fauna da Terra.",
+  },
+  yuk_ch1_p2: {
+    en: "Late May and early June offer the most dramatic birdlife, as millions of migratory birds arrive simultaneously to breed. Winters are extreme and largely inaccessible to visitors, though the frozen delta holds a haunting beauty of its own, traversed only by snowmobile and the communities who have called it home for millennia.",
+    es: "Finales de mayo y principios de junio ofrecen la avifauna m\u00e1s espectacular, cuando millones de aves migratorias llegan simult\u00e1neamente para criar. Los inviernos son extremos y en gran medida inaccesibles para los visitantes, aunque el delta congelado tiene su propia belleza inquietante, atravesado \u00fanicamente en moto de nieve y por las comunidades que lo han llamado hogar durante milenios.",
+    pt: "Final de maio e in\u00edcio de junho oferecem a vida avi\u00e1ria mais dram\u00e1tica, enquanto milh\u00f5es de aves migrat\u00f3rias chegam simultaneamente para se reproduzir. Os invernos s\u00e3o extremos e em grande parte inacess\u00edveis para visitantes, embora o delta congelado tenha sua pr\u00f3pria beleza assombrosa, percorrido apenas por snowmobile e pelas comunidades que o chamam de lar h\u00e1 mil\u00eanios.",
+  },
+  yuk_break1_label: {
+    en: "The Yukon-Kuskokwim: a maze of tundra waterways",
+    es: "El Yuk\u00f3n-Kuskokwim: un laberinto de v\u00edas fluviales en la tundra",
+    pt: "O Yukon-Kuskokwim: um labirinto de vias fluviais na tundra",
+  },
+  yuk_ch2_title: {
+    en: "Wildlife You Will Not Forget",
+    es: "Fauna Que No Olvidar\u00e1s",
+    pt: "Fauna Que Voc\u00ea N\u00e3o Vai Esquecer",
+  },
+  yuk_ch2_p1: {
+    en: "The Yukon-Kuskokwim Delta is one of the most important wildlife refuges on the planet. Every summer, millions of birds converge here from six continents, among them the rare Emperor Goose, bar-tailed godwits, tundra swans, and vast flocks of shorebirds that darken the sky. No other delta in the Americas hosts a migration event of this scale.",
+    es: "El Delta Yuk\u00f3n-Kuskokwim es uno de los refugios de fauna m\u00e1s importantes del planeta. Cada verano, millones de aves convergen aqu\u00ed desde seis continentes, entre ellas el raro ganso emperador, agujas colipintas, cisnes de la tundra y vastas bandadas de aves costeras que oscurecen el cielo. Ning\u00fan otro delta en las Am\u00e9ricas alberga un evento migratorio de esta escala.",
+    pt: "O Delta Yukon-Kuskokwim \u00e9 um dos mais importantes ref\u00fagios de fauna do planeta. Cada ver\u00e3o, milh\u00f5es de aves convergem aqui de seis continentes, entre elas o raro ganso-imperador, ma\u00e7aricos-de-bico-direito, cisnes-da-tundra e vastos bandos de aves costeiras que escurecem o c\u00e9u. Nenhum outro delta nas Am\u00e9ricas hospeda um evento migrat\u00f3rio desta escala.",
+  },
+  yuk_ch2_p2: {
+    en: "Beneath the surface, all five species of Pacific Salmon surge through the rivers in numbers that feed the entire ecosystem, from brown bears wading the banks to beluga whales gathering at the river mouths. The delta's thousands of lakes and ponds are nurseries for waterfowl that will eventually spread across the entire Western Hemisphere.",
+    es: "Bajo la superficie, las cinco especies de salm\u00f3n del Pac\u00edfico surgen por los r\u00edos en cantidades que alimentan todo el ecosistema, desde osos pardos que vadean las orillas hasta belugas que se re\u00fanen en las desembocaduras. Los miles de lagos y estanques del delta son criaderos de aves acu\u00e1ticas que eventualmente se dispersar\u00e1n por todo el Hemisferio Occidental.",
+    pt: "Sob a superf\u00edcie, todas as cinco esp\u00e9cies de salm\u00e3o do Pac\u00edfico surgem pelos rios em n\u00fameros que alimentam todo o ecossistema, desde ursos pardos vadeando as margens at\u00e9 baleias-brancas se reunindo nas fozas dos rios. Os milhares de lagos e lagoas do delta s\u00e3o viv\u00e9iros para aves aqu\u00e1ticas que eventualmente se espalhar\u00e3o por todo o Hemisf\u00e9rio Ocidental.",
+  },
+  yuk_break2_label: {
+    en: "Millions of birds arrive each spring from across the globe",
+    es: "Millones de aves llegan cada primavera desde todo el mundo",
+    pt: "Milh\u00f5es de aves chegam a cada primavera de todo o mundo",
+  },
+  yuk_ch3_title: {
+    en: "A Landscape Unlike Any Other",
+    es: "Un Paisaje Como Ning\u00fan Otro",
+    pt: "Uma Paisagem Como Nenhuma Outra",
+  },
+  yuk_ch3_p1: {
+    en: "Covering 129,500 square kilometres, roughly the size of Louisiana, the Yukon-Kuskokwim Delta is one of the largest river deltas on Earth. It is a flat, treeless world of permafrost and peat, dotted with tens of thousands of lakes and threaded by channels that shift course with every spring thaw. There are no roads connecting the delta's villages to the outside world.",
+    es: "Con 129.500 kil\u00f3metros cuadrados, aproximadamente del tama\u00f1o de Luisiana, el Delta Yuk\u00f3n-Kuskokwim es uno de los deltas fluviales m\u00e1s grandes de la Tierra. Es un mundo plano y sin \u00e1rboles de permafrost y turba, salpicado con decenas de miles de lagos y recorrido por canales que cambian de rumbo con cada deshielo primaveral. No hay carreteras que conecten los pueblos del delta con el mundo exterior.",
+    pt: "Com 129.500 quil\u00f4metros quadrados, aproximadamente do tamanho da Louisiana, o Delta Yukon-Kuskokwim \u00e9 um dos maiores deltas fluviais da Terra. \u00c9 um mundo plano e sem \u00e1rvores de permafrost e turfa, salpicado com dezenas de milhares de lagos e entrecortado por canais que mudam de curso a cada degelo primaveril. N\u00e3o h\u00e1 estradas que conectem as aldeias do delta ao mundo exterior.",
+  },
+  yuk_ch3_p2: {
+    en: 'The landscape is defined by extremes. In winter, the entire delta freezes solid under Arctic darkness. In summer, the permafrost beneath creates strange "drunken forests" of tilting black spruce at its margins, and the tundra blooms with cotton grass, lichens, and wildflowers in a brief, spectacular flourishing.',
+    es: 'El paisaje est\u00e1 definido por extremos. En invierno, todo el delta se congela bajo la oscuridad \u00e1rtica. En verano, el permafrost bajo la superficie crea extra\u00f1os "bosques borrachos" de p\u00edcea negra inclinada en sus m\u00e1rgenes, y la tundra florece con hierba de algod\u00f3n, l\u00edquenes y flores silvestres en un breve y espectacular florecimiento.',
+    pt: 'A paisagem \u00e9 definida por extremos. No inverno, todo o delta congela sob a escurid\u00e3o \u00e1rtica. No ver\u00e3o, o permafrost abaixo da superf\u00edcie cria estranhas "florestas b\u00eabadas" de abetos negros inclinados em suas margens, e a tundra floresce com capim-de-algod\u00e3o, l\u00edquens e flores silvestres em uma breve e espetacular flora\u00e7\u00e3o.',
+  },
+  yuk_break3_label: {
+    en: "Subarctic tundra, vast, treeless, and teeming with life",
+    es: "Tundra sub\u00e1rtica, vasta, sin \u00e1rboles y rebosante de vida",
+    pt: "Tundra sub\u00e1rtica, vasta, sem \u00e1rvores e repleta de vida",
+  },
+  yuk_ch4_title: {
+    en: "The Yup'ik People & a Threatened Homeland",
+    es: "El Pueblo Yup'ik y una Patria Amenazada",
+    pt: "O Povo Yup'ik e uma P\u00e1tria Amea\u00e7ada",
+  },
+  yuk_ch4_p1: {
+    en: "For thousands of years, the delta has been the homeland of the Yup'ik and Cup'ik peoples, whose culture is woven from subsistence fishing, hunting, and a profound knowledge of the tundra and its seasons. Salmon, moose, beluga whale, and migratory birds have sustained these communities across generations, and that relationship remains central to life here today.",
+    es: "Durante miles de a\u00f1os, el delta ha sido la patria de los pueblos Yup'ik y Cup'ik, cuya cultura est\u00e1 tejida de pesca de subsistencia, caza y un profundo conocimiento de la tundra y sus estaciones. El salm\u00f3n, el alce, la ballena beluga y las aves migratorias han sostenido a estas comunidades a trav\u00e9s de generaciones, y esa relaci\u00f3n sigue siendo central en la vida de aqu\u00ed hoy.",
+    pt: "Por milhares de anos, o delta foi a p\u00e1tria dos povos Yup'ik e Cup'ik, cuja cultura \u00e9 tecida de pesca de subsist\u00eancia, ca\u00e7a e um profundo conhecimento da tundra e suas esta\u00e7\u00f5es. Salm\u00e3o, alce, baleia-branca e aves migrat\u00f3rias sustentaram essas comunidades ao longo de gera\u00e7\u00f5es, e essa rela\u00e7\u00e3o permanece central para a vida aqui hoje.",
+  },
+  yuk_ch4_p2: {
+    en: "The delta now stands on the front lines of climate change. Rising sea levels and rapidly thawing permafrost are causing severe coastal erosion, threatening ancestral villages that have stood for centuries. Several communities face relocation, a crisis that has brought the Yup'ik people's story to international attention and made the Yukon Delta one of the most urgent conservation stories of our time.",
+    es: "El delta ahora est\u00e1 en la primera l\u00ednea del cambio clim\u00e1tico. El aumento del nivel del mar y el r\u00e1pido deshielo del permafrost est\u00e1n causando una grave erosi\u00f3n costera, amenazando pueblos ancestrales que han existido durante siglos. Varias comunidades enfrentan la reubicaci\u00f3n, una crisis que ha llevado la historia del pueblo Yup'ik a la atenci\u00f3n internacional y ha convertido el Delta del Yuk\u00f3n en una de las historias de conservaci\u00f3n m\u00e1s urgentes de nuestro tiempo.",
+    pt: "O delta agora est\u00e1 na linha de frente das mudan\u00e7as clim\u00e1ticas. O aumento do n\u00edvel do mar e o r\u00e1pido degelo do permafrost est\u00e3o causando grave eros\u00e3o costeira, amea\u00e7ando aldeias ancestrais que existiram por s\u00e9culos. V\u00e1rias comunidades enfrentam realoca\u00e7\u00e3o, uma crise que trouxe a hist\u00f3ria do povo Yup'ik \u00e0 aten\u00e7\u00e3o internacional e tornou o Delta do Yukon uma das hist\u00f3rias de conserva\u00e7\u00e3o mais urgentes de nosso tempo.",
+  },
+  yuk_act_intro: {
+    en: "Discover the many ways to experience the Yukon Delta, from silent tundra hikes to salmon-rich river expeditions at the edge of the world.",
+    es: "Descubre las muchas formas de vivir el Delta del Yuk\u00f3n, desde silenciosas caminatas por la tundra hasta expediciones fluviales ricas en salm\u00f3n en el fin del mundo.",
+    pt: "Descubra as muitas formas de vivenciar o Delta do Yukon, desde silenciosas caminhadas pela tundra at\u00e9 expedi\u00e7\u00f5es fluviais ricas em salm\u00e3o na beira do mundo.",
+  },
+  yuk_act1_tag: { en: "Nature", es: "Naturaleza", pt: "Natureza" },
+  yuk_act1_name: {
+    en: "Birdwatching Expeditions",
+    es: "Expediciones de Avistamiento de Aves",
+    pt: "Expedi\u00e7\u00f5es de Observa\u00e7\u00e3o de Aves",
+  },
+  yuk_act1_desc: {
+    en: "Witness one of the planet's great wildlife spectacles as millions of birds converge on the tundra each spring. Emperor Geese, tundra swans, and shorebirds in numbers that must be seen to be believed.",
+    es: "Presencia uno de los grandes espect\u00e1culos de fauna del planeta cuando millones de aves convergen en la tundra cada primavera. Gansos emperadores, cisnes de la tundra y aves costeras en n\u00fameros que hay que ver para creerlos.",
+    pt: "Testemunhe um dos grandes espet\u00e1culos de fauna do planeta enquanto milh\u00f5es de aves convergem na tundra a cada primavera. Gansos-imperadores, cisnes-da-tundra e aves costeiras em n\u00fameros que precisam ser vistos para serem acreditados.",
+  },
+  yuk_act2_tag: {
+    en: "Expedition",
+    es: "Expedici\u00f3n",
+    pt: "Expedi\u00e7\u00e3o",
+  },
+  yuk_act2_name: {
+    en: "River Journeys",
+    es: "Viajes Fluviales",
+    pt: "Jornadas Fluviais",
+  },
+  yuk_act2_desc: {
+    en: "Float the braided channels of the Yukon and Kuskokwim by raft or kayak, through a wilderness accessible only by water or air.",
+    es: "Navega por los canales trenzados del Yuk\u00f3n y el Kuskokwim en balsa o kayak, a trav\u00e9s de una zona salvaje accesible solo por agua o aire.",
+    pt: "Flutue pelos canais entra\u00e7ados do Yukon e Kuskokwim de balsas ou caiaque, atrav\u00e9s de uma regi\u00e3o selvagem acess\u00edvel apenas por \u00e1gua ou ar.",
+  },
+  yuk_act3_tag: {
+    en: "Wilderness",
+    es: "Naturaleza Salvaje",
+    pt: "Natureza Selvagem",
+  },
+  yuk_act3_name: {
+    en: "Tundra Hiking",
+    es: "Senderismo en la Tundra",
+    pt: "Caminhada na Tundra",
+  },
+  yuk_act3_desc: {
+    en: "Trek across a landscape of permafrost, cotton grass, and open sky, a silence broken only by wind and birdsong.",
+    es: "Camina por un paisaje de permafrost, hierba de algod\u00f3n y cielo abierto, un silencio roto solo por el viento y el canto de los p\u00e1jaros.",
+    pt: "Caminhe por uma paisagem de permafrost, capim-de-algod\u00e3o e c\u00e9u aberto, um sil\u00eancio quebrado apenas pelo vento e pelo canto dos p\u00e1ssaros.",
+  },
+  yuk_act4_tag: { en: "Culture", es: "Cultura", pt: "Cultura" },
+  yuk_act4_name: {
+    en: "Yup'ik Cultural Visits",
+    es: "Visitas Culturales Yup'ik",
+    pt: "Visitas Culturais Yup'ik",
+  },
+  yuk_act4_desc: {
+    en: "Learn from communities whose traditions stretch back thousands of years.",
+    es: "Aprende de comunidades cuyas tradiciones se remontan a miles de a\u00f1os.",
+    pt: "Aprenda com comunidades cujas tradi\u00e7\u00f5es remontam a milhares de anos.",
+  },
+  yuk_gal1_cap: {
+    en: "Aerial view of the Yukon-Kuskokwim Delta's vast network of lakes, channels, and tundra.",
+    es: "Vista a\u00e9rea de la vasta red de lagos, canales y tundra del Delta Yuk\u00f3n-Kuskokwim.",
+    pt: "Vista a\u00e9rea da vasta rede de lagos, canais e tundra do Delta Yukon-Kuskokwim.",
+  },
+  yuk_gal2_cap: {
+    en: "Millions of birds gather on the delta each spring in one of nature's great migrations.",
+    es: "Millones de aves se re\u00fanen en el delta cada primavera en una de las grandes migraciones de la naturaleza.",
+    pt: "Milh\u00f5es de aves se re\u00fanem no delta a cada primavera em uma das grandes migra\u00e7\u00f5es da natureza.",
+  },
+  yuk_gal3_cap: {
+    en: "The open subarctic tundra, treeless, vast, and luminous under the midnight sun.",
+    es: "La tundra sub\u00e1rtica abierta, sin \u00e1rboles, vasta y luminosa bajo el sol de medianoche.",
+    pt: "A tundra sub\u00e1rtica aberta, sem \u00e1rvores, vasta e luminosa sob o sol da meia-noite.",
+  },
+  yuk_gal4_cap: {
+    en: "A Yup'ik village on the delta edge, reachable only by boat or small plane.",
+    es: "Un pueblo Yup'ik en el borde del delta, accesible solo en barco o avi\u00f3n peque\u00f1o.",
+    pt: "Uma aldeia Yup'ik na borda do delta, acess\u00edvel apenas por barco ou avi\u00e3o pequeno.",
+  },
+  yuk_gal5_cap: {
+    en: "The braided waterways of the delta shift and reform with every spring flood.",
+    es: "Las v\u00edas fluviales trenzadas del delta se desplazan y reforman con cada inundaci\u00f3n primaveral.",
+    pt: "As vias fluviais entra\u00e7adas do delta se deslocam e se reformam a cada cheia primaveril.",
+  },
+
+  /* ══════════════════════════════════════════════
+     COLORADO DELTA
+  ══════════════════════════════════════════════ */
+  col_stat1_value: { en: "Oct–Apr", es: "Oct–Abr", pt: "Out–Abr" },
+  col_stat1_label: { en: "Best Season", es: "Mejor Época", pt: "Melhor Época" },
+  col_stat1_desc: {
+    en: "Mild desert winter & bird peaks",
+    es: "Invierno desértico suave y picos de aves",
+    pt: "Inverno desértico ameno e picos de aves",
+  },
+  col_stat2_value: { en: "~7,800 km²", es: "~7.800 km²", pt: "~7.800 km²" },
+  col_stat2_label: {
+    en: "Historic Area",
+    es: "Área Histórica",
+    pt: "Área Histórica",
+  },
+  col_stat2_desc: {
+    en: "Once a lush desert estuary",
+    es: "Antes un exuberante estuario desértico",
+    pt: "Outrora um exuberante estuário desértico",
+  },
+  col_stat3_value: { en: "2,330 km", es: "2.330 km", pt: "2.330 km" },
+  col_stat3_label: {
+    en: "River Length",
+    es: "Longitud del Río",
+    pt: "Comprimento do Rio",
+  },
+  col_stat3_desc: {
+    en: "Rarely reaching the sea today",
+    es: "Rara vez llega al mar hoy en día",
+    pt: "Raramente chegando ao mar hoje",
+  },
+  col_stat4_value: { en: "Cucapá", es: "Cucapá", pt: "Cucapá" },
+  col_stat4_label: {
+    en: "Indigenous People",
+    es: "Pueblo Indígena",
+    pt: "Povo Indígena",
+  },
+  col_stat4_desc: {
+    en: "Over 1,000 years of river culture",
+    es: "Más de 1.000 años de cultura fluvial",
+    pt: "Mais de 1.000 anos de cultura fluvial",
+  },
+  col_ch1_title: {
+    en: "When to Visit",
+    es: "Cuándo Visitar",
+    pt: "Quando Visitar",
+  },
+  col_ch1_p1: {
+    en: "October through April is the ideal time to visit the Colorado River Delta. Desert winters are mild and clear, making hiking and paddling comfortable under vast open skies. Migratory waterbirds flood the remaining wetlands during these months, and the low winter light turns the cracked mudflats and salt flats into extraordinary landscapes of copper and gold.",
+    es: "De octubre a abril es la época ideal para visitar el Delta del Río Colorado. Los inviernos desérticos son suaves y despejados, lo que hace que el senderismo y el remo sean cómodos bajo vastos cielos abiertos. Las aves acuáticas migratorias inundan los humedales restantes durante estos meses, y la tenue luz invernal convierte las agrietadas llanuras de lodo y sal en extraordinarios paisajes de cobre y oro.",
+    pt: "De outubro a abril é a época ideal para visitar o Delta do Rio Colorado. Os invernos desérticos são amenos e claros, tornando a caminhada e o remo confortáveis sob vastos céus abertos. Aves aquáticas migratórias inundam as zonas úmidas restantes durante esses meses, e a luz fraca do inverno transforma as planícies de lama e sal rachadas em extraordinárias paisagens de cobre e ouro.",
+  },
+  col_ch1_p2: {
+    en: "Spring, particularly March and April, brings an added spectacle: on rare years when binational pulse flows are released, water courses through the dry channels and the delta briefly comes alive with birdsong, blooming cottonwoods, and the distant glint of water reaching toward the sea. Summers are extreme, with temperatures regularly exceeding 45°C.",
+    es: "La primavera, especialmente marzo y abril, trae un espectáculo adicional: en los raros años en que se liberan flujos de pulso binacionales, el agua corre por los canales secos y el delta cobra brevemente vida con el canto de los pájaros, los álamos en flor y el lejano destello del agua que se extiende hacia el mar. Los veranos son extremos, con temperaturas que regularmente superan los 45°C.",
+    pt: "A primavera, especialmente março e abril, traz um espetáculo adicional: nos raros anos em que fluxos de pulso binacionais são liberados, a água corre pelos canais secos e o delta brevemente ganha vida com o canto dos pássaros, álamos florescendo e o distante brilho da água alcançando o mar. Os verões são extremos, com temperaturas regularmente excedendo 45°C.",
+  },
+  col_break1_label: {
+    en: "A delta defined by absence and the fight to bring water back",
+    es: "Un delta definido por la ausencia y la lucha por devolver el agua",
+    pt: "Um delta definido pela ausência e a luta para trazer a água de volta",
+  },
+  col_ch2_title: {
+    en: "Wildlife & the Fight for Restoration",
+    es: "Fauna y la Lucha por la Restauración",
+    pt: "Fauna e a Luta pela Restauração",
+  },
+  col_ch2_p1: {
+    en: "Despite decades of water diversion, the Colorado Delta remains a critical stopover on the Pacific Flyway. The Ciénega de Santa Clara, the largest remaining wetland in the delta, shelters thousands of migratory waterbirds, including the endangered Yuma Ridgway's Rail and the southwestern willow flycatcher. Roseate spoonbills, great blue herons, and clouds of shorebirds wheel overhead during peak migration.",
+    es: "A pesar de décadas de desviación de agua, el Delta del Colorado sigue siendo una escala crítica en la Ruta Migratoria del Pacífico. La Ciénega de Santa Clara, el mayor humedal restante del delta, alberga miles de aves acuáticas migratorias, incluido el rascón de Yuma en peligro y el papamoscas saucero del suroeste. Espátulas rosadas, garzas azules y nubes de aves costeras giran sobre las cabezas durante el pico de migración.",
+    pt: "Apesar de décadas de desvio de água, o Delta do Colorado continua sendo uma escala crítica na Rota Migratória do Pacífico. A Ciénega de Santa Clara, a maior zona úmida restante no delta, abriga milhares de aves aquáticas migratórias, incluindo o frango-d'agua de Yuma em perigo e o papa-moscas-de-salgueiro do sudoeste. Colhereiros rosados, garças-azuis e nuvens de aves costeiras giram acima durante o pico da migração.",
+  },
+  col_ch2_p2: {
+    en: "Binational agreements known as Minute 319 and Minute 323 have allowed conservation groups to release experimental pulse flows, mimicking natural spring floods. At restoration sites like Laguna Grande, native cottonwood and willow forests have returned, and with them, species not seen here in a generation. It is a slow, determined reclaiming of a lost landscape.",
+    es: "Los acuerdos binacionales conocidos como Minuta 319 y Minuta 323 han permitido a grupos de conservación liberar flujos de pulso experimentales, imitando las inundaciones primaverales naturales. En sitios de restauración como Laguna Grande, los bosques nativos de álamo y sauce han regresado, y con ellos, especies no vistas aquí en una generación. Es una recuperación lenta y decidida de un paisaje perdido.",
+    pt: "Acordos binacionais conhecidos como Minuto 319 e Minuto 323 permitiram que grupos de conservação liberassem fluxos de pulso experimentais, imitando as enchentes naturais de primavera. Em locais de restauração como Laguna Grande, florestas nativas de álamo e salgueiro retornaram, e com elas, espécies não vistas aqui em uma geração. É uma lenta e determinada recuperação de uma paisagem perdida.",
+  },
+  col_break2_label: {
+    en: "Cottonwood and willow groves returning to restored delta sites",
+    es: "Álamos y sauces regresando a los sitios restaurados del delta",
+    pt: "Álamos e salgueiros retornando aos locais restaurados do delta",
+  },
+  col_ch3_title: {
+    en: "A River Running Dry",
+    es: "Un Río que se Seca",
+    pt: "Um Rio que Seca",
+  },
+  col_ch3_p1: {
+    en: "The Colorado River travels 2,330 kilometres from the Rocky Mountains to the Gulf of California, yet for most of the year it never arrives. So much water is drawn off for agriculture and cities across seven US states and two Mexican states that the river regularly runs dry miles before it reaches the sea.",
+    es: "El Río Colorado recorre 2.330 kilómetros desde las Montañas Rocosas hasta el Golfo de California, pero durante la mayor parte del año nunca llega. Tanta agua se extrae para la agricultura y las ciudades de siete estados de EE.UU. y dos estados mexicanos que el río regularmente se seca a kilómetros antes de llegar al mar.",
+    pt: "O Rio Colorado percorre 2.330 quilômetros desde as Montanhas Rochosas até o Golfo da Califórnia, mas durante a maior parte do ano nunca chega. Tanta água é desviada para agricultura e cidades em sete estados dos EUA e dois estados mexicanos que o rio regularmente seca a quilômetros antes de chegar ao mar.",
+  },
+  col_ch3_p2: {
+    en: 'This is one of the most dramatic human alterations of a river system anywhere on Earth. What was once described as a "milk and honey wilderness," a vast, lush estuary, is now largely cracked mudflat and sand. Only the Rio Hardy maintains year-round flow, offering a narrow ribbon of the riparian beauty that once defined the entire delta.',
+    es: 'Esta es una de las alteraciones humanas más dramáticas de un sistema fluvial en cualquier lugar de la Tierra. Lo que una vez se describió como un "paraíso de leche y miel", un vasto y exuberante estuario, es ahora en gran parte llanura de barro agrietada y arena. Solo el Río Hardy mantiene un caudal durante todo el año, ofreciendo una estrecha franja de la belleza ribereña que antes definía todo el delta.',
+    pt: 'Esta é uma das alterações humanas mais dramáticas de um sistema fluvial em qualquer lugar da Terra. O que antes era descrito como um "paraíso de leite e mel", um vasto e exuberante estuário, é agora em grande parte planície de lama rachada e areia. Apenas o Rio Hardy mantém fluxo durante todo o ano, oferecendo uma estreita faixa da beleza ribeirinha que antes definia todo o delta.',
+  },
+  col_break3_label: {
+    en: "The Upper Gulf of California, home to the world's most endangered porpoise",
+    es: "El Alto Golfo de California, hogar de la marsopa más en peligro del mundo",
+    pt: "O Alto Golfo da Califórnia, lar do boto mais ameaçado do mundo",
+  },
+  col_ch4_title: {
+    en: "The Cucapá & a Binational Delta",
+    es: "Los Cucapá y un Delta Binacional",
+    pt: "Os Cucapá e um Delta Binacional",
+  },
+  col_ch4_p1: {
+    en: "For over a thousand years, the Cucapá people, whose name means People of the River, have lived alongside the Colorado, fishing its channels and cultivating its floodplains. The delta has been their physical and spiritual home across generations. Today their fishing rights in the Upper Gulf of California are contested, and their traditional way of life is increasingly fragile.",
+    es: "Durante más de mil años, el pueblo Cucapá, cuyo nombre significa Gente del Río, ha vivido junto al Colorado, pescando en sus canales y cultivando sus llanuras de inundación. El delta ha sido su hogar físico y espiritual a través de las generaciones. Hoy sus derechos de pesca en el Alto Golfo de California son disputados, y su forma de vida tradicional es cada vez más frágil.",
+    pt: "Por mais de mil anos, o povo Cucapá, cujo nome significa Povo do Rio, viveu ao lado do Colorado, pescando em seus canais e cultivando suas várzeas. O delta tem sido seu lar físico e espiritual ao longo das gerações. Hoje seus direitos de pesca no Alto Golfo da Califórnia são contestados, e seu modo de vida tradicional é cada vez mais frágil.",
+  },
+  col_ch4_p2: {
+    en: "The delta also sits at the heart of a complex binational economy. The surrounding Mexicali Valley is one of Mexico's most productive agricultural regions, irrigated by the very water that was once meant for the delta's wetlands. Managing these competing demands across the US-Mexico border is one of the defining environmental negotiations of the 21st century.",
+    es: "El delta también se encuentra en el corazón de una compleja economía binacional. El circundante Valle de Mexicali es una de las regiones agrícolas más productivas de México, irrigada por el mismo agua que antes estaba destinada a los humedales del delta. Gestionar estas demandas en competencia a través de la frontera EE.UU.-México es una de las negociaciones ambientales definitorias del siglo XXI.",
+    pt: "O delta também fica no coração de uma complexa economia binacional. O circundante Vale de Mexicali é uma das regiões agrícolas mais produtivas do México, irrigada pela própria água que antes era destinada aos pântanos do delta. Gerenciar essas demandas concorrentes através da fronteira EUA-México é uma das negociações ambientais definidoras do século XXI.",
+  },
+  col_act_intro: {
+    en: "Discover the many ways to experience the Colorado Delta, from paddling the Rio Hardy to birdwatching at the Ciénega de Santa Clara.",
+    es: "Descubre las muchas formas de vivir el Delta del Colorado, desde remar por el Río Hardy hasta el avistamiento de aves en la Ciénega de Santa Clara.",
+    pt: "Descubra as muitas formas de vivenciar o Delta do Colorado, desde remar pelo Rio Hardy até observar aves na Ciénega de Santa Clara.",
+  },
+  col_act1_tag: { en: "Experience", es: "Experiencia", pt: "Experiência" },
+  col_act1_name: {
+    en: "Canoeing the Rio Hardy",
+    es: "Canoa por el Río Hardy",
+    pt: "Canoa pelo Rio Hardy",
+  },
+  col_act1_desc: {
+    en: "Paddle the Rio Hardy, the only stretch of the delta with year-round water flow, drifting past restored cottonwood banks and reed beds alive with herons, rails, and kingfishers. A glimpse of the old delta's beauty.",
+    es: "Rema por el Río Hardy, el único tramo del delta con flujo de agua durante todo el año, deslizándote junto a orillas de álamo restauradas y cañaverales vivos de garzas, rascones y martines pescadores. Un atisbo de la belleza del antiguo delta.",
+    pt: "Reme pelo Rio Hardy, o único trecho do delta com fluxo de água durante todo o ano, derivando por margens de álamo restauradas e caniçais vivos de garças, frango-d'agua e martins-pescadores. Um vislumbre da beleza do antigo delta.",
+  },
+  col_act2_tag: { en: "Nature", es: "Naturaleza", pt: "Natureza" },
+  col_act2_name: {
+    en: "Avian Expeditions",
+    es: "Expediciones de Aves",
+    pt: "Expedições de Aves",
+  },
+  col_act2_desc: {
+    en: "Visit the Ciénega de Santa Clara, the delta's largest remaining wetland, during migration season for some of the finest birdwatching in the American Southwest.",
+    es: "Visita la Ciénega de Santa Clara, el mayor humedal restante del delta, durante la temporada de migración para disfrutar del mejor avistamiento de aves del suroeste americano.",
+    pt: "Visite a Ciénega de Santa Clara, a maior zona úmida restante do delta, durante a temporada de migração para uma das melhores observações de aves do sudoeste americano.",
+  },
+  col_act3_tag: { en: "Culture", es: "Cultura", pt: "Cultura" },
+  col_act3_name: {
+    en: "Artisanal Fishing Tours",
+    es: "Tours de Pesca Artesanal",
+    pt: "Tours de Pesca Artesanal",
+  },
+  col_act3_desc: {
+    en: "Join local Cucapá fishermen on traditional excursions in the Upper Gulf, where tidal nutrients still support rich marine life near the delta's mouth.",
+    es: "Uúnete a pescadores cucapá locales en excursiones tradicionales en el Alto Golfo, donde los nutrientes de las mareas aún sustentan una rica vida marina cerca de la desembocadura del delta.",
+    pt: "Junte-se a pescadores cucapá locais em excursões tradicionais no Alto Golfo, onde os nutrientes das marés ainda sustentam rica vida marinha perto da foz do delta.",
+  },
+  col_act4_tag: {
+    en: "Wilderness",
+    es: "Naturaleza Salvaje",
+    pt: "Natureza Selvagem",
+  },
+  col_act4_name: {
+    en: "Desert Trail Hiking",
+    es: "Senderismo Desértico",
+    pt: "Trilhas no Deserto",
+  },
+  col_act4_desc: {
+    en: "Traverse the stark beauty where dunes meet restored wetland edges.",
+    es: "Atraviesa la austera belleza donde las dunas se encuentran con los bordes de los humedales restaurados.",
+    pt: "Atravesse a beleza austera onde as dunas encontram as bordas das zonas úmidas restauradas.",
+  },
+  col_gal1_cap: {
+    en: "Aerial view of the Colorado River's branching channels as they fade into the desert before the Gulf of California.",
+    es: "Vista aérea de los canales ramificados del Río Colorado al desvanecerse en el desierto antes del Golfo de California.",
+    pt: "Vista aérea dos canais ramificados do Rio Colorado enquanto se dissipam no deserto antes do Golfo da Califórnia.",
+  },
+  col_gal2_cap: {
+    en: "Restored cottonwood and willow groves at Laguna Grande, life returning to the delta.",
+    es: "Álamos y sauces restaurados en Laguna Grande, la vida regresando al delta.",
+    pt: "Álamos e salgueiros restaurados na Laguna Grande, a vida retornando ao delta.",
+  },
+  col_gal3_cap: {
+    en: "The Ciénaga de Santa Clara, the largest remaining wetland in the delta and a refuge for endangered birds.",
+    es: "La Ciénaga de Santa Clara, el mayor humedal restante del delta y refugio de aves en peligro.",
+    pt: "A Ciénaga de Santa Clara, a maior zona úmida restante no delta e refúgio para aves em perigo.",
+  },
+  col_gal4_cap: {
+    en: "Cracked mudflats where the Colorado once ran wide, a landscape awaiting water.",
+    es: "Llanuras de barro agrietadas donde el Colorado una vez corrió ancho, un paisaje que espera el agua.",
+    pt: "Planícies de lama rachadas onde o Colorado outrora correu largo, uma paisagem aguardando água.",
+  },
+  col_gal5_cap: {
+    en: "The Upper Gulf of California at dusk, home to the critically endangered Vaquita porpoise.",
+    es: "El Alto Golfo de California al atardecer, hogar de la vaquita marina en peligro crítico.",
+    pt: "O Alto Golfo da Califórnia ao entardecer, lar do boto vaquita em estado crítico de ameaça.",
+  },
+  /* ── Stat labels (were missing) ── */
+  galv_stat1_label: { en: "Area", es: "Área", pt: "Área" },
+  galv_stat2_label: { en: "Population", es: "Población", pt: "População" },
+  galv_stat3_label: { en: "Coastline", es: "Costa", pt: "Costa" },
+  galv_stat4_label: {
+    en: "Economic Value",
+    es: "Valor Económico",
+    pt: "Valor Econômico",
+  },
+  galv_ch1_title: {
+    en: "Area & Geography",
+    es: "Área y Geografía",
+    pt: "Área e Geografia",
+  },
+  galv_ch2_title: {
+    en: "Nature & Ecosystem",
+    es: "Naturaleza y Ecosistema",
+    pt: "Natureza e Ecossistema",
+  },
+  galv_ch3_title: {
+    en: "Coastline & Challenges",
+    es: "Costa y Desafíos",
+    pt: "Costa e Desafios",
+  },
+  galv_ch4_title: {
+    en: "Economy & Human Impact",
+    es: "Economía e Impacto Humano",
+    pt: "Economia e Impacto Humano",
+  },
+  galv_act1_name: {
+    en: "Kayaking & Boating",
+    es: "Kayak y Navegación",
+    pt: "Caiaque e Barco",
+  },
+
+  amaz_stat1_label: {
+    en: "Unique Feature",
+    es: "Característica Única",
+    pt: "Característica Única",
+  },
+  amaz_stat2_label: {
+    en: "Bird Species",
+    es: "Especies de Aves",
+    pt: "Espécies de Aves",
+  },
+  amaz_stat3_label: {
+    en: "Rainforest",
+    es: "Selva Tropical",
+    pt: "Floresta Tropical",
+  },
+  amaz_stat4_label: { en: "Cuisine", es: "Gastronomía", pt: "Gastronomia" },
+  amaz_stat4_value: {
+    en: "Açaí & Tucupi",
+    es: "Açaí y Tucupi",
+    pt: "Açaí e Tucupi",
+  },
+  amaz_ch2_title: {
+    en: "1,300 Bird Species & Counting",
+    es: "1.300 Especies de Aves y Contando",
+    pt: "1.300 Espécies de Aves e Contando",
+  },
+  amaz_ch4_title: {
+    en: "Açaí, Tucupi & the Flavours of Belém",
+    es: "Açaí, Tucupi y los Sabores de Belém",
+    pt: "Açaí, Tucupi e os Sabores de Belém",
+  },
+  amaz_act1_name: {
+    en: "Canoe & Riverboat Expeditions",
+    es: "Expediciones en Canoa y Barco",
+    pt: "Expedições de Canoa e Barco",
+  },
+  amaz_act2_name: {
+    en: "Jungle Lodges & Night Safaris",
+    es: "Lodges en la Selva y Safaris Nocturnos",
+    pt: "Lodges na Selva e Safáris Noturnos",
+  },
+
+  sanjuan_stat1_label: {
+    en: "Delta Area",
+    es: "Área del Delta",
+    pt: "Área do Delta",
+  },
+  sanjuan_stat2_label: {
+    en: "Annual Rainfall",
+    es: "Precipitación Anual",
+    pt: "Precipitação Anual",
+  },
+  sanjuan_stat3_label: { en: "Region", es: "Región", pt: "Região" },
+  sanjuan_stat4_label: {
+    en: "Delta Age",
+    es: "Edad del Delta",
+    pt: "Idade do Delta",
+  },
+
+  rio_stat1_label: {
+    en: "Bird Species",
+    es: "Especies de Aves",
+    pt: "Espécies de Aves",
+  },
+  rio_stat2_label: { en: "Wetlands", es: "Humedales", pt: "Zonas Úmidas" },
+  rio_stat3_label: { en: "One Delta", es: "Un Delta", pt: "Um Delta" },
+  rio_stat4_label: { en: "Cuisine", es: "Gastronomía", pt: "Gastronomia" },
+  rio_act1_name: {
+    en: "Resaca & River Fishing",
+    es: "Pesca en Resacas y el Río",
+    pt: "Pesca em Resacas e no Rio",
   },
 };
 
