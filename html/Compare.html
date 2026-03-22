@@ -18,20 +18,17 @@
         --mist: #e8dcc8;
         --fog: #f4ede0;
       }
-
       * {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: "Libre Baskerville", Georgia, serif;
         background: var(--mud);
         color: var(--mist);
         overflow-x: hidden;
       }
-
       body::before {
         content: "";
         position: fixed;
@@ -41,7 +38,6 @@
         opacity: 0.03;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-
       .hero {
         position: sticky;
         top: 0;
@@ -67,7 +63,6 @@
         transform: translateY(-100%);
         pointer-events: none;
       }
-
       .hero h1 {
         font-family: "Playfair Display", serif;
         color: var(--fog);
@@ -77,7 +72,6 @@
         text-transform: uppercase;
         text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
       }
-
       .top-nav {
         position: absolute;
         top: 22px;
@@ -100,17 +94,14 @@
       .top-nav a:hover {
         color: var(--sand);
       }
-
       main {
         max-width: 1000px;
         margin: 0 auto;
         padding: 80px 24px 120px;
       }
-
       section {
         margin-bottom: 80px;
       }
-
       h2 {
         font-family: "Playfair Display", serif;
         font-size: 2rem;
@@ -128,9 +119,7 @@
         height: 3px;
         background: var(--sand);
         margin-top: 10px;
-        border-radius: 0;
       }
-
       p {
         line-height: 1.85;
         font-size: 1rem;
@@ -143,7 +132,6 @@
         font-weight: 400;
         letter-spacing: 0.5px;
       }
-
       .metric-tabs {
         display: flex;
         flex-wrap: wrap;
@@ -173,7 +161,6 @@
         border-color: var(--sand);
         color: var(--mud);
       }
-
       .delta-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -235,7 +222,6 @@
       .delta-btn.selected .check {
         opacity: 1;
       }
-
       .chart-wrapper {
         background: rgba(255, 255, 255, 0.03);
         border-radius: 8px;
@@ -275,12 +261,10 @@
         text-align: center;
         margin: 0;
       }
-
       canvas {
         display: block;
         width: 100% !important;
       }
-
       .legend {
         display: flex;
         flex-wrap: wrap;
@@ -304,12 +288,10 @@
         border-radius: 3px;
         flex-shrink: 0;
       }
-
       #footer-placeholder {
         position: relative;
         z-index: 5;
       }
-
       @media (max-width: 600px) {
         .hero h1 {
           font-size: 2.2rem;
@@ -323,21 +305,23 @@
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html">← Back</a>
+        <a href="../index.html" data-lang-key="nav_overview">← Overview</a>
         <span id="last-delta-container"></span>
-        <a href="Contact.html">Contact</a>
+        <a href="Contact.html" data-lang-key="nav_contact">Contact</a>
+        <a href="#" data-lang-key="nav_language" onclick="return false;"
+          >Language</a
+        >
       </nav>
-      <h1>Delta Explorer</h1>
+      <h1 data-lang-key="compare_h1">Delta Explorer</h1>
     </header>
 
     <main>
       <section>
-        <h2>About Deltas</h2>
-        <p>
+        <h2 data-lang-key="compare_about_h2">About Deltas</h2>
+        <p data-lang-key="compare_about_p1">
           Deltas are among the most fascinating and diverse landforms on Earth.
           They form where rivers slow down and deposit their sediment load as
           they meet a larger, calmer body of water, whether that's an ocean,
@@ -345,7 +329,7 @@
           intricate networks of channels, wetlands, and islands that are unlike
           anywhere else on the planet.
         </p>
-        <p>
+        <p data-lang-key="compare_about_p2">
           For nature adventurers, deltas are a dream destination. They are home
           to extraordinary concentrations of wildlife: migratory birds, rare
           fish species, mammals, reptiles, and a dazzling variety of plant life
@@ -355,7 +339,7 @@
           sunrise, a delta offers experiences that few other landscapes can
           match.
         </p>
-        <p>
+        <p data-lang-key="compare_about_p3">
           From the icy, remote vastness of the Yukon Delta in Alaska to the
           dense, steaming jungle of the Amazon, every delta has its own
           character, rhythm, and set of wonders waiting to be explored.
@@ -363,15 +347,15 @@
       </section>
 
       <section id="compare">
-        <h2>Compare Deltas</h2>
-        <p>
+        <h2 data-lang-key="compare_compare_h2">Compare Deltas</h2>
+        <p data-lang-key="compare_compare_p1">
           Not all deltas are created equal, and for the adventurous traveller,
           the differences matter. Do you want the delta with the highest number
           of wildlife species, or the one with the most kayak routes? Are you
           looking for a place with extensive hiking trails, or a well-protected
           natural reserve system?
         </p>
-        <p>
+        <p data-lang-key="compare_compare_p2">
           Use the tool below to compare deltas side by side. Select one or more
           deltas by clicking on them, then switch between metrics to find the
           destination that matches your sense of adventure.
@@ -381,7 +365,13 @@
         <div class="metric-tabs" id="metricTabs"></div>
 
         <div class="chart-wrapper">
-          <div class="chart-label" id="chartLabel">Select a delta to begin</div>
+          <div
+            class="chart-label"
+            id="chartLabel"
+            data-lang-key="compare_chart_prompt"
+          >
+            Select a delta to begin
+          </div>
           <div id="chartPlaceholder" class="chart-placeholder">
             <svg
               width="64"
@@ -402,49 +392,77 @@
               <circle cx="40" cy="12" r="3" fill="#c9a96e" />
               <circle cx="56" cy="28" r="3" fill="#c9a96e" />
             </svg>
-            <p>Select deltas above<br />to see the comparison</p>
+            <p data-lang-key="compare_chart_hint">
+              Select deltas above<br />to see the comparison
+            </p>
           </div>
           <canvas id="myChart" style="display: none"></canvas>
           <div class="legend" id="legend"></div>
         </div>
 
         <div style="margin-top: 40px">
-          <h2>Metric Explanations</h2>
+          <h2 data-lang-key="compare_metrics_h2">Metric Explanations</h2>
           <p>
-            <strong>Wildlife Species:</strong> The total number of bird, mammal,
-            reptile, and amphibian species recorded in and around the delta. A
-            higher number means more opportunities for wildlife watching and
-            nature photography.
+            <strong data-lang-key="compare_metric1_label"
+              >Wildlife Species:</strong
+            >
+            <span data-lang-key="compare_metric1_desc"
+              >The total number of bird, mammal, reptile, and amphibian species
+              recorded in and around the delta. A higher number means more
+              opportunities for wildlife watching and nature photography.</span
+            >
           </p>
           <p>
-            <strong>Hiking Trails (km):</strong> The total length of marked and
-            maintained hiking trails through the delta region. More kilometres
-            means more ground to explore on foot, from short walks to multi-day
-            treks.
+            <strong data-lang-key="compare_metric2_label"
+              >Hiking Trails (km):</strong
+            >
+            <span data-lang-key="compare_metric2_desc"
+              >The total length of marked and maintained hiking trails through
+              the delta region. More kilometres means more ground to explore on
+              foot, from short walks to multi-day treks.</span
+            >
           </p>
           <p>
-            <strong>Kayak Routes:</strong> The number of navigable kayak and
-            canoe routes through the delta's waterways. Deltas with many routes
-            offer the most variety for paddling adventurers, from calm
-            backwaters to open channels.
+            <strong data-lang-key="compare_metric3_label">Kayak Routes:</strong>
+            <span data-lang-key="compare_metric3_desc"
+              >The number of navigable kayak and canoe routes through the
+              delta's waterways. Deltas with many routes offer the most variety
+              for paddling adventurers, from calm backwaters to open
+              channels.</span
+            >
           </p>
           <p>
-            <strong>Nature Reserves:</strong> The number of officially protected
-            nature areas within or directly bordering the delta. More reserves
-            generally means better-preserved ecosystems, stricter conservation,
-            and a wilder experience.
+            <strong data-lang-key="compare_metric4_label"
+              >Nature Reserves:</strong
+            >
+            <span data-lang-key="compare_metric4_desc"
+              >The number of officially protected nature areas within or
+              directly bordering the delta. More reserves generally means
+              better-preserved ecosystems, stricter conservation, and a wilder
+              experience.</span
+            >
           </p>
           <p>
-            <strong>Water Visibility (m):</strong> The average underwater
-            visibility in metres. Higher visibility is ideal for snorkelling,
-            diving, and observing aquatic life. Many delta rivers carry heavy
-            sediment, so visibility can vary greatly.
+            <strong data-lang-key="compare_metric5_label"
+              >Water Visibility (m):</strong
+            >
+            <span data-lang-key="compare_metric5_desc"
+              >The average underwater visibility in metres. Higher visibility is
+              ideal for snorkelling, diving, and observing aquatic life. Many
+              delta rivers carry heavy sediment, so visibility can vary
+              greatly.</span
+            >
           </p>
           <p>
-            <strong>Best Season Score:</strong> A score out of 10 reflecting how
-            favourable the best visiting season is, based on weather conditions,
-            accessibility, wildlife activity, and overall comfort for outdoor
-            adventures. A 10 means near-perfect conditions during peak season.
+            <strong data-lang-key="compare_metric6_label"
+              >Best Season Score:</strong
+            >
+            <span data-lang-key="compare_metric6_desc"
+              >A score out of 10 reflecting how favourable the best visiting
+              season is, based on weather conditions, accessibility, wildlife
+              activity, and overall comfort for outdoor adventures. A 10 means
+              near-perfect conditions during peak season.</span
+            >
           </p>
         </div>
       </section>
@@ -609,7 +627,6 @@
         "avg_visibility_m",
         "best_season_score",
       ];
-      // Propagate labels/units from mississippi to others
       metricKeys.forEach((k) => {
         const ref = deltas.mississippi.metrics[k];
         Object.values(deltas).forEach((d) => {
@@ -627,11 +644,7 @@
         const btn = document.createElement("button");
         btn.className = "delta-btn";
         btn.dataset.key = key;
-        btn.innerHTML = `
-        <span class="btn-name">${d.name}</span>
-        <span class="btn-country">${d.country}</span>
-        <span class="check">✓</span>
-      `;
+        btn.innerHTML = `<span class="btn-name">${d.name}</span><span class="btn-country">${d.country}</span><span class="check">✓</span>`;
         btn.addEventListener("click", () => toggleDelta(key, btn, d.color));
         grid.appendChild(btn);
       });
@@ -676,45 +689,38 @@
         const placeholder = document.getElementById("chartPlaceholder");
         const legendEl = document.getElementById("legend");
         const chartLabel = document.getElementById("chartLabel");
-
         if (selectedDeltas.size === 0) {
           canvas.style.display = "none";
           placeholder.style.display = "flex";
           legendEl.innerHTML = "";
-          chartLabel.textContent = "Select a delta to begin";
+          chartLabel.textContent = chartLabel.dataset.langKey
+            ? window.__LANG_TRANSLATIONS?.[chartLabel.dataset.langKey]?.[
+                window.__LANG_CURRENT || "en"
+              ] || "Select a delta to begin"
+            : "Select a delta to begin";
           if (chartInstance) {
             chartInstance.destroy();
             chartInstance = null;
           }
           return;
         }
-
         placeholder.style.display = "none";
         canvas.style.display = "block";
-
         const firstKey = [...selectedDeltas][0];
         const metricInfo = deltas[firstKey].metrics[activeMetric];
         chartLabel.textContent = `${metricInfo.label} (${metricInfo.unit})`;
-
         const labels = [...selectedDeltas].map((k) => deltas[k].name);
         const values = [...selectedDeltas].map(
           (k) => deltas[k].metrics[activeMetric].value,
         );
         const colors = [...selectedDeltas].map((k) => deltas[k].color);
         const colorsFaded = colors.map((c) => c + "bb");
-
         legendEl.innerHTML = "";
         [...selectedDeltas].forEach((k) => {
           const d = deltas[k];
-          legendEl.innerHTML += `
-          <div class="legend-item">
-            <span class="legend-dot" style="background:${d.color}"></span>
-            ${d.name} <span style="opacity:0.5">${d.country}</span>
-          </div>`;
+          legendEl.innerHTML += `<div class="legend-item"><span class="legend-dot" style="background:${d.color}"></span>${d.name} <span style="opacity:0.5">${d.country}</span></div>`;
         });
-
         if (chartInstance) chartInstance.destroy();
-
         const ctx = canvas.getContext("2d");
         chartInstance = new Chart(ctx, {
           type: "bar",
@@ -805,5 +811,6 @@
         container.appendChild(link);
       }
     </script>
+    <script src="../lang.js"></script>
   </body>
 </html>

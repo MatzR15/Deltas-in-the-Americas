@@ -43,7 +43,6 @@
         opacity: 0.03;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-
       .hero {
         position: sticky;
         top: 0;
@@ -138,13 +137,11 @@
           transform: translateY(0);
         }
       }
-
       .page {
         position: relative;
         z-index: 5;
         background: var(--mud);
       }
-
       .stat-strip {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -213,7 +210,6 @@
         color: rgba(232, 220, 200, 0.55);
         margin-top: 4px;
       }
-
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -293,7 +289,6 @@
         background: var(--sand);
         margin: 28px 0;
       }
-
       .image-break {
         height: 50vh;
         background-attachment: fixed;
@@ -326,7 +321,6 @@
         white-space: nowrap;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
-
       .img-credit {
         position: absolute;
         bottom: 10px;
@@ -337,7 +331,6 @@
         z-index: 3;
         pointer-events: none;
       }
-
       .activities-section {
         padding: 100px 80px;
       }
@@ -440,7 +433,6 @@
       .activity-card:hover .activity-desc {
         max-height: 200px;
       }
-
       .gallery-section {
         padding: 0 80px 100px;
       }
@@ -499,12 +491,10 @@
       .gallery-tile:first-child .gallery-tile-caption {
         font-size: 0.92rem;
       }
-
       #footer-placeholder {
         position: relative;
         z-index: 5;
       }
-
       @media (max-width: 900px) {
         .chapter-opener,
         .chapter-opener.flip {
@@ -567,11 +557,15 @@
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html#deltas">← Overview</a>
-        <a href="Compare.html">Compare</a>
-        <a href="Contact.html">Contact</a>
+        <a href="../index.html#deltas" data-lang-key="nav_overview"
+          >← Overview</a
+        >
+        <a href="Compare.html" data-lang-key="nav_compare">Compare</a>
+        <a href="Contact.html" data-lang-key="nav_contact">Contact</a>
       </nav>
-      <div class="hero-eyebrow">Expedition Field Notes</div>
+      <div class="hero-eyebrow" data-lang-key="delta_eyebrow">
+        Expedition Field Notes
+      </div>
       <h1>San Juan<em>Delta</em></h1>
       <span class="hero-credit">© NASA / USGS</span>
     </header>
@@ -580,31 +574,46 @@
       <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#area" class="stat-tile">
-          <div class="stat-value">800 km²</div>
+          <div class="stat-value" data-lang-key="sanjuan_stat1_value">
+            800 km²
+          </div>
           <div class="stat-label">Delta Area</div>
-          <div class="stat-desc">Largest on South America's Pacific coast</div>
+          <div class="stat-desc" data-lang-key="sanjuan_stat1_desc">
+            Largest on South America's Pacific coast
+          </div>
         </a>
         <a href="#nature" class="stat-tile">
-          <div class="stat-value">11,000 mm</div>
+          <div class="stat-value" data-lang-key="sanjuan_stat2_value">
+            11,000 mm
+          </div>
           <div class="stat-label">Annual Rainfall</div>
-          <div class="stat-desc">One of the wettest places on Earth</div>
+          <div class="stat-desc" data-lang-key="sanjuan_stat2_desc">
+            One of the wettest places on Earth
+          </div>
         </a>
         <a href="#coastline" class="stat-tile">
-          <div class="stat-value">Chocó</div>
+          <div class="stat-value" data-lang-key="sanjuan_stat3_value">
+            Chocó
+          </div>
           <div class="stat-label">Region</div>
-          <div class="stat-desc">Colombia's biodiversity hotspot</div>
+          <div class="stat-desc" data-lang-key="sanjuan_stat3_desc">
+            Colombia's biodiversity hotspot
+          </div>
         </a>
         <a href="#economy" class="stat-tile">
-          <div class="stat-value">5,000 BP</div>
+          <div class="stat-value" data-lang-key="sanjuan_stat4_value">
+            5,000 BP
+          </div>
           <div class="stat-label">Delta Age</div>
-          <div class="stat-desc">Years of continuous growth</div>
+          <div class="stat-desc" data-lang-key="sanjuan_stat4_desc">
+            Years of continuous growth
+          </div>
         </a>
       </div>
 
-      <!-- CHAPTER 1: THE DELTA -->
+      <!-- CHAPTER 1 -->
       <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
-          <!-- vervang sanjuan-channels.jpg met de juiste bestandsnaam -->
           <img
             src="../imgs/river-meets-ocean.jpg"
             alt="Aerial view of the San Juan delta channels meeting the Pacific Ocean"
@@ -613,11 +622,15 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">Where the Andes Meet the Pacific</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="sanjuan_ch1_title">
+            Where the Andes Meet the Pacific
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
+            <p data-lang-key="sanjuan_ch1_p1">
               The Río San Juan begins high in the Western Andes on Cerro
               Caramanta and travels 380 kilometres through the rainforests of
               Colombia's Chocó department before fanning out into the Pacific
@@ -627,7 +640,7 @@
               islands shaped by the constant tug-of-war between river force and
               ocean swell.
             </p>
-            <p>
+            <p data-lang-key="sanjuan_ch1_p2">
               The dry season from December through March offers the best
               conditions for exploring the delta. Water levels settle, making
               boat navigation through the smaller channels easier, and wildlife
@@ -639,26 +652,24 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang sanjuan-flood.jpg met de juiste bestandsnaam -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/sanjuan-flooding.jpg&quot;)"
       >
-        <span class="image-break-label"
+        <span class="image-break-label" data-lang-key="sanjuan_break1_label"
           >The San Juan River at peak discharge, swelling toward the
           Pacific</span
         >
         <span class="img-credit">© This Is My Earth / Chocó Forest</span>
       </div>
 
-      <!-- CHAPTER 2: BIODIVERSITY -->
+      <!-- CHAPTER 2 -->
       <div
         id="nature"
         class="chapter-opener flip"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- vervang scarlet-ibis.jpg met de juiste bestandsnaam -->
           <img
             src="../imgs/whatthebirb.png"
             alt="Wildlife of the Chocó rainforest surrounding the San Juan Delta"
@@ -667,11 +678,15 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">The Chocó: A Biodiversity Hotspot</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="sanjuan_ch2_title">
+            The Chocó: A Biodiversity Hotspot
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
+            <p data-lang-key="sanjuan_ch2_p1">
               The San Juan Delta sits at the heart of the Chocó biogeographic
               region, one of the most biodiverse places on the planet. The
               extreme rainfall, up to 11,000 mm per year, feeds forests of
@@ -680,7 +695,7 @@
               share a landscape that has remained largely untouched by roads or
               industrial development.
             </p>
-            <p>
+            <p data-lang-key="sanjuan_ch2_p2">
               The mangrove forests fringing the delta's distributaries are among
               the most productive in the Americas. Dense stands of red and black
               mangrove provide shelter and nursery grounds for countless fish
@@ -693,25 +708,23 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang capybara-delta.jpg met de juiste bestandsnaam -->
       <div
         class="image-break"
-        style="background-image: url(&quot;../imgs/capybara-delta.jpg&quot;)"
+        style="background-image: url(&quot;../imgs/mangroves.jpg&quot;)"
       >
-        <span class="image-break-label"
+        <span class="image-break-label" data-lang-key="sanjuan_break2_label"
           >Dense mangrove channels threading through the delta interior</span
         >
         <span class="img-credit">© only.one / Colombia Marine</span>
       </div>
 
-      <!-- CHAPTER 3: THE RIVER -->
+      <!-- CHAPTER 3 -->
       <div
         id="coastline"
         class="chapter-opener"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- vervang sanjuan-sunset-river.jpg met de juiste bestandsnaam -->
           <img
             src="../imgs/sanjuan-river.jpeg"
             alt="The Río San Juan flowing through Chocó rainforest toward the Pacific"
@@ -720,13 +733,15 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="sanjuan_ch3_title">
             The Fastest-Growing Delta on the West Coast
           </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
+            <p data-lang-key="sanjuan_ch3_p1">
               The Río San Juan carries an average of 2,550 cubic metres of water
               per second into the Pacific, the highest discharge of any river on
               the west coast of South America. This immense flow also carries an
@@ -736,7 +751,7 @@
               shows consistent advance of the delta front, even as rising sea
               levels and tectonic activity work against it.
             </p>
-            <p>
+            <p data-lang-key="sanjuan_ch3_p2">
               The Pacific coast of Colombia is one of the most geologically
               active zones on Earth. The Nazca oceanic plate grinds beneath the
               South American plate at 54 mm per year, producing frequent
@@ -750,28 +765,26 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang warao-stilt-houses.jpg met de juiste bestandsnaam -->
       <div
         class="image-break"
         style="
-          background-image: url(&quot;../imgs/warao-stilt-houses.jpg&quot;);
+          background-image: url(&quot;../imgs/colombian-culture.avif&quot;);
         "
       >
-        <span class="image-break-label"
+        <span class="image-break-label" data-lang-key="sanjuan_break3_label"
           >Traditional Afro-Colombian fishing communities along the delta
           channels</span
         >
         <span class="img-credit">© NPR / Afro-Colombian Community</span>
       </div>
 
-      <!-- CHAPTER 4: PEOPLE & CULTURE -->
+      <!-- CHAPTER 4 -->
       <div
         id="economy"
         class="chapter-opener flip"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- vervang moriche-palm-food.jpg met de juiste bestandsnaam -->
           <img
             src="../imgs/fishing-colombia.jpg"
             alt="Afro-Colombian and indigenous communities of the San Juan Delta"
@@ -780,11 +793,15 @@
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
-          <div class="chapter-label">Field Notes</div>
-          <h2 class="chapter-title">Afro-Colombian Communities of the Chocó</h2>
+          <div class="chapter-label" data-lang-key="delta_field_notes">
+            Field Notes
+          </div>
+          <h2 class="chapter-title" data-lang-key="sanjuan_ch4_title">
+            Afro-Colombian Communities of the Chocó
+          </h2>
           <div class="chapter-divider"></div>
           <div class="chapter-body">
-            <p>
+            <p data-lang-key="sanjuan_ch4_p1">
               The San Juan Delta and the surrounding Chocó lowlands are home to
               some of Colombia's most resilient communities. Afro-Colombian
               families have fished these waters and farmed these forests for
@@ -794,7 +811,7 @@
               extraordinary, built over centuries of intimate coexistence with
               one of the world's most demanding environments.
             </p>
-            <p>
+            <p data-lang-key="sanjuan_ch4_p2">
               The delta region has historically been among the most isolated in
               Colombia, accessible only by river or sea, with no road
               connections to the interior. This isolation has preserved its
@@ -808,12 +825,11 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang tucupita-market.jpg met de juiste bestandsnaam -->
       <div
         class="image-break"
-        style="background-image: url(&quot;../imgs/tucupita-market.jpg&quot;)"
+        style="background-image: url(&quot;../imgs/fish-market.jpg&quot;)"
       >
-        <span class="image-break-label"
+        <span class="image-break-label" data-lang-key="sanjuan_break4_label"
           >Local fishing culture at the heart of delta life in Chocó</span
         >
         <span class="img-credit">© Rio on Watch</span>
@@ -822,8 +838,13 @@
       <!-- ACTIVITIES -->
       <div class="activities-section">
         <div class="section-intro">
-          <h2>Activities &<br /><em>Adventures</em></h2>
-          <p>
+          <h2>
+            <span data-lang-key="delta_activities">Activities &</span><br /><em
+              data-lang-key="delta_adventures"
+              >Adventures</em
+            >
+          </h2>
+          <p data-lang-key="sanjuan_act_intro">
             Discover the many ways to experience the San Juan Delta, from dugout
             canoe trips through pristine mangroves to birdwatching in one of
             Earth's richest forests.
@@ -831,16 +852,19 @@
         </div>
         <div class="activity-grid">
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- vervang sanjuan-kayak.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/sanjuan-kayak.jpg"
               alt="Dugout canoe through mangrove channels of the San Juan Delta"
             />
             <span class="img-credit">© The Dyrt</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Paddle</div>
-              <div class="activity-name">Canoe the Delta Channels</div>
-              <div class="activity-desc">
+              <div class="activity-tag" data-lang-key="sanjuan_act1_tag">
+                Paddle
+              </div>
+              <div class="activity-name" data-lang-key="sanjuan_act1_name">
+                Canoe the Delta Channels
+              </div>
+              <div class="activity-desc" data-lang-key="sanjuan_act1_desc">
                 Travel by traditional dugout canoe through the delta's tidal
                 distributaries, slipping between towering mangrove roots while
                 local guides point out caimans, river otters, and the countless
@@ -850,16 +874,19 @@
           </a>
 
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- vervang warao-village-visit.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/afro-colombians.jpeg"
               alt="Visit an Afro-Colombian or Emberá community in the Chocó"
             />
             <span class="img-credit">© NPR / Afro-Colombian Community</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Culture</div>
-              <div class="activity-name">Community Visits</div>
-              <div class="activity-desc">
+              <div class="activity-tag" data-lang-key="sanjuan_act2_tag">
+                Culture
+              </div>
+              <div class="activity-name" data-lang-key="sanjuan_act2_name">
+                Community Visits
+              </div>
+              <div class="activity-desc" data-lang-key="sanjuan_act2_desc">
                 Meet the Afro-Colombian and Emberá communities who have lived
                 along these rivers for generations, and learn about their
                 traditions, fishing practices, and deep knowledge of the Chocó
@@ -869,16 +896,19 @@
           </a>
 
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- vervang ibis-birdwatching.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/scarlet-ibis.jpeg"
               alt="Birdwatching in the Chocó rainforest near the San Juan Delta"
             />
             <span class="img-credit">© CGTN News</span>
             <div class="activity-overlay">
-              <div class="activity-tag">Wildlife</div>
-              <div class="activity-name">Birdwatching in the Chocó</div>
-              <div class="activity-desc">
+              <div class="activity-tag" data-lang-key="sanjuan_act3_tag">
+                Wildlife
+              </div>
+              <div class="activity-name" data-lang-key="sanjuan_act3_name">
+                Birdwatching in the Chocó
+              </div>
+              <div class="activity-desc" data-lang-key="sanjuan_act3_desc">
                 The Chocó is one of the world's premier birdwatching
                 destinations, with hundreds of endemic species. Guided walks
                 through the forest at dawn offer encounters with rare species
@@ -891,67 +921,64 @@
 
       <!-- GALLERY -->
       <div class="gallery-section" id="gallery">
-        <h2 class="gallery-heading">Delta Gallery</h2>
+        <h2 class="gallery-heading" data-lang-key="delta_gallery">
+          Delta Gallery
+        </h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <!-- vervang sanjuan-delta-aerial.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/San-Juan_delta.jpg"
               alt="Aerial view of the San Juan Delta meeting the Pacific Ocean"
             />
-            <div class="gallery-tile-caption">
+            <div class="gallery-tile-caption" data-lang-key="sanjuan_gal1_cap">
               Aerial view of the Río San Juan fanning into the Pacific Ocean
               across 800 km² of delta plain.
             </div>
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang sanjuan-moriche-palms.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/mangrove bos.jpeg"
               alt="Mangrove forest along the distributary channels of the San Juan Delta"
             />
             <span class="img-credit">© National Geographic</span>
-            <div class="gallery-tile-caption">
+            <div class="gallery-tile-caption" data-lang-key="sanjuan_gal2_cap">
               Dense mangrove forests line the distributary channels, providing
               habitat for countless fish, birds, and mammals.
             </div>
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang sanjuan-ibis-sunset.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/sunset-sanjuan.avif"
               alt="Sunset over the Pacific from the San Juan Delta coastline"
             />
             <span class="img-credit">© Earth Experience / Utría NP</span>
-            <div class="gallery-tile-caption">
+            <div class="gallery-tile-caption" data-lang-key="sanjuan_gal3_cap">
               The Pacific horizon at dusk, seen from the delta's advancing
               shoreline of barrier islands and beach ridges.
             </div>
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang scarlet-ibis.jpg (gallery) met de juiste bestandsnaam -->
             <img
               src="../imgs/jaguar.jpg"
               alt="Wildlife of the Chocó, one of the world's most biodiverse regions"
             />
             <span class="img-credit">© Colombia One</span>
-            <div class="gallery-tile-caption">
+            <div class="gallery-tile-caption" data-lang-key="sanjuan_gal4_cap">
               The Chocó bioregion surrounding the delta is home to a staggering
               density of endemic species.
             </div>
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang warao-stilt-houses.jpg (gallery) met de juiste bestandsnaam -->
             <img
               src="../imgs/stilthouses.jpg"
               alt="Traditional stilt houses of Afro-Colombian communities over the delta waterways"
             />
             <span class="img-credit">© Rio on Watch</span>
-            <div class="gallery-tile-caption">
+            <div class="gallery-tile-caption" data-lang-key="sanjuan_gal5_cap">
               Afro-Colombian and Emberá communities build their lives directly
               over the water, perfectly adapted to the delta's rhythms.
             </div>
@@ -973,5 +1000,6 @@
           document.getElementById("footer-placeholder").innerHTML = d;
         });
     </script>
+    <script src="../lang.js"></script>
   </body>
 </html>
