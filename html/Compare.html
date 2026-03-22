@@ -46,17 +46,17 @@
           linear-gradient(
             to bottom,
             rgba(20, 10, 5, 0.3) 0%,
-            rgba(20, 10, 5, 0.72) 100%
+            rgba(20, 10, 5, 0.75) 100%
           ),
-          url("https://images.unsplash.com/photo-1501785888041-af3ef285b470")
-            center/cover no-repeat;
+          url("../imgs/Mississippi_delta.webp") center/cover no-repeat;
         display: flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition:
-          opacity 0.5s ease,
-          transform 0.5s ease;
         z-index: 10;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
       .hero.hidden {
         opacity: 0;
@@ -68,9 +68,26 @@
         color: var(--fog);
         font-size: clamp(2.5rem, 6vw, 5rem);
         font-weight: 900;
-        letter-spacing: 3px;
         text-transform: uppercase;
-        text-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+        letter-spacing: -2px;
+        text-align: center;
+      }
+      .hero h1 em {
+        display: block;
+        font-style: italic;
+        color: var(--sand);
+        font-size: 0.5em;
+        font-weight: 400;
+        letter-spacing: 4px;
+      }
+      .hero-eyebrow {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.8rem;
+        letter-spacing: 8px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 14px;
       }
       .top-nav {
         position: absolute;
@@ -83,10 +100,9 @@
       .top-nav a {
         color: rgba(255, 255, 255, 0.8);
         text-decoration: none;
-        margin-left: 20px;
         font-family: "Oswald", sans-serif;
         font-weight: 300;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         letter-spacing: 2px;
         text-transform: uppercase;
         transition: color 0.3s;
@@ -98,6 +114,8 @@
         max-width: 1000px;
         margin: 0 auto;
         padding: 80px 24px 120px;
+        position: relative;
+        z-index: 5;
       }
       section {
         margin-bottom: 80px;
@@ -107,10 +125,9 @@
         font-size: 2rem;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 8px;
+        letter-spacing: -0.5px;
         color: var(--fog);
-        display: inline-block;
+        margin-bottom: 32px;
       }
       h2::after {
         content: "";
@@ -148,9 +165,9 @@
         font-size: 0.75rem;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: rgba(232, 220, 200, 0.5);
+        color: rgba(232, 220, 200, 0.55);
         cursor: pointer;
-        transition: all 0.2s;
+        transition: all 0.25s;
       }
       .metric-tab:hover {
         border-color: var(--sand);
@@ -174,8 +191,8 @@
         border: 1px solid var(--earth);
         background: rgba(255, 255, 255, 0.03);
         cursor: pointer;
+        transition: all 0.25s;
         text-align: left;
-        transition: all 0.2s;
       }
       .delta-btn:hover {
         border-color: var(--sand);
@@ -194,15 +211,15 @@
         font-size: 0.95rem;
         color: var(--fog);
         display: block;
-        margin-bottom: 4px;
       }
       .delta-btn .btn-country {
         font-family: "Oswald", sans-serif;
         font-weight: 300;
         font-size: 0.7rem;
-        letter-spacing: 2px;
-        text-transform: uppercase;
+        letter-spacing: 1px;
         color: rgba(232, 220, 200, 0.45);
+        display: block;
+        margin-top: 4px;
       }
       .delta-btn .check {
         position: absolute;
@@ -211,13 +228,13 @@
         width: 18px;
         height: 18px;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.25);
+        opacity: 0;
+        transition: opacity 0.2s;
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 10px;
-        opacity: 0;
-        transition: opacity 0.2s;
       }
       .delta-btn.selected .check {
         opacity: 1;
@@ -228,8 +245,6 @@
         border: 1px solid var(--earth);
         padding: 32px;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
-        min-height: 420px;
-        position: relative;
       }
       .chart-label {
         font-family: "Oswald", sans-serif;
@@ -245,8 +260,8 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        height: 340px;
-        gap: 12px;
+        height: 260px;
+        gap: 16px;
       }
       .chart-placeholder svg {
         opacity: 0.2;
@@ -257,7 +272,7 @@
         font-size: 0.75rem;
         letter-spacing: 3px;
         text-transform: uppercase;
-        color: rgba(232, 220, 200, 0.25);
+        color: rgba(232, 220, 200, 0.3);
         text-align: center;
         margin: 0;
       }
@@ -288,34 +303,85 @@
         border-radius: 3px;
         flex-shrink: 0;
       }
+      /* Season chart */
+      .season-wrapper {
+        display: none;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 8px;
+        border: 1px solid var(--earth);
+        padding: 32px;
+      }
+      .season-wrapper.visible {
+        display: block;
+      }
+      .season-heading {
+        font-family: "Oswald", sans-serif;
+        font-weight: 400;
+        font-size: 0.85rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+        margin-bottom: 20px;
+      }
+      .season-month-row {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: 4px;
+        margin-bottom: 4px;
+      }
+      .season-month-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: rgba(232, 220, 200, 0.35);
+        text-align: center;
+      }
+      .season-delta-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.72rem;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        margin: 14px 0 5px;
+      }
+      .season-cell {
+        height: 28px;
+        border-radius: 4px;
+      }
+      .season-note {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.65rem;
+        letter-spacing: 1px;
+        color: rgba(232, 220, 200, 0.28);
+        margin-top: 18px;
+        text-transform: uppercase;
+      }
       #footer-placeholder {
         position: relative;
         z-index: 5;
-      }
-      @media (max-width: 600px) {
-        .hero h1 {
-          font-size: 2.2rem;
-        }
-        .top-nav {
-          right: 16px;
-        }
-        .delta-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
       }
     </style>
   </head>
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
-        <a href="../index.html" data-lang-key="nav_overview">← Overview</a>
-        <span id="last-delta-container"></span>
-        <a href="Contact.html" data-lang-key="nav_contact">Contact</a>
-        <a href="#" data-lang-key="nav_language" onclick="return false;"
-          >Language</a
+        <a href="../index.html#deltas" data-lang-key="nav_overview"
+          >← Overview</a
         >
+        <a href="Contact.html" data-lang-key="nav_contact">Contact</a>
+        <a href="#" data-lang-key="nav_language">Language</a>
       </nav>
-      <h1 data-lang-key="compare_h1">Delta Explorer</h1>
+      <div class="hero-eyebrow" data-lang-key="delta_eyebrow">
+        Expedition Field Notes
+      </div>
+      <h1>
+        <span data-lang-key="compare_about_h2">Delta Explorer</span
+        ><em data-lang-key="nav_compare">Compare</em>
+      </h1>
     </header>
 
     <main>
@@ -323,47 +389,32 @@
         <h2 data-lang-key="compare_about_h2">About Deltas</h2>
         <p data-lang-key="compare_about_p1">
           Deltas are among the most fascinating and diverse landforms on Earth.
-          They form where rivers slow down and deposit their sediment load as
-          they meet a larger, calmer body of water, whether that's an ocean,
-          sea, or lake. Over thousands of years, these deposits build up into
-          intricate networks of channels, wetlands, and islands that are unlike
-          anywhere else on the planet.
         </p>
         <p data-lang-key="compare_about_p2">
-          For nature adventurers, deltas are a dream destination. They are home
-          to extraordinary concentrations of wildlife: migratory birds, rare
-          fish species, mammals, reptiles, and a dazzling variety of plant life
-          all thrive in these transitional zones between freshwater and
-          saltwater. Whether you're paddling through flooded forest, trekking
-          along muddy riverbanks, or watching a flock of herons take flight at
-          sunrise, a delta offers experiences that few other landscapes can
-          match.
+          For nature adventurers, deltas are a dream destination.
         </p>
         <p data-lang-key="compare_about_p3">
-          From the icy, remote vastness of the Yukon Delta in Alaska to the
-          dense, steaming jungle of the Amazon, every delta has its own
-          character, rhythm, and set of wonders waiting to be explored.
+          Each delta in this collection has its own character, climate, and
+          culture.
         </p>
       </section>
 
-      <section id="compare">
+      <section>
         <h2 data-lang-key="compare_compare_h2">Compare Deltas</h2>
         <p data-lang-key="compare_compare_p1">
-          Not all deltas are created equal, and for the adventurous traveller,
-          the differences matter. Do you want the delta with the highest number
-          of wildlife species, or the one with the most kayak routes? Are you
-          looking for a place with extensive hiking trails, or a well-protected
-          natural reserve system?
+          Select one or more deltas below, then pick a metric to compare.
         </p>
         <p data-lang-key="compare_compare_p2">
-          Use the tool below to compare deltas side by side. Select one or more
-          deltas by clicking on them, then switch between metrics to find the
-          destination that matches your sense of adventure.
+          You can select multiple deltas at the same time.
         </p>
 
+        <!-- DELTA SELECTOR -->
         <div class="delta-grid" id="deltaGrid"></div>
+
+        <!-- METRIC TABS -->
         <div class="metric-tabs" id="metricTabs"></div>
 
+        <!-- BAR CHART -->
         <div class="chart-wrapper">
           <div
             class="chart-label"
@@ -400,78 +451,83 @@
           <div class="legend" id="legend"></div>
         </div>
 
-        <div style="margin-top: 40px">
-          <h2 data-lang-key="compare_metrics_h2">Metric Explanations</h2>
-          <p>
-            <strong data-lang-key="compare_metric1_label"
-              >Wildlife Species:</strong
-            >
-            <span data-lang-key="compare_metric1_desc"
-              >The total number of bird, mammal, reptile, and amphibian species
-              recorded in and around the delta. A higher number means more
-              opportunities for wildlife watching and nature photography.</span
-            >
-          </p>
-          <p>
-            <strong data-lang-key="compare_metric2_label"
-              >Hiking Trails (km):</strong
-            >
-            <span data-lang-key="compare_metric2_desc"
-              >The total length of marked and maintained hiking trails through
-              the delta region. More kilometres means more ground to explore on
-              foot, from short walks to multi-day treks.</span
-            >
-          </p>
-          <p>
-            <strong data-lang-key="compare_metric3_label">Kayak Routes:</strong>
-            <span data-lang-key="compare_metric3_desc"
-              >The number of navigable kayak and canoe routes through the
-              delta's waterways. Deltas with many routes offer the most variety
-              for paddling adventurers, from calm backwaters to open
-              channels.</span
-            >
-          </p>
-          <p>
-            <strong data-lang-key="compare_metric4_label"
-              >Nature Reserves:</strong
-            >
-            <span data-lang-key="compare_metric4_desc"
-              >The number of officially protected nature areas within or
-              directly bordering the delta. More reserves generally means
-              better-preserved ecosystems, stricter conservation, and a wilder
-              experience.</span
-            >
-          </p>
-          <p>
-            <strong data-lang-key="compare_metric5_label"
-              >Water Visibility (m):</strong
-            >
-            <span data-lang-key="compare_metric5_desc"
-              >The average underwater visibility in metres. Higher visibility is
-              ideal for snorkelling, diving, and observing aquatic life. Many
-              delta rivers carry heavy sediment, so visibility can vary
-              greatly.</span
-            >
-          </p>
-          <p>
-            <strong data-lang-key="compare_metric6_label"
-              >Best Season Score:</strong
-            >
-            <span data-lang-key="compare_metric6_desc"
-              >A score out of 10 reflecting how favourable the best visiting
-              season is, based on weather conditions, accessibility, wildlife
-              activity, and overall comfort for outdoor adventures. A 10 means
-              near-perfect conditions during peak season, that is, the time of
-              year most recommended for visiting that particular delta. Please
-              note that these scores are our own estimates and should be treated
-              as a general indication rather than a precise measurement.</span
-            >
+        <!-- SEASON CHART (only visible when Best Season Score is active) -->
+        <div class="season-wrapper" id="seasonWrapper">
+          <div class="season-heading" data-lang-key="compare_season_heading">
+            Best Season to Visit
+          </div>
+          <div id="seasonContent"></div>
+          <p class="season-note">
+            Highlighted = recommended visiting period &nbsp;|&nbsp; based on
+            delta page information
           </p>
         </div>
+      </section>
+
+      <section>
+        <h2 data-lang-key="compare_metrics_h2">Metric Explanations</h2>
+        <p>
+          <strong data-lang-key="compare_metric1_label"
+            >Wildlife Species:</strong
+          >
+          <span data-lang-key="compare_metric1_desc"
+            >The estimated number of documented animal species in the delta
+            region.</span
+          >
+        </p>
+        <p>
+          <strong data-lang-key="compare_metric2_label"
+            >Hiking Trails (km):</strong
+          >
+          <span data-lang-key="compare_metric2_desc"
+            >The total length of marked hiking and nature trails accessible to
+            visitors.</span
+          >
+        </p>
+        <p>
+          <strong data-lang-key="compare_metric3_label">Kayak Routes:</strong>
+          <span data-lang-key="compare_metric3_desc"
+            >The number of navigable kayak and canoe routes through the delta's
+            waterways.</span
+          >
+        </p>
+        <p>
+          <strong data-lang-key="compare_metric4_label"
+            >Nature Reserves:</strong
+          >
+          <span data-lang-key="compare_metric4_desc"
+            >The number of officially protected natural areas within or adjacent
+            to the delta.</span
+          >
+        </p>
+        <p>
+          <strong data-lang-key="compare_metric5_label"
+            >Water Visibility (m):</strong
+          >
+          <span data-lang-key="compare_metric5_desc"
+            >The average underwater visibility in metres during the best
+            season.</span
+          >
+        </p>
+        <p>
+          <strong data-lang-key="compare_metric6_label"
+            >Best Season Score:</strong
+          >
+          <span data-lang-key="compare_metric6_desc"
+            >A score out of 10 reflecting how favourable the best visiting
+            season is, based on weather conditions, accessibility, wildlife
+            activity, and overall comfort for outdoor adventures. A 10 means
+            near-perfect conditions during peak season, that is, the time of
+            year most recommended for visiting that particular delta. Please
+            note that these scores are our own estimates and should be treated
+            as a general indication rather than a precise measurement.</span
+          >
+        </p>
       </section>
     </main>
 
     <div id="footer-placeholder"></div>
+
     <script>
       fetch("Footer.html")
         .then((r) => r.text())
@@ -482,6 +538,7 @@
     </script>
 
     <script>
+      // ── DATA ──
       const deltas = {
         mississippi: {
           name: "Mississippi",
@@ -556,7 +613,7 @@
           },
         },
         amazon: {
-          name: "Amazon",
+          name: "Amazone",
           country: "🇧🇷 Brazil",
           color: "#2e8b57",
           metrics: {
@@ -630,6 +687,8 @@
         "avg_visibility_m",
         "best_season_score",
       ];
+
+      // Fill in missing labels/units from mississippi reference
       metricKeys.forEach((k) => {
         const ref = deltas.mississippi.metrics[k];
         Object.values(deltas).forEach((d) => {
@@ -638,20 +697,70 @@
         });
       });
 
+      // ── SEASON DATA ──
+      const bestSeasons = {
+        mississippi: { months: [3, 4, 5], label: "Mar \u2013 May" },
+        parana: { months: [3, 4, 5], label: "Mar \u2013 May" },
+        galveston: {
+          months: [10, 11, 12, 1, 2, 3, 4],
+          label: "Oct \u2013 Apr",
+        },
+        yukon: { months: [6, 7, 8], label: "Jun \u2013 Aug" },
+        amazon: { months: [6, 7, 8, 9, 10, 11], label: "Jun \u2013 Nov" },
+        colorado: { months: [10, 11, 12, 1, 2, 3, 4], label: "Oct \u2013 Apr" },
+        sanjuan: { months: [12, 1, 2, 3], label: "Dec \u2013 Mar" },
+        magdalena: { months: [12, 1, 2, 3], label: "Dec \u2013 Mar" },
+        riogrande: {
+          months: [10, 11, 12, 1, 2, 3, 4],
+          label: "Oct \u2013 Apr",
+        },
+      };
+      const monthNames = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ];
+
+      // ── STATE ──
       let selectedDeltas = new Set();
       let activeMetric = metricKeys[0];
       let chartInstance = null;
 
+      // ── BUILD DELTA BUTTONS ──
       const grid = document.getElementById("deltaGrid");
       Object.entries(deltas).forEach(([key, d]) => {
         const btn = document.createElement("button");
         btn.className = "delta-btn";
         btn.dataset.key = key;
         btn.innerHTML = `<span class="btn-name">${d.name}</span><span class="btn-country">${d.country}</span><span class="check">✓</span>`;
-        btn.addEventListener("click", () => toggleDelta(key, btn, d.color));
+        btn.addEventListener("click", () => {
+          if (selectedDeltas.has(key)) {
+            selectedDeltas.delete(key);
+            btn.classList.remove("selected");
+            btn.style.background = "";
+            btn.style.borderColor = "";
+          } else {
+            selectedDeltas.add(key);
+            btn.classList.add("selected");
+            btn.style.background = d.color;
+            btn.style.borderColor = d.color;
+          }
+          renderChart();
+          renderSeasonChart();
+        });
         grid.appendChild(btn);
       });
 
+      // ── BUILD METRIC TABS ──
       const tabsEl = document.getElementById("metricTabs");
       metricKeys.forEach((key, i) => {
         const label = deltas.mississippi.metrics[key].label;
@@ -666,32 +775,18 @@
           tab.classList.add("active");
           activeMetric = key;
           renderChart();
+          renderSeasonChart();
         });
         tabsEl.appendChild(tab);
       });
 
-      function toggleDelta(key, btn, color) {
-        if (selectedDeltas.has(key)) {
-          selectedDeltas.delete(key);
-          btn.classList.remove("selected");
-          btn.style.background = "";
-          btn.style.borderColor = "";
-          btn.style.color = "";
-        } else {
-          selectedDeltas.add(key);
-          btn.classList.add("selected");
-          btn.style.background = color;
-          btn.style.borderColor = color;
-          btn.style.color = "#fff";
-        }
-        renderChart();
-      }
-
+      // ── BAR CHART ──
       function renderChart() {
         const canvas = document.getElementById("myChart");
         const placeholder = document.getElementById("chartPlaceholder");
         const legendEl = document.getElementById("legend");
         const chartLabel = document.getElementById("chartLabel");
+
         if (selectedDeltas.size === 0) {
           canvas.style.display = "none";
           placeholder.style.display = "flex";
@@ -707,22 +802,27 @@
           }
           return;
         }
+
         placeholder.style.display = "none";
         canvas.style.display = "block";
+
         const firstKey = [...selectedDeltas][0];
         const metricInfo = deltas[firstKey].metrics[activeMetric];
         chartLabel.textContent = `${metricInfo.label} (${metricInfo.unit})`;
+
         const labels = [...selectedDeltas].map((k) => deltas[k].name);
         const values = [...selectedDeltas].map(
           (k) => deltas[k].metrics[activeMetric].value,
         );
         const colors = [...selectedDeltas].map((k) => deltas[k].color);
         const colorsFaded = colors.map((c) => c + "bb");
+
         legendEl.innerHTML = "";
         [...selectedDeltas].forEach((k) => {
           const d = deltas[k];
           legendEl.innerHTML += `<div class="legend-item"><span class="legend-dot" style="background:${d.color}"></span>${d.name} <span style="opacity:0.5">${d.country}</span></div>`;
         });
+
         if (chartInstance) chartInstance.destroy();
         const ctx = canvas.getContext("2d");
         chartInstance = new Chart(ctx, {
@@ -799,21 +899,51 @@
         });
       }
 
+      // ── SEASON CHART ──
+      function renderSeasonChart() {
+        const wrapper = document.getElementById("seasonWrapper");
+        const content = document.getElementById("seasonContent");
+        if (!wrapper || !content) return;
+
+        if (activeMetric !== "best_season_score" || selectedDeltas.size === 0) {
+          wrapper.classList.remove("visible");
+          return;
+        }
+        wrapper.classList.add("visible");
+
+        // Month header
+        let html = '<div class="season-month-row">';
+        monthNames.forEach((m) => {
+          html += `<div class="season-month-label">${m}</div>`;
+        });
+        html += "</div>";
+
+        // One row per selected delta
+        [...selectedDeltas].forEach((key) => {
+          const d = deltas[key];
+          const season = bestSeasons[key];
+          if (!season) return;
+          html += `<div class="season-delta-label" style="color:${d.color}">${d.name} &mdash; ${season.label}</div>`;
+          html += '<div class="season-month-row">';
+          for (let m = 1; m <= 12; m++) {
+            const active = season.months.includes(m);
+            const bg = active ? d.color : "rgba(255,255,255,0.06)";
+            const opacity = active ? "0.85" : "0.35";
+            html += `<div class="season-cell" style="background:${bg};opacity:${opacity}" title="${active ? d.name + ": " + season.label : ""}"></div>`;
+          }
+          html += "</div>";
+        });
+
+        content.innerHTML = html;
+      }
+
+      // ── HERO SCROLL ──
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
         hero.classList.toggle("hidden", window.scrollY > 150);
       });
-
-      const lastDeltaName = sessionStorage.getItem("lastDeltaName");
-      const lastDeltaURL = sessionStorage.getItem("lastDeltaURL");
-      const container = document.getElementById("last-delta-container");
-      if (lastDeltaName && lastDeltaURL) {
-        const link = document.createElement("a");
-        link.href = lastDeltaURL;
-        link.textContent = `← ${lastDeltaName}`;
-        container.appendChild(link);
-      }
     </script>
+
     <script src="../lang.js"></script>
   </body>
 </html>
