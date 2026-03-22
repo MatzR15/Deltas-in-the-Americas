@@ -11,15 +11,15 @@
     />
     <style>
       :root {
-        --mud: #0e1f1a;
-        --earth: #1e3d30;
-        --sand: #7ec8a0;
-        --bark: #3a7c5c;
-        --mist: #d8ece2;
-        --fog: #f0f7f2;
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --bark: #7c5c3a;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
         --water: #1e3a4a;
-        --moss: #2e5e3e;
-        --rust: #7a9b3a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
       }
       * {
         margin: 0;
@@ -56,8 +56,8 @@
         background:
           linear-gradient(
             to bottom,
-            rgba(5, 20, 10, 0.3) 0%,
-            rgba(5, 20, 10, 0.7) 100%
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.7) 100%
           ),
           url("../imgs/Parana_delta.jpg") center/cover no-repeat;
         display: flex;
@@ -153,65 +153,6 @@
         background: var(--mud);
       }
 
-      /* ── STAT STRIP ── */
-      .stat-strip {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        border-top: 1px solid var(--earth);
-        border-bottom: 1px solid var(--earth);
-      }
-      .stat-tile {
-        padding: 48px 40px;
-        border-right: 1px solid var(--earth);
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        position: relative;
-        overflow: hidden;
-        transition: background 0.4s;
-      }
-      .stat-tile:last-child {
-        border-right: none;
-      }
-      .stat-tile::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.4s;
-      }
-      .stat-tile:nth-child(1)::before { background: var(--sand); }
-      .stat-tile:nth-child(2)::before { background: var(--rust); }
-      .stat-tile:nth-child(3)::before { background: var(--water); }
-      .stat-tile:nth-child(4)::before { background: var(--moss); }
-      .stat-tile:hover { background: rgba(255, 255, 255, 0.03); }
-      .stat-tile:hover::before { transform: scaleX(1); }
-
-      .stat-value {
-        font-family: "Playfair Display", serif;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--fog);
-      }
-      .stat-label {
-        font-family: "Oswald", sans-serif;
-        font-weight: 300;
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--sand);
-      }
-      .stat-desc {
-        font-size: 0.85rem;
-        color: rgba(216, 236, 226, 0.55);
-        margin-top: 4px;
-      }
-
       /* ── CHAPTER OPENER ── */
       .chapter-opener {
         display: grid;
@@ -235,7 +176,7 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: sepia(10%) contrast(1.05);
+        filter: sepia(20%) contrast(1.05);
         transition: transform 8s ease;
       }
       .chapter-image:hover img {
@@ -285,7 +226,7 @@
       .chapter-body p {
         font-size: 1rem;
         line-height: 1.85;
-        color: rgba(216, 236, 226, 0.78);
+        color: rgba(232, 220, 200, 0.78);
         margin-bottom: 16px;
       }
       .chapter-divider {
@@ -293,6 +234,77 @@
         height: 2px;
         background: var(--sand);
         margin: 28px 0;
+      }
+
+      /* ── STAT TILES ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+      }
+      .stat-tile:last-child {
+        border-right: none;
+      }
+      .stat-tile::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .stat-tile:nth-child(1)::before {
+        background: var(--sand);
+      }
+      .stat-tile:nth-child(2)::before {
+        background: var(--rust);
+      }
+      .stat-tile:nth-child(3)::before {
+        background: var(--water);
+      }
+      .stat-tile:nth-child(4)::before {
+        background: var(--moss);
+      }
+      .stat-tile:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .stat-tile:hover::before {
+        transform: scaleX(1);
+      }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(232, 220, 200, 0.55);
+        margin-top: 4px;
       }
 
       /* ── FULL-BLEED IMAGE BREAK ── */
@@ -308,9 +320,9 @@
         position: absolute;
         inset: 0;
         background: linear-gradient(
-          rgba(5, 20, 10, 0.3) 0%,
-          rgba(5, 20, 10, 0.3) 60%,
-          rgba(5, 20, 10, 0.75) 100%
+          rgba(30, 15, 5, 0.3) 0%,
+          rgba(30, 15, 5, 0.3) 60%,
+          rgba(30, 15, 5, 0.75) 100%
         );
       }
       .image-break-label {
@@ -356,7 +368,7 @@
         max-width: 280px;
         font-size: 0.9rem;
         line-height: 1.7;
-        color: rgba(216, 236, 226, 0.6);
+        color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
 
@@ -379,20 +391,22 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.7s ease, filter 0.5s;
-        filter: brightness(0.75) sepia(10%);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+        filter: brightness(0.75) sepia(15%);
       }
       .activity-card:hover img {
         transform: scale(1.06);
-        filter: brightness(0.55) sepia(20%);
+        filter: brightness(0.55) sepia(25%);
       }
       .activity-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to top,
-          rgba(5, 20, 10, 0.95) 0%,
-          rgba(5, 20, 10, 0.2) 50%,
+          rgba(20, 10, 5, 0.95) 0%,
+          rgba(20, 10, 5, 0.2) 50%,
           transparent 100%
         );
         display: flex;
@@ -423,7 +437,7 @@
       .activity-desc {
         font-size: 0.88rem;
         line-height: 1.65;
-        color: rgba(216, 236, 226, 0.75);
+        color: rgba(232, 220, 200, 0.75);
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease;
@@ -462,12 +476,14 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: sepia(10%) contrast(1.05) brightness(0.92);
-        transition: transform 0.7s ease, filter 0.5s;
+        filter: sepia(15%) contrast(1.05) brightness(0.92);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
       }
       .gallery-tile:hover img {
         transform: scale(1.05);
-        filter: sepia(0%) contrast(1.05) brightness(1);
+        filter: sepia(5%) contrast(1.05) brightness(1);
       }
       .gallery-tile-caption {
         position: absolute;
@@ -475,8 +491,8 @@
         left: 0;
         right: 0;
         padding: 36px 18px 14px;
-        background: linear-gradient(transparent, rgba(5, 20, 10, 0.88));
-        color: rgba(216, 236, 226, 0.85);
+        background: linear-gradient(transparent, rgba(20, 10, 5, 0.88));
+        color: rgba(232, 220, 200, 0.85);
         font-style: italic;
         font-size: 0.82rem;
         line-height: 1.4;
@@ -567,7 +583,6 @@
       }
     </style>
   </head>
-
   <body>
     <header class="hero" id="hero">
       <nav class="top-nav">
@@ -581,7 +596,6 @@
     </header>
 
     <div class="page">
-
       <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#when-to-visit" class="stat-tile">
@@ -607,7 +621,11 @@
       </div>
 
       <!-- CHAPTER 1: WHEN TO VISIT -->
-      <div id="when-to-visit" class="chapter-opener" style="scroll-margin-top: 80px">
+      <div
+        id="when-to-visit"
+        class="chapter-opener"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
           <img src="../imgs/delta-parana.jpg" alt="Paraná Delta wetlands" />
           <span class="img-credit">© Argentina Tourism</span>
@@ -619,12 +637,16 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-Running from March through May, autumn is the ideal time to visit the Paraná Delta. The summer heat gives way to comfortable temperatures, the wetlands are lush and teeming with wildlife, and the waterways run calm and clear. It is the perfect season to explore the labyrinth of islands by kayak, wander the stilt-house communities of Tigre, and watch the fog roll in over the channels at sunrise.
+              Running from March through May, autumn is the ideal time to visit the Paraná Delta.
+              The summer heat gives way to comfortable temperatures, the wetlands are lush and
+              teeming with wildlife, and the waterways run calm and clear. It is the perfect season
+              to explore the labyrinth of islands by kayak, wander the stilt-house communities of
+              Tigre, and watch the fog roll in over the channels at sunrise.
             </p>
             <p>
-              Spring (September to November) is an excellent second option, 
-              with pleasant warmth and spectacular birdlife as species return to 
-              nest. Avoid the height of summer, when humidity can be intense and 
+              Spring (September to November) is an excellent second option,
+              with pleasant warmth and spectacular birdlife as species return to
+              nest. Avoid the height of summer, when humidity can be intense and
               seasonal flooding occasionally disrupts access to some islands.
             </p>
           </div>
@@ -640,7 +662,11 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
       </div>
 
       <!-- CHAPTER 2: WILDLIFE -->
-      <div id="wildlife" class="chapter-opener flip" style="scroll-margin-top: 80px">
+      <div
+        id="wildlife"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
           <img src="../imgs/capybara.jpg" alt="Capybara in the Paraná Delta" />
           <span class="img-credit">© Wildlife Argentina</span>
@@ -652,18 +678,18 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The Paraná Delta is a biodiversity hotspot unlike any other in 
-              South America. Over 300 bird species inhabit its wetlands and 
-              forests, from the scarlet-headed blackbird to the jabiru stork. 
-              Along the water's edge, you may spot capybaras grazing in family 
-              groups, or the elusive <strong>Marsh Deer</strong> emerging from 
+              The Paraná Delta is a biodiversity hotspot unlike any other in
+              South America. Over 300 bird species inhabit its wetlands and
+              forests, from the scarlet-headed blackbird to the jabiru stork.
+              Along the water's edge, you may spot capybaras grazing in family
+              groups, or the elusive <strong>Marsh Deer</strong> emerging from
               the reeds at dusk.
             </p>
             <p>
-              The flora is equally extraordinary. "Monte Blanco" forests of 
-              ceibo, timbó, and sarandí line the islands, while vast floating 
-              meadows of water hyacinth drift through the channels. The entire 
-              ecosystem acts as a natural water purifier for the greater Buenos 
+              The flora is equally extraordinary. "Monte Blanco" forests of
+              ceibo, timbó, and sarandí line the islands, while vast floating
+              meadows of water hyacinth drift through the channels. The entire
+              ecosystem acts as a natural water purifier for the greater Buenos
               Aires region, making conservation here a matter of regional importance.
             </p>
           </div>
@@ -691,17 +717,17 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              Stretching 4,880 kilometres from the Brazilian highlands to the 
-              Río de la Plata, the Paraná is one of the great rivers of the world. 
-              Uniquely, its delta does not empty into the open ocean but into 
-              another river; creating a vast, freshwater maze of channels, 
-              oxbow lakes, and floating islands that shifts and changes shape 
+              Stretching 4,880 kilometres from the Brazilian highlands to the
+              Río de la Plata, the Paraná is one of the great rivers of the world.
+              Uniquely, its delta does not empty into the open ocean but into
+              another river, creating a vast, freshwater maze of channels,
+              oxbow lakes, and floating islands that shifts and changes shape
               with every flood season.
             </p>
             <p>
-              Exploring by kayak or wooden rowboat is the most intimate way to 
-              experience the delta. You drift past vine-draped banks, hear nothing 
-              but birdsong and water, and arrive at tiny island communities reachable 
+              Exploring by kayak or wooden rowboat is the most intimate way to
+              experience the delta. You drift past vine-draped banks, hear nothing
+              but birdsong and water, and arrive at tiny island communities reachable
               only by boat, where life moves at the pace of the current.
             </p>
           </div>
@@ -717,7 +743,11 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
       </div>
 
       <!-- CHAPTER 4: CULTURE -->
-      <div id="culture" class="chapter-opener flip" style="scroll-margin-top: 80px">
+      <div
+        id="culture"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
           <img src="../imgs/stilthouses.jpg" alt="Palafito stilt houses" />
           <span class="img-credit">© Tigre Municipal Tourism</span>
@@ -729,19 +759,19 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The delta was first navigated by the <strong>Guaraní people</strong>, 
-              who mastered its waterways long before European contact. In the 
-              late 19th and early 20th centuries, waves of European immigrants 
-              settled the islands, building the distinctive 
-              <em>palafitos</em> stilt houses perched above the floodwaters 
+              The delta was first navigated by the <strong>Guaraní people</strong>,
+              who mastered its waterways long before European contact. In the
+              late 19th and early 20th centuries, waves of European immigrants
+              settled the islands, building the distinctive
+              <em>palafitos</em> — stilt houses perched above the floodwaters —
               that define the landscape of towns like Tigre today.
             </p>
             <p>
-              Modern delta life retains a remarkable sense of isolation and 
-              community. There are no cars on the islands. Boats are the school bus, 
-              the delivery van, the ambulance. Children row themselves to school. 
-              Neighbours call to each other across the water. This is the 
-              "Isleño" way, and experiencing it even briefly is to step into 
+              Modern delta life retains a remarkable sense of isolation and
+              community. There are no cars on the islands. Boats are the school bus,
+              the delivery van, the ambulance. Children row themselves to school.
+              Neighbours call to each other across the water. This is the
+              "Isleño" way, and experiencing it even briefly is to step into
               a world that feels entirely its own.
             </p>
           </div>
@@ -753,7 +783,7 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
         <div class="section-intro">
           <h2>Activities &<br /><em>Adventures</em></h2>
           <p>
-            Discover the many ways to experience the Paraná Delta, from silent 
+            Discover the many ways to experience the Paraná Delta, from silent
             kayak journeys to the vibrant pulse of nearby Buenos Aires.
           </p>
         </div>
@@ -765,8 +795,8 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
               <div class="activity-tag">Experience</div>
               <div class="activity-name">Kayaking the Channels</div>
               <div class="activity-desc">
-                Paddle through a living maze of waterways, slipping beneath 
-                overhanging branches and past floating islands alive with 
+                Paddle through a living maze of waterways, slipping beneath
+                overhanging branches and past floating islands alive with
                 birdsong. Guided and self-guided routes available for all levels.
               </div>
             </div>
@@ -778,7 +808,7 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
               <div class="activity-tag">Nature</div>
               <div class="activity-name">Birdwatching</div>
               <div class="activity-desc">
-                With over 300 species, the delta is one of Argentina's premier 
+                With over 300 species, the delta is one of Argentina's premier
                 birdwatching destinations, from jabiru storks to kingfishers.
               </div>
             </div>
@@ -790,13 +820,21 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
               <div class="activity-tag">Culture</div>
               <div class="activity-name">Tigre & the Fruit Market</div>
               <div class="activity-desc">
-                Explore the gateway town of Tigre, its colourful river market, 
+                Explore the gateway town of Tigre, its colourful river market,
                 and the Museum of Fine Arts before heading deeper into the islands.
               </div>
             </div>
           </a>
-          <a href="UNDER-CONSTRUCTION.html" class="activity-card" style="height: auto">
-            <img src="../imgs/buenos_aires.jpg" alt="Buenos Aires day trip" style="height: 100%; min-height: 200px" />
+          <a
+            href="UNDER-CONSTRUCTION.html"
+            class="activity-card"
+            style="height: auto"
+          >
+            <img
+              src="../imgs/buenos_aires.jpg"
+              alt="Buenos Aires day trip"
+              style="height: 100%; min-height: 200px"
+            />
             <span class="img-credit">© Buenos Aires Tourism</span>
             <div class="activity-overlay">
               <div class="activity-tag">City</div>
@@ -814,7 +852,10 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
         <h2 class="gallery-heading">Delta Gallery</h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <img src="../imgs/Parana_delta.jpg" alt="Paraná Delta aerial" />
+            <img
+              src="../imgs/Parana_delta.jpg"
+              alt="Paraná Delta aerial"
+            />
             <span class="img-credit">© NASA / ESA</span>
             <div class="gallery-tile-caption">
               Aerial view of the Paraná Delta's branching channels meeting the Río de la Plata.
@@ -850,10 +891,9 @@ Running from March through May, autumn is the ideal time to visit the Paraná De
           </div>
         </div>
       </div>
+    </div>
+    <!-- .page -->
 
-    </div><!-- .page -->
-
-    <!-- FOOTER PLACEHOLDER -->
     <div id="footer-placeholder"></div>
 
     <script>
