@@ -1199,9 +1199,9 @@ const TRANSLATIONS = {
     pt: "Pontuação da Melhor Temporada:",
   },
   compare_metric6_desc: {
-    en: "A score out of 10 reflecting how favourable the best visiting season is, based on weather conditions, accessibility, wildlife activity, and overall comfort for outdoor adventures. A 10 means near-perfect conditions during peak season.",
-    es: "Una puntuación sobre 10 que refleja cuán favorable es la mejor temporada de visita, basada en las condiciones meteorológicas, la accesibilidad, la actividad de la fauna y el confort general para las aventuras al aire libre. Un 10 significa condiciones casi perfectas durante la temporada alta.",
-    pt: "Uma pontuação de 10 refletindo quão favorável é a melhor temporada de visita, com base nas condições climáticas, acessibilidade, atividade da fauna e conforto geral para aventuras ao ar livre. Um 10 significa condições quase perfeitas durante a alta temporada.",
+    en: "A score out of 10 reflecting how favourable the best visiting season is, based on weather conditions, accessibility, wildlife activity, and overall comfort for outdoor adventures. A 10 means near-perfect conditions during peak season, that is, the time of year most recommended for visiting that particular delta. Please note that these scores are our own estimates and should be treated as a general indication rather than a precise measurement.",
+    es: "Una puntuación sobre 10 que refleja cuán favorable es la mejor temporada de visita, basada en las condiciones meteorológicas, la accesibilidad, la actividad de la fauna y el confort general para las aventuras al aire libre. Un 10 significa condiciones casi perfectas durante la temporada alta, es decir, la época del año más recomendada para visitar ese delta en particular. Ten en cuenta que estas puntuaciones son estimaciones propias y deben tratarse como una indicación general y no como una medida precisa.",
+    pt: "Uma pontuação de 10 refletindo quão favorável é a melhor temporada de visita, com base nas condições climáticas, acessibilidade, atividade da fauna e conforto geral para aventuras ao ar livre. Um 10 significa condições quase perfeitas durante a alta temporada, ou seja, a época do ano mais recomendada para visitar aquele delta em particular. Observe que essas pontuações são estimativas próprias e devem ser tratadas como uma indicação geral, não como uma medida precisa.",
   },
   /* ── Contact page extra ── */
   contact_intro_p: {
