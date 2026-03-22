@@ -11,18 +11,24 @@
     />
     <style>
       :root {
-        --mud: #1a1008;
-        --earth: #3a2510;
-        --sand: #d4956a;
-        --bark: #8c5a32;
-        --mist: #f0ddc8;
-        --fog: #faf3eb;
-        --water: #1e4a5a;
-        --moss: #5a7a3a;
-        --rust: #c25a1a;
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --bark: #7c5c3a;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+        --water: #1e3a4a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
       }
-      * { margin: 0; padding: 0; box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         background: var(--mud);
@@ -50,8 +56,8 @@
         background:
           linear-gradient(
             to bottom,
-            rgba(25, 12, 4, 0.3) 0%,
-            rgba(25, 12, 4, 0.7) 100%
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.7) 100%
           ),
           url("../imgs/Colorado_delta.jpg") center/cover no-repeat;
         display: flex;
@@ -59,7 +65,9 @@
         align-items: center;
         justify-content: center;
         z-index: 10;
-        transition: opacity 0.5s, transform 0.5s;
+        transition:
+          opacity 0.5s,
+          transform 0.5s;
       }
       .hero.hidden {
         opacity: 0;
@@ -123,11 +131,19 @@
         text-transform: uppercase;
         transition: color 0.3s;
       }
-      .top-nav a:hover { color: var(--sand); }
+      .top-nav a:hover {
+        color: var(--sand);
+      }
 
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* ── CONTENT WRAPPER ── */
@@ -137,61 +153,6 @@
         background: var(--mud);
       }
 
-      /* ── STAT TILES ── */
-      .stat-strip {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        border-top: 1px solid var(--earth);
-        border-bottom: 1px solid var(--earth);
-      }
-      .stat-tile {
-        padding: 48px 40px;
-        border-right: 1px solid var(--earth);
-        text-decoration: none;
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-        position: relative;
-        overflow: hidden;
-        transition: background 0.4s;
-      }
-      .stat-tile:last-child { border-right: none; }
-      .stat-tile::before {
-        content: "";
-        position: absolute;
-        bottom: 0; left: 0;
-        width: 100%; height: 3px;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.4s;
-      }
-      .stat-tile:nth-child(1)::before { background: var(--sand); }
-      .stat-tile:nth-child(2)::before { background: var(--rust); }
-      .stat-tile:nth-child(3)::before { background: var(--water); }
-      .stat-tile:nth-child(4)::before { background: var(--moss); }
-      .stat-tile:hover { background: rgba(255, 255, 255, 0.03); }
-      .stat-tile:hover::before { transform: scaleX(1); }
-
-      .stat-value {
-        font-family: "Playfair Display", serif;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--fog);
-      }
-      .stat-label {
-        font-family: "Oswald", sans-serif;
-        font-weight: 300;
-        font-size: 0.75rem;
-        letter-spacing: 3px;
-        text-transform: uppercase;
-        color: var(--sand);
-      }
-      .stat-desc {
-        font-size: 0.85rem;
-        color: rgba(240, 221, 200, 0.55);
-        margin-top: 4px;
-      }
-
       /* ── CHAPTER OPENER ── */
       .chapter-opener {
         display: grid;
@@ -199,8 +160,12 @@
         min-height: 100vh;
         position: relative;
       }
-      .chapter-opener.flip { direction: rtl; }
-      .chapter-opener.flip > * { direction: ltr; }
+      .chapter-opener.flip {
+        direction: rtl;
+      }
+      .chapter-opener.flip > * {
+        direction: ltr;
+      }
 
       .chapter-image {
         position: relative;
@@ -214,7 +179,9 @@
         filter: sepia(20%) contrast(1.05);
         transition: transform 8s ease;
       }
-      .chapter-image:hover img { transform: scale(1.04); }
+      .chapter-image:hover img {
+        transform: scale(1.04);
+      }
       .chapter-image::after {
         content: "";
         position: absolute;
@@ -259,7 +226,7 @@
       .chapter-body p {
         font-size: 1rem;
         line-height: 1.85;
-        color: rgba(240, 221, 200, 0.78);
+        color: rgba(232, 220, 200, 0.78);
         margin-bottom: 16px;
       }
       .chapter-divider {
@@ -267,6 +234,77 @@
         height: 2px;
         background: var(--sand);
         margin: 28px 0;
+      }
+
+      /* ── STAT TILES ── */
+      .stat-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--earth);
+        border-bottom: 1px solid var(--earth);
+      }
+      .stat-tile {
+        padding: 48px 40px;
+        border-right: 1px solid var(--earth);
+        text-decoration: none;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        position: relative;
+        overflow: hidden;
+        transition: background 0.4s;
+      }
+      .stat-tile:last-child {
+        border-right: none;
+      }
+      .stat-tile::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+      .stat-tile:nth-child(1)::before {
+        background: var(--sand);
+      }
+      .stat-tile:nth-child(2)::before {
+        background: var(--rust);
+      }
+      .stat-tile:nth-child(3)::before {
+        background: var(--water);
+      }
+      .stat-tile:nth-child(4)::before {
+        background: var(--moss);
+      }
+      .stat-tile:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .stat-tile:hover::before {
+        transform: scaleX(1);
+      }
+
+      .stat-value {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--fog);
+      }
+      .stat-label {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 0.75rem;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+      .stat-desc {
+        font-size: 0.85rem;
+        color: rgba(232, 220, 200, 0.55);
+        margin-top: 4px;
       }
 
       /* ── FULL-BLEED IMAGE BREAK ── */
@@ -282,9 +320,9 @@
         position: absolute;
         inset: 0;
         background: linear-gradient(
-          rgba(25, 12, 4, 0.3) 0%,
-          rgba(25, 12, 4, 0.3) 60%,
-          rgba(25, 12, 4, 0.75) 100%
+          rgba(30, 15, 5, 0.3) 0%,
+          rgba(30, 15, 5, 0.3) 60%,
+          rgba(30, 15, 5, 0.75) 100%
         );
       }
       .image-break-label {
@@ -304,7 +342,9 @@
       }
 
       /* ── ACTIVITIES ── */
-      .activities-section { padding: 100px 80px; }
+      .activities-section {
+        padding: 100px 80px;
+      }
       .section-intro {
         display: flex;
         align-items: flex-end;
@@ -320,12 +360,15 @@
         line-height: 1;
         color: var(--fog);
       }
-      .section-intro h2 em { font-style: italic; color: var(--sand); }
+      .section-intro h2 em {
+        font-style: italic;
+        color: var(--sand);
+      }
       .section-intro p {
         max-width: 280px;
         font-size: 0.9rem;
         line-height: 1.7;
-        color: rgba(240, 221, 200, 0.6);
+        color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
 
@@ -341,24 +384,29 @@
         cursor: pointer;
         text-decoration: none;
       }
-      .activity-card:first-child { grid-row: span 2; }
+      .activity-card:first-child {
+        grid-row: span 2;
+      }
       .activity-card img {
-        width: 100%; height: 100%;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        transition: transform 0.7s ease, filter 0.5s;
-        filter: brightness(0.75) sepia(20%);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+        filter: brightness(0.75) sepia(15%);
       }
       .activity-card:hover img {
         transform: scale(1.06);
-        filter: brightness(0.55) sepia(30%);
+        filter: brightness(0.55) sepia(25%);
       }
       .activity-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to top,
-          rgba(25, 12, 4, 0.95) 0%,
-          rgba(25, 12, 4, 0.2) 50%,
+          rgba(20, 10, 5, 0.95) 0%,
+          rgba(20, 10, 5, 0.2) 50%,
           transparent 100%
         );
         display: flex;
@@ -383,19 +431,25 @@
         line-height: 1.1;
         margin-bottom: 10px;
       }
-      .activity-card:first-child .activity-name { font-size: 2.4rem; }
+      .activity-card:first-child .activity-name {
+        font-size: 2.4rem;
+      }
       .activity-desc {
         font-size: 0.88rem;
         line-height: 1.65;
-        color: rgba(240, 221, 200, 0.75);
+        color: rgba(232, 220, 200, 0.75);
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease;
       }
-      .activity-card:hover .activity-desc { max-height: 200px; }
+      .activity-card:hover .activity-desc {
+        max-height: 200px;
+      }
 
       /* ── GALLERY ── */
-      .gallery-section { padding: 0 80px 100px; }
+      .gallery-section {
+        padding: 0 80px 100px;
+      }
       .gallery-heading {
         font-family: "Playfair Display", serif;
         font-size: 2rem;
@@ -410,14 +464,22 @@
         grid-template-rows: 320px 280px;
         gap: 4px;
       }
-      .gallery-tile { position: relative; overflow: hidden; }
-      .gallery-tile:first-child { grid-row: span 2; }
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-tile:first-child {
+        grid-row: span 2;
+      }
       .gallery-tile img {
-        width: 100%; height: 100%;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         display: block;
-        filter: sepia(20%) contrast(1.05) brightness(0.92);
-        transition: transform 0.7s ease, filter 0.5s;
+        filter: sepia(15%) contrast(1.05) brightness(0.92);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
       }
       .gallery-tile:hover img {
         transform: scale(1.05);
@@ -425,23 +487,30 @@
       }
       .gallery-tile-caption {
         position: absolute;
-        bottom: 0; left: 0; right: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         padding: 36px 18px 14px;
-        background: linear-gradient(transparent, rgba(25, 12, 4, 0.88));
-        color: rgba(240, 221, 200, 0.85);
+        background: linear-gradient(transparent, rgba(20, 10, 5, 0.88));
+        color: rgba(232, 220, 200, 0.85);
         font-style: italic;
         font-size: 0.82rem;
         line-height: 1.4;
         opacity: 0;
         transition: opacity 0.4s;
       }
-      .gallery-tile:hover .gallery-tile-caption { opacity: 1; }
-      .gallery-tile:first-child .gallery-tile-caption { font-size: 0.92rem; }
+      .gallery-tile:hover .gallery-tile-caption {
+        opacity: 1;
+      }
+      .gallery-tile:first-child .gallery-tile-caption {
+        font-size: 0.92rem;
+      }
 
       /* ── IMAGE CREDITS ── */
       .img-credit {
         position: absolute;
-        bottom: 10px; right: 12px;
+        bottom: 10px;
+        right: 12px;
         font-size: 0.6rem;
         color: rgba(255, 255, 255, 0.35);
         font-style: italic;
@@ -450,28 +519,67 @@
       }
 
       /* ── FOOTER AREA ── */
-      #footer-placeholder { position: relative; z-index: 5; }
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
 
       @media (max-width: 900px) {
-        .chapter-opener, .chapter-opener.flip {
+        .chapter-opener,
+        .chapter-opener.flip {
           grid-template-columns: 1fr;
           direction: ltr;
         }
-        .chapter-image { height: 55vw; }
+        .chapter-image {
+          height: 55vw;
+        }
         .chapter-image::after,
-        .chapter-opener.flip .chapter-image::after { display: none; }
-        .chapter-text { padding: 48px 28px; }
-        .stat-strip { grid-template-columns: 1fr 1fr; }
-        .stat-tile { border-bottom: 1px solid var(--earth); }
-        .activity-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-        .activity-card:first-child { grid-row: span 1; height: 380px; }
-        .activity-card { height: 260px; }
-        .activities-section, .gallery-section { padding: 60px 24px; }
-        .section-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
-        .section-intro p { text-align: left; }
-        .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-        .gallery-tile:first-child { grid-row: span 1; height: 56vw; }
-        .gallery-tile { height: 44vw; }
+        .chapter-opener.flip .chapter-image::after {
+          display: none;
+        }
+        .chapter-text {
+          padding: 48px 28px;
+        }
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-tile {
+          border-bottom: 1px solid var(--earth);
+        }
+        .activity-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .activity-card:first-child {
+          grid-row: span 1;
+          height: 380px;
+        }
+        .activity-card {
+          height: 260px;
+        }
+        .activities-section,
+        .gallery-section {
+          padding: 60px 24px;
+        }
+        .section-intro {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .section-intro p {
+          text-align: left;
+        }
+        .gallery-mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery-tile:first-child {
+          grid-row: span 1;
+          height: 56vw;
+        }
+        .gallery-tile {
+          height: 44vw;
+        }
       }
     </style>
   </head>
@@ -515,9 +623,13 @@
       </div>
 
       <!-- CHAPTER 1: WHEN TO VISIT -->
-      <div id="when-to-visit" class="chapter-opener" style="scroll-margin-top: 80px">
+      <div
+        id="when-to-visit"
+        class="chapter-opener"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
-          <img src="../imgs/Colorado_delta.jpg" alt="Colorado River Delta landscape" />
+          <img src="../imgs/landscapecolorado.jpeg" alt="Colorado River Delta landscape" />
           <span class="img-credit">© Sonoran Institute</span>
         </div>
         <div class="chapter-text">
@@ -527,19 +639,19 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              October through April is the ideal time to visit the Colorado 
-              River Delta. Desert winters are mild and clear, making hiking 
-              and paddling comfortable under vast open skies. Migratory 
-              waterbirds flood the remaining wetlands during these months, 
-              and the low winter light turns the cracked mudflats and 
+              October through April is the ideal time to visit the Colorado
+              River Delta. Desert winters are mild and clear, making hiking
+              and paddling comfortable under vast open skies. Migratory
+              waterbirds flood the remaining wetlands during these months,
+              and the low winter light turns the cracked mudflats and
               salt flats into extraordinary landscapes of copper and gold.
             </p>
             <p>
-              Spring — particularly March and April — brings an added 
-              spectacle: on rare years when binational "pulse flows" are 
-              released, water courses through the dry channels and the 
-              delta briefly comes alive with birdsong, blooming cottonwoods, 
-              and the distant glint of water reaching toward the sea. 
+              Spring, particularly March and April, brings an added
+              spectacle: on rare years when binational pulse flows are
+              released, water courses through the dry channels and the
+              delta briefly comes alive with birdsong, blooming cottonwoods,
+              and the distant glint of water reaching toward the sea.
               Summers are extreme, with temperatures regularly exceeding 45°C.
             </p>
           </div>
@@ -549,15 +661,19 @@
       <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/Colorado_delta.jpg')"
+        style="background-image: url('../imgs/nature-resilliance-colorado.jpg')"
       >
-        <span class="image-break-label">A delta defined by absence — and the fight to bring water back</span>
+        <span class="image-break-label">A delta defined by absence and the fight to bring water back</span>
       </div>
 
       <!-- CHAPTER 2: WILDLIFE & RESTORATION -->
-      <div id="wildlife" class="chapter-opener flip" style="scroll-margin-top: 80px">
+      <div
+        id="wildlife"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
-          <img src="../imgs/Colorado_delta.jpg" alt="Ciénaga de Santa Clara wetland" />
+          <img src="../imgs/wetlands.jpeg" alt="Ciénaga de Santa Clara wetland" />
           <span class="img-credit">© Pronatura Noroeste</span>
         </div>
         <div class="chapter-text">
@@ -567,23 +683,23 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              Despite decades of water diversion, the Colorado Delta 
-              remains a critical stopover on the Pacific Flyway. The 
-              <strong>Ciénega de Santa Clara</strong> — the largest 
-              remaining wetland in the delta — shelters thousands of 
-              migratory waterbirds, including the endangered 
-              <strong>Yuma Ridgway's Rail</strong> and the 
-              southwestern willow flycatcher. Roseate spoonbills, 
-              great blue herons, and clouds of shorebirds wheel 
+              Despite decades of water diversion, the Colorado Delta
+              remains a critical stopover on the Pacific Flyway. The
+              <strong>Ciénega de Santa Clara</strong>, the largest
+              remaining wetland in the delta, shelters thousands of
+              migratory waterbirds, including the endangered
+              <strong>Yuma Ridgway's Rail</strong> and the
+              southwestern willow flycatcher. Roseate spoonbills,
+              great blue herons, and clouds of shorebirds wheel
               overhead during peak migration.
             </p>
             <p>
-              Binational agreements — Minute 319 and Minute 323 — have 
-              allowed conservation groups to release experimental "pulse 
-              flows," mimicking natural spring floods. At restoration 
-              sites like Laguna Grande, native cottonwood and willow 
-              forests have returned, and with them, species not seen 
-              here in a generation. It is a slow, determined 
+              Binational agreements known as Minute 319 and Minute 323 have
+              allowed conservation groups to release experimental pulse
+              flows, mimicking natural spring floods. At restoration
+              sites like Laguna Grande, native cottonwood and willow
+              forests have returned, and with them, species not seen
+              here in a generation. It is a slow, determined
               reclaiming of a lost landscape.
             </p>
           </div>
@@ -593,7 +709,7 @@
       <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/Colorado_delta.jpg')"
+        style="background-image: url('../imgs/cottonwood.webp')"
       >
         <span class="image-break-label">Cottonwood and willow groves returning to restored delta sites</span>
       </div>
@@ -611,20 +727,20 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The Colorado River travels 2,330 kilometres from the 
-              Rocky Mountains to the Gulf of California — yet for most 
-              of the year, it never arrives. So much water is drawn off 
-              for agriculture and cities across seven US states and 
-              two Mexican states that the river regularly runs dry 
+              The Colorado River travels 2,330 kilometres from the
+              Rocky Mountains to the Gulf of California, yet for most
+              of the year it never arrives. So much water is drawn off
+              for agriculture and cities across seven US states and
+              two Mexican states that the river regularly runs dry
               miles before it reaches the sea.
             </p>
             <p>
-              This is one of the most dramatic human alterations of a 
-              river system anywhere on Earth. What was once described by 
-              writer Aldo Leopold as a "milk and honey wilderness" — a 
-              vast, lush estuary — is now largely cracked mudflat and 
-              sand. Only the <strong>Rio Hardy</strong> maintains 
-              year-round flow, offering a narrow ribbon of the 
+              This is one of the most dramatic human alterations of a
+              river system anywhere on Earth. What was once described by
+              writer Aldo Leopold as a "milk and honey wilderness," a
+              vast, lush estuary, is now largely cracked mudflat and
+              sand. Only the <strong>Rio Hardy</strong> maintains
+              year-round flow, offering a narrow ribbon of the
               riparian beauty that once defined the entire delta.
             </p>
           </div>
@@ -634,15 +750,19 @@
       <!-- IMAGE BREAK -->
       <div
         class="image-break"
-        style="background-image: url('../imgs/Colorado_delta.jpg')"
+        style="background-image: url('../imgs/grandcanyon.jpg')"
       >
-        <span class="image-break-label">The Upper Gulf of California — home to the world's most endangered porpoise</span>
+        <span class="image-break-label">The Upper Gulf of California, home to the world's most endangered porpoise</span>
       </div>
 
       <!-- CHAPTER 4: CULTURE -->
-      <div id="culture" class="chapter-opener flip" style="scroll-margin-top: 80px">
+      <div
+        id="culture"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
-          <img src="../imgs/Colorado_delta.jpg" alt="Cucapá people and the delta" />
+          <img src="../imgs/cucapa.jpeg" alt="Cucapá people and the delta" />
           <span class="img-credit">© UABC / Binational Delta Archive</span>
         </div>
         <div class="chapter-text">
@@ -652,21 +772,21 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              For over a thousand years, the <strong>Cucapá people</strong> — 
-              whose name means "People of the River" — have lived alongside 
-              the Colorado, fishing its channels and cultivating its 
-              floodplains. The delta has been their physical and spiritual 
-              home across generations. Today, their fishing rights in the 
-              Upper Gulf of California are contested, and their traditional 
-              way of life increasingly fragile.
+              For over a thousand years, the <strong>Cucapá people</strong>,
+              whose name means "People of the River," have lived alongside
+              the Colorado, fishing its channels and cultivating its
+              floodplains. The delta has been their physical and spiritual
+              home across generations. Today their fishing rights in the
+              Upper Gulf of California are contested, and their traditional
+              way of life is increasingly fragile.
             </p>
             <p>
-              The delta also sits at the heart of a complex binational 
-              economy. The surrounding <strong>Mexicali Valley</strong> 
-              is one of Mexico's most productive agricultural regions — 
-              irrigated by the very water that was once meant for the 
-              delta's wetlands. Managing these competing demands across 
-              the US–Mexico border is one of the defining environmental 
+              The delta also sits at the heart of a complex binational
+              economy. The surrounding <strong>Mexicali Valley</strong>
+              is one of Mexico's most productive agricultural regions,
+              irrigated by the very water that was once meant for the
+              delta's wetlands. Managing these competing demands across
+              the US–Mexico border is one of the defining environmental
               negotiations of the 21st century.
             </p>
           </div>
@@ -678,54 +798,62 @@
         <div class="section-intro">
           <h2>Activities &<br /><em>Adventures</em></h2>
           <p>
-            Discover the many ways to experience the Colorado Delta, from 
-            paddling the Rio Hardy to birdwatching at the Ciénega de 
+            Discover the many ways to experience the Colorado Delta, from
+            paddling the Rio Hardy to birdwatching at the Ciénega de
             Santa Clara.
           </p>
         </div>
         <div class="activity-grid">
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?q=80&w=800" alt="Canoeing the Rio Hardy" />
+            <img src="../imgs/canooeee.jpg" alt="Canoeing the Rio Hardy" />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
               <div class="activity-tag">Experience</div>
               <div class="activity-name">Canoeing the Rio Hardy</div>
               <div class="activity-desc">
-                Paddle the Rio Hardy — the only stretch of the delta 
-                with year-round water flow — drifting past restored 
-                cottonwood banks and reed beds alive with herons, 
+                Paddle the Rio Hardy, the only stretch of the delta
+                with year-round water flow, drifting past restored
+                cottonwood banks and reed beds alive with herons,
                 rails, and kingfishers. A glimpse of the old delta's beauty.
               </div>
             </div>
           </a>
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <img src="https://images.unsplash.com/photo-1444464666168-49d633b867ad?q=80&w=800" alt="Birdwatching" />
+            <img src="../imgs/birdscolorado.jpeg" alt="Birdwatching" />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
               <div class="activity-tag">Nature</div>
               <div class="activity-name">Avian Expeditions</div>
               <div class="activity-desc">
-                Visit the Ciénega de Santa Clara, the delta's largest 
-                remaining wetland, during migration season for some of 
+                Visit the Ciénega de Santa Clara, the delta's largest
+                remaining wetland, during migration season for some of
                 the finest birdwatching in the American Southwest.
               </div>
             </div>
           </a>
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <img src="https://images.unsplash.com/photo-1500114069797-69a559a9d2e7?q=80&w=800" alt="Artisanal fishing" />
+            <img src="../imgs/fishingcolor.webp" alt="Artisanal fishing" />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
               <div class="activity-tag">Culture</div>
               <div class="activity-name">Artisanal Fishing Tours</div>
               <div class="activity-desc">
-                Join local Cucapá fishermen on traditional excursions 
-                in the Upper Gulf, where tidal nutrients still support 
+                Join local Cucapá fishermen on traditional excursions
+                in the Upper Gulf, where tidal nutrients still support
                 rich marine life near the delta's mouth.
               </div>
             </div>
           </a>
-          <a href="UNDER-CONSTRUCTION.html" class="activity-card" style="height: auto">
-            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800" alt="Desert hiking" style="height: 100%; min-height: 200px" />
+          <a
+            href="UNDER-CONSTRUCTION.html"
+            class="activity-card"
+            style="height: auto"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=800"
+              alt="Desert hiking"
+              style="height: 100%; min-height: 200px"
+            />
             <span class="img-credit">© Unsplash</span>
             <div class="activity-overlay">
               <div class="activity-tag">Wilderness</div>
@@ -743,44 +871,60 @@
         <h2 class="gallery-heading">Delta Gallery</h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <img src="../imgs/Colorado_delta.jpg" alt="Colorado Delta aerial" />
+            <img
+              src="../imgs/Colorado_delta.jpg"
+              alt="Colorado Delta aerial"
+            />
             <span class="img-credit">© NASA / USGS</span>
             <div class="gallery-tile-caption">
               Aerial view of the Colorado River's branching channels as they fade into the desert before the Gulf of California.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Colorado_delta.jpg" alt="Restored cottonwood groves" />
-            <span class="img-credit">© Sonoran Institute</span>
+            <img
+              src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?q=80&w=800"
+              alt="Restored cottonwood groves"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
-              Restored cottonwood and willow groves at Laguna Grande — life returning to the delta.
+              Restored cottonwood and willow groves at Laguna Grande, life returning to the delta.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Colorado_delta.jpg" alt="Ciénaga de Santa Clara" />
-            <span class="img-credit">© Pronatura Noroeste</span>
+            <img
+              src="https://images.unsplash.com/photo-1444464666168-49d633b867ad?q=80&w=800"
+              alt="Migratory waterbirds at the Ciénaga de Santa Clara"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
-              The Ciénaga de Santa Clara — the largest remaining wetland in the delta, a refuge for endangered birds.
+              The Ciénaga de Santa Clara, the largest remaining wetland in the delta and a refuge for endangered birds.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Colorado_delta.jpg" alt="Desert mudflats" />
-            <span class="img-credit">© WWF / Omar Vidal</span>
+            <img
+              src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=800"
+              alt="Cracked desert mudflats"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
-              Cracked mudflats where the Colorado once ran wide — a landscape awaiting water.
+              Cracked mudflats where the Colorado once ran wide, a landscape awaiting water.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Colorado_delta.jpg" alt="Gulf of California" />
-            <span class="img-credit">© Enrique Hambleton / CICESE</span>
+            <img
+              src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?q=80&w=800"
+              alt="Gulf of California coastline"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
-              The Upper Gulf of California at dusk — home to the critically endangered Vaquita porpoise.
+              The Upper Gulf of California at dusk, home to the critically endangered Vaquita porpoise.
             </div>
           </div>
         </div>
       </div>
 
-    </div><!-- .page -->
+    </div>
+    <!-- .page -->
 
     <div id="footer-placeholder"></div>
 
