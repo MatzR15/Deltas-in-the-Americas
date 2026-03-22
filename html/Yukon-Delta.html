@@ -11,15 +11,15 @@
     />
     <style>
       :root {
-        --mud: #0d1a24;
-        --earth: #1a2f40;
-        --sand: #7ab8d4;
-        --bark: #3a6a8c;
-        --mist: #cde3ef;
-        --fog: #eef6fa;
-        --water: #1a4a6a;
-        --moss: #2e5e4a;
-        --rust: #3a7aaa;
+        --mud: #2b1d0e;
+        --earth: #4a3520;
+        --sand: #c9a96e;
+        --bark: #7c5c3a;
+        --mist: #e8dcc8;
+        --fog: #f4ede0;
+        --water: #1e3a4a;
+        --moss: #3d5a3e;
+        --rust: #9b3a1a;
       }
       * {
         margin: 0;
@@ -56,8 +56,8 @@
         background:
           linear-gradient(
             to bottom,
-            rgba(5, 15, 25, 0.3) 0%,
-            rgba(5, 15, 25, 0.7) 100%
+            rgba(20, 10, 5, 0.3) 0%,
+            rgba(20, 10, 5, 0.7) 100%
           ),
           url("../imgs/Yukon_delta.jpg") center/cover no-repeat;
         display: flex;
@@ -136,8 +136,14 @@
       }
 
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       /* ── CONTENT WRAPPER ── */
@@ -154,8 +160,12 @@
         min-height: 100vh;
         position: relative;
       }
-      .chapter-opener.flip { direction: rtl; }
-      .chapter-opener.flip > * { direction: ltr; }
+      .chapter-opener.flip {
+        direction: rtl;
+      }
+      .chapter-opener.flip > * {
+        direction: ltr;
+      }
 
       .chapter-image {
         position: relative;
@@ -166,10 +176,12 @@
         height: 100%;
         object-fit: cover;
         display: block;
-        filter: sepia(10%) contrast(1.05);
+        filter: sepia(20%) contrast(1.05);
         transition: transform 8s ease;
       }
-      .chapter-image:hover img { transform: scale(1.04); }
+      .chapter-image:hover img {
+        transform: scale(1.04);
+      }
       .chapter-image::after {
         content: "";
         position: absolute;
@@ -214,7 +226,7 @@
       .chapter-body p {
         font-size: 1rem;
         line-height: 1.85;
-        color: rgba(205, 227, 239, 0.78);
+        color: rgba(232, 220, 200, 0.78);
         margin-bottom: 16px;
       }
       .chapter-divider {
@@ -242,22 +254,38 @@
         overflow: hidden;
         transition: background 0.4s;
       }
-      .stat-tile:last-child { border-right: none; }
+      .stat-tile:last-child {
+        border-right: none;
+      }
       .stat-tile::before {
         content: "";
         position: absolute;
-        bottom: 0; left: 0;
-        width: 100%; height: 3px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
         transform: scaleX(0);
         transform-origin: left;
         transition: transform 0.4s;
       }
-      .stat-tile:nth-child(1)::before { background: var(--sand); }
-      .stat-tile:nth-child(2)::before { background: var(--rust); }
-      .stat-tile:nth-child(3)::before { background: var(--water); }
-      .stat-tile:nth-child(4)::before { background: var(--moss); }
-      .stat-tile:hover { background: rgba(255, 255, 255, 0.03); }
-      .stat-tile:hover::before { transform: scaleX(1); }
+      .stat-tile:nth-child(1)::before {
+        background: var(--sand);
+      }
+      .stat-tile:nth-child(2)::before {
+        background: var(--rust);
+      }
+      .stat-tile:nth-child(3)::before {
+        background: var(--water);
+      }
+      .stat-tile:nth-child(4)::before {
+        background: var(--moss);
+      }
+      .stat-tile:hover {
+        background: rgba(255, 255, 255, 0.03);
+      }
+      .stat-tile:hover::before {
+        transform: scaleX(1);
+      }
 
       .stat-value {
         font-family: "Playfair Display", serif;
@@ -275,7 +303,7 @@
       }
       .stat-desc {
         font-size: 0.85rem;
-        color: rgba(205, 227, 239, 0.55);
+        color: rgba(232, 220, 200, 0.55);
         margin-top: 4px;
       }
 
@@ -292,9 +320,9 @@
         position: absolute;
         inset: 0;
         background: linear-gradient(
-          rgba(5, 15, 25, 0.3) 0%,
-          rgba(5, 15, 25, 0.3) 60%,
-          rgba(5, 15, 25, 0.75) 100%
+          rgba(30, 15, 5, 0.3) 0%,
+          rgba(30, 15, 5, 0.3) 60%,
+          rgba(30, 15, 5, 0.75) 100%
         );
       }
       .image-break-label {
@@ -314,7 +342,9 @@
       }
 
       /* ── ACTIVITIES ── */
-      .activities-section { padding: 100px 80px; }
+      .activities-section {
+        padding: 100px 80px;
+      }
       .section-intro {
         display: flex;
         align-items: flex-end;
@@ -330,12 +360,15 @@
         line-height: 1;
         color: var(--fog);
       }
-      .section-intro h2 em { font-style: italic; color: var(--sand); }
+      .section-intro h2 em {
+        font-style: italic;
+        color: var(--sand);
+      }
       .section-intro p {
         max-width: 280px;
         font-size: 0.9rem;
         line-height: 1.7;
-        color: rgba(205, 227, 239, 0.6);
+        color: rgba(232, 220, 200, 0.6);
         text-align: right;
       }
 
@@ -351,24 +384,29 @@
         cursor: pointer;
         text-decoration: none;
       }
-      .activity-card:first-child { grid-row: span 2; }
+      .activity-card:first-child {
+        grid-row: span 2;
+      }
       .activity-card img {
-        width: 100%; height: 100%;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        transition: transform 0.7s ease, filter 0.5s;
-        filter: brightness(0.75) sepia(10%);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
+        filter: brightness(0.75) sepia(15%);
       }
       .activity-card:hover img {
         transform: scale(1.06);
-        filter: brightness(0.55) sepia(20%);
+        filter: brightness(0.55) sepia(25%);
       }
       .activity-overlay {
         position: absolute;
         inset: 0;
         background: linear-gradient(
           to top,
-          rgba(5, 15, 25, 0.95) 0%,
-          rgba(5, 15, 25, 0.2) 50%,
+          rgba(20, 10, 5, 0.95) 0%,
+          rgba(20, 10, 5, 0.2) 50%,
           transparent 100%
         );
         display: flex;
@@ -393,19 +431,25 @@
         line-height: 1.1;
         margin-bottom: 10px;
       }
-      .activity-card:first-child .activity-name { font-size: 2.4rem; }
+      .activity-card:first-child .activity-name {
+        font-size: 2.4rem;
+      }
       .activity-desc {
         font-size: 0.88rem;
         line-height: 1.65;
-        color: rgba(205, 227, 239, 0.75);
+        color: rgba(232, 220, 200, 0.75);
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.5s ease;
       }
-      .activity-card:hover .activity-desc { max-height: 200px; }
+      .activity-card:hover .activity-desc {
+        max-height: 200px;
+      }
 
       /* ── GALLERY ── */
-      .gallery-section { padding: 0 80px 100px; }
+      .gallery-section {
+        padding: 0 80px 100px;
+      }
       .gallery-heading {
         font-family: "Playfair Display", serif;
         font-size: 2rem;
@@ -420,38 +464,53 @@
         grid-template-rows: 320px 280px;
         gap: 4px;
       }
-      .gallery-tile { position: relative; overflow: hidden; }
-      .gallery-tile:first-child { grid-row: span 2; }
+      .gallery-tile {
+        position: relative;
+        overflow: hidden;
+      }
+      .gallery-tile:first-child {
+        grid-row: span 2;
+      }
       .gallery-tile img {
-        width: 100%; height: 100%;
+        width: 100%;
+        height: 100%;
         object-fit: cover;
         display: block;
-        filter: sepia(10%) contrast(1.05) brightness(0.92);
-        transition: transform 0.7s ease, filter 0.5s;
+        filter: sepia(15%) contrast(1.05) brightness(0.92);
+        transition:
+          transform 0.7s ease,
+          filter 0.5s;
       }
       .gallery-tile:hover img {
         transform: scale(1.05);
-        filter: sepia(0%) contrast(1.05) brightness(1);
+        filter: sepia(5%) contrast(1.05) brightness(1);
       }
       .gallery-tile-caption {
         position: absolute;
-        bottom: 0; left: 0; right: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
         padding: 36px 18px 14px;
-        background: linear-gradient(transparent, rgba(5, 15, 25, 0.88));
-        color: rgba(205, 227, 239, 0.85);
+        background: linear-gradient(transparent, rgba(20, 10, 5, 0.88));
+        color: rgba(232, 220, 200, 0.85);
         font-style: italic;
         font-size: 0.82rem;
         line-height: 1.4;
         opacity: 0;
         transition: opacity 0.4s;
       }
-      .gallery-tile:hover .gallery-tile-caption { opacity: 1; }
-      .gallery-tile:first-child .gallery-tile-caption { font-size: 0.92rem; }
+      .gallery-tile:hover .gallery-tile-caption {
+        opacity: 1;
+      }
+      .gallery-tile:first-child .gallery-tile-caption {
+        font-size: 0.92rem;
+      }
 
       /* ── IMAGE CREDITS ── */
       .img-credit {
         position: absolute;
-        bottom: 10px; right: 12px;
+        bottom: 10px;
+        right: 12px;
         font-size: 0.6rem;
         color: rgba(255, 255, 255, 0.35);
         font-style: italic;
@@ -460,28 +519,67 @@
       }
 
       /* ── FOOTER AREA ── */
-      #footer-placeholder { position: relative; z-index: 5; }
+      #footer-placeholder {
+        position: relative;
+        z-index: 5;
+      }
 
       @media (max-width: 900px) {
-        .chapter-opener, .chapter-opener.flip {
+        .chapter-opener,
+        .chapter-opener.flip {
           grid-template-columns: 1fr;
           direction: ltr;
         }
-        .chapter-image { height: 55vw; }
+        .chapter-image {
+          height: 55vw;
+        }
         .chapter-image::after,
-        .chapter-opener.flip .chapter-image::after { display: none; }
-        .chapter-text { padding: 48px 28px; }
-        .stat-strip { grid-template-columns: 1fr 1fr; }
-        .stat-tile { border-bottom: 1px solid var(--earth); }
-        .activity-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
-        .activity-card:first-child { grid-row: span 1; height: 380px; }
-        .activity-card { height: 260px; }
-        .activities-section, .gallery-section { padding: 60px 24px; }
-        .section-intro { flex-direction: column; align-items: flex-start; gap: 16px; }
-        .section-intro p { text-align: left; }
-        .gallery-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
-        .gallery-tile:first-child { grid-row: span 1; height: 56vw; }
-        .gallery-tile { height: 44vw; }
+        .chapter-opener.flip .chapter-image::after {
+          display: none;
+        }
+        .chapter-text {
+          padding: 48px 28px;
+        }
+        .stat-strip {
+          grid-template-columns: 1fr 1fr;
+        }
+        .stat-tile {
+          border-bottom: 1px solid var(--earth);
+        }
+        .activity-grid {
+          grid-template-columns: 1fr;
+          grid-template-rows: auto;
+        }
+        .activity-card:first-child {
+          grid-row: span 1;
+          height: 380px;
+        }
+        .activity-card {
+          height: 260px;
+        }
+        .activities-section,
+        .gallery-section {
+          padding: 60px 24px;
+        }
+        .section-intro {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .section-intro p {
+          text-align: left;
+        }
+        .gallery-mosaic {
+          grid-template-columns: 1fr 1fr;
+          grid-template-rows: auto;
+        }
+        .gallery-tile:first-child {
+          grid-row: span 1;
+          height: 56vw;
+        }
+        .gallery-tile {
+          height: 44vw;
+        }
       }
     </style>
   </head>
@@ -525,7 +623,11 @@
       </div>
 
       <!-- CHAPTER 1: WHEN TO VISIT -->
-      <div id="when-to-visit" class="chapter-opener" style="scroll-margin-top: 80px">
+      <div
+        id="when-to-visit"
+        class="chapter-opener"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
           <img src="../imgs/tundra.webp" alt="Yukon tundra in summer" />
           <span class="img-credit">© USFWS Alaska</span>
@@ -537,19 +639,19 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              Summer — June through August — is the only practical window for 
-              visiting the Yukon-Kuskokwim Delta. The tundra thaws, the 
-              waterways open, and the landscape bursts into life under the 
-              long subarctic days. With up to 20 hours of daylight, there is 
-              time to explore vast wetlands, watch salmon runs, and witness 
+              Summer, from June through August, is the only practical window for
+              visiting the Yukon-Kuskokwim Delta. The tundra thaws, the
+              waterways open, and the landscape bursts into life under the
+              long subarctic days. With up to 20 hours of daylight, there is
+              time to explore vast wetlands, watch salmon runs, and witness
               one of the great wildlife spectacles on Earth.
             </p>
             <p>
-              Late May and early June offer the most dramatic birdlife, as 
-              millions of migratory birds arrive simultaneously to breed. 
-              Winters are extreme and largely inaccessible to visitors, though 
-              the frozen delta holds a haunting beauty of its own — traversed 
-              only by snowmobile and the communities who have called it home 
+              Late May and early June offer the most dramatic birdlife, as
+              millions of migratory birds arrive simultaneously to breed.
+              Winters are extreme and largely inaccessible to visitors, though
+              the frozen delta holds a haunting beauty of its own, traversed
+              only by snowmobile and the communities who have called it home
               for millennia.
             </p>
           </div>
@@ -565,7 +667,11 @@
       </div>
 
       <!-- CHAPTER 2: WILDLIFE -->
-      <div id="wildlife" class="chapter-opener flip" style="scroll-margin-top: 80px">
+      <div
+        id="wildlife"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
           <img src="../imgs/Migratory-birds.jpg" alt="Migratory birds over the Yukon Delta" />
           <span class="img-credit">© USFWS / Steve Hillebrand</span>
@@ -577,21 +683,21 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              The Yukon-Kuskokwim Delta is one of the most important 
-              wildlife refuges on the planet. Every summer, millions of 
-              birds converge here from six continents — among them the 
-              rare <strong>Emperor Goose</strong>, bar-tailed godwits, 
-              tundra swans, and vast flocks of shorebirds that darken 
-              the sky. No other delta in the Americas hosts a migration 
+              The Yukon-Kuskokwim Delta is one of the most important
+              wildlife refuges on the planet. Every summer, millions of
+              birds converge here from six continents, among them the
+              rare <strong>Emperor Goose</strong>, bar-tailed godwits,
+              tundra swans, and vast flocks of shorebirds that darken
+              the sky. No other delta in the Americas hosts a migration
               event of this scale.
             </p>
             <p>
-              Beneath the surface, all five species of 
-              <strong>Pacific Salmon</strong> surge through the rivers 
-              in numbers that feed the entire ecosystem — from brown 
-              bears wading the banks to beluga whales gathering at the 
-              river mouths. The delta's thousands of lakes and ponds 
-              are nurseries for waterfowl that will eventually spread 
+              Beneath the surface, all five species of
+              <strong>Pacific Salmon</strong> surge through the rivers
+              in numbers that feed the entire ecosystem, from brown
+              bears wading the banks to beluga whales gathering at the
+              river mouths. The delta's thousands of lakes and ponds
+              are nurseries for waterfowl that will eventually spread
               across the entire Western Hemisphere.
             </p>
           </div>
@@ -619,20 +725,20 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              Covering 129,500 square kilometres — roughly the size of 
-              Louisiana — the Yukon-Kuskokwim Delta is one of the largest 
-              river deltas on Earth. It is a flat, treeless world of 
-              permafrost and peat, dotted with tens of thousands of 
-              lakes and threaded by channels that shift course with 
-              every spring thaw. There are no roads connecting the 
+              Covering 129,500 square kilometres, roughly the size of
+              Louisiana, the Yukon-Kuskokwim Delta is one of the largest
+              river deltas on Earth. It is a flat, treeless world of
+              permafrost and peat, dotted with tens of thousands of
+              lakes and threaded by channels that shift course with
+              every spring thaw. There are no roads connecting the
               delta's villages to the outside world.
             </p>
             <p>
-              The landscape is defined by extremes. In winter, the entire 
-              delta freezes solid under Arctic darkness. In summer, the 
-              permafrost beneath the surface creates strange "drunken 
-              forests" of tilting black spruce at its margins, and 
-              the tundra blooms with cotton grass, lichens, and 
+              The landscape is defined by extremes. In winter, the entire
+              delta freezes solid under Arctic darkness. In summer, the
+              permafrost beneath the surface creates strange "drunken
+              forests" of tilting black spruce at its margins, and
+              the tundra blooms with cotton grass, lichens, and
               wildflowers in a brief, spectacular flourishing.
             </p>
           </div>
@@ -644,11 +750,15 @@
         class="image-break"
         style="background-image: url('../imgs/tundra.webp')"
       >
-        <span class="image-break-label">Subarctic tundra — vast, treeless, and teeming with life</span>
+        <span class="image-break-label">Subarctic tundra, vast, treeless, and teeming with life</span>
       </div>
 
       <!-- CHAPTER 4: CULTURE -->
-      <div id="culture" class="chapter-opener flip" style="scroll-margin-top: 80px">
+      <div
+        id="culture"
+        class="chapter-opener flip"
+        style="scroll-margin-top: 80px"
+      >
         <div class="chapter-image">
           <img src="../imgs/Yukon_delta.jpg" alt="Yup'ik village on the delta" />
           <span class="img-credit">© Alaska Native Heritage Center</span>
@@ -660,21 +770,21 @@
           <div class="chapter-divider"></div>
           <div class="chapter-body">
             <p>
-              For thousands of years, the delta has been the homeland of 
-              the <strong>Yup'ik and Cup'ik peoples</strong>, whose culture 
-              is woven from subsistence fishing, hunting, and a profound 
-              knowledge of the tundra and its seasons. Salmon, moose, 
-              beluga whale, and migratory birds have sustained these 
-              communities across generations, and that relationship 
+              For thousands of years, the delta has been the homeland of
+              the <strong>Yup'ik and Cup'ik peoples</strong>, whose culture
+              is woven from subsistence fishing, hunting, and a profound
+              knowledge of the tundra and its seasons. Salmon, moose,
+              beluga whale, and migratory birds have sustained these
+              communities across generations, and that relationship
               remains central to life here today.
             </p>
             <p>
-              The delta now stands on the front lines of climate change. 
-              Rising sea levels and rapidly thawing permafrost are causing 
-              severe coastal erosion, threatening ancestral villages that 
-              have stood for centuries. Several communities face 
-              relocation — a crisis that has brought the Yup'ik people's 
-              story to international attention and made the Yukon Delta 
+              The delta now stands on the front lines of climate change.
+              Rising sea levels and rapidly thawing permafrost are causing
+              severe coastal erosion, threatening ancestral villages that
+              have stood for centuries. Several communities face
+              relocation, a crisis that has brought the Yup'ik people's
+              story to international attention and made the Yukon Delta
               one of the most urgent conservation stories of our time.
             </p>
           </div>
@@ -686,8 +796,8 @@
         <div class="section-intro">
           <h2>Activities &<br /><em>Adventures</em></h2>
           <p>
-            Discover the many ways to experience the Yukon Delta, from 
-            silent tundra hikes to salmon-rich river expeditions at the 
+            Discover the many ways to experience the Yukon Delta, from
+            silent tundra hikes to salmon-rich river expeditions at the
             edge of the world.
           </p>
         </div>
@@ -699,9 +809,9 @@
               <div class="activity-tag">Nature</div>
               <div class="activity-name">Birdwatching Expeditions</div>
               <div class="activity-desc">
-                Witness one of the planet's great wildlife spectacles as 
-                millions of birds converge on the tundra each spring. 
-                Emperor Geese, tundra swans, and shorebirds in numbers 
+                Witness one of the planet's great wildlife spectacles as
+                millions of birds converge on the tundra each spring.
+                Emperor Geese, tundra swans, and shorebirds in numbers
                 that must be seen to be believed.
               </div>
             </div>
@@ -713,8 +823,8 @@
               <div class="activity-tag">Expedition</div>
               <div class="activity-name">River Journeys</div>
               <div class="activity-desc">
-                Float the braided channels of the Yukon and Kuskokwim 
-                by raft or kayak, through a wilderness accessible only 
+                Float the braided channels of the Yukon and Kuskokwim
+                by raft or kayak, through a wilderness accessible only
                 by water or air.
               </div>
             </div>
@@ -726,13 +836,21 @@
               <div class="activity-tag">Wilderness</div>
               <div class="activity-name">Tundra Hiking</div>
               <div class="activity-desc">
-                Trek across a landscape of permafrost, cotton grass, and 
-                open sky — a silence broken only by wind and birdsong.
+                Trek across a landscape of permafrost, cotton grass, and
+                open sky, a silence broken only by wind and birdsong.
               </div>
             </div>
           </a>
-          <a href="UNDER-CONSTRUCTION.html" class="activity-card" style="height: auto">
-            <img src="../imgs/Yukon_delta.jpg" alt="Cultural immersion" style="height: 100%; min-height: 200px" />
+          <a
+            href="UNDER-CONSTRUCTION.html"
+            class="activity-card"
+            style="height: auto"
+          >
+            <img
+              src="../imgs/Yukon_delta.jpg"
+              alt="Cultural immersion"
+              style="height: 100%; min-height: 200px"
+            />
             <span class="img-credit">© Alaska Native Heritage Center</span>
             <div class="activity-overlay">
               <div class="activity-tag">Culture</div>
@@ -750,36 +868,51 @@
         <h2 class="gallery-heading">Delta Gallery</h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <img src="../imgs/Yukon-waterways.jfif" alt="Yukon Delta from above" />
+            <img
+              src="../imgs/Yukon-waterways.jfif"
+              alt="Yukon Delta from above"
+            />
             <span class="img-credit">© NASA Earth Observatory</span>
             <div class="gallery-tile-caption">
               Aerial view of the Yukon-Kuskokwim Delta's vast network of lakes, channels, and tundra.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Migratory-birds.jpg" alt="Migratory birds" />
-            <span class="img-credit">© USFWS / Steve Hillebrand</span>
+            <img
+              src="https://images.unsplash.com/photo-1444464666168-49d633b867ad?q=80&w=800"
+              alt="Migratory birds in flight"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
               Millions of birds gather on the delta each spring in one of nature's great migrations.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/tundra.webp" alt="Tundra landscape" />
-            <span class="img-credit">© USFWS Alaska</span>
+            <img
+              src="https://images.unsplash.com/photo-1516912481808-3406841bd33c?q=80&w=800"
+              alt="Arctic tundra landscape"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
-              The open subarctic tundra — treeless, vast, and luminous under the midnight sun.
+              The open subarctic tundra, treeless, vast, and luminous under the midnight sun.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Yukon_delta.jpg" alt="Delta village" />
-            <span class="img-credit">© Alaska Native Heritage Center</span>
+            <img
+              src="https://images.unsplash.com/photo-1531366936337-7c912a4589a7?q=80&w=800"
+              alt="Remote village in Alaska"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
-              A Yup'ik village on the delta edge — reachable only by boat or small plane.
+              A Yup'ik village on the delta edge, reachable only by boat or small plane.
             </div>
           </div>
           <div class="gallery-tile">
-            <img src="../imgs/Yukon-waterways.jfif" alt="Delta waterways" />
-            <span class="img-credit">© USGS</span>
+            <img
+              src="https://images.unsplash.com/photo-1504893524553-b855bce32c67?q=80&w=800"
+              alt="Braided river delta from above"
+            />
+            <span class="img-credit">© Unsplash</span>
             <div class="gallery-tile-caption">
               The braided waterways of the delta shift and reform with every spring flood.
             </div>
@@ -787,7 +920,8 @@
         </div>
       </div>
 
-    </div><!-- .page -->
+    </div>
+    <!-- .page -->
 
     <div id="footer-placeholder"></div>
 
