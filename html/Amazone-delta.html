@@ -508,6 +508,58 @@
         font-size: 0.92rem;
       }
 
+      /* ── BACK TO TOP BUTTON ── */
+      .back-to-top {
+        position: fixed;
+        bottom: 36px;
+        right: 36px;
+        width: 48px;
+        height: 48px;
+        background: var(--mud);
+        border: 1px solid var(--bark);
+        color: var(--sand);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.4s,
+          transform 0.4s,
+          background 0.3s,
+          border-color 0.3s;
+        z-index: 9999;
+        gap: 2px;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .back-to-top:hover {
+        background: var(--earth);
+        border-color: var(--sand);
+      }
+      .back-to-top svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--sand);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .back-to-top span {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 7px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+
       #footer-placeholder {
         position: relative;
         z-index: 5;
@@ -568,6 +620,10 @@
         }
         .gallery-tile {
           height: 44vw;
+        }
+        .back-to-top {
+          bottom: 24px;
+          right: 24px;
         }
       }
     </style>
@@ -641,7 +697,6 @@
             alt="Sandy riverbanks of the Amazon during the dry season"
           />
           <span class="img-credit">© Photography Life</span>
-          <!-- vervang amazon-beach.jpg met de juiste bestandsnaam -->
         </div>
         <div class="chapter-text">
           <div class="chapter-num">01</div>
@@ -673,7 +728,7 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang flooded-forest.jpg met de juiste bestandsnaam -->
+      <!-- IMAGE BREAK -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/flooded-forest.jpg&quot;)"
@@ -696,7 +751,6 @@
             alt="Pink river dolphin (boto) surfacing in the Amazon"
           />
           <span class="img-credit">© The Travel</span>
-          <!-- vervang pink-dolphin.jpg met de juiste bestandsnaam -->
         </div>
         <div class="chapter-text">
           <div class="chapter-num">02</div>
@@ -728,7 +782,7 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang amazon-macaws.jpg met de juiste bestandsnaam -->
+      <!-- IMAGE BREAK -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/amazon-birds.jpg&quot;)"
@@ -751,7 +805,6 @@
             alt="Sunset over the Amazon river from a boat"
           />
           <span class="img-credit">© Metropolitan Touring</span>
-          <!-- vervang amazon-sunset.jpg met de juiste bestandsnaam -->
         </div>
         <div class="chapter-text">
           <div class="chapter-num">03</div>
@@ -781,7 +834,7 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang amazon-jungle-lodge.jpg met de juiste bestandsnaam -->
+      <!-- IMAGE BREAK -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/amazon-lodge.webp&quot;)"
@@ -804,7 +857,6 @@
             alt="Açaí, cupuaçu and exotic fruits at a Belém market stall"
           />
           <span class="img-credit">© Andean Great Treks</span>
-          <!-- vervang amazon-fruits.jpg met de juiste bestandsnaam -->
         </div>
         <div class="chapter-text">
           <div class="chapter-num">04</div>
@@ -838,7 +890,7 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — vervang indigenous-culture.jpg met de juiste bestandsnaam -->
+      <!-- IMAGE BREAK -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/amazon-tribe.webp&quot;)"
@@ -866,7 +918,6 @@
         </div>
         <div class="activity-grid">
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- vervang canoe-amazon.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/riverboat.png"
               alt="Canoe trip through an Amazon igarapé"
@@ -890,7 +941,6 @@
           </a>
 
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- vervang jungle-lodge-tour.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/nightsafari.webp"
               alt="Guided jungle walk or night safari"
@@ -912,7 +962,6 @@
           </a>
 
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- vervang marajó-island.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/wildlife-island.jpg"
               alt="Marajó Island with water buffalo and scarlet ibis"
@@ -942,7 +991,6 @@
         </h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <!-- vervang amazon-delta-aerial.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/aerial-amazon.jpg"
               alt="Aerial photo of the Amazon Delta meeting the Atlantic Ocean"
@@ -955,7 +1003,6 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang amazon-flooded-canopy.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/canoe-amazon.jpg"
               alt="Looking up through flooded forest canopy from a canoe"
@@ -968,7 +1015,6 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang amazon-river-dolphins.jpg met de juiste bestandsnaam -->
             <img
               src="../imgs/pinkdolphin-sunset.avif"
               alt="Pink river dolphins (botos) surfacing at sunset"
@@ -981,7 +1027,6 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang amazon-beach.jpg (gallery) met de juiste bestandsnaam -->
             <img
               src="../imgs/amazon-dry.jpg"
               alt="Sandy riverbanks emerging during the Amazon dry season"
@@ -994,7 +1039,6 @@
           </div>
 
           <div class="gallery-tile">
-            <!-- vervang amazon-fruits.jpg (gallery) met de juiste bestandsnaam -->
             <img
               src="../imgs/fruit-market.avif"
               alt="Exotic fruits at the Ver-o-Peso market in Belém"
@@ -1011,6 +1055,13 @@
     <!-- .page -->
 
     <div id="footer-placeholder"></div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <a class="back-to-top" id="backToTop" href="#" title="Terug naar boven">
+      <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15" /></svg>
+      <span>Top</span>
+    </a>
+
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
@@ -1021,6 +1072,16 @@
         .then((d) => {
           document.getElementById("footer-placeholder").innerHTML = d;
         });
+
+      // Back to top
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        backToTop.classList.toggle("visible", window.scrollY > 200);
+      });
+      backToTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
     <script src="../lang.js"></script>
   </body>
