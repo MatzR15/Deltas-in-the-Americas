@@ -14,6 +14,7 @@
         --mud: #2b1d0e;
         --earth: #4a3520;
         --sand: #c9a96e;
+        --bark: #7c5c3a;
         --mist: #e8dcc8;
         --fog: #f4ede0;
         --water: #1e3a4a;
@@ -491,10 +492,64 @@
       .gallery-tile:first-child .gallery-tile-caption {
         font-size: 0.92rem;
       }
+
+      /* ── BACK TO TOP BUTTON ── */
+      .back-to-top {
+        position: fixed;
+        bottom: 36px;
+        right: 36px;
+        width: 48px;
+        height: 48px;
+        background: var(--mud);
+        border: 1px solid var(--bark);
+        color: var(--sand);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.4s,
+          transform 0.4s,
+          background 0.3s,
+          border-color 0.3s;
+        z-index: 9999;
+        gap: 2px;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .back-to-top:hover {
+        background: var(--earth);
+        border-color: var(--sand);
+      }
+      .back-to-top svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--sand);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .back-to-top span {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 7px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--sand);
+      }
+
       #footer-placeholder {
         position: relative;
         z-index: 5;
       }
+
       @media (max-width: 900px) {
         .chapter-opener,
         .chapter-opener.flip {
@@ -551,6 +606,10 @@
         .gallery-tile {
           height: 44vw;
         }
+        .back-to-top {
+          bottom: 24px;
+          right: 24px;
+        }
       }
     </style>
   </head>
@@ -571,7 +630,6 @@
     </header>
 
     <div class="page">
-      <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#area" class="stat-tile">
           <div class="stat-value" data-lang-key="sanjuan_stat1_value">
@@ -619,7 +677,6 @@
         </a>
       </div>
 
-      <!-- CHAPTER 1 -->
       <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
           <img
@@ -671,7 +728,6 @@
         <span class="img-credit">© This Is My Earth / Chocó Forest</span>
       </div>
 
-      <!-- CHAPTER 2 -->
       <div
         id="nature"
         class="chapter-opener flip"
@@ -726,7 +782,6 @@
         <span class="img-credit">© only.one / Colombia Marine</span>
       </div>
 
-      <!-- CHAPTER 3 -->
       <div
         id="coastline"
         class="chapter-opener"
@@ -755,9 +810,7 @@
               the west coast of South America. This immense flow also carries an
               extraordinary sediment load of 16 million tonnes per year, making
               the San Juan one of the most productive delta-building rivers in
-              the world. Analysis of shoreline changes over the past century
-              shows consistent advance of the delta front, even as rising sea
-              levels and tectonic activity work against it.
+              the world.
             </p>
             <p data-lang-key="sanjuan_ch3_p2">
               The Pacific coast of Colombia is one of the most geologically
@@ -766,8 +819,7 @@
               earthquakes and occasional tsunamis. This tectonic energy shapes
               the coastline around the delta in dramatic ways, creating a
               shoreline that is simultaneously advancing through sediment
-              deposition and retreating through erosion and subsidence, a
-              constant, dynamic balance.
+              deposition and retreating through erosion and subsidence.
             </p>
           </div>
         </div>
@@ -786,7 +838,6 @@
         <span class="img-credit">© NPR / Afro-Colombian Community</span>
       </div>
 
-      <!-- CHAPTER 4 -->
       <div
         id="economy"
         class="chapter-opener flip"
@@ -843,7 +894,6 @@
         <span class="img-credit">© Rio on Watch</span>
       </div>
 
-      <!-- ACTIVITIES -->
       <div class="activities-section">
         <div class="section-intro">
           <h2>
@@ -880,7 +930,6 @@
               </div>
             </div>
           </a>
-
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <img
               src="../imgs/afro-colombians.jpeg"
@@ -902,7 +951,6 @@
               </div>
             </div>
           </a>
-
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
             <img
               src="../imgs/scarlet-ibis.jpeg"
@@ -927,7 +975,6 @@
         </div>
       </div>
 
-      <!-- GALLERY -->
       <div class="gallery-section" id="gallery">
         <h2 class="gallery-heading" data-lang-key="delta_gallery">
           Delta Gallery
@@ -943,7 +990,6 @@
               across 800 km² of delta plain.
             </div>
           </div>
-
           <div class="gallery-tile">
             <img
               src="../imgs/mangrove bos.jpeg"
@@ -955,7 +1001,6 @@
               habitat for countless fish, birds, and mammals.
             </div>
           </div>
-
           <div class="gallery-tile">
             <img
               src="../imgs/sunset-sanjuan.avif"
@@ -967,7 +1012,6 @@
               shoreline of barrier islands and beach ridges.
             </div>
           </div>
-
           <div class="gallery-tile">
             <img
               src="../imgs/jaguar.jpg"
@@ -979,7 +1023,6 @@
               density of endemic species.
             </div>
           </div>
-
           <div class="gallery-tile">
             <img
               src="../imgs/stilthouses.jpg"
@@ -994,9 +1037,15 @@
         </div>
       </div>
     </div>
-    <!-- .page -->
 
     <div id="footer-placeholder"></div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <a class="back-to-top" id="backToTop" href="#" title="Terug naar boven">
+      <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15" /></svg>
+      <span>Top</span>
+    </a>
+
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
@@ -1007,6 +1056,16 @@
         .then((d) => {
           document.getElementById("footer-placeholder").innerHTML = d;
         });
+
+      // Back to top
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        backToTop.classList.toggle("visible", window.scrollY > 200);
+      });
+      backToTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
     <script src="../lang.js"></script>
   </body>

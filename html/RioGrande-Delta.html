@@ -14,6 +14,7 @@
         --mud: #2b1d0e;
         --earth: #4a3520;
         --sand: #c9a96e;
+        --bark: #7c5c3a;
         --mist: #e8dcc8;
         --fog: #f4ede0;
         --water: #1e3a4a;
@@ -43,8 +44,6 @@
         opacity: 0.03;
         background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       }
-
-      /* ── HERO ── */
       .hero {
         position: sticky;
         top: 0;
@@ -139,14 +138,11 @@
           transform: translateY(0);
         }
       }
-
       .page {
         position: relative;
         z-index: 5;
         background: var(--mud);
       }
-
-      /* ── STAT TILES ── */
       .stat-strip {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -215,8 +211,6 @@
         color: rgba(232, 220, 200, 0.55);
         margin-top: 4px;
       }
-
-      /* ── CHAPTER ── */
       .chapter-opener {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -296,8 +290,6 @@
         background: var(--sand);
         margin: 28px 0;
       }
-
-      /* ── IMAGE BREAK ── */
       .image-break {
         height: 50vh;
         background-attachment: fixed;
@@ -330,8 +322,6 @@
         white-space: nowrap;
         text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
       }
-
-      /* ── IMAGE CREDITS ── */
       .img-credit {
         position: absolute;
         bottom: 10px;
@@ -342,8 +332,6 @@
         z-index: 3;
         pointer-events: none;
       }
-
-      /* ── ACTIVITIES ── */
       .activities-section {
         padding: 100px 80px;
       }
@@ -446,8 +434,6 @@
       .activity-card:hover .activity-desc {
         max-height: 200px;
       }
-
-      /* ── GALLERY ── */
       .gallery-section {
         padding: 0 80px 100px;
       }
@@ -505,6 +491,58 @@
       }
       .gallery-tile:first-child .gallery-tile-caption {
         font-size: 0.92rem;
+      }
+
+      /* ── BACK TO TOP BUTTON ── */
+      .back-to-top {
+        position: fixed;
+        bottom: 36px;
+        right: 36px;
+        width: 48px;
+        height: 48px;
+        background: var(--mud);
+        border: 1px solid var(--bark);
+        color: var(--sand);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.4s,
+          transform 0.4s,
+          background 0.3s,
+          border-color 0.3s;
+        z-index: 9999;
+        gap: 2px;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .back-to-top:hover {
+        background: var(--earth);
+        border-color: var(--sand);
+      }
+      .back-to-top svg {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--sand);
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .back-to-top span {
+        font-family: "Oswald", sans-serif;
+        font-weight: 300;
+        font-size: 7px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: var(--sand);
       }
 
       #footer-placeholder {
@@ -568,6 +606,10 @@
         .gallery-tile {
           height: 44vw;
         }
+        .back-to-top {
+          bottom: 24px;
+          right: 24px;
+        }
       }
     </style>
   </head>
@@ -588,7 +630,6 @@
     </header>
 
     <div class="page">
-      <!-- STAT TILES -->
       <div class="stat-strip">
         <a href="#area" class="stat-tile">
           <div class="stat-value" data-lang-key="rio_stat1_value">
@@ -628,10 +669,8 @@
         </a>
       </div>
 
-      <!-- CHAPTER 1: BIRDWATCHING -->
       <div id="area" class="chapter-opener" style="scroll-margin-top: 80px">
         <div class="chapter-image">
-          <!-- Voeg toe: foto van een green jay of altamira oriole in subtropisch struikgewas van de Rio Grande Valley -->
           <img
             src="../imgs/green-jay.jpg"
             alt="Green jay perched in subtropical scrub in the Rio Grande Valley"
@@ -673,7 +712,6 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — Voeg toe: foto van trekvogels boven de Rio Grande delta bij schemering -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/bird-migrate.jpg&quot;)"
@@ -685,14 +723,12 @@
         <span class="img-credit">© Undark / Motus Bird Tracking</span>
       </div>
 
-      <!-- CHAPTER 2: RESACAS -->
       <div
         id="nature"
         class="chapter-opener flip"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- Voeg toe: foto van een spiegelstil resaca meer met reigers of lepelaarss omringd door palmen -->
           <img
             src="../imgs/oxbow lake.jpg"
             alt="Mirror-still resaca oxbow lake with herons and palms, Rio Grande Valley"
@@ -732,7 +768,6 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — Voeg toe: foto van een ocelot in struikgewas van de Rio Grande Valley -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/ocelot.jpg&quot;)"
@@ -744,14 +779,12 @@
         <span class="img-credit">© Texas Highways</span>
       </div>
 
-      <!-- CHAPTER 3: TWO COUNTRIES -->
       <div
         id="coastline"
         class="chapter-opener"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- Voeg toe: luchtfoto of kustfoto van de monding van de Rio Grande bij Boca Chica, waar de rivier de Golf van Mexico bereikt -->
           <img
             src="../imgs/RioGrande-mouth.jpg"
             alt="Aerial view of the Rio Grande mouth at Boca Chica meeting the Gulf of Mexico"
@@ -791,7 +824,6 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — Voeg toe: foto van Boca Chica strand waar de Rio Grande de Golf van Mexico bereikt -->
       <div
         class="image-break"
         style="
@@ -805,14 +837,12 @@
         <span class="img-credit">© NBC News</span>
       </div>
 
-      <!-- CHAPTER 4: TEX-MEX CULTURE -->
       <div
         id="economy"
         class="chapter-opener flip"
         style="scroll-margin-top: 80px"
       >
         <div class="chapter-image">
-          <!-- Voeg toe: foto van een kleurrijke marktscène in McAllen of Matamoros met lokale producten, specerijen en streetfood -->
           <img
             src="../imgs/streetfood.jpg"
             alt="Colourful market in McAllen or Matamoros with local produce, chillies and street food"
@@ -853,7 +883,6 @@
         </div>
       </div>
 
-      <!-- IMAGE BREAK — Voeg toe: foto van een kleurrijke straatscène in Matamoros of Brownsville -->
       <div
         class="image-break"
         style="background-image: url(&quot;../imgs/historical-town.jpg&quot;)"
@@ -865,7 +894,6 @@
         <span class="img-credit">© Texas Highways / Brownsville</span>
       </div>
 
-      <!-- ACTIVITIES -->
       <div class="activities-section">
         <div class="section-intro">
           <h2>
@@ -882,7 +910,6 @@
         </div>
         <div class="activity-grid">
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- Voeg toe: foto van vissen op de Rio Grande of in een resaca bij goudkleurig ochtendlicht -->
             <img
               src="../imgs/sunrise.webp"
               alt="Fishing on the Rio Grande or in a resaca lake at golden morning light"
@@ -891,7 +918,7 @@
             <div class="activity-overlay">
               <div class="activity-tag" data-lang-key="rio_act1_tag">Sport</div>
               <div class="activity-name" data-lang-key="rio_act1_name">
-                Resaca &amp; River Fishing
+                Resaca & River Fishing
               </div>
               <div class="activity-desc" data-lang-key="rio_act1_desc">
                 Cast a line in the delta's ancient resaca lakes or along the Rio
@@ -902,9 +929,7 @@
               </div>
             </div>
           </a>
-
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- Voeg toe: foto van een vogelaar bij het Santa Ana National Wildlife Refuge op een subtropisch bospad -->
             <img
               src="../imgs/birdwatching.jpg"
               alt="Birdwatcher at Santa Ana National Wildlife Refuge on a subtropical forest trail"
@@ -926,9 +951,7 @@
               </div>
             </div>
           </a>
-
           <a href="UNDER-CONSTRUCTION.html" class="activity-card">
-            <!-- Voeg toe: foto van de internationale brug tussen Brownsville en Matamoros, biculturele grensscène -->
             <img
               src="../imgs/mexican-american food.jpg"
               alt="International bridge between Brownsville and Matamoros, bicultural border scene"
@@ -953,14 +976,12 @@
         </div>
       </div>
 
-      <!-- GALLERY -->
       <div class="gallery-section" id="gallery">
         <h2 class="gallery-heading" data-lang-key="delta_gallery">
           Delta Gallery
         </h2>
         <div class="gallery-mosaic">
           <div class="gallery-tile">
-            <!-- Voeg toe: luchtfoto van de Rio Grande delta bij Boca Chica waar de rivier de Golf van Mexico bereikt -->
             <img
               src="../imgs/oxbow lake.jpg"
               alt="Aerial view of the Rio Grande delta at Boca Chica meeting the Gulf of Mexico"
@@ -971,9 +992,7 @@
               Chica, Texas.
             </div>
           </div>
-
           <div class="gallery-tile">
-            <!-- Voeg toe: gouden zonsondergang boven een resaca meer met silhouetten van reigers -->
             <img
               src="../imgs/sunset-riogrande.jpg"
               alt="Golden sunset over a resaca oxbow lake with silhouetted herons"
@@ -984,9 +1003,7 @@
               Grande's ever-shifting course.
             </div>
           </div>
-
           <div class="gallery-tile">
-            <!-- Voeg toe: roseate spoonbills in ondiep resaca water of getijdenvlakten in de Rio Grande Valley -->
             <img
               src="../imgs/lepelaar.jpg"
               alt="Roseate spoonbills wading in a shallow resaca or tidal flat in the Rio Grande Valley"
@@ -997,9 +1014,7 @@
               Grande Delta in search of food.
             </div>
           </div>
-
           <div class="gallery-tile">
-            <!-- Voeg toe: green jay of andere kleurrijke vogel op een tak in subtropisch struikgewas -->
             <img
               src="../imgs/green-jay.jpg"
               alt="Green jay perched on a branch in Rio Grande Valley subtropical scrub"
@@ -1010,9 +1025,7 @@
               sought-after birds.
             </div>
           </div>
-
           <div class="gallery-tile">
-            <!-- Voeg toe: panorama van het Boca Chica strand of de Rio Grande monding -->
             <img
               src="../imgs/RioGrande-mouth.jpg"
               alt="Wide open Boca Chica beach where the Rio Grande meets the Gulf of Mexico"
@@ -1026,9 +1039,15 @@
         </div>
       </div>
     </div>
-    <!-- .page -->
 
     <div id="footer-placeholder"></div>
+
+    <!-- BACK TO TOP BUTTON -->
+    <a class="back-to-top" id="backToTop" href="#" title="Terug naar boven">
+      <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15" /></svg>
+      <span>Top</span>
+    </a>
+
     <script>
       const hero = document.getElementById("hero");
       window.addEventListener("scroll", () => {
@@ -1039,6 +1058,16 @@
         .then((d) => {
           document.getElementById("footer-placeholder").innerHTML = d;
         });
+
+      // Back to top
+      const backToTop = document.getElementById("backToTop");
+      window.addEventListener("scroll", () => {
+        backToTop.classList.toggle("visible", window.scrollY > 200);
+      });
+      backToTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
     </script>
     <script src="../lang.js"></script>
   </body>
